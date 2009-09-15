@@ -1,0 +1,32 @@
+<h1>Spiel Editieren</h1>
+
+<% form_for(@game) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+	<%= f.label "Datum" %><br />
+	<%= f.datetime_select :date %><br />
+  </p>
+
+  <p>
+	<%= f.label "Ort" %><br />
+	<%= f.collection_select(:location_id, Location.find_all_locations, :id, :name, {:promt => "Select a location"}) %>
+  </p>
+
+  <p>
+	<%= f.label "Gegner" %><br />
+	<%= f.text_field :opponent %>
+  </p>
+
+  <p>
+	<%= f.label "Resultat" %><br />
+	<%= f.text_field :result %>
+  </p>
+
+  <p>
+    <%= f.submit "Anpassen" %>
+  </p>
+<% end %>
+
+<%= link_to 'Anzeigen', @game %> |
+<%= link_to 'Zurück', games_path %>

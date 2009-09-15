@@ -1,0 +1,12 @@
+a {
+	color: #093ea8;
+	text-decoration: underline;
+}
+
+#map_canvas {
+	margin-top: 20px;
+	height: 400px;
+	width: 70%;
+}
+
+

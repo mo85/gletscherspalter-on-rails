@@ -1,0 +1,32 @@
+<h1>Benutzer Editieren</h1>
+
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+	<%= f.label "Benutzername" %><br />
+	<%= f.text_field :user_name %><br />
+  </p>
+
+  <p>
+	<%= f.label "Vorname" %><br />
+	<%= f.text_field :first_name %><br />
+  </p>
+
+  <p>
+    <%= f.label "Nachname" %><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+	<%= f.label "E-Mail" %><br />
+	<%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= f.submit "Anpassen" %>
+  </p>
+<% end %>
+
+<%= link_to 'Anzeigen', @user %> |
+<%= link_to 'Zurück', users_path %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+mark:
+    position: G
+    number: 27
+    user: mark
+
+pascal:
+    position: BW
+    number: 10
+    user: pisi
+
+buesi:
+    position: FW
+    number: 76
+    user: president
+

@@ -1,0 +1,22 @@
+<h1><%= @player.user.full_name %> editieren</h1>
+
+<% form_for(@player) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+	<%= f.label "Nummer" %><br />
+	<%= f.text_field :number %>
+  </p>
+
+  <p>
+	<%= f.label :position %><br />
+	<%= f.select :position, PLAYER_POSITIONS, :promt => "Select a position" %>
+  </p>
+
+  <p>
+    <%= f.submit "Anpassen" %>
+  </p>
+<% end %>
+
+<%= link_to 'Anzeigen', @player %> |
+<%= link_to 'Zurück', players_path %>

@@ -1,0 +1,40 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+<% SALT = "1l4ks.slao" unless defined?(SALT) %>
+
+mark:
+  name: Odermatt
+  hashed_password: <%= User.encrypted_password('secret', "7143736") %>
+  salt: "7143736"
+  nick_name: odi
+  user_name: mark
+  first_name: Mark
+  email: mark_odermatt@bluewin.ch
+  
+president:
+  name: Buesser
+  hashed_password: <%= User.encrypted_password('secret', "7143736") %>
+  salt: "7143736"
+  nick_name: buesi
+  user_name: buesi
+  first_name: Patrick
+  email: test@bluewin.ch
+
+pisi:
+  name: Maechler
+  hashed_password: <%= User.encrypted_password('secret', "7143736") %>
+  salt: "7143736"
+  nick_name: pisi
+  user_name: pisi
+  first_name: Pascal
+  email: p.maechler@richner.ch
+
+gondini:
+  name: Gondini
+  hashed_password: <%= User.encrypted_password('secret', "7143736") %>
+  salt: "7143736"
+  nick_name: gondini
+  user_name: gondini
+  first_name: Ragaz
+  email: r.gondini@bsp.ch
+  

@@ -1,0 +1,42 @@
+<div id="game-list">
+
+	<h1>Spielplan</h1>
+
+	<table class="default">
+	
+	<thead>
+		<tr>
+			<th width="30%">Datum</th>
+			<th width="20%">Ort</th>
+			<th width="25%">Gegner</th>
+			<th width="15%">Resultat</th>
+			<% if logged_in? %>
+				<th width="10%">&nbsp;</th>
+			<% end %>
+		  </tr>
+	</thead>
+	  
+	<% @games.each do |game| %>
+	  <tr>
+
+		<td><%= game.date_formatted %></td>
+		<td><%= game.location.name %></td>
+		<td><%= game.opponent %></td>
+		<td><%= game.result %></td>
+		
+		<% if logged_in? %>
+			<td>
+				<%= link_to(image_tag('icons/magnifier.png', :border => 0), game) %>
+	    	<%= link_to(image_tag('icons/pencil.png', :border => 0), edit_game_path(game)) %>
+	    	<%= link_to(image_tag('icons/delete.png', :border => 0), game, :confirm => 'Möchten sie dieses Spiel wirklich löschen?', :method => :delete) %>
+			</td>
+		<% end %>
+	  </tr>
+	<% end %>
+	</table>	
+</div>
+
+<br />
+<% if logged_in? %>
+<%= link_to "Neues Spiel erstellen", new_game_path %>
+<% end %>

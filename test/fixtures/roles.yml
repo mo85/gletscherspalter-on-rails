@@ -1,0 +1,18 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+admin:
+  name: Admin
+  classification: 8
+
+active:
+  name: Aktiv-Mitglied
+  classification: 6
+
+passive:
+  name: Passiv-Mitglied
+  classification: 4
+
+dev:
+  name: Entwickler
+  classification: 10
+  

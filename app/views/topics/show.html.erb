@@ -1,0 +1,36 @@
+<p>
+
+  <b>Title:</b>
+
+  <%=h @topic.title %>
+
+
+  <table class="forum-table">
+
+  <% for post in @topic.posts %>
+
+    <tr class="forum-author">
+	   <td>
+		    <%= post.user.full_name %>
+	   </td>
+    </tr>
+
+    <tr>
+	   <td class="forum-content">
+		    <%= post.content %>
+	   </td>
+    </tr>
+
+  <% end %>
+  
+  </table>
+
+</p>
+
+
+
+<% if is_admin? %>
+<%= link_to 'Edit', edit_topic_path(@topic) %> |
+<%= link_to 'Back', topics_path %>
+<%= link_to 'New Post', new_topic_post_path(@topic) %>
+<% end %>

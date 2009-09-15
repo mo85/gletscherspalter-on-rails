@@ -1,0 +1,18 @@
+<h1>Spielerinformationen</h1>
+<p>
+	<b>Name:</b>
+	<%=h @player.user.full_name %>
+</p>
+
+<p>
+	<b>Trikot Nummer:</b>
+	<%= @player.number %>
+</p>
+
+<p>
+	<b>Position:</b>
+	<%= @player.position %>
+</p>
+
+<%= link_to 'Anpassen', edit_player_path(@player) %> |
+<%= link_to 'Zurück', players_path %>

@@ -1,0 +1,17 @@
+<h1>Listing roles</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+
+<% for role in @roles %>
+  <tr>
+    <td><%=h role.name %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neue Benutzerrolle erstellen', new_role_path %>

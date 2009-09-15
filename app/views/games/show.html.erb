@@ -1,0 +1,22 @@
+<p>
+	<b>Datum:</b>
+	<%=h @game.date_formatted %>
+</p>
+
+<p>
+	<b>Ort:</b>
+	<%= @game.location.name %>
+</p>
+
+<p>
+	<b>Gegner:</b>
+	<%= @game.opponent %>
+</p>
+
+<p>
+	<b>Resultat:</b>
+	<%= @game.result %>
+</p>
+
+<%= link_to 'Anpassen', edit_game_path(@game) %> |
+<%= link_to 'Zurück', games_path %>

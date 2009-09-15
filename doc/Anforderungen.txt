@@ -1,0 +1,11 @@
+Anforderungen Homepage der Gletscherspalter
+=============================================
+
+- News (zukünftige events & letztes Resultat)
+- Historisches (Informationen über den Verein)
+- Abmeldesystem
+- Interner & externer Bereich
+- Adresslisten (alle, aktive, passive)
+
+- Saison: nächste Events (GV, Trainingslager oder Spiele) 
+- Druckbarer Spielplan

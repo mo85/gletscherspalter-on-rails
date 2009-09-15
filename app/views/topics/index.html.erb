@@ -1,0 +1,22 @@
+<h1>Listing topics</h1>
+
+<table class ="listing">
+  <tr>
+    <th>Title</th>
+  </tr>
+
+<% for topic in @topics %>
+  <tr>
+    <td><%= topic.title %></td>
+    <td class="list-actions"><%= link_to 'Show', topic %><br />
+	<% if is_admin? %>
+    <%= link_to 'Edit', edit_topic_path(topic) %><br />
+    <%= link_to 'Destroy', topic, :confirm => 'Are you sure?', :method => :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New topic', new_topic_path %>

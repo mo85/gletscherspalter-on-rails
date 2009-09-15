@@ -1,0 +1,18 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+mark_dev:
+  user: mark
+  role: dev
+
+buesi:
+  user: president
+  role: admin
+
+pisi:
+  user: pisi
+  role: active
+
+gondini:
+  user: gondini
+  role: passive
+  

@@ -1,0 +1,30 @@
+table {
+  border-collapse: collapse;
+}
+
+table.default {
+  width: 100%;
+}
+
+table.default th,
+table.default td {
+    padding: 3px 5px;
+}
+table.default th {
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+}
+table.default td {
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+}
+
+table.default tr.summary_row td {
+	font-weight: bold;
+	border-top: 2px solid #000!important;
+}
+
+table.default tr.marked td {
+  background-color: #FAFAFA;
+}

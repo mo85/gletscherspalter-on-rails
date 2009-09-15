@@ -1,0 +1,29 @@
+<h1>Registrierte Benutzer</h1>
+
+<table class="listing">
+  <tr>
+	<th>Vorname</th>
+    <th>Nachname</th>
+	<th>Email</th>
+  </tr>
+
+<% for user in @users %>
+  <tr>
+	<td><%= user.first_name %></td>
+    <td><%= user.name %></td>
+	<td><%= user.email %></td>
+    <% if user_has_role('admin')%>
+    <td class="list-actions">
+			  <%= link_to 'Details', user %><br />
+		      <%= link_to 'Bearbeiten', edit_user_path(user) %><br />
+		      <%= link_to 'L&ouml;schen', user, :confirm => "M&ouml;chten sie den Benutzer #{user.user_name} wirklich l&ouml;schen?", :method => :delete %>
+			</td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<% if user_has_role('admin') %>
+<%= link_to 'Neuen Benutzer erstellen', new_user_path %>
+<% end %>

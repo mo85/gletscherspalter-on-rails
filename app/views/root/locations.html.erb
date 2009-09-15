@@ -1,0 +1,86 @@
+<h1>Wichtige Orte</h1>
+
+<div>
+Die Gletscherspalter tragen ihre Eishockey Spiele vorwiegend im Kanton Zürich aus. Sei dies auf dem offenen Eisfeld
+  des Dolder Hotels oder in der Eishalle in Wetzikon, wo auch das jährliche Turnier "Goldies Cup" gespielt wird.
+  Eine komplette Liste der Austragungsorte mit ihren Lageplänen ist unten aufgeführt. Die Generalversammlung findet jeweils in der Besenbeiz an den 
+		<%= link_to_function "Steindrüsen 128 in 8124 Maur", "addMarkerForRestaurant('Stall-Stube','Rellikonstrasse 128, 8124 Maur', 'http://www.stallstube-maur.ch');" %> 
+	statt.
+</div>
+
+<div style="margin-top: 20px; float: right;">
+
+	<h2>Austragungsorte</h2>
+	<ul>
+		<% for rink in @rinks %>
+		  <li>
+				<%= link_to_function "#{rink.name}", "addMarkerWithInfoWindowToAddress('#{rink.name}','#{rink.address.to_s}','#{rink.url}');" %>
+			</li>
+		<% end %>
+	</ul>
+
+</div>
+
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;&amp;key= <%= GMAPS_API_KEY %>" 
+type="text/javascript"></script>
+
+
+<div id="map_canvas"></div>
+
+
+<script type="text/javascript">
+
+  var html;
+  var marker;
+  var map;
+  var geocoder = new GClientGeocoder();
+  geocoder.setBaseCountryCode("ch");
+
+  function initialize() {
+	if (GBrowserIsCompatible()) {
+		map = new GMap2($("map_canvas"));
+		map.setCenter(new GLatLng(47.424139,8.644867),12);
+		map.setUIToDefault();
+	}
+  }
+
+  function addMarkerToAddress(address) {
+	geocoder.getLatLng(address, addMarkerToLatLng);
+  }
+
+  function addMarkerToLatLng(latlng) {
+	map.clearOverlays();
+	marker = new GMarker(latlng);
+	map.setCenter(marker.getPoint());
+	map.addOverlay(marker);
+  }
+
+  function addMarkerWithInfoWindowToAddress(name,address,url) {
+	html = "<div class='tooltip'>Eisfeld <b> <a href=" + url + " target='_blank'>" + name + "<\/a></b>.<\/div>";
+	geocoder.getLatLng(address, addMarkerWithInfoWindowToLatLng);
+  }
+
+	function addMarkerForRestaurant(name, address, url) {
+		html = "<div class='tooltip'>Restaurant <b> <a href=" + url + " target='_blank'>" + name + "<\/a></b>.<\/div>";
+		geocoder.getLatLng(address, addMarkerWithInfoWindowToLatLng);
+	}
+
+  function addMarkerWithInfoWindowToLatLng(latlng) {
+	map.clearOverlays();
+	marker = new GMarker(latlng);
+	map.setCenter(marker.getPoint());
+	GEvent.addListener(marker, "click", openInfoWindow)
+	map.addOverlay(marker);
+	GEvent.trigger(marker, "click");
+  }
+
+  function openInfoWindow() {	
+	marker.openInfoWindowHtml(html);
+  }  
+
+  initialize();
+  addMarkerForRestaurant("Stall-Stube","Rellikonstrasse 128, 8124 Maur", "http://www.stallstube-maur.ch");
+
+</script>
+
+	

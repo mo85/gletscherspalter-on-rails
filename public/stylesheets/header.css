@@ -1,0 +1,28 @@
+#header {
+ width: 1000px;
+ padding: 0px;
+ height: 150px;
+ margin: 10px 0px 5px 0px;
+}
+
+#title{
+	background: url(/images/header_background.jpg);
+	text-align: center;
+	margin: 0;
+	border: none;
+	padding: 0;
+	height: 150px;
+}
+
+#ward {
+  position: absolute;
+  top: 20px;
+  left: 150px;
+}
+
+
+#wesley {
+  position: absolute;
+  top: 22px;
+  right: 110px;
+}

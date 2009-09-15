@@ -1,0 +1,31 @@
+<h1>Benutzer Erstellen</h1>
+
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+	<%= f.label "Vorname" %><br />
+	<%= f.text_field :first_name %>
+  </p>
+
+  <p>
+    <%= f.label "Nachname" %><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label "E-Mail" %><br />
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= f.label "Benutzerrolle" %><br />
+    <%= f.collection_select(:user_roles, Role.all, :id, :name, {:promt => true}) %>
+  </p>
+
+  <p>
+    <%= f.submit "Benutzer hinzufügen", :class => "submit" %>
+  </p>
+
+<% end %>
+
