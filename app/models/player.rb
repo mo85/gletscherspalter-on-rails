@@ -7,6 +7,12 @@ class Player < ActiveRecord::Base
   #validates_numericality_of :number
   #validate :number_must_not_be_negative
   #validate :valid_position  
+  
+  ::Positions = {:BW => 'Verteidiger', :G => 'Goalie', :FW => 'Stürmer'}
+  
+  def position_as_string
+    ::Positions[self.position.to_sym]
+  end
 
   protected
   

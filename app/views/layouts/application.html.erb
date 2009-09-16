@@ -42,7 +42,7 @@
 		<ul id="menu">
 			<li><%= link_to "Home" , root_path %></li>
 			<% if user_has_role('active') %>
-				<li><%= link_to "Meine Spiele", :controller => "root", :action => "myprofile" %>
+				<li><%= link_to "Mein Profil", player_path(current_user.player) %>
 			<% end %>
 			<li><%= link_to "Team", players_path %></li>
 			<li><%= link_to "Saison", :controller => "root", :action => "season" %></li>

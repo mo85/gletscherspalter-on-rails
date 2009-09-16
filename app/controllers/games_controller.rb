@@ -4,7 +4,7 @@ class GamesController < ApplicationController
 
   def sufficient_credentials?
     result = 0
-    unless user_has_role('admin')
+    unless user_has_role('active')
       result = nil
     end
     result

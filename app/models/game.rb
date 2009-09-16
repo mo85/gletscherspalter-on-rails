@@ -12,7 +12,7 @@ class Game < ActiveRecord::Base
   end
   
   def date_formatted
-    date.strftime("%d. %m. %Y %I:%M %p")
+    date.strftime("%d. %m. %Y %H:%M")
   end
 
   def self.find_games

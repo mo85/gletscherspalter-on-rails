@@ -26,8 +26,4 @@ class RootController < ApplicationController
     @games = Game.find_games
   end
 
-  def myprofile
-    @user = current_user
-  end
-
 end

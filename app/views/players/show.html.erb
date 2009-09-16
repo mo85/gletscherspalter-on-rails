@@ -1,18 +1,48 @@
-<h1>Spielerinformationen</h1>
-<p>
-	<b>Name:</b>
-	<%=h @player.user.full_name %>
-</p>
+<h1><%= @player.user.full_name %></h1>
 
-<p>
-	<b>Trikot Nummer:</b>
-	<%= @player.number %>
-</p>
+<div class="details">
 
-<p>
-	<b>Position:</b>
-	<%= @player.position %>
-</p>
+	<div>
+		<b>Trikot Nummer:</b>
+		<%= @player.number %>
+	</div>
 
-<%= link_to 'Anpassen', edit_player_path(@player) %> |
-<%= link_to 'Zurück', players_path %>
+	<div>
+		<b>Position:</b>
+		<%= @player.position_as_string %>
+	</div>
+	
+	<div class="links">
+		<%= link_to 'Anpassen', edit_player_path(@player) %> |
+		<%= link_to 'Zurück', players_path %>
+	</div>
+	
+</div>
+
+<div id="my_games" style="margin-top: 20px;">
+	<h2>Gebuchte Spiele</h2>
+	
+	<div style="margin-top: 10px">
+		<table class="default">
+			<tr>
+				<th>Zeit</th>
+				<th>Ort</th>
+				<th>Gegner</th>
+				<th>Resultat</th>
+			</tr>
+
+			<% for game in [] %>
+				<tr>
+					<td><%= game.date.date_formatted %></td>
+					<td><%= game.rink.name %></td>
+					<td><%= game.opponent %></td>
+					<td><%= game.result %></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+	
+	<div class="links">
+		<%= link_to 'Weitere Spiele buchen', games_path %>
+	</div>
+</div>

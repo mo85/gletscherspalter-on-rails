@@ -1,6 +1,22 @@
+h1 {
+	font-size: 24px;
+}
+
+h2 {
+	font-size: 22px;
+}
+
 a {
 	color: #093ea8;
 	text-decoration: underline;
+}
+
+div.links {
+	margin-top: 10px;
+}
+
+div.details {
+	margin-top: 20px;
 }
 
 #map_canvas {
