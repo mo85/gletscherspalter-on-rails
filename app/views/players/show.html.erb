@@ -31,9 +31,9 @@
 				<th>Resultat</th>
 			</tr>
 
-			<% for game in [] %>
+			<% for game in @player.games %>
 				<tr>
-					<td><%= game.date.date_formatted %></td>
+					<td><%= game.date_formatted %></td>
 					<td><%= game.rink.name %></td>
 					<td><%= game.opponent %></td>
 					<td><%= game.result %></td>
