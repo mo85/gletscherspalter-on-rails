@@ -11,41 +11,41 @@ bandenbysser:
     opponent: Bandenbysser
     result: '3:2'
     date: <%= 3.days.ago %>
-    season: <%= Season.current %>
+    season_id: 1
     
 jonasharks:
     rink_id: <%= Rink.find_by_name('Heuried').id %>
     opponent: 'Jona Sharks'
     result:
     date: <%= 3.days.from_now %>
-    season: <%= Season.current %>
+    season_id: 1
     
 goldies:
     rink_id: <%= Rink.find_by_name('Wetzikon').id %>
     opponent: 'Goldies'
     result:
     date: <%= 2.days.from_now %>
-    season: <%= Season.current %>
+    season_id: 1
 
 bonecrashers:
     rink_id: <%= Rink.find_by_name('Effretikon').id %>
     opponent: 'Bonecrashers'
     result: '4:1'
     date: <%= 10.days.ago %>
-    season: <%= Season.current %>
+    season_id: 1
 
 uusrutschers:
     rink_id: <%= Rink.find_by_name('Herti Zug').id %>
     opponent: 'Uusrutscher'
     result: '9:4'
     date: <%= 3.weeks.ago %>
-    season: <%= Season.current %>
+    season_id: 1
 
 sagmaelfaeger:
     rink_id: <%= Rink.find_by_name('KEK Küsnacht').id %>
     opponent: 'Sagmehlfeger'
     result: '4:3'                              
     date: <%= 50.days.ago %>
-    season: <%= Season.current %>
+    season_id: 1
 
         

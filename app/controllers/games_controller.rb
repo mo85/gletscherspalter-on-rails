@@ -10,11 +10,27 @@ class GamesController < ApplicationController
     result
   end
   
+  def subscribable
+    @title = "Gletscherspalter.ch::Spiele Saison #{current_season.to_s}"
+    @games = current_season.games
+    respond_to do |format|
+      format.html
+    end
+  end
+  
+  def update_subscribable
+    debugger
+    
+    respond_to do |format|
+      format.html { redirect_to :action => "subscribable" }
+    end
+  end
+  
   # GET /games
   # GET /games.xml
   def index
     @title = "Gletscherspatler.ch::Spiele"
-    @games = current_season.games
+    @games = Game.all
     respond_to do |format|
       format.html # insufficientcredentials.html.erb
       format.xml  { render :xml => @games }

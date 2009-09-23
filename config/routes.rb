@@ -11,7 +11,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
 
-  map.resources :games
+  map.resources :games, :collection => {:subscribable => :get,
+                                        :update_subscribalbe => :post}
 
   map.resources :players
 
