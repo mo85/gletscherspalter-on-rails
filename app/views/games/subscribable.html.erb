@@ -1,0 +1,31 @@
+<h1>Spiele Saison <%= current_season.to_s %></h1>
+
+<% form_tag 'update_subscribable' do %>
+<table class="default">
+	<thead>
+		<tr>
+			<th>&nbsp;</th>
+			<th>Zeit</th>
+			<th>Ort</th>
+			<th>Gegner</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% for game in @games %>
+		<tr>
+			<td><%= check_box_tag 'game_ids[]', game.id %></td>
+			<td><%= game.date_formatted %></td>
+			<td><%= game.rink.name %></td>
+			<td><%= game.opponent %></td>
+		</tr>
+		<% end %>
+	</tbody>
+	
+</table>
+
+
+<div class="links" style="text-align: right;">
+	<%= submit_tag 'Speichern' %>
+</div>
+
+<% end %>
