@@ -1,22 +1,23 @@
-<h1>Listing locations</h1>
+<h1>Lokationen</h1>
 
-<table>
+<table class="default">
   <tr>
     <th>Name</th>
-    <th>Address</th>
+    <th>Addresse</th>
+		<th>&nbsp;</th>
   </tr>
 
 <% for location in @locations %>
   <tr>
-    <td><%=h location.name %></td>
-    <td><%=h location.address %></td>
-    <td><%= link_to 'Show', location %></td>
-    <td><%= link_to 'Edit', edit_location_path(location) %></td>
-    <td><%= link_to 'Destroy', location, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= location.name %></td>
+    <td><%= location.address.to_s %></td>
+    <td><%= link_to image_tag('icons/pencil.png', :border => 0) %>
+    		<%= link_to image_tag('icons/delete.png', :border => 0), :confirm => 'Are you sure?', :method => :delete %>
+		</td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New location', new_location_path %>
+<%= link_to 'Neue Lokation erfassen', new_location_path %>
