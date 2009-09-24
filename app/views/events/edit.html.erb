@@ -1,28 +1,29 @@
-<h1>Editing event</h1>
+<h1>Veranstaltung editieren</h1>
 
-<% form_for(@event) do |f| %>
+<% form_for [@event], :html => {:class => :default} do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :title %><br />
+  <div>
+    <%= f.label "Titel" %>
     <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :date %><br />
+  </div>
+  <div>
+    <%= f.label "Zeit" %>
     <%= f.datetime_select :date %>
-  </p>
-  <p>
-    <%= f.label :location %><br />
+  </div>
+  <div>
+    <%= f.label "Ort" %>
     <%= f.text_field(:location) %>
-  </p>
-  <p>
-    <%= f.label :note %><br />
+  </div>
+  <div>
+    <%= f.label "Notiz" %>
     <%= f.text_area :note %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
+  </div>
+  <div>
+    <%= f.submit "Anpassen" %>
+  </div>
 <% end %>
 
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+<div class="links">
+	<%= link_to 'Zurück', events_path %>
+</div>

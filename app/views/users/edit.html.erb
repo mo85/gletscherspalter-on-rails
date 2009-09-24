@@ -1,31 +1,31 @@
 <h1>Benutzer Editieren</h1>
 
-<% form_for(@user) do |f| %>
+<% form_for [@user], :html => { :class => :default } do |f| %>
   <%= f.error_messages %>
 
-  <p>
-	<%= f.label "Benutzername" %><br />
-	<%= f.text_field :user_name %><br />
-  </p>
+  <div>
+	<%= f.label "Benutzername" %>
+	<%= f.text_field :user_name %>
+  </div>
 
-  <p>
-	<%= f.label "Vorname" %><br />
-	<%= f.text_field :first_name %><br />
-  </p>
+  <div>
+	<%= f.label "Vorname" %>
+	<%= f.text_field :first_name %>
+  </div>
 
-  <p>
-    <%= f.label "Nachname" %><br />
+  <div>
+    <%= f.label "Nachname" %>
     <%= f.text_field :name %>
-  </p>
+  </div>
 
-  <p>
-	<%= f.label "E-Mail" %><br />
+  <div>
+	<%= f.label "E-Mail" %>
 	<%= f.text_field :email %>
-  </p>
+  </div>
 
-  <p>
+  <div>
     <%= f.submit "Anpassen" %>
-  </p>
+  </div>
 <% end %>
 
 <%= link_to 'Anzeigen', @user %> |

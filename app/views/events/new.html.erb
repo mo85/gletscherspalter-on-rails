@@ -1,27 +1,27 @@
-<h1>New event</h1>
+<h1>Neue Veranstaltung erstellen</h1>
 
-<% form_for(@event) do |f| %>
+<% form_for [@event], :html => { :class => :default } do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :title %><br />
+  <div>
+    <%= f.label "Titel" %>
     <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :date %><br />
+  </div>
+  <div>
+    <%= f.label "Zeit" %>
     <%= f.datetime_select :date %>
-  </p>
-  <p>
-    <%= f.label :location_id %><br />
-    <%= f.text_field(:location_id) %>
-  </p>
-  <p>
-    <%= f.label :note %><br />
+  </div>
+  <div>
+    <%= f.label "Ort" %>
+    <%= f.text_field(:location) %>
+  </div>
+  <div>
+    <%= f.label "Notiz" %>
     <%= f.text_area :note %>
-  </p>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
+  </div>
+  <div>
+    <%= f.submit "Erstellen" %>
+  </div>
 <% end %>
 
-<%= link_to 'Back', events_path %>
+<%= link_to 'Zurück', events_path %>

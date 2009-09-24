@@ -1,26 +1,9 @@
-<h1>Listing events</h1>
+<h1>Veranstaltungen</h1>
 
-<table class="listing">
-  <tr>
-    <th>Anlass</th>
-    <th>Datum</th>
-    <th>Ort</th>
-    <th>Bemerkung</th>
-  </tr>
+<div>
+	<%= render :partial => "event_table", :locals => { :events => @events, :actions => true } %>
+</div>	
 
-<% for event in @events %>
-  <tr>
-    <td><%=h event.title %></td>
-    <td><%=h event.date_formatted %></td>
-    <td><%=h event.location %></td>
-    <td><%=h event.note %></td>
-    <td class="list-actions"><%= link_to 'Details', event %><br />
-    <%= link_to 'Bearbeiten', edit_event_path(event) %><br />
-    <%= link_to 'L&ouml;schen', event, :confirm => 'M&ouml;chten sie dieses Event wirklich l%ouml;schen?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'Neues Event erstellen', new_event_path %>
+<div class="links">
+	<%= link_to 'Neue Veranstaltung erstellen', new_event_path %>
+</div>

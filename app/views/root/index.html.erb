@@ -5,7 +5,12 @@
 </div>
 
 <div style="margin-top: 15px;">
-	<%= render :partial => "events/event_table", :locals => { :events => Event.future_events } %>
+	<h2>Nächste Veranstaltungen</h2>
+	<% unless @events.empty? %>
+		<%= render :partial => "events/event_table", :locals => { :events => @events, :actions => false } %>
+	<% else %>
+		Momentan sind keine Veranstaltungen angesetzt.
+	<% end %>
 </div>
 
 <div style="margin-top: 15px">

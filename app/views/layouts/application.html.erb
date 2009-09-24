@@ -47,7 +47,6 @@
 	    <li><%= link_to "Kontakt", :controller => "root", :action => "contact" %></li>
 
 			<% if user_has_role('admin') %>
-	            <li><%= link_to "Spiele", games_path %></li>
 	            <li><%= link_to "Events", events_path %></li>
 	            <li><%= link_to "Benutzer", users_path %></li>
 	        <% end %>
