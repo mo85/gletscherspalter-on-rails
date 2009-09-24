@@ -7,3 +7,12 @@
 <div style="margin-top: 15px;">
 	<%= render :partial => "events/event_table", :locals => { :events => Event.future_events } %>
 </div>
+
+<div style="margin-top: 15px">
+	<h2>Nächste Spiele</h2>
+	<% if @games.empty? %>
+		Momentan sind keine Spiel angesetzt.
+	<% else %>
+		<%= render :partial => "games/game_table", :locals => { :games => @games } %>
+	<% end %>
+<div>

@@ -1,0 +1,19 @@
+<table class="default">
+	<thead>
+		<tr>
+			<th>Zeit</th>
+			<th>Ort</th>
+			<th>Gegner</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% for game in games %>
+		<tr>
+			<td><%= game.date_formatted %></td>
+			<td><%= game.rink.name %></td>
+			<td><%= game.opponent %></td>
+		</tr>
+		<% end %>
+	</tbody>
+	
+</table>
