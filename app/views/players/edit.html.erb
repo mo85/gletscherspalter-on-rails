@@ -1,21 +1,21 @@
 <h1><%= @player.user.full_name %> editieren</h1>
 
-<% form_for(@player) do |f| %>
+<% form_for [@player], :html => {:class => :default} do |f| %>
   <%= f.error_messages %>
 
-  <p>
-	<%= f.label "Nummer" %><br />
+  <div>
+	<%= f.label "Nummer" %>
 	<%= f.text_field :number %>
-  </p>
+  </div>
 
-  <p>
-	<%= f.label :position %><br />
+  <div>
+	<%= f.label :position %>
 	<%= f.select :position, PLAYER_POSITIONS, :promt => "Select a position" %>
-  </p>
+  </div>
 
-  <p>
+  <div>
     <%= f.submit "Anpassen" %>
-  </p>
+  </div>
 <% end %>
 
 <%= link_to 'Anzeigen', @player %> |

@@ -1,31 +1,31 @@
 <h1>Neues Spiel erstellen</h1>
 
-<% form_for(@game) do |f| %>
+<% form_for [@game], :html => {:class => :default} do |f| %>
   <%= f.error_messages %>
 
-  <p>
-	<%= f.label "Zeit" %><br />
-	<%= f.datetime_select :date, :start_year => Time.now.year, :end_year => Time.now.year + 1 %><br />
-  </p>
+  <div>
+	<%= f.label "Zeit" %>
+	<%= f.datetime_select :date, :start_year => Time.now.year, :end_year => Time.now.year + 1 %>
+  </div>
 
-  <p>
-	<%= f.label "Ort" %><br />
+  <div>
+	<%= f.label "Ort" %>
 	<%= f.collection_select(:rink_id, Rink.all, :id, :name, {:promt => "Select a location"}) %>
-  </p>
+  </div>
 
-  <p>
-	<%= f.label "Gegner" %><br />
+  <div>
+	<%= f.label "Gegner" %>
 	<%= f.text_field :opponent %>
-  </p>
+  </div>
 
-  <p>
-	<%= f.label "Resultat" %><br />
+  <div>
+	<%= f.label "Resultat" %>
 	<%= f.text_field :result %>
-  </p>
+  </div>
 
-  <p>
+  <div>
     <%= f.submit "Abschicken" %>
-  </p>
+  </div>
 <% end %>
 
 <%= link_to 'Zurück', games_path %>

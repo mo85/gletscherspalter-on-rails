@@ -25,8 +25,9 @@
 
 
 <div class="links" style="text-align: right;">
-	<%= link_to "Zurück", player_path(current_user.player) %>
 	<%= submit_tag 'Speichern' %>
 </div>
+
+<%= link_to "Zurück", player_path(current_user.player) %>
 
 <% end %>
