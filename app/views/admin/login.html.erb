@@ -1,4 +1,4 @@
-<form class="default" method="post" action="/admin/login">
+<% form_tag "/admin/login", :class => :default do %>
 	<fieldset>
 		<legend>Bitte geben Sie Ihren Benutzernamen und das Passwort ein.</legend>
 
@@ -16,4 +16,4 @@
 			<%= submit_tag "Login" %>
 		</div>
 	</fieldset>
-</form>
+<% end %>
