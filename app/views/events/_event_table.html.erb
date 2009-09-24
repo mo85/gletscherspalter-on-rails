@@ -1,0 +1,25 @@
+<% unless events.empty? %>
+
+<h1>Events</h1>
+<table class="default">
+  <thead>
+    <tr>
+      <th>Datum</th>
+      <th>Anlass</th>
+      <th>Ort</th>
+      <th>Anmerkung</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% for event in events %>
+        <tr>
+          <td><%= event.date_formatted %></td>
+          <td><%= event.title %></td>
+          <td><%= event.location %></td>
+          <td><%= event.note %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>

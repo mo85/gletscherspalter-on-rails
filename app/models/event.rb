@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
     date.strftime("%d. %m. %Y %H:%M")
   end
 
-  def self.find_future_events
+  def self.future_events
     find(:all, :conditions => ["date > :now", {:now => Time.now}], :order => "date DESC", :limit => 3)
   end
 
