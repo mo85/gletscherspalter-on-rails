@@ -2,15 +2,15 @@
 
 <% form_for [@user], :html => { :class => :default } do |f| %>
   <%= f.error_messages %>
-
+	
   <div>
 	<%= f.label "Vorname" %>
-	<%= f.text_field :first_name %>
+	<%= f.text_field :firstname %>
   </div>
 
   <div>
     <%= f.label "Nachname" %>
-    <%= f.text_field :name %>
+    <%= f.text_field :lastname %>
   </div>
 
   <div>
@@ -18,11 +18,11 @@
     <%= f.text_field :email %>
   </div>
 
-  <div>
-    <%= f.label "Benutzerrolle" %>
-    <%= f.collection_select(:user_roles, Role.all, :id, :name, {:promt => true}) %>
-  </div>
-
+	<div>
+		<%= f.label "Admin" %>
+		<%= f.check_box :is_admin %>
+	</div>
+	
   <div>
     <%= f.submit "Benutzer hinzufügen", :class => "submit" %>
   </div>

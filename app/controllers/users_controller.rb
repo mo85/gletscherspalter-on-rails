@@ -1,11 +1,3 @@
-#---
-# Excerpted from "Agile Web Development with Rails, 3rd Ed.",
-# published by The Pragmatic Bookshelf.
-# Copyrights apply to this code. It may not be used to create training material, 
-# courses, books, articles, and the like. Contact us if you are in doubt.
-# We make no guarantees that this code is fit for any purpose. 
-# Visit http://www.pragmaticprogrammer.com/titles/rails3 for more book information.
-#---
 class UsersController < ApplicationController
 
   before_filter  :authorize, :except => :myprofile 
@@ -50,22 +42,13 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-    @user.user_name = "#{@user.first_name.downcase}.#{@user.name.downcase}"
+    @user.login = "#{@user.firstname.downcase}.#{@user.lastname.downcase}"
     @user.password = "secret"
+    @user.save
+    player = Player.create(:position => "FW", :user_id => @user.id)
+
     respond_to do |format|
-      if @user.save
-        # create a player for the user!
-        player = Player.new(:user_id => @user.id)
-        player.save!
-        flash[:notice] = "User #{@user.user_name} was successfully created."
-        format.html { redirect_to(:action=>'index') }
-        format.xml  { render :xml => @user, :status => :created,
-                             :location => @user }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors,
-                             :status => :unprocessable_entity }
-      end
+        format.html { redirect_to(:action => 'index') }
     end
   end
 

@@ -3,10 +3,11 @@ class Player < ActiveRecord::Base
   belongs_to :user
 
   # validation stuff
-  
-  #validates_numericality_of :number
-  #validate :number_must_not_be_negative
-  #validate :valid_position  
+  validates_numericality_of :number, :allow_nil => true
+  validate :number_must_not_be_negative
+  validates_presence_of :position
+  validates_presence_of :user_id
+  validate :valid_position  
   
   ::Positions = {:BW => 'Verteidiger', :G => 'Goalie', :FW => 'Stürmer'}
   
@@ -17,7 +18,7 @@ class Player < ActiveRecord::Base
   protected
   
     def number_must_not_be_negative
-      errors.add(:number, ' must be positive') if (number.nil? || number < 0)
+      errors.add(:number, ' must be positive') if number && number < 0
     end
     
     def valid_position
