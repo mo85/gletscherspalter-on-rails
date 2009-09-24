@@ -19,10 +19,34 @@ div.details {
 	margin-top: 20px;
 }
 
+div.admin_menu {
+	position: absolute;
+	top: 22px;
+	left: 380px;
+	height: 107px;
+	width: 140px;
+	background-color: #d40610;
+	z-index: 1;
+	
+	border: 1px solid #093ea8;
+}
+
+div.admin_menu ul {
+	list-style: none;
+	margin-left: 3px;
+}
+
+div.admin_menu ul li {
+	width: 96%;
+	border-bottom: 1px solid #093ea8;
+}
+
 #map_canvas {
 	margin-top: 20px;
 	height: 400px;
 	width: 70%;
 }
+
+
 
 

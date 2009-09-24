@@ -1,12 +1,12 @@
 #menu {
-    position: relative;
-		top: -33px;
-		left: 220px;
+	position: relative;
+	top: -33px;
+	left: 220px;
 }
 
 
 #menu ul {
-    list-style: none;    
+	list-style: none;    
 }
 
 #menu li {
@@ -19,12 +19,12 @@
 #menu li a:link, #menu li a:visited, #menu li a:focus, #menu li a:active {
 	display: block;
 	font-weight: bold;
-    color: white;
-    text-decoration: none;
+	color: white;
+	text-decoration: none;
 }
 
 #menu li a:hover {
 	color: white;
 	background-color: #d40610;
-    text-decoration: underline;
+  text-decoration: underline;
 }
