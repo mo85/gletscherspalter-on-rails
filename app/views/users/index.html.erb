@@ -10,13 +10,13 @@
 
 <% for user in @users %>
   <tr>
-		<td><%= user.first_name %></td>
-    <td><%= user.name %></td>
+		<td><%= user.firstname %></td>
+    <td><%= user.lastname %></td>
 		<td><%= user.email %></td>
     <% if user_has_role('admin')%>
 	    <td>
 			  <%= link_to image_tag('icons/pencil.png', :border => 0), edit_user_path(user) %>
-			  <%= link_to image_tag('icons/delete.png', :border => 0), user, :confirm => "Möchten sie den Benutzer #{user.user_name} wirklich löschen?", :method => :delete %>
+			  <%= link_to image_tag('icons/delete.png', :border => 0), user, :confirm => "Möchten sie den Benutzer #{user.login} wirklich löschen?", :method => :delete %>
 			</td>
 		<% end %>
 	</tr>

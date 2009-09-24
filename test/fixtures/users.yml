@@ -3,38 +3,35 @@
 <% SALT = "1l4ks.slao" unless defined?(SALT) %>
 
 mark:
-  name: Odermatt
+  lastname: Odermatt
   hashed_password: <%= User.encrypted_password('secret', "7143736") %>
   salt: "7143736"
-  nick_name: odi
-  user_name: mark
-  first_name: Mark
+  login: mark
+  firstname: Mark
   email: mark_odermatt@bluewin.ch
+  is_admin: true
   
 president:
-  name: Buesser
+  lastname: Buesser
   hashed_password: <%= User.encrypted_password('secret', "7143736") %>
   salt: "7143736"
-  nick_name: buesi
-  user_name: buesi
-  first_name: Patrick
+  login: buesi
+  firstname: Patrick
   email: test@bluewin.ch
 
 pisi:
-  name: Maechler
+  lastname: Maechler
   hashed_password: <%= User.encrypted_password('secret', "7143736") %>
   salt: "7143736"
-  nick_name: pisi
-  user_name: pisi
-  first_name: Pascal
+  login: pisi
+  firstname: Pascal
   email: p.maechler@richner.ch
 
 gondini:
-  name: Gondini
+  lastname: Gondini
   hashed_password: <%= User.encrypted_password('secret', "7143736") %>
   salt: "7143736"
-  nick_name: gondini
-  user_name: gondini
-  first_name: Ragaz
+  login: gondini
+  firstname: Ragaz
   email: r.gondini@bsp.ch
   

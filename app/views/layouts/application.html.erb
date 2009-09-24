@@ -29,7 +29,7 @@
 
 		<div id="logged-in">
 		<% if logged_in? %>
-		 angemeldet als <%= user_name %>
+		 angemeldet als <%= current_user.login %>
 		<% end %>
 		</div>
    

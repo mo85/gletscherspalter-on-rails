@@ -11,7 +11,7 @@ Die Gletscherspalter tragen ihre Eishockey Spiele vorwiegend im Kanton Zürich a
 <div style="margin-top: 20px; float: right;">
 
 	<h2>Austragungsorte</h2>
-	<ul>
+	<ul style="margin-left: 20px;">
 		<% for rink in @rinks %>
 		  <li>
 				<%= link_to_function "#{rink.name}", "addMarkerWithInfoWindowToAddress('#{rink.name}','#{rink.address.to_s}','#{rink.url}');" %>

@@ -53,11 +53,6 @@ protected
     nil
   end
 
-  def user_name
-    current_user.user_name
-  end
-  helper_method :user_name
-
   def current_user
       User.find_by_id(session[:user_id])
   end

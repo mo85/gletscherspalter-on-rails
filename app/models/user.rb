@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   #validate :password_non_blank
   
   def full_name
-    "#{first_name} #{name}"
+    "#{firstname} #{lastname}"
   end
   
   def self.authenticate(name, password)

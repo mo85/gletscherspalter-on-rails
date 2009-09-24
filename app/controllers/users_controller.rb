@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   # GET /users.xml
   def index
     @title = "Gletscherspatler.ch::Benutzer"
-    @users = User.find(:all, :order => :name)
+    @users = User.find(:all, :order => :lastname)
 
     respond_to do |format|
       format.html # insufficientcredentials.html.erb
