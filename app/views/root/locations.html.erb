@@ -56,13 +56,21 @@ type="text/javascript"></script>
   }
 
   function addMarkerWithInfoWindowToAddress(name,address,url) {
-	html = "<div class='tooltip'>Eisfeld <b> <a href=" + url + " target='_blank'>" + name + "<\/a></b>.<\/div>";
-	geocoder.getLatLng(address, addMarkerWithInfoWindowToLatLng);
+		html = "<div class='tooltip'>Eisfeld <b> <a href=" + url + " target='_blank'>" + name + "<\/a></b>.";
+		html += addAddressToTip(address);
+		html += "</div>";
+		geocoder.getLatLng(address, addMarkerWithInfoWindowToLatLng);
   }
 
 	function addMarkerForRestaurant(name, address, url) {
-		html = "<div class='tooltip'>Restaurant <b> <a href=" + url + " target='_blank'>" + name + "<\/a></b>.<\/div>";
+		html = "<div class='tooltip'>Restaurant <b> <a href=" + url + " target='_blank'>" + name + "<\/a></b>.<br />";
+		html += addAddressToTip(address);
+		html += "</div>";
 		geocoder.getLatLng(address, addMarkerWithInfoWindowToLatLng);
+	}
+	
+	function addAddressToTip(address) {
+		return "<div>" + address.gsub(",", ",<br />") + "</div>";
 	}
 
   function addMarkerWithInfoWindowToLatLng(latlng) {
