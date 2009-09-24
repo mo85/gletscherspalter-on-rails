@@ -15,15 +15,4 @@ class RootController < ApplicationController
     @rinks = Rink.all
   end
 
-  def season
-    @title = "Gletscherspalter.ch::Saison"
-    @events = Event.find_future_events
-    @games = Game.find_games
-  end
-
-  def register
-    @title = "Gletscherspalter.ch::Absenzen"
-    @games = Game.find_games
-  end
-
 end

@@ -1,5 +1,5 @@
 class Player < ActiveRecord::Base
-  has_and_belongs_to_many :games
+  has_and_belongs_to_many :games, :order => "Date ASC"
   belongs_to :user
 
   # validation stuff

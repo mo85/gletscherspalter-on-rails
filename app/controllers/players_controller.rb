@@ -19,24 +19,13 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.xml
   def index
-    @players = Player.find(:all)
+    @players = Player.all.group_by(&:position)
     @title = "Gletscherspalter.ch::Spieler"
-    sortPlayers    
     
     respond_to do |format|
       format.html # insufficientcredentials.html.erb
       format.xml  { render :xml => @players }
     end
-  end
-
-  def sortPlayers
-    @sortedPlayers = Hash.new
-    forwards = Player.find(:all, :conditions => "position = 'FW'")
-    backs = Player.find(:all, :conditions => "position = 'BW'")
-    goalers = Player.find(:all, :conditions => "position = 'G'" )
-    @sortedPlayers["Stürmer"] = forwards
-    @sortedPlayers["Verteidiger"] = backs
-    @sortedPlayers["Goalies"] = goalers
   end
 
   # GET /players/1

@@ -1,22 +1,39 @@
-<p>
-	<b>Datum:</b>
-	<%=h @game.date_formatted %>
-</p>
+<h1>Spielinformationen</h1>
 
-<p>
-	<b>Ort:</b>
-	<%= @game.location.name %>
-</p>
+<div style="margin-top: 10px;">
+	<div>
+		<b>Datum:</b>
+		<%=h @game.date_formatted %>
+	</div>
 
-<p>
-	<b>Gegner:</b>
-	<%= @game.opponent %>
-</p>
+	<div>
+		<b>Ort:</b>
+		<%= @game.rink.name %>
+	</div>
 
-<p>
-	<b>Resultat:</b>
-	<%= @game.result %>
-</p>
+	<div>
+		<b>Gegner:</b>
+		<%= @game.opponent %>
+	</div>
 
-<%= link_to 'Anpassen', edit_game_path(@game) %> |
-<%= link_to 'Zurück', games_path %>
+	<div>
+		<b>Resultat:</b>
+		<%= @game.result %>
+	</div>
+</div>
+
+<div style="margin-top: 15px;">
+	<h1>Besetzung</h1>
+	
+	<% if !@players.empty? %>
+		<%= render :partial => "players/roster", :locals => {:players => @players } %>
+	<% else %>
+		Für dieses Spiel haben sich noch keine Spieler eingetragen.
+	<% end %>
+
+	
+</div>
+
+<div class="links">
+	<%= link_to 'Zurück', games_path %>
+</div>

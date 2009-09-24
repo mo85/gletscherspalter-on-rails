@@ -2,34 +2,7 @@
 	<h1>Mannschaft</h1>
 	
 	<div style="margin-top: 15px;">
-
-		<% @sortedPlayers.keys.sort.each do |position| %>
-			<h2 style="margin-top: 10px"><%= position %></h2>
-		  <table class="default">
-			<colgroup>
-				<col width="60%" />
-				<col width="30%" />
-				<col width="10%" />
-			</colgroup>
+		<%= render :partial => "roster", :locals => {:players => @players } %>
 		
-			<% @sortedPlayers[position].each do |player| %>
-			  <tr>
-				<td>
-					<%= player.user.full_name %>
-				</td>
-				<td>
-					<%= player.number %>
-				</td>
-				<% if logged_in? %>
-				<td>
-					<%= link_to(image_tag('icons/magnifier.png', :border => 0), player) %>
-					<%= link_to(image_tag('icons/pencil.png', :border => 0) , edit_player_path(player)) %>
-					<%= link_to(image_tag('icons/delete.png', :border => 0), player, :confirm => "Möchten sie den Spieler #{player.user.full_name} wirklich löschen?", :method => :delete) %>
-				</td>
-				<% end %>
-			  </tr>
-			<% end %>
-			</table>
-		<% end %>	
 	</div>
 </div>

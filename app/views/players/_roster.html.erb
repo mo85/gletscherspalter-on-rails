@@ -1,0 +1,28 @@
+<% players.each do |position_players_pair| %>
+	<h2 style="margin-top: 10px"><%= position_players_pair.second.first.position_as_string %></h2>
+  <table class="default">
+	<colgroup>
+		<col width="60%" />
+		<col width="30%" />
+		<col width="10%" />
+	</colgroup>
+
+	<% position_players_pair.second.each do |player| %>
+	  <tr>
+		<td>
+			<%= player.user.full_name %>
+		</td>
+		<td>
+			<%= player.number %>
+		</td>
+		<% if logged_in? %>
+		<td>
+			<%= link_to(image_tag('icons/magnifier.png', :border => 0), player) %>
+			<%= link_to(image_tag('icons/pencil.png', :border => 0) , edit_player_path(player)) %>
+			<%= link_to(image_tag('icons/delete.png', :border => 0), player, :confirm => "Möchten sie den Spieler #{player.user.full_name} wirklich löschen?", :method => :delete) %>
+		</td>
+		<% end %>
+	  </tr>
+	<% end %>
+	</table>
+<% end %>
