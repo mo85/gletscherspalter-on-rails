@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+  filter_access_to :all
+  
   # GET /topics
   # GET /topics.xml
   def index

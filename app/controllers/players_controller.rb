@@ -1,20 +1,11 @@
 class PlayersController < ApplicationController
-  
-  before_filter :authorize
+  filter_access_to :all
 
   ::PLAYER_POSITIONS = [
     ["Stürmer", "FW"],
     ["Verteidiger", "BW"],
     ["Goalie", "G"]
   ]
-
-  def sufficient_credentials?
-    result = 0
-    unless user_has_role('active')
-      result = nil
-    end
-    result
-  end
   
   # GET /players
   # GET /players.xml

@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  filter_access_to :all
+  
   # GET /posts
   # GET /posts.xml
   def index

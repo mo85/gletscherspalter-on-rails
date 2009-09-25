@@ -1,13 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :authorize
-
-  def sufficient_credentials?
-    result = 0
-    unless user_has_role('admin')
-      result = nil
-    end
-    result
-  end
+  filter_access_to :all
 
   # GET /events
   # GET /events.xml

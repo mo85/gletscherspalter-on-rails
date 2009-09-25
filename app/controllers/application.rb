@@ -4,6 +4,7 @@
 class ApplicationController < ActionController::Base
   
   helper :all # include all helpers, all the time
+  before_filter :set_current_user_for_authorization
   
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
@@ -49,14 +50,18 @@ protected
   end
   helper_method :user_has_role
 
-  def sufficient_credentials?
-    nil
-  end
-
   def current_user
       User.find_by_id(session[:user_id])
   end
   helper_method :current_user
+  
+  def set_current_user_for_authorization
+    Authorization.current_user = current_user
+  end
+  
+  def set_current_user_as_stamper
+    User.stamper = current_user
+  end
   
   def current_season
     Season.current

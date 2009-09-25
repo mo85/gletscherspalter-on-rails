@@ -1,15 +1,6 @@
 class LocationsController < ApplicationController
-
-  before_filter :authorize
-
-  def sufficient_credentials?
-    result = 0
-    unless user_has_role('developer')
-      result = nil
-    end
-    result
-  end
-
+  filter_access_to :all
+  
   # GET /locations
   # GET /locations.xml
   def index

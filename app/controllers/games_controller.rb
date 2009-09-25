@@ -1,14 +1,6 @@
 class GamesController < ApplicationController
   
-  before_filter :authorize
-
-  def sufficient_credentials?
-    result = 0
-    unless user_has_role('active')
-      result = nil
-    end
-    result
-  end
+  filter_access_to :all
   
   def subscribable
     @title = "Gletscherspalter.ch::Spiele Saison #{current_season.to_s}"

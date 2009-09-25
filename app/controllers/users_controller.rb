@@ -1,14 +1,6 @@
 class UsersController < ApplicationController
-
-  before_filter  :authorize, :except => :myprofile 
-
-  def sufficient_credentials?
-    result = 0
-    unless user_has_role('admin')
-      result = nil 
-    end
-    result
-  end
+  
+  filter_access_to :all
 
   # GET /users
   # GET /users.xml

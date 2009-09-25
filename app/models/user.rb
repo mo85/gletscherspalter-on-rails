@@ -37,6 +37,10 @@ class User < ActiveRecord::Base
     "#{firstname} #{lastname}"
   end
   
+  def role_symbols
+    self.is_admin ? [:admin] : [:user]
+  end
+  
   def self.authenticate(name, password)
     user = self.find_by_login(name)
     if user
