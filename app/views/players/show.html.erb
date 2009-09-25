@@ -12,7 +12,7 @@
 		<%= @player.position_as_string %>
 	</div>
 	
-	<% if @player.user == current_user %>
+	<% if permitted_to? :manage, @player %>
 	<div class="links">
 		<%= link_to 'Anpassen', edit_player_path(@player) %>
 	</div>
@@ -43,9 +43,9 @@
 		</table>
 	</div>
 	
-	<% if @player.user == current_user %>
+	<% if permitted_to? :manage, @player %>
 	<div class="links">
-		<%= link_to 'Weitere Spiele buchen', games_players_path %>
+		<%= link_to 'Weitere Spiele buchen', games_player_path %>
 	</div>
 	<% end %>
 </div>

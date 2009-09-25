@@ -33,13 +33,14 @@ class PlayersController < ApplicationController
   def games
     @title = "Gletscherspalter.ch::Spiele Saison #{current_season.to_s}"
     @games = current_season.games.sort_by(&:date)
+    @player = Player.find(params[:id])
     respond_to do |format|
       format.html
     end
   end
   
   def update_games
-    current_player = current_user.player
+    current_player = Player.find(params[:id])
     current_season.games.each do |game|
       game.players.delete(current_player)
     end

@@ -13,7 +13,7 @@
 	<tbody>
 		<% for game in @games %>
 		<tr>
-			<td><%= check_box_tag 'game_ids[]', game.id, game.players.include?(current_user.player) %></td>
+			<td><%= check_box_tag 'game_ids[]', game.id, game.players.include?(@player) %></td>
 			<td><%= game.date_formatted %></td>
 			<td><%= game.rink.name %></td>
 			<td><%= game.opponent %></td>
