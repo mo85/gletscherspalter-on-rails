@@ -23,20 +23,22 @@
 		<td><%= game.rink.name %></td>
 		<td><%= game.opponent %></td>
 		<td><%= game.result %></td>
-		
 		<% if logged_in? %>
-			<td>
-				<%= link_to(image_tag('icons/magnifier.png', :border => 0), game) %>
-	    	<%= link_to(image_tag('icons/pencil.png', :border => 0), edit_game_path(game)) %>
-	    	<%= link_to(image_tag('icons/delete.png', :border => 0), game, :confirm => 'Möchten sie dieses Spiel wirklich löschen?', :method => :delete) %>
-			</td>
+		<td>
+			<%= link_to(image_tag('icons/magnifier.png', :border => 0), game) %>
+			<% if permitted_to? :manage, game %>
+	    <%= link_to(image_tag('icons/pencil.png', :border => 0), edit_game_path(game)) %>
+	    <%= link_to(image_tag('icons/delete.png', :border => 0), game, :confirm => 'Möchten sie dieses Spiel wirklich löschen?', :method => :delete) %>
+			<% end %>
+		</td>
 		<% end %>
+		
 	  </tr>
 	<% end %>
 	</table>	
 </div>
 
 <br />
-<% if logged_in? %>
+<% if permitted_to? :manage, :games %>
 <%= link_to "Neues Spiel erstellen", new_game_path %>
 <% end %>

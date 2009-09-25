@@ -26,19 +26,13 @@
 		<div id="title">
 		<%= image_tag("/images/glet_title.png") %>
 		</div>
-
-		<div id="logged-in">
-		<% if logged_in? %>
-		 angemeldet als <%= current_user.login %>
-		<% end %>
-		</div>
    
 	</div>
 	
 	<div>
 		<ul id="menu">
 			<li><%= link_to "Home" , root_path %></li>
-			<% if user_has_role('active') %>
+			<% if logged_in? %>
 				<li><%= link_to "Mein Profil", player_path(current_user.player) %>
 			<% end %>
 			<li><%= link_to "Team", players_path %></li>
@@ -46,7 +40,7 @@
 			<li><%= link_to "Orte", :controller => "root", :action => "locations" %></li>
 	    <li><%= link_to "Kontakt", :controller => "root", :action => "contact" %></li>
 
-			<% if user_has_role('admin') %>
+			<% if logged_in? && current_user.is_admin %>
 	        <li onmouseover="$('admin_links').show()" onmousemove="$('admin_links').show()" onmouseout="$('admin_links').hide()"><%= link_to "Admin" %></li>
 					<div id="admin_links" class="admin_menu" style="display: none;" onmouseover="$('admin_links').show();" onmousemove="$('admin_links').show()" onmouseout="$('admin_links').hide()">
 						<ul>

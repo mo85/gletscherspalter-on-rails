@@ -3,8 +3,12 @@
   <table class="default">
 	<colgroup>
 		<col width="60%" />
+		<% if logged_in? %>
 		<col width="30%" />
 		<col width="10%" />
+		<% else %>
+		<col width="40%" />
+		<% end %>
 	</colgroup>
 
 	<% position_players_pair.second.each do |player| %>
@@ -15,11 +19,13 @@
 		<td>
 			<%= player.number %>
 		</td>
-		<% if logged_in? %>
+		<% if logged_in?%>
 		<td>
 			<%= link_to(image_tag('icons/magnifier.png', :border => 0), player) %>
+			<% if permitted_to? :manage, player %>
 			<%= link_to(image_tag('icons/pencil.png', :border => 0) , edit_player_path(player)) %>
 			<%= link_to(image_tag('icons/delete.png', :border => 0), player, :confirm => "Möchten sie den Spieler #{player.user.full_name} wirklich löschen?", :method => :delete) %>
+			<% end %>
 		</td>
 		<% end %>
 	  </tr>

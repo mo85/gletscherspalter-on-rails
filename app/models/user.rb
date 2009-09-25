@@ -52,7 +52,6 @@ class User < ActiveRecord::Base
     user
   end
   
-  
   # 'password' is a virtual attribute
   
   def password

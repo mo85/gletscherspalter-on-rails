@@ -4,19 +4,22 @@ authorization do
   end
   
   role :user do
-    has_permission_on [:players, :games,], :to => :read
-    has_permission_on [:games], :to => :subscribe
+    includes :guest
+    has_permission_on :games, :to => :subscribe
+    has_permission_on :players, :to => :manage do
+      if_attribute :user_id => is { user.id }
+    end
   end
   
   role :admin do
-    has_permission_on [:players, :games, :users, :locations, :events], :to => :manage
-    has_permission_on [:games], :to => :subscribe
+    includes :user
+    has_permission_on [:games, :users, :locations, :events], :to => :manage
   end
 end
 
 privileges do
   privilege :manage do
-    includes :new, :create, :read, :update, :delete
+    includes :new, :create, :read, :edit, :update, :delete
   end
   
   privilege :read do

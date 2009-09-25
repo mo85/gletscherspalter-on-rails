@@ -14,7 +14,7 @@ class Player < ActiveRecord::Base
   def position_as_string
     ::Positions[self.position.to_sym]
   end
-
+  
   protected
   
     def number_must_not_be_negative
