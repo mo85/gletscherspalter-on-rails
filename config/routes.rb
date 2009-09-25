@@ -11,10 +11,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
 
-  map.resources :games, :collection => {:subscribable => :get,
-                                        :update_subscribable => :post}
+  map.resources :games
 
-  map.resources :players
+  map.resources :players, :collection => {:games => :get,
+                                        :update_games => :post}
 
   # The priority is based upon order of creation: first created -> highest priority.
 

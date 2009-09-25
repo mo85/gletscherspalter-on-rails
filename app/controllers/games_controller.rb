@@ -2,30 +2,6 @@ class GamesController < ApplicationController
   
   filter_access_to :all
   
-  def subscribable
-    @title = "Gletscherspalter.ch::Spiele Saison #{current_season.to_s}"
-    @games = current_season.games
-    respond_to do |format|
-      format.html
-    end
-  end
-  
-  def update_subscribable
-    current_player = current_user.player
-    current_season.games.each do |game|
-      game.players.delete(current_player)
-    end
-    
-    selected_games = Game.find(params[:game_ids])
-    selected_games.each do |game|
-      game.players << current_player
-    end
-    
-    respond_to do |format|
-      format.html { redirect_to player_path(current_user.player) }
-    end
-  end
-  
   # GET /games
   # GET /games.xml
   def index

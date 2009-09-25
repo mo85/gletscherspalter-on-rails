@@ -12,9 +12,11 @@
 		<%= @player.position_as_string %>
 	</div>
 	
+	<% if @player.user == current_user %>
 	<div class="links">
 		<%= link_to 'Anpassen', edit_player_path(@player) %>
 	</div>
+	<% end %>
 	
 </div>
 
@@ -41,7 +43,9 @@
 		</table>
 	</div>
 	
+	<% if @player.user == current_user %>
 	<div class="links">
-		<%= link_to 'Weitere Spiele buchen', subscribable_games_path %>
+		<%= link_to 'Weitere Spiele buchen', games_players_path %>
 	</div>
+	<% end %>
 </div>
