@@ -13,7 +13,7 @@
 		<td><%= user.firstname %></td>
     <td><%= user.lastname %></td>
 		<td><%= user.email %></td>
-    <% if user_has_role('admin')%>
+    <% if permitted_to? :manage, user %>
 	    <td>
 			  <%= link_to image_tag('icons/pencil.png', :border => 0), edit_user_path(user) %>
 			  <%= link_to image_tag('icons/delete.png', :border => 0), user, :confirm => "Möchten sie den Benutzer #{user.login} wirklich löschen?", :method => :delete %>
@@ -24,7 +24,7 @@
 </table>
 
 <div class="links">
-	<% if user_has_role('admin') %>
+	<% if permitted_to? :manage, :users %>
 	<%= link_to 'Neuen Benutzer erstellen', new_user_path %>
 	<% end %>
 </div>

@@ -12,7 +12,7 @@
 		<%= @player.position_as_string %>
 	</div>
 	
-	<% if permitted_to? :manage, @player %>
+	<% if permitted_to? :adjust, @player %>
 	<div class="links">
 		<%= link_to 'Anpassen', edit_player_path(@player) %>
 	</div>
@@ -43,7 +43,7 @@
 		</table>
 	</div>
 	
-	<% if permitted_to? :manage, @player %>
+	<% if permitted_to? :subscribe_to_games, @player %>
 	<div class="links">
 		<%= link_to 'Weitere Spiele buchen', games_player_path %>
 	</div>

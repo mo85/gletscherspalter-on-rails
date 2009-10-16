@@ -19,11 +19,13 @@
 		<td>
 			<%= player.number %>
 		</td>
-		<% if logged_in?%>
+		<% if permitted_to? :read, player %>
 		<td>
 			<%= link_to(image_tag('icons/magnifier.png', :border => 0), player) %>
-			<% if permitted_to? :manage, player %>
+			<% if permitted_to? :adjust, player %>
 			<%= link_to(image_tag('icons/pencil.png', :border => 0) , edit_player_path(player)) %>
+			<% end %>
+			<% if permitted_to? :manage, player %>
 			<%= link_to(image_tag('icons/delete.png', :border => 0), player, :confirm => "Möchten sie den Spieler #{player.user.full_name} wirklich löschen?", :method => :delete) %>
 			<% end %>
 		</td>

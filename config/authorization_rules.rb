@@ -5,8 +5,8 @@ authorization do
   
   role :user do
     includes :guest
-    has_permission_on :players, :to => [:manage, :games] do
-      if_attribute :user_id => is { user.id }
+    has_permission_on :players, :to => [:adjust, :subscribe_to_games] do
+      if_attribute :user => is { user }
     end
   end
   
@@ -18,14 +18,18 @@ end
 
 privileges do
   privilege :manage do
-    includes :new, :create, :edit, :update, :delete
+    includes :new, :create, :adjust, :delete
   end
   
   privilege :read do
     includes :index, :show
   end
   
-  privilege :games do
+  privilege :adjust do
+    includes :edit, :update
+  end
+  
+  privilege :subscribe_to_games do
     includes :games, :update_games
   end
 
