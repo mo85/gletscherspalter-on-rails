@@ -1,7 +1,5 @@
 class Season < ActiveRecord::Base
-  
-  include Pacecar
-  
+
   has_many :games
   
   validates_presence_of :start_year
