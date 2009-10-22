@@ -44,11 +44,13 @@ class LocationsController < ApplicationController
   def create
     clazz = eval(params[:location][:type].camelize)
     params[:location].delete(:type)
-
     @location = clazz.new(params[:location])
 
+    address = Address.new(params[:address])
+
     respond_to do |format|
-      if @location.save
+      if address.save && @location.save
+        @location.address = address
         flash[:notice] = 'Location was successfully created.'
         format.html { redirect_to(locations_path) }
       else
@@ -61,9 +63,9 @@ class LocationsController < ApplicationController
   # PUT /locations/1.xml
   def update
     @location = Location.find(params[:id])
-
+    address = @location.address
     respond_to do |format|
-      if @location.update_attributes(params[:location])
+      if address.update_attributes(params[:address]) && @location.update_attributes(params[:location])
         flash[:notice] = 'Location was successfully updated.'
         format.html { redirect_to(locations_path) }
         format.xml  { head :ok }

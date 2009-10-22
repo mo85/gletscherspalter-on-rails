@@ -7,6 +7,28 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
+
+
+  <div>
+    <%= label_tag "Strasse" %>
+    <%= text_field_tag "address[street]", "",:size => 30 %>
+  </div>
+
+  <div>
+    <%= label_tag "Nummer" %>
+    <%= text_field_tag "address[number]", "",:size => 30 %>
+  </div>
+
+  <div>
+    <%= label_tag "Stadt" %>
+    <%= text_field_tag "address[city]", "",:size => 30 %>
+  </div>
+
+  <div>
+    <%= label_tag "Postleitzahl" %>
+    <%= text_field_tag "address[zip]", "",:size => 30 %>
+  </div>
+
   <div>
     <%= f.label "Eisfeld" %>
     <%= f.check_box :type, {:checked => true}, :rink, :location %>
