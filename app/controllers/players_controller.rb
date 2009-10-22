@@ -66,12 +66,12 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
 
     user = @player.user
+
     if params[:user][:password].blank?
       params[:user].delete("password")
-      params[:user].delete("password_confirm")
+      params[:user].delete("password_confirmation")
     end
 
-    debugger
     respond_to do |format|
       if user.update_attributes(params[:user]) && @player.update_attributes(params[:player])
         flash[:notice] = 'Player was successfully updated.'

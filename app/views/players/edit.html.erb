@@ -31,7 +31,7 @@
 
   <div>
     <%= label_tag "BestŠtigen:" %>
-    <%= password_field_tag "user[password_confirm]", @player.user.password %>
+    <%= password_field_tag "user[password_confirmation]", @player.user.password %>
   </div>
 
   <div>
@@ -46,7 +46,7 @@
 
   <div>
     <%= label_tag "Email:" %>
-    <%= text_field_tag "user[:email]", @player.user.email %>
+    <%= text_field_tag "user[email]", @player.user.email %>
   </div>
 
   <div>
