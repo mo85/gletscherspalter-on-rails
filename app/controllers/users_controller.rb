@@ -37,8 +37,9 @@ class UsersController < ApplicationController
     @user.login = "#{@user.firstname.downcase}.#{@user.lastname.downcase}"
     @user.password = "secret"
     @user.save
-    player = Player.create(:position => "FW", :user_id => @user.id)
-
+    if @user.is_player?
+      player = Player.create(:position => "FW", :user_id => @user.id)
+    end
     respond_to do |format|
         format.html { redirect_to(:action => 'index') }
     end
@@ -48,10 +49,10 @@ class UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
-
+    debugger
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        flash[:notice] = "User #{@user.user_name} was successfully updated."
+        flash[:notice] = "User #{@user.login} was successfully updated."
         format.html { redirect_to(:action=>'index') }
         format.xml  { head :ok }
       else

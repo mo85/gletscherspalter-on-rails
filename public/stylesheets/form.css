@@ -40,3 +40,8 @@ form.default textarea {
 form.default label.bold {
     font-weight: bold;
 }
+
+form.default h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

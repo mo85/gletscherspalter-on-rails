@@ -3,14 +3,50 @@
 <% form_for [@player], :html => {:class => :default} do |f| %>
   <%= f.error_messages %>
 
+
+  <h2>Spielerinformationen</h2>
+  
+
   <div>
-	<%= f.label "Nummer" %>
-	<%= f.text_field :number %>
+	<%= f.label "Nummer:" %>
+	<%= f.text_field :number, :size => 10 %>
   </div>
 
   <div>
-	<%= f.label :position %>
+	<%= f.label "Position:" %>
 	<%= f.select :position, PLAYER_POSITIONS, :promt => "Select a position" %>
+  </div>
+
+  <h2>Benutzerinformationen</h2>
+
+  <div>
+    <%= label_tag "Benutzername:" %>
+    <%= text_field_tag "user[login]", @player.user.login %>
+  </div>
+
+  <div>
+    <%= label_tag "Passwort:" %>
+    <%= password_field_tag "user[password]", @player.user.password %>
+  </div>
+
+  <div>
+    <%= label_tag "BestŠtigen:" %>
+    <%= password_field_tag "user[password_confirm]", @player.user.password %>
+  </div>
+
+  <div>
+    <%= label_tag "Vorname:" %>
+    <%= text_field_tag "user[firstname]", @player.user.firstname %>
+  </div>
+
+  <div>
+    <%= label_tag "Nachname:" %>
+    <%= text_field_tag "user[lastname]", @player.user.lastname %>
+  </div>
+
+  <div>
+    <%= label_tag "Email:" %>
+    <%= text_field_tag "user[:email]", @player.user.email %>
   </div>
 
   <div>

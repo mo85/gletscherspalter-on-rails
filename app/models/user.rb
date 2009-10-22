@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :user_roles
-  has_one :player
+  has_one :player, :dependent => :destroy
   
   EmailAddress = begin
     qtext = '[^\\x0d\\x22\\x5c\\x80-\\xff]'
@@ -29,10 +29,9 @@ class User < ActiveRecord::Base
   validates_format_of       :email, :with => EmailAddress, :allow_blank => true
 
   attr_accessor :password_confirmation
-  #validates_confirmation_of :password
-
-  #validate :password_non_blank
-  
+  validates_confirmation_of :password, :message => "Passwšrter stimmen nicht Ÿberein."
+ # validates_presence_of     :password_confirmation, :if => :password_changed?
+ # validates_presence_of      :password
   def full_name
     "#{firstname} #{lastname}"
   end
