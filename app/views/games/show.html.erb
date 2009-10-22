@@ -1,28 +1,33 @@
 <h1>Spielinformationen</h1>
 
-<div style="margin-top: 10px;">
-	<div>
-		<b>Datum:</b>
-		<%=h @game.date_formatted %>
-	</div>
+<% form_for [@game], :html => {:class => :default} do |f|%>
 
-	<div>
-		<b>Ort:</b>
-		<%= @game.rink.name %>
-	</div>
+  <div>
+    <%= f.label :date, "Datum:", {:class => :bold} %>
+    <%= f.label @game.date_formatted %>
+  </div>
 
-	<div>
-		<b>Gegner:</b>
-		<%= @game.opponent %>
-	</div>
+  <div>
+    <%= f.label :rink, "Ort:", {:class => :bold} %>
+    <%= f.label @game.rink.name %>
+  </div>
 
-	<div>
-		<b>Resultat:</b>
-		<%= @game.result %>
-	</div>
-</div>
+  <div>
+    <%= f.label :opponent, "Gegner:", :class => :bold %>
+    <%= f.label @game.opponent %>
+  </div>
 
-<div style="margin-top: 15px;">
+  <div>
+    <%= f.label :result, "Resultat:", :class => :bold %>
+    <%= f.label @game.result %>
+  </div>
+
+<% end %>
+
+
+
+
+<div style="margin-top: 30px;">
 	<h1>Besetzung</h1>
 	
 	<% if !@players.empty? %>

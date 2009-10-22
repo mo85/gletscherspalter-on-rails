@@ -1,24 +1,24 @@
 <h1><%= @player.user.full_name %></h1>
 
-<div class="details">
+<% form_for [@player], :html => {:class => :default} do |f| %>
 
 	<div>
-		<b>Trikot Nummer:</b>
+		<%= f.label :player, "Trikot Nummer:", :class => :bold %> 
 		<%= @player.number %>
 	</div>
 
 	<div>
-		<b>Position:</b>
+		<%= f.label :player, "Position:", :class => :bold %>
 		<%= @player.position_as_string %>
 	</div>
 	
 	<% if permitted_to? :adjust, @player %>
-	<div class="links">
+	<div>
 		<%= link_to 'Anpassen', edit_player_path(@player) %>
 	</div>
 	<% end %>
 	
-</div>
+<% end %>
 
 <div id="my_games" style="margin-top: 20px;">
 	<h2>Gebuchte Spiele</h2>

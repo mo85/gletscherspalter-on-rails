@@ -35,3 +35,8 @@ form.default textarea {
   width: 400px;
   height: 170px;
 }
+
+
+form.default label.bold {
+    font-weight: bold;
+}
