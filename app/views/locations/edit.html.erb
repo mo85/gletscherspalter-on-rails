@@ -1,19 +1,23 @@
-<h1>Editing location</h1>
+<h1>Lokation anpassen</h1>
 
-<% form_for(@location) do |f| %>
+<% form_for [@location], :html => {:class => :default}  do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :name %><br />
+  <div>
+    <%= f.label :name %>
     <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </p>
-  <p>
+  </div>
+  <div>
+    <%= f.label "Eisfeld"%>
+    <%= f.check_box :type, { :checked => @location.is_a?(Rink) ? true : false }, :rink, :location %>
+  </div>
+  <div>
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+  </div>
+  <div>
     <%= f.submit "Update" %>
-  </p>
+  </div>
 <% end %>
 
 <%= link_to 'Show', @location %> |

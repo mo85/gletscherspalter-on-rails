@@ -18,7 +18,7 @@ end
 
 privileges do
   privilege :manage do
-    includes :new, :create, :adjust, :delete
+    includes :new, :create, :adjust, :delete, :destroy
   end
   
   privilege :read do

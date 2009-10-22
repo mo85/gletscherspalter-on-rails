@@ -42,16 +42,17 @@ class LocationsController < ApplicationController
   # POST /locations
   # POST /locations.xml
   def create
-    @location = Location.new(params[:location])
+    clazz = eval(params[:location][:type].camelize)
+    params[:location].delete(:type)
+
+    @location = clazz.new(params[:location])
 
     respond_to do |format|
       if @location.save
         flash[:notice] = 'Location was successfully created.'
-        format.html { redirect_to(@location) }
-        format.xml  { render :xml => @location, :status => :created, :location => @location }
+        format.html { redirect_to(locations_path) }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @location.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -64,7 +65,7 @@ class LocationsController < ApplicationController
     respond_to do |format|
       if @location.update_attributes(params[:location])
         flash[:notice] = 'Location was successfully updated.'
-        format.html { redirect_to(@location) }
+        format.html { redirect_to(locations_path) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -11,8 +11,8 @@
   <tr>
     <td><%= location.name %></td>
     <td><%= location.address.to_s %></td>
-    <td><%= link_to image_tag('icons/pencil.png', :border => 0) %>
-    		<%= link_to image_tag('icons/delete.png', :border => 0), :confirm => 'Are you sure?', :method => :delete %>
+    <td><%= link_to image_tag('icons/pencil.png', :border => 0), edit_location_path(location) %>
+    		<%= link_to image_tag('icons/delete.png', :border => 0),location, :confirm => 'Mšchten sie diese Lokation wirklich lšschen?', :method => :delete %>
 		</td>
   </tr>
 <% end %>

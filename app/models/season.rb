@@ -6,7 +6,7 @@ class Season < ActiveRecord::Base
   validates_presence_of :end_year
   validates_numericality_of :start_year
   validates_numericality_of :end_year
-
+  
   def self.current
     year = Time.now.year
     next_year = year + 1

@@ -5,6 +5,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :locations
 
+  map.resources :rinks
+
   map.resources :topics do |topics|
     topics.resources :posts
   end

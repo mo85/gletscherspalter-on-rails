@@ -1,19 +1,23 @@
-<h1>New location</h1>
+<h1>Neue Lokation erfassen</h1>
 
-<% form_for(@location) do |f| %>
+<% form_for [@location], :html => {:class => :default} do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :name %><br />
+  <div>
+    <%= f.label :name %>
     <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </p>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
+  </div>
+  <div>
+    <%= f.label "Eisfeld" %>
+    <%= f.check_box :type, {:checked => true}, :rink, :location %>
+  </div>
+  <div>
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+  </div>
+  <div>
+    <%= f.submit "Erstellen" %>
+  </div>
 <% end %>
 
-<%= link_to 'Back', locations_path %>
+<%= link_to 'ZurŸck', locations_path %>
