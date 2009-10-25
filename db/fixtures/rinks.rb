@@ -39,3 +39,16 @@ Rink.seed(:name) do |s|
   s.name = "Effretikon"
   s.url = "http://www.ilef.ch/sportzentrum/winterangebote.html"
 end
+
+# Bäretswil
+Rink.seed(:name) do |s|
+  s.id = 8
+  s.name = "Bäretswil"
+  s.url = "http://www.example.ch"
+end
+
+Rink.seed(:name) do |s|
+  s.id = 9
+  s.name = "Dübendorf"
+  s.url = "http://www.example.ch"
+end

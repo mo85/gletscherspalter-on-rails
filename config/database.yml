@@ -12,8 +12,8 @@ test:
 
 production:
   adapter: mysql
-  database: gletscherspalter_production
-  username: root
-  password: 
+  database: gletsche_production
+  username: gletsche_user
+  password: (lA,9cbMUxec
   socket: /tmp/mysql.sock
   encoding: utf8
