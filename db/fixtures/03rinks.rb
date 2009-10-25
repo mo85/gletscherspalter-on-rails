@@ -44,11 +44,11 @@ end
 Rink.seed(:name) do |s|
   s.id = 8
   s.name = "Bäretswil"
-  s.url = "http://www.example.ch"
 end
 
+# Dübendorf
 Rink.seed(:name) do |s|
   s.id = 9
   s.name = "Dübendorf"
-  s.url = "http://www.example.ch"
+  s.url = "http://www.imchreis.ch/"
 end

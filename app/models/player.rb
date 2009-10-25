@@ -1,6 +1,5 @@
 class Player < ActiveRecord::Base
-  using_access_control
-  
+    
   has_and_belongs_to_many :games, :order => "Date ASC"
   belongs_to :user
 

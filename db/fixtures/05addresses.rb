@@ -58,6 +58,25 @@ Address.seed(:street, :city, :zip) do |s|
   s.location_id = 6
 end
 
+# Dübendorf
+Address.seed(:street, :city, :zip) do |s|
+  s.id = 8
+  s.street = "Hermikonstrasse"
+  s.number = "68"
+  s.city = "Dübendorf"
+  s.zip = 8600
+  s.location_id = 9
+end
+
+# Bäretswil
+Address.seed(:street, :city, :zip) do |s|
+  s.id = 9
+  s.street = "Schürlistrasse"
+  s.city = "Bäretswil"
+  s.zip = 8344
+  s.location_id = 8
+end
+
 # Stall Stube Maur
 Address.seed(:street, :city, :zip) do |s|
   s.id = 7
