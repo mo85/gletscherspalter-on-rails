@@ -10,7 +10,7 @@ class Player < ActiveRecord::Base
   validates_presence_of :user_id
   validate :valid_position  
   
-  ::Positions = {:BW => 'Verteidiger', :G => 'Goalies', :FW => 'Stürmer'}
+  ::Positions = {:BW => 'Verteidiger', :G => 'Goalie', :FW => 'Stürmer'}
   
   def position_as_string
     ::Positions[self.position.to_sym]

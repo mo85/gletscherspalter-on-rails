@@ -4,8 +4,10 @@ class PlayersController < ApplicationController
   ::PLAYER_POSITIONS = [
     ["Stürmer", "FW"],
     ["Verteidiger", "BW"],
-    ["Goalies", "G"]
+    ["Goalie", "G"]
   ]
+  
+  ::SUBSCRIPTION_TOLERANCE = 1.day
   
   # GET /players
   # GET /players.xml
@@ -32,7 +34,7 @@ class PlayersController < ApplicationController
   
   def games
     @title = "Gletscherspalter.ch::Spiele Saison #{current_season.to_s}"
-    @games = current_season.games.sort_by(&:date)
+    @games = current_season.games.select{ |g| g.date >= Time.now + SUBSCRIPTION_TOLERANCE }
     @player = Player.find(params[:id])
     respond_to do |format|
       format.html
@@ -41,7 +43,7 @@ class PlayersController < ApplicationController
   
   def update_games
     current_player = Player.find(params[:id])
-    current_season.games.each do |game|
+    current_season.games.select{|g| g.date >= Time.now + SUBSCRIPTION_TOLERANCE }.each do |game|
       game.players.delete(current_player)
     end
     

@@ -17,7 +17,12 @@
     <%= f.label "E-Mail" %>
     <%= f.text_field :email %>
   </div>
-
+	
+	<div>
+		<%= f.label "Aktivmitglied" %>
+		<%= f.check_box  :is_player %>
+	</div>
+	
 	<div>
 		<%= f.label "Admin" %>
 		<%= f.check_box :is_admin %>

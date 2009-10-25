@@ -1,4 +1,14 @@
-<h1>Spiele Saison <%= current_season.to_s %></h1>
+<h1>Spiele Buchen</h1>
+
+<div style="margin-top: 10px;">
+	Hier kannst du dich für die Spiele der aktuellen Saison einschreiben. 
+	Beachte, dass du dich spätestens bis 24 Stunden vor Beginn eines Spiel eingetragen oder abgemeldet haben musst.
+	Danach sind keine Änderungen mehr möglich. Wende dich bei dringenden Fällen bitte an Marcel.
+</div>
+
+<div style ="margin-top: 10px;">
+
+<h2>Saison <%= current_season.to_s %></h2>
 
 <% form_tag 'update_games' do %>
 <table class="default">
@@ -22,7 +32,7 @@
 	</tbody>
 	
 </table>
-
+</div>
 
 <div class="links" style="text-align: right;">
 	<%= submit_tag 'Speichern' %>

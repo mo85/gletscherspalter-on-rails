@@ -49,6 +49,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
+        current_season.games << @game
         flash[:notice] = 'Game was successfully created.'
         format.html { redirect_to(@game) }
         format.xml  { render :xml => @game, :status => :created, :location => @game }
