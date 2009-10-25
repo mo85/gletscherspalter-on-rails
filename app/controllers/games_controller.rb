@@ -6,7 +6,7 @@ class GamesController < ApplicationController
   # GET /games.xml
   def index
     @title = "Gletscherspatler.ch::Spiele"
-    @games = Game.all.sort_by(&:date)
+    @games = current_season.games
     respond_to do |format|
       format.html # insufficientcredentials.html.erb
       format.xml  { render :xml => @games }
