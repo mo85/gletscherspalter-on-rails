@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
   ::PLAYER_POSITIONS = [
     ["Stürmer", "FW"],
     ["Verteidiger", "BW"],
-    ["Goalie", "G"]
+    ["Goalies", "G"]
   ]
   
   # GET /players

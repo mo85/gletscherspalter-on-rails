@@ -1,6 +1,6 @@
 User.seed(:login) do |u|
   u.id = 1
-  u.lastname = "Odermat"
+  u.lastname = "Odermatt"
   u.firstname = "Mark"
   u.login = "mark.odermatt"
   u.email = "mark_odermatt@bluewin.ch"
