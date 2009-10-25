@@ -5,7 +5,7 @@ class RootController < ApplicationController
   
  # ::GMAPS_API_KEY_2 = "ABQIAAAA5HvxKEk6euzB7DUyH0_WQRQHckxr0pSFNOpEE-nR8624c0XaDRRjdNEc3FC-_bytIonRIlbhhXaKOQ"
   
-  ::GMAPS_API_KEY = "ABQIAAAA5HvxKEk6euzB7DUyH0_WQRQHckxr0pSFNOpEE-nR8624c0XaDRRjdNEc3FC-_bytIonRIlbhhXaKOQ"
+  ::GMAPS_API_KEY = "ABQIAAAA5HvxKEk6euzB7DUyH0_WQRTpKOENAK7M60P_iZyjsCmeWfdXDBRvBLY2QxpZG45FwPCzYLQvO4CdXw"
   def index
     @title = "Gletscherspalter.ch::Home"
     future_games = current_season.games.select{|g| g.date > Time.now}
