@@ -4,7 +4,8 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
 
   has_many :posts
-  has_many :user_roles
+  has_many :news
+
   has_one :player, :dependent => :destroy
   
   EmailAddress = begin
@@ -68,6 +69,10 @@ class User < ActiveRecord::Base
     if User.count.zero?
       raise "Can't delete last user"
     end
+  end
+  
+  def name
+    "#{firstname} #{lastname}"
   end
 
 private

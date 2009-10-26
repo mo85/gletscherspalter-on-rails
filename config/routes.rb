@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :roles
+  #map.resources :roles
+
+  map.resources :news
 
   map.resources :events
 
@@ -15,8 +17,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :games
 
-  map.resources :players, :member => {:games => :get,
-                                        :update_games => :post}
+  map.resources :players, :member => {:games => :get, :update_games => :post}
 
   # The priority is based upon order of creation: first created -> highest priority.
 

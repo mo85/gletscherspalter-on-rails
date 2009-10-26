@@ -19,4 +19,15 @@ config.action_controller.perform_caching             = true
 # config.action_controller.asset_host                  = "http://assets.example.com"
 
 # Disable delivery errors, bad email addresses will be ignored
-# config.action_mailer.raise_delivery_errors = false
+config.action_mailer.raise_delivery_errors = false
+
+config.action_mailer.delivery_method = :smtp
+
+config.action_mailer.smtp_settings = {
+  :address        => "mail.gletscherspalter.railsplayground.net",
+  :port           => 26,
+  :domain         => 'www.gletscherspalter.railsplayground.net',
+  :authentication => :login, 
+  :username       => "webmaster+gletscherspalter.railsplayground.net"
+  :password       => '6D4Sz3R8+u!2'
+}

@@ -44,6 +44,7 @@
 	        <li onmouseover="$('admin_links').show()" onmousemove="$('admin_links').show()" onmouseout="$('admin_links').hide()"><%= link_to "Admin" %></li>
 					<div id="admin_links" class="admin_menu" style="display: none;" onmouseover="$('admin_links').show();" onmousemove="$('admin_links').show()" onmouseout="$('admin_links').hide()">
 						<ul>
+							<li><%= link_to "Nachrichten", news_index_path %></li>
 							<li><%= link_to "Events", events_path %></li>
 		        	<li><%= link_to "Benutzer", users_path %></li>
 		        	<li><%= link_to "Austragungsorte", locations_path %></li>

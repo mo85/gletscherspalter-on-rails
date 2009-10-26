@@ -11,7 +11,7 @@ class RootController < ApplicationController
     elsif future_games.size == 1
       @games = future_games
     else
-      @games = future_games.values_at(0,1)
+      @games = future_games.values_at(0,1,2)
     end
   end
   
