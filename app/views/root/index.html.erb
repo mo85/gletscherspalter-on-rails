@@ -4,20 +4,23 @@
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 </div>
 
-<div style="margin-top: 15px;">
-	<h2>Nächste Veranstaltungen</h2>
-	<% unless @events.empty? %>
-		<%= render :partial => "events/event_table", :locals => { :events => @events, :actions => false } %>
-	<% else %>
-		Momentan sind keine Veranstaltungen angesetzt.
-	<% end %>
-</div>
-
 <div style="margin-top: 15px">
 	<h2>Nächste Spiele</h2>
+	
 	<% if @games.empty? %>
 		Momentan sind keine Spiel angesetzt.
 	<% else %>
+		
 		<%= render :partial => "games/game_table", :locals => { :games => @games } %>
+	
 	<% end %>
 <div>
+	
+<% unless @events.empty? %>
+	<div style="margin-top: 15px;">
+		<h2>Nächste Veranstaltungen</h2>
+
+		<%= render :partial => "events/event_table", :locals => { :events => @events, :actions => false } %>
+
+	</div>
+<% end %>

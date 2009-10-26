@@ -4,6 +4,8 @@ class RootController < ApplicationController
 
   def index
     @title = "Gletscherspalter.ch::Home"
+    @news = News.all :limit => 2
+    
     future_games = current_season.games.select{|g| g.date > Time.now}
     @events = Event.future_events
     if future_games.empty?

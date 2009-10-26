@@ -1,0 +1,26 @@
+<table class="default">
+	<thead>
+		<tr>
+			<th>Zeitpunk</th>
+			<th>Verfasser</th>
+			<th>Nachricht</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<% for news in @news %>
+			<tr>
+				<td><%= news.updated_at ? format_date(news.updated_at) : format_date(news.created_at) %></td>
+				<td><%= news.publisher.name %></td>
+				<td><%= news.message %></td>
+				<% if permitted_to? :manage, news %>
+				<td>
+		    <%= link_to(image_tag('icons/pencil.png', :border => 0), edit_news_path(news)) %>
+		    <%= link_to(image_tag('icons/delete.png', :border => 0), news_index_path, :confirm => 'Möchten sie diese Nachricht wirklich löschen?', :method => :delete) %>
+				</td>
+				<% end %>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

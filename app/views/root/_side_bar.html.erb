@@ -1,0 +1,29 @@
+<div id="news">
+	<h2>News</h2>
+	<% next_event = Event.next_event %>
+	<% next_game = Game.next_game %>
+	
+	<% if next_event != nil %>
+  <p>
+    <b>Nächstes Event:</b> <br />
+    
+      <b><%= next_event.date_formatted %></b><br />
+      <b><%= next_event.title %></b>,
+      <%= next_event.location %>
+  </p>
+	<% end %>
+	<% if next_game != nil %>
+  <p>
+    <b>Nächstes Spiel:</b> <br />
+    <%= next_game.date_formatted %>
+    Gletscherspalter vs. <%= next_game.opponent %>
+   
+  </p>
+	<% end %>
+	<% if Game.last_game %>
+	<p>
+ 		<b>Letztes Spiel:</b> <br />
+		Gletscherspalter vs.<br /> <% game = Game.last_game %><%= game.opponent %>: <%= game.result %>
+	</p>
+	<% end %>
+</div>
