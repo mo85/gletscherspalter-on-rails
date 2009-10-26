@@ -28,6 +28,6 @@ config.action_mailer.smtp_settings = {
   :port           => 26,
   :domain         => 'www.gletscherspalter.railsplayground.net',
   :authentication => :login, 
-  :username       => "webmaster+gletscherspalter.railsplayground.net"
+  :username       => "webmaster+gletscherspalter.railsplayground.net",
   :password       => '6D4Sz3R8+u!2'
 }
