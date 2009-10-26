@@ -4,25 +4,28 @@
 	<% next_game = Game.next_game %>
 	
 	<% if next_event != nil %>
-  <p>
-    <b>Nächstes Event:</b> <br />
-    
+  <p style="margin-top: 10px;">
+	
+		<h3>Nächstes Event</h3>
+		
       <b><%= next_event.date_formatted %></b><br />
       <b><%= next_event.title %></b>,
       <%= next_event.location %>
   </p>
 	<% end %>
 	<% if next_game != nil %>
-  <p>
-    <b>Nächstes Spiel:</b> <br />
+  <p style="margin-top: 10px;">
+    <h3>Nächstes Spiel:</h3>
+
     <%= next_game.date_formatted %>
     Gletscherspalter vs. <%= next_game.opponent %>
    
   </p>
 	<% end %>
 	<% if Game.last_game %>
-	<p>
- 		<b>Letztes Spiel:</b> <br />
+	
+	<p style="margin-top: 10px;">
+ 		<h3>Letztes Spiel:</h3>
 		Gletscherspalter vs.<br /> <% game = Game.last_game %><%= game.opponent %>: <%= game.result %>
 	</p>
 	<% end %>
