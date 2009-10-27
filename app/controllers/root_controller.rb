@@ -6,15 +6,8 @@ class RootController < ApplicationController
     @title = "Gletscherspalter.ch::Home"
     @news = News.all :limit => 2
     
-    future_games = current_season.games.select{|g| g.date > Time.now}
+    @games = current_season.games.future_games :limit => 3
     @events = Event.future_events
-    if future_games.empty?
-      @games = []
-    elsif future_games.size == 1
-      @games = future_games
-    else
-      @games = future_games.values_at(0,1,2)
-    end
   end
   
   def contact

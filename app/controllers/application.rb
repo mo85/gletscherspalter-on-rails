@@ -22,7 +22,8 @@ protected
   helper_method :logged_in?
 
   def current_user
-      User.find_by_id(session[:user_id])
+    u_id = session[:user_id]
+    @current_user ||= User.find(u_id) if u_id
   end
   helper_method :current_user
   

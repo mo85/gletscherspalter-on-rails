@@ -34,7 +34,7 @@ class PlayersController < ApplicationController
   
   def games
     @title = "Gletscherspalter.ch::Spiele Saison #{current_season.to_s}"
-    @games = current_season.games.select{ |g| g.date >= Time.now + SUBSCRIPTION_TOLERANCE }
+    @games = future_games_of_current_season
     @player = Player.find(params[:id])
     respond_to do |format|
       format.html
@@ -43,7 +43,8 @@ class PlayersController < ApplicationController
   
   def update_games
     current_player = Player.find(params[:id])
-    current_season.games.select{|g| g.date >= Time.now + SUBSCRIPTION_TOLERANCE }.each do |game|
+    @games = future_games_of_current_season
+    @games.each do |game|
       game.players.delete(current_player)
     end
     
@@ -96,6 +97,12 @@ class PlayersController < ApplicationController
       format.html { redirect_to(players_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  
+  def future_games_of_current_season
+    @games ||= current_season.games.find(:all, :conditions => ["date >= ?", Time.now + SUBSCRIPTION_TOLERANCE])
   end
   
 end
