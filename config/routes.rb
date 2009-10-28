@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   #map.resources :roles
 
-  map.resources :news
+  map.resources :news, :collection => {:completions => :get}
 
   map.resources :events
 

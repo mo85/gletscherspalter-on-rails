@@ -16,6 +16,15 @@ class NewsController < ApplicationController
       format.html
     end
   end
+  
+  
+  def completions
+    debugger
+    @users = User.find_all :limit => 3
+    respond_to do |format|
+      format.ajax
+    end
+  end
 
   def edit
     @news = News.find(params[:id])

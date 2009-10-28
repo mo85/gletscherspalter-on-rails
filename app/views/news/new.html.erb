@@ -5,6 +5,25 @@
 		<%= f.error_messages %>
 	
 	<div>
+		<%= label_tag "Empfänger" %>
+		<%= radio_button_tag :recipients, "all", true, { :onclick => "$('choose_users').hide()" }  %> alle
+		<%= radio_button_tag :recipients, "active", false, { :onclick => "$('choose_users').hide()" } %> aktive
+		<%= radio_button_tag :recipients, "passive", false, { :onclick => "$('choose_users').hide()" } %> passive
+		<%= radio_button_tag :recipients, "select", false, { :onclick => "$('choose_users').show()" } %> auswählen
+	</div>
+	
+	<div id="choose_users" style="display: none;">
+		<%= label_tag "Eingabe:" %>
+		<%= text_field_tag "user_name", nil, :class => 'editUserNames' %>
+		<div id="user_choices" class="autocomplete"></div>
+	</div>
+	
+	<div>
+		<%= f.label "Betreff" %>
+		<%= f.text_field :subject %>
+	</div>
+	
+	<div>
 		<%= f.label "Nachricht" %>
 		<%= f.text_area :message %>
 	</div>
