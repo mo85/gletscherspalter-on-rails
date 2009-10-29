@@ -9,7 +9,7 @@
 		<%= radio_button_tag :recipients, "all", true, { :onclick => "$('choose_users').hide(); $('selected_users').hide();" }  %> alle
 		<%= radio_button_tag :recipients, "active", false, { :onclick => "$('choose_users').hide(); $('selected_users').hide();" } %> aktive
 		<%= radio_button_tag :recipients, "passive", false, { :onclick => "$('choose_users').hide(); $('selected_users').hide();" } %> passive
-		<%= radio_button_tag :recipients, "select", false, { :onclick => "$('choose_users').show(); $('selected_users').show();" } %> auswählen
+		<%= radio_button_tag :recipients, "select", false, { :onclick => "$('choose_users').show(); $('selected_users').show();"} %> auswählen
 	</div>
 	
 	<div id="choose_users" style="display: none;">
@@ -20,11 +20,7 @@
 
 	
 	<div id="selected_users" style="position: relative; left: 215px; display: none;">
-		<div>
-		<ul>
-			<li>Test User</li>
-		</ul>
-		</div>
+		<ul id="users_list"></ul>
 	</div>
 	
 	<div style="position: relative;">
@@ -47,8 +43,3 @@
 <div class="links">
 	<%= link_to "Zurück", news_index_path %>
 </div>
-
-<!--<script language="text/javascript">
-	//var selector = new Glacier.Selector('user_name');
-</script>-->
-
