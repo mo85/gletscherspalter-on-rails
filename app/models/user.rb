@@ -25,14 +25,15 @@ class User < ActiveRecord::Base
     pattern = /\A#{addr_spec}\z/
   end
   
+  ::MINIMUM_PASSWORD_LENGTH = 6
+  
   validates_presence_of     :lastname, :firstname
   validates_uniqueness_of   :login
   validates_format_of       :email, :with => EmailAddress, :allow_blank => true
 
   attr_accessor :password_confirmation
   validates_confirmation_of :password, :message => "Passwšrter stimmen nicht Ÿberein."
- # validates_presence_of     :password_confirmation, :if => :password_changed?
- # validates_presence_of      :password
+
   def full_name
     "#{firstname} #{lastname}"
   end
@@ -80,6 +81,15 @@ class User < ActiveRecord::Base
     users << User.find(:all, :conditions => ["firstname like ?", "#{name}%"])
     users << User.find(:all, :conditions => ["lastname like ?", "#{name}%"])
     users.flatten
+  end
+  
+  def validate_new_password(password, confirmation)
+    if password != confirmation 
+      errors.add(:password, " confirmation failed. Please try again.")
+    end
+    if password.size < MINIMUM_PASSWORD_LENGTH
+      errors.add(:password, " is too small. Use at least 6 characters.")
+    end
   end
   
 private

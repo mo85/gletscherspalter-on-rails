@@ -62,22 +62,22 @@ class PlayersController < ApplicationController
   # PUT /players/1.xml
   def update
     @player = Player.find(params[:id])
-
     user = @player.user
-
-    if params[:user][:password].blank?
-      params[:user].delete("password")
-      params[:user].delete("password_confirmation")
+    
+    if params[:user][:pwd_changed]
+      user.validate_new_password(params[:user][:password],params[:user][:password_confirmation])
+      user.password= params[:user][:password]
+      params[:user].delete(:pwd_changed)
     end
-
+    
     respond_to do |format|
       if user.update_attributes(params[:user]) && @player.update_attributes(params[:player])
         flash[:notice] = 'Player was successfully updated.'
         format.html { redirect_to(@player) }
         format.xml  { head :ok }
       else
+        flash[:error] = "Player update failed."
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @player.errors, :status => :unprocessable_entity }
       end
     end
   end

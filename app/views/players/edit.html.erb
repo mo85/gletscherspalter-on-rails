@@ -3,7 +3,6 @@
 <% form_for [@player], :html => {:class => :default} do |f| %>
   <%= f.error_messages %>
 
-
   <h2>Spielerinformationen</h2>
   
 
@@ -24,16 +23,21 @@
     <%= text_field_tag "user[login]", @player.user.login %>
   </div>
 
-  <div>
+	<div>
+		<%= label_tag "Passwort ändern:" %>
+		<%= check_box_tag "user[pwd_changed]", nil, false, :onclick => "$('pwd').toggle(); $('pwd_conf').toggle()" %>
+	</div>
+
+  <div id="pwd" style="display: none;">
     <%= label_tag "Passwort:" %>
     <%= password_field_tag "user[password]", @player.user.password %>
   </div>
-
-  <div>
+	
+  <div id="pwd_conf" style="display: none;">
     <%= label_tag "confirm", "Best&auml;tigen" %>
     <%= password_field_tag "user[password_confirmation]", @player.user.password %>
   </div>
-
+	
   <div>
     <%= label_tag "Vorname:" %>
     <%= text_field_tag "user[firstname]", @player.user.firstname %>
