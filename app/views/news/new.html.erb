@@ -6,10 +6,10 @@
 	
 	<div>
 		<%= label_tag "Empfänger" %>
-		<%= radio_button_tag :recipients, "all", true, { :onclick => "$('choose_users').hide()" }  %> alle
-		<%= radio_button_tag :recipients, "active", false, { :onclick => "$('choose_users').hide()" } %> aktive
-		<%= radio_button_tag :recipients, "passive", false, { :onclick => "$('choose_users').hide()" } %> passive
-		<%= radio_button_tag :recipients, "select", false, { :onclick => "$('choose_users').show()" } %> auswählen
+		<%= radio_button_tag :recipients, "all", true, { :onclick => "$('choose_users').hide(); $('selected_users').hide();" }  %> alle
+		<%= radio_button_tag :recipients, "active", false, { :onclick => "$('choose_users').hide(); $('selected_users').hide();" } %> aktive
+		<%= radio_button_tag :recipients, "passive", false, { :onclick => "$('choose_users').hide(); $('selected_users').hide();" } %> passive
+		<%= radio_button_tag :recipients, "select", false, { :onclick => "$('choose_users').show(); $('selected_users').show();" } %> auswählen
 	</div>
 	
 	<div id="choose_users" style="display: none;">
@@ -17,8 +17,17 @@
 		<%= text_field_tag "user_name", nil, :class => 'editUserNames' %>
 		<div id="user_choices" class="autocomplete"></div>
 	</div>
+
 	
-	<div>
+	<div id="selected_users" style="position: relative; left: 215px; display: none;">
+		<div>
+		<ul>
+			<li>Test User</li>
+		</ul>
+		</div>
+	</div>
+	
+	<div style="position: relative;">
 		<%= f.label "Betreff" %>
 		<%= f.text_field :subject %>
 	</div>
@@ -38,3 +47,8 @@
 <div class="links">
 	<%= link_to "Zurück", news_index_path %>
 </div>
+
+<!--<script language="text/javascript">
+	//var selector = new Glacier.Selector('user_name');
+</script>-->
+

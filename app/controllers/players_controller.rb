@@ -43,15 +43,8 @@ class PlayersController < ApplicationController
   
   def update_games
     current_player = Player.find(params[:id])
-    @games = future_games_of_current_season
-    @games.each do |game|
-      game.players.delete(current_player)
-    end
-    
-    selected_games = Game.find(params[:game_ids])
-    selected_games.each do |game|
-      game.players << current_player
-    end
+    params[:player][:game_ids] ||= []
+    current_player.update_attributes(params[:player])
     
     respond_to do |format|
       format.html { redirect_to player_path(current_user.player) }

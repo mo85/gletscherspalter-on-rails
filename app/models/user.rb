@@ -75,19 +75,22 @@ class User < ActiveRecord::Base
     "#{firstname} #{lastname}"
   end
 
+  def self.find_by_first_or_lastname(name)
+    users = []
+    users << User.find(:all, :conditions => ["firstname like ?", "#{name}%"])
+    users << User.find(:all, :conditions => ["lastname like ?", "#{name}%"])
+    users.flatten
+  end
+  
 private
 
   def password_non_blank
     errors.add(:password, "Missing password") if hashed_password.blank?
   end
 
-  
-  
   def create_new_salt
     self.salt = self.object_id.to_s + rand.to_s
   end
-  
-  
   
   def self.encrypted_password(password, salt)
     string_to_hash = password + "wibble" + salt
