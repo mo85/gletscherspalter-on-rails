@@ -24,6 +24,14 @@ class NewsController < ApplicationController
   def create
     @news = News.new(params[:news])
     @news.publisher = current_user
+    @recipients = []
+    if params[:recipients] == "all"
+      @recipients = User.all
+    elsif params[:recipients] == "active"
+      @recipients = User.find_all_by_is_player(true)
+    elsif params[:recipients] == "passive"
+      @recipients = User.find_all_by_is_player(false)
+    end
     
     respond_to do |format|
       if @news.save
