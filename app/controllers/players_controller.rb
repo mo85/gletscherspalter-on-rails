@@ -44,6 +44,8 @@ class PlayersController < ApplicationController
   def update_games
     current_player = Player.find(params[:id])
     params[:player][:game_ids] ||= []
+    params[:player][:game_ids] << current_player.games.passed_games
+    params[:player][:game_ids] = params[:player][:game_ids].flatten.compact
     current_player.update_attributes(params[:player])
     
     respond_to do |format|

@@ -27,4 +27,12 @@ class Game < ActiveRecord::Base
     result.flatten
   end
   
+  def self.passed_games(options = {})
+    result = []
+    with_scope :find => options do
+      result << find(:all, :conditions => ["date <= ?", Time.now])
+    end
+    result.flatten
+  end
+  
 end
