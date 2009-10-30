@@ -20,37 +20,37 @@
 
   <div>
     <%= label_tag "Benutzername:" %>
-    <%= text_field_tag "user[login]", @player.user.login %>
+    <%= text_field_tag "user[login]", @player.user.login, :size => 30 %>
   </div>
 
 	<div>
 		<%= label_tag "Passwort ändern:" %>
-		<%= check_box_tag "user[pwd_changed]", nil, false, :onclick => "$('pwd').toggle(); $('pwd_conf').toggle()" %>
+		<%= check_box_tag "user[pwd_changed]", nil, false, :onclick => "$('pwd').toggle(); $('pwd_conf').toggle();" %>
 	</div>
 
   <div id="pwd" style="display: none;">
     <%= label_tag "Passwort:" %>
-    <%= password_field_tag "user[password]", @player.user.password %>
+    <%= password_field_tag "user[password]", @player.user.password, :size => 30 %>
   </div>
 	
   <div id="pwd_conf" style="display: none;">
     <%= label_tag "confirm", "Best&auml;tigen:" %>
-    <%= password_field_tag "user[password_confirmation]", @player.user.password %>
+    <%= password_field_tag "user[password_confirmation]", @player.user.password, :size => 30 %>
   </div>
 	
   <div>
     <%= label_tag "Vorname:" %>
-    <%= text_field_tag "user[firstname]", @player.user.firstname %>
+    <%= text_field_tag "user[firstname]", @player.user.firstname, :size => 30 %>
   </div>
 
   <div>
     <%= label_tag "Nachname:" %>
-    <%= text_field_tag "user[lastname]", @player.user.lastname %>
+    <%= text_field_tag "user[lastname]", @player.user.lastname, :size => 30 %>
   </div>
 
   <div>
     <%= label_tag "Email:" %>
-    <%= text_field_tag "user[email]", @player.user.email %>
+    <%= text_field_tag "user[email]", @player.user.email, :size => 30 %>
   </div>
 
   <div>
