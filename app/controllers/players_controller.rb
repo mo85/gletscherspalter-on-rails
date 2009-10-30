@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-  filter_access_to :all
+  filter_access_to :all, :attribute_check => true
 
   ::PLAYER_POSITIONS = [
     ["Stürmer", "FW"],
