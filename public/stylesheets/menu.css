@@ -13,7 +13,7 @@
 	float: left;
   list-style: none;
   padding: 0.2em;
-  margin-right: 5px;
+	margin-right: 5px;
 }
 
 #menu li a:link, #menu li a:visited, #menu li a:focus, #menu li a:active {

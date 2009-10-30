@@ -23,7 +23,7 @@ div.admin_menu {
 	position: absolute;
 	top: 22px;
 	left: 380px;
-	height: 107px;
+	height: 109px;
 	width: 140px;
 	background-color: #d40610;
 	z-index: 1;
@@ -39,6 +39,10 @@ div.admin_menu ul {
 div.admin_menu ul li {
 	width: 96%;
 	border-bottom: 1px solid #093ea8;
+	height: 20px;
+	line-height: 20px;
+	padding: 0px;
+	margin: 0px;
 }
 
 #map_canvas {
