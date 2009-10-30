@@ -43,7 +43,7 @@
 		</table>
 	</div>
 	
-	<% if permitted_to? :subscribe_to_games, @player %>
+	<% if permitted_to? :subscribe_to_games %>
 	<div class="links">
 		<%= link_to 'Weitere Spiele buchen', games_player_path %>
 	</div>

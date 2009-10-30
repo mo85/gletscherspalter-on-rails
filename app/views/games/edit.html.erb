@@ -1,31 +1,36 @@
 <h1>Spiel Editieren</h1>
 
-<% form_for(@game) do |f| %>
+<% form_for [@game], :html => {:class => :default} do |f| %>
   <%= f.error_messages %>
 
-  <p>
-	<%= f.label "Datum" %><br />
-	<%= f.datetime_select :date %><br />
-  </p>
+  <div>
+	<%= f.label "Datum" %>
+	<%= f.datetime_select :date %>
+  </div>
 
-  <p>
-	<%= f.label "Ort" %><br />
-	<%= f.collection_select(:location_id, Location.find_all_locations, :id, :name, {:promt => "Select a location"}) %>
-  </p>
+  <div>
+	<%= f.label "Ort" %>
+	<%= f.collection_select(:rink_id, Rink.all, :id, :name, {:promt => "Select a location"}) %>
+  </div>
 
-  <p>
-	<%= f.label "Gegner" %><br />
+  <div>
+	<%= f.label "Gegner" %>
 	<%= f.text_field :opponent %>
-  </p>
+  </div>
 
-  <p>
-	<%= f.label "Resultat" %><br />
-	<%= f.text_field :result %>
-  </p>
+  <div>
+	<%= f.label "Tore erzielt" %>
+	<%= f.text_field :score %>
+  </div>
 
-  <p>
+	<div>
+	<%= f.label "Tore kassiert" %>
+	<%= f.text_field :opponent_score %>	
+	</div>
+
+  <div>
     <%= f.submit "Anpassen" %>
-  </p>
+  </div>
 <% end %>
 
 <%= link_to 'Anzeigen', @game %> |

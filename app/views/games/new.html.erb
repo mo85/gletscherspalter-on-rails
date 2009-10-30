@@ -19,9 +19,14 @@
   </div>
 
   <div>
-	<%= f.label "Resultat" %>
-	<%= f.text_field :result %>
+	<%= f.label "Tore erzielt" %>
+	<%= f.text_field :score %>
   </div>
+
+	<div>
+	<%= f.label "Tore kassiert" %>
+	<%= f.text_field :opponent_score %>
+	</div>
 
   <div>
     <%= f.submit "Abschicken" %>

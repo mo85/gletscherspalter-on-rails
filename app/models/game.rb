@@ -8,11 +8,19 @@ class Game < ActiveRecord::Base
   validates_format_of :result, :with => /([0-9]):([0-9])/, :allow_blank => true
   
   def self.last_game
-    @last_game ||= last(:conditions => ["result != ?",""])
+    @last_game ||= last(:conditions => ["score != ?",""])
   end
   
   def date_formatted
     date.strftime("%d. %m. %Y %H:%M")
+  end
+
+  def result
+    if !(score.nil?) && !(opponent_score.nil?) 
+      @result ||= "#{score}:#{opponent_score}"
+    else
+      nil
+    end
   end
 
   def self.next_game
