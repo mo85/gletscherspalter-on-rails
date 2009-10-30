@@ -4,7 +4,7 @@ class RootController < ApplicationController
 
   def index
     @title = "Gletscherspalter.ch::Home"
-    @news = News.all :limit => 2
+    @news = Message.all :limit => 2
     
     @games = current_season.games.future_games :limit => 3
     @events = Event.future_events

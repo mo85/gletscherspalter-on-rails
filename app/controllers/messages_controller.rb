@@ -1,8 +1,8 @@
-class NewsController < ApplicationController
+class MessagesController < ApplicationController
   filter_access_to :all
 
   def index
-    @news = News.all
+    @messages = Message.all
 
     respond_to do |format|
       format.html # insufficientcredentials.html.erb
@@ -10,7 +10,7 @@ class NewsController < ApplicationController
   end
 
   def new
-    @news = News.new
+    @message = Message.new
 
     respond_to do |format|
       format.html
@@ -18,12 +18,12 @@ class NewsController < ApplicationController
   end
 
   def edit
-    @news = News.find(params[:id])
+    @message = Message.find(params[:id])
   end
 
   def create
-    @news = News.new(params[:news])
-    @news.publisher = current_user
+    @message = Message.new(params[:message])
+    @message.publisher = current_user
     @recipients = []
     if params[:recipients] == "all"
       @recipients = User.all
@@ -34,9 +34,9 @@ class NewsController < ApplicationController
     end
     
     respond_to do |format|
-      if @news.save
-        flash[:notice] = 'News was successfully created.'
-        format.html { redirect_to(news_index_path) }
+      if @message.save
+        flash[:notice] = 'Message was successfully created.'
+        format.html { redirect_to(messages_path) }
       else
         format.html { render :action => "new" }
       end
@@ -44,12 +44,12 @@ class NewsController < ApplicationController
   end
 
   def update
-    @news = News.find(params[:id])
+    @message = Message.find(params[:id])
 
     respond_to do |format|
-      if @news.update_attributes(params[:event])
+      if @message.update_attributes(params[:event])
         flash[:notice] = 'Event was successfully updated.'
-        format.html { redirect_to(@news_path) }
+        format.html { redirect_to(messages_path) }
       else
         format.html { render :action => "edit" }
       end
@@ -57,11 +57,11 @@ class NewsController < ApplicationController
   end
 
   def destroy
-    @news = News.find(params[:id])
-    @news.destroy
+    @message = Message.find(params[:id])
+    @message.destroy
 
     respond_to do |format|
-      format.html { redirect_to(events_url) }
+      format.html { redirect_to(messages_path) }
     end
   end
   

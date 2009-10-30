@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091028104535) do
+ActiveRecord::Schema.define(:version => 20091030084555) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(:version => 20091028104535) do
     t.string   "type"
   end
 
-  create_table "news", :force => true do |t|
+  create_table "messages", :force => true do |t|
     t.integer  "publisher_id"
     t.text     "message"
     t.datetime "created_at"

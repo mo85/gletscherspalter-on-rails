@@ -12,7 +12,7 @@ authorization do
   
   role :admin do
     includes :user
-    has_permission_on [:players, :games, :users, :locations, :events, :news], :to => [:read, :manage]
+    has_permission_on [:players, :games, :users, :locations, :events, :messages], :to => [:read, :manage]
     has_permission_on :players, :to => :subscribe_to_games
   end
 end
