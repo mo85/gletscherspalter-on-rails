@@ -1,7 +1,7 @@
 <div id="news">
 	<h2>News</h2>
 	<% next_event = Event.next_event %>
-	<% next_game = Game.next_game %>
+	<% next_game = current_season.games.next_game %>
 	
 	<% if next_event != nil %>
   <p style="margin-top: 10px;">
