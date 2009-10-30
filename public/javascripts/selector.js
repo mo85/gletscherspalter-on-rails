@@ -1,14 +1,19 @@
 Glacier.Selector = Class.create({
-	initialize: function() {
-		new Ajax.Autocompleter('user_name', 'user_choices', '/users.ajax', { 
+	initialize: function(name) {
+		this.name = name;
+		
+		new Ajax.Autocompleter(this.name + '_name', this.name + '_choices', '/users.ajax', { 
 		method: 'get', 
-		updateElement: Glacier.Selector.selectEntry });
+		updateElement: this.selectEntry.bind(this) });
 	},
 
 	selectEntry: function(element) {
 		var node = element.cloneNode(true);
-		$('users_list').insert({
+		$(this.name + 's_list').insert({
 			bottom: node
 		});
+		
+		// adding ids to hidden input
+		var input = $(this.name + 's');
 	}
 });

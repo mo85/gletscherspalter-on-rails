@@ -2,6 +2,7 @@
 
 <div style="margin-top: 10px;">
 	<% form_for [@message], :url => {:action => "create"},:html => {:class => :default} do |f| %>
+	<input id="users" name="users" type="hidden" value="" />
 		<%= f.error_messages %>
 	
 	<div>
@@ -44,5 +45,5 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
-	new Glacier.Selector();
+	new Glacier.Selector("user");
 </script>
