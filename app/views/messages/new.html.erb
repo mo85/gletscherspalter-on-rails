@@ -1,7 +1,7 @@
 <h1>Nachricht verfassen</h1>
 
 <div style="margin-top: 10px;">
-	<% form_for [@message], :url => {:action => "create"},:html => {:class => :default} do |f| %>
+	<% form_for [@message], :url => {:action => "create"},:html => {:class => :default, :onsubmit => "Glacier.Selector.addUserIds()"} do |f| %>
 	<input id="users" name="users" type="hidden" value="" />
 		<%= f.error_messages %>
 	
@@ -15,12 +15,12 @@
 	
 	<div id="choose_users" style="display: none;">
 		<%= label_tag "Eingabe:" %>
-		<%= text_field_tag "user_name", nil, :class => 'editUserNames' %>
-		<div id="user_choices" class="autocomplete"></div>
+		<%= text_field_tag "usr_name", nil, :class => 'editUserNames' %>
+		<div id="usr_choices" class="autocomplete"></div>
 	</div>
 	
-	<div id="selected_users" style="position: relative; left: 215px; display: none;">
-		<ul id="users_list"></ul>
+	<div id="selected_users" style="position: relative; left: 215px;">
+		<ul id="usrs_list"></ul>
 	</div>
 	
 	<div style="position: relative;">
@@ -45,5 +45,5 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
-	new Glacier.Selector("user");
+	new Glacier.Selector("usr");
 </script>

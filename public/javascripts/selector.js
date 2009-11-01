@@ -13,7 +13,11 @@ Glacier.Selector = Class.create({
 			bottom: node
 		});
 		
-		// adding ids to hidden input
-		var input = $(this.name + 's');
+		$(this.name + '_name').value = '';
 	}
 });
+
+Glacier.Selector.addUserIds = function() {
+	var users = $('usrs_list').childElements();
+	$('users').value = users.pluck('title');
+}

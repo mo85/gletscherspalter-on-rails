@@ -25,16 +25,22 @@ class MessagesController < ApplicationController
     @message = Message.new(params[:message])
     @message.publisher = current_user
     @recipients = []
-    if params[:recipients] == "all"
-      @recipients = User.all
-    elsif params[:recipients] == "active"
-      @recipients = User.find_all_by_is_player(true)
-    elsif params[:recipients] == "passive"
-      @recipients = User.find_all_by_is_player(false)
+    
+    if !params[:users].blank?
+      @recipients = User.find(params[:users].split(','))
+    else
+      if params[:recipients] == "all"
+        @recipients = User.all
+      elsif params[:recipients] == "active"
+        @recipients = User.find_all_by_is_player(true)
+      elsif params[:recipients] == "passive"
+        @recipients = User.find_all_by_is_player(false)
+      end
     end
     
     respond_to do |format|
       if @message.save
+        UserMailer.deliver_mail_news(@recipients, @message)
         flash[:notice] = 'Message was successfully created.'
         format.html { redirect_to(messages_path) }
       else
