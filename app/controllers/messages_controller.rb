@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
     @message.publisher = current_user
     @recipients = []
     
-    if !params[:users].blank?
+    if !params[:users].blank? && params[:recipients] == "select"
       @recipients = User.find(params[:users].split(','))
     else
       if params[:recipients] == "all"
@@ -33,6 +33,8 @@ class MessagesController < ApplicationController
         @recipients = User.find_all_by_is_player(false)
       end
     end
+    
+    debugger
     
     respond_to do |format|
       if @message.save
