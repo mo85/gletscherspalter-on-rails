@@ -1,6 +1,12 @@
 <h1>Nachrichten</h1>
 
+
+Auf dieser Seite werden die letzten fünf versendeten Nachrichten angezeigt.
+Neu verfasste Nachrichten versenden automatisch eine Email an die jeweiligen empfänger und können deshalb nicht verändert werden.
+
+<div style="margin-top: 10px;">
 <%= render :partial => "news_table", :locals => { :messages => @messages } %>
+</div>
 
 <div class="links">
 	<%= link_to "Neue Nachricht verfassen", new_message_path %>
