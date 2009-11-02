@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   has_one :player, :dependent => :destroy
   
+  after_create :add_player
+  
   EmailAddress = begin
     qtext = '[^\\x0d\\x22\\x5c\\x80-\\xff]'
     dtext = '[^\\x0d\\x5b-\\x5d\\x80-\\xff]'
@@ -105,6 +107,12 @@ private
   def self.encrypted_password(password, salt)
     string_to_hash = password + "wibble" + salt
     Digest::SHA1.hexdigest(string_to_hash)
+  end
+  
+  def add_player
+    if is_player?
+      self.player = Player.create(:position => "FW")
+    end
   end
   
 

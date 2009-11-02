@@ -40,9 +40,7 @@ class UsersController < ApplicationController
     @user.login = "#{@user.firstname.downcase}.#{@user.lastname.downcase}"
     @user.password = "secret"
     @user.save
-    if @user.is_player?
-      player = Player.create(:position => "FW", :user_id => @user.id)
-    end
+    
     respond_to do |format|
         format.html { redirect_to(:action => 'index') }
     end
