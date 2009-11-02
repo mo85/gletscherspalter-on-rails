@@ -9,8 +9,14 @@ Glacier.Selector = Class.create({
 
 	selectEntry: function(element) {
 		var node = element.cloneNode(true);
+		node.id = 'user_' + node.title;
+
 		$(this.name + 's_list').insert({
 			bottom: node
+		});
+		
+		node.insert({
+			bottom: " <a onclick='Glacier.Selector.removeUser(this); return false;' href='#'><img src='/images/icons/delete.png' alt='delete' border='0' /></a>"
 		});
 		
 		$(this.name + '_name').value = '';
@@ -20,4 +26,8 @@ Glacier.Selector = Class.create({
 Glacier.Selector.addUserIds = function() {
 	var users = $('usrs_list').childElements();
 	$('users').value = users.pluck('title');
+}
+
+Glacier.Selector.removeUser = function(element) {
+	element.parentNode.remove();
 }
