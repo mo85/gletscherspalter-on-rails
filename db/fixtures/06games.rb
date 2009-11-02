@@ -1,7 +1,8 @@
 Game.seed(:date, :opponent) do |s|
   s.date = Time.parse("2009/10/18 - 08:10")
   s.opponent = "Albula Devils"
-  s.result = "11:6"
+  s.score = 11
+  s.opponent_score = 6
   s.rink_id = 8
   s.season_id = 1
 end
@@ -9,7 +10,8 @@ end
 Game.seed(:date, :opponent) do |s|
   s.date = Time.parse("2009/10/25 - 08:30")
   s.opponent = "Uusrutscher"
-  s.result = "2:6"
+  s.score = 2
+  s.opponent_score = 6
   s.rink_id = 3
   s.season_id = 1
 end

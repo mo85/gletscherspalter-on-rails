@@ -26,7 +26,7 @@
 	
 	<p style="margin-top: 10px;">
  		<h3>Letztes Spiel:</h3>
-		Gletscherspalter vs.<br /> <% game = Game.last_game %><%= game.opponent %>: <%= game.result %>
+		Gletscherspalter vs.<br /> <% game = Game.last_game %><%= game.opponent %> <%= game.result %>
 	</p>
 	<% end %>
 </div>
