@@ -8,7 +8,7 @@ class UserMailer < ActionMailer::Base
     
     from          "no-reply@gletscherspalter.ch"
     subject       message.subject
-    body          :message => message
+    body          "#{message.text}"
     content_type  "text/html"
   end
 
