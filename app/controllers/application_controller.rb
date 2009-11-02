@@ -39,10 +39,5 @@ protected
     Season.current
   end
   helper_method :current_season
-  
-  def format_date(date)
-    date.strftime("%d. %B %Y - %H:%M")
-  end
-  helper_method :format_date
-  
+
 end

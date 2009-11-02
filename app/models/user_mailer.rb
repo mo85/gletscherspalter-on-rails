@@ -1,14 +1,14 @@
 class UserMailer < ActionMailer::Base
-  def mail_news(users, news)
+  def mail_news(user, message)
     if RAILS_ENV == "production"
-      bcc users.collect{|u| "#{u.full_name} <#{u.email}>"}
+      bcc user.collect{|u| "#{u.full_name} <#{u.email}>"}
     else
-      bcc users.collect{|u| "#{u.full_name} <mark.odermatt@gmail.com>"}
+      bcc user.collect{|u| "#{u.full_name} <mark_odermatt@bluewin.ch>"}
     end
     
     from          "no-reply@gletscherspalter.ch"
-    subject       news.subject
-    body          :news => news
+    subject       message.subject
+    body          :message => message
     content_type  "text/html"
   end
 

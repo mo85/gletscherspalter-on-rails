@@ -1,22 +1,21 @@
 <table class="default">
 	<thead>
 		<tr>
-			<th>Zeitpunk</th>
-			<th>Verfasser</th>
-			<th>Nachricht</th>
-			<th>&nbsp;</th>
+			<th width="25%">Zeitpunk</th>
+			<th width="15%">Verfasser</th>
+			<th width="55%">Nachricht</th>
+			<th width="5%">&nbsp;</th>
 		</tr>
 	</thead>
 	
 	<tbody>
 		<% for message in @messages %>
 			<tr>
-				<td><%= message.updated_at ? format_date(message.updated_at) : format_date(message.created_at) %></td>
-				<td><%= message.publisher.name %></td>
-				<td><%= message.message %></td>
+				<td style="font-size: 12px;"><%= format_date(message.created_at) %></td>
+				<td style="font-size: 12px;"><%= message.publisher.name %></td>
+				<td style="font-size: 10px;"><%= message.text %></td>
 				<% if permitted_to? :manage, message %>
 				<td>
-		    <%= link_to(image_tag('icons/pencil.png', :border => 0), edit_message_path(message)) %>
 		    <%= link_to(image_tag('icons/delete.png', :border => 0), messages_path, :confirm => 'Möchten sie diese Nachricht wirklich löschen?', :method => :delete) %>
 				</td>
 				<% end %>

@@ -2,10 +2,10 @@ class MessagesController < ApplicationController
   filter_access_to :all
 
   def index
-    @messages = Message.all
+    @messages = Message.all :order => "created_at DESC", :limit => 5
 
     respond_to do |format|
-      format.html # insufficientcredentials.html.erb
+      format.html
     end
   end
 
@@ -15,10 +15,6 @@ class MessagesController < ApplicationController
     respond_to do |format|
       format.html
     end
-  end
-
-  def edit
-    @message = Message.find(params[:id])
   end
 
   def create
@@ -45,19 +41,6 @@ class MessagesController < ApplicationController
         format.html { redirect_to(messages_path) }
       else
         format.html { render :action => "new" }
-      end
-    end
-  end
-
-  def update
-    @message = Message.find(params[:id])
-
-    respond_to do |format|
-      if @message.update_attributes(params[:event])
-        flash[:notice] = 'Event was successfully updated.'
-        format.html { redirect_to(messages_path) }
-      else
-        format.html { render :action => "edit" }
       end
     end
   end
