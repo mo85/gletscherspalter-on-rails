@@ -24,7 +24,7 @@
 <% end %>
 
 <div class="links">
-	<%= link_to "Zurück", @game %>
+	<%= link_to "Zurück", game_path(@game) %>
 </div>
 <script type="text/javascript" charset="utf-8">
 	new Ajax.Autocompleter('score_player', 'user_choices', '/users.ajax', {

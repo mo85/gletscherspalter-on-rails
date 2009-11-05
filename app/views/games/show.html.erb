@@ -21,18 +21,25 @@
 <div class="clear"></div>
 
 <div style="margin-top: 20px;">
-<h2>Skorer Liste</h2>
-<% if !@game.score.blank? && @scores.empty? %>
-	Zu diesem Spiel wurden keine Skorerpunke erfasst.
-	<div class="links">
-		<%= link_to "Neuen Skorer erfassen", new_game_score_path(:game_id => @game.id) %>
-	</div>
-<% elsif !@scores.empty? %>
+<% if !@game.score.blank? %>
+	<h2>Skorer Liste</h2>
+	<% if @scores.empty? %>
+
+		Zu diesem Spiel wurden keine Skorerpunke erfasst.
+
+	<% else %>
+
 	<%= render :partial => "/scores/score_table", :locals => {:scores => @scores, :game => @game } %>
-	<div class="links">
-		<%= link_to "Neuen Skorer erfassen", new_game_score_path(:game_id => @game.id) %>
-	</div>
+	
+	<% end %>
 <% end %>
+
+<% if !@game.score.blank? && permitted_to?(:manage, :scores) %>
+<div class="links">
+	<%= link_to "Neuen Skorer erfassen", new_game_score_path(:game_id => @game.id) %>
+</div>
+<% end %>
+
 </div>
 	
 <div style="margin-top: 20px;">
