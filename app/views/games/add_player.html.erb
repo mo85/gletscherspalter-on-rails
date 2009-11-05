@@ -1,0 +1,21 @@
+<h1>Spieler hinzufügen</h1>
+
+<%= form_tag save_added_player_game_path(@game), :class => :default %>
+
+<div>
+	<%= label_tag "Spieler:" %>
+	<%= text_field_tag "usr_name" %>
+	<div id="user_choices" class="autocomplete"></div>
+</div>
+
+<%= submit_tag "Speichern" %>
+
+<div class="links">
+	<%= link_to "Zurück", game_path(@game) %>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+	new Ajax.Autocompleter('usr_name', 'user_choices', '/users.ajax', {
+		method: 'get'
+	});
+</script>
