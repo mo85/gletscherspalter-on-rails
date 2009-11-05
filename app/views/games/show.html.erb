@@ -46,10 +46,23 @@
 	<h2>Besetzung</h2>
 	
 	<% if !@players.empty? %>
-		<%= render :partial => "players/roster", :locals => {:players => @players } %>
+		<%= render :partial => "players/roster", 
+			:locals => {
+				:players => @players, 
+				:editable => false, 
+				:deletable => true,
+				:delete_path => "games/#{@game.id}/remove_player_with_id/"
+			} %>
 	<% else %>
 		Für dieses Spiel haben sich keine Spieler eingetragen.
 	<% end %>
+	<div>
+		<% if permitted_to? :manage, @game %>
+		<div class="links">
+			<%= link_to "Spieler hinzufügen", add_player_game_path(@game) %>
+		</div>
+		<% end %>
+	</div>
 	
 </div>
 

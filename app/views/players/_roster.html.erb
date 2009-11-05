@@ -21,11 +21,11 @@
 		</td>
 		<% if permitted_to? :read, player %>
 		<td>
-			<% if permitted_to? :adjust, player %>
+			<% if editable && permitted_to?(:adjust, player) %>
 			<%= link_to(image_tag('icons/pencil.png', :border => 0) , edit_player_path(player)) %>
 			<% end %>
-			<% if permitted_to? :manage, player %>
-			<%= link_to(image_tag('icons/delete.png', :border => 0), player, :confirm => "Möchten sie den Spieler #{player.user.full_name} wirklich löschen?", :method => :delete) %>
+			<% if deletable && permitted_to?(:manage, player) %>
+				<%= link_to(image_tag('icons/delete.png', :border => 0), delete_path + player.id.to_s, :confirm => "Möchten sie den Spieler #{player.user.full_name} wirklich löschen?", :method => :delete) %>
 			<% end %>
 		</td>
 		<% end %>

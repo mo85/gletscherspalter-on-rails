@@ -26,6 +26,33 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @scores = @game.scores
   end
+  
+  def remove_player_with_id
+    respond_to do |format|
+      format.html
+    end
+  end
+  
+  def add_player
+    @game = Game.find(params[:id])
+    
+    respond_to do |format|
+      format.html
+    end
+  end
+  
+  def save_added_player
+    @game = Game.find(params[:id])
+    
+    user_names = params[:usr_name].split(" ")
+    player = User.find_by_firstname_and_lastname(user_names[0],user_names[1]).player
+    
+    @game.players << player
+    
+    respond_to do |format|
+      format.html { redirect_to @game }
+    end
+  end
 
   # GET /games/new
   def new

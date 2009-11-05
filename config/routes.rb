@@ -15,7 +15,11 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
 
-  map.resources :games do |games|
+  map.resources :games, :member => { 
+    :remove_player_with_id => :get,
+    :add_player => :get,
+    :save_added_player => :post 
+    } do |games|
     games.resources :scores
   end
 
