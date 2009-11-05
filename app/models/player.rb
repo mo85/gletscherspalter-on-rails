@@ -6,7 +6,7 @@ class Player < ActiveRecord::Base
 
   # validation stuff
   validates_numericality_of :number, :allow_nil => true
-  validates_numericality_of :member_since, :only_integer => true
+  validates_numericality_of :member_since, :only_integer => true, :allow_nil => true
   validate :number_must_not_be_negative
   validates_presence_of :position
   validates_presence_of :user_id
