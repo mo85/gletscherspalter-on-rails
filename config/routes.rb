@@ -16,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
 
   map.resources :games, :member => { 
-    :remove_player_with_id => :get,
+    :remove_player => :delete,
     :add_player => :get,
     :save_added_player => :post 
     } do |games|

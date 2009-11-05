@@ -27,9 +27,13 @@ class GamesController < ApplicationController
     @scores = @game.scores
   end
   
-  def remove_player_with_id
+  def remove_player
+    @game = Game.find(params[:id])
+    player = Player.find(params[:p_id])
+    @game.players.delete(player)
+    
     respond_to do |format|
-      format.html
+      format.html { redirect_to @game }
     end
   end
   

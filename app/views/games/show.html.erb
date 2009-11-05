@@ -51,7 +51,7 @@
 				:players => @players, 
 				:editable => false, 
 				:deletable => true,
-				:delete_path => "games/#{@game.id}/remove_player_with_id/"
+				:delete_path => "/games/#{@game.id}/remove_player?p_id="
 			} %>
 	<% else %>
 		Für dieses Spiel haben sich keine Spieler eingetragen.

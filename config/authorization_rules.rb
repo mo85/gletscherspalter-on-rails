@@ -41,7 +41,7 @@ privileges do
   end
   
   privilege :add_or_remove_players_from_games do
-    includes :add_player, :save_added_player, :remove_player_with_id
+    includes :add_player, :save_added_player, :remove_player
   end
 
 end
