@@ -1,0 +1,25 @@
+<table class="default">
+	<tr>
+		<th>&nbsp;</th>
+		<th># Spiele</th>
+		<th>Tore</th>
+		<th>Assists</th>
+		<th>Punkte Pro Spiel</th>
+	</tr>
+	
+	<tr>
+		<td>aktuelle Saison</td>
+		<td><%= @player.games_of_season(current_season).size %></td>
+		<td><%= @player.goals(current_season) %></td>
+		<td><%= @player.assists(current_season) %></td>
+		<td><%= @player.points_per_game(current_season).round(2) %></td>
+	</tr>
+	
+	<tr>
+		<td>Gesamt</td>
+		<td><%= @player.games.size %></td>
+		<td><%= @player.goals %></td>
+		<td><%= @player.assists %></td>
+		<td><%= @player.points_per_game.round(2) %></td>
+	</tr>
+</table>

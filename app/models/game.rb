@@ -44,4 +44,8 @@ class Game < ActiveRecord::Base
     result.flatten
   end
   
+  def score_of_player(player)
+    scores.select{|s| s.player_id == player.id}.first
+  end
+  
 end

@@ -1,7 +1,12 @@
 <h1><%= @player.user.full_name %></h1>
 
 <% form_for [@player], :html => {:class => :default} do |f| %>
-
+	
+	<div>
+		<%= f.label :member_since, "Mitglied seit:", :class => :bold %>
+		<%= @player.member_since %>
+	</div>
+	
 	<div>
 		<%= f.label :player, "Trikot Nummer:", :class => :bold %> 
 		<%= @player.number %>
@@ -18,6 +23,16 @@
 	</div>
 	<% end %>
 	
+<% end %>
+<div class="clear"></div>
+
+<% unless @player.scores.empty? %>
+<div style="marin-top: 20px;">
+	<h2>Statistiken</h2>
+	
+	<%= render :partial => "stats_table", :locals => { :player => @player } %>
+
+</div>
 <% end %>
 
 <div id="my_games" style="margin-top: 20px;">

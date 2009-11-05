@@ -7,7 +7,7 @@
 	</tr>
 	<% for score in @scores %>
 	<tr>
-		<td><%= score.player.name %></td>
+		<td><%= link_to score.player.name, score.player %></td>
 		<td><%= score.goals %></td>
 		<td><%= score.assists %></td>
 		<td>
