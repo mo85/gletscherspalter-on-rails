@@ -1,0 +1,19 @@
+<table class="default">
+	<tr>
+		<th>Spieler</th>
+		<th>Tore</th>
+		<th>Assists</th>
+		<th>&nbsp;</th>
+	</tr>
+	<% for score in @scores %>
+	<tr>
+		<td><%= score.player.name %></td>
+		<td><%= score.goals %></td>
+		<td><%= score.assists %></td>
+		<td>
+			<%= link_to image_tag('icons/pencil.png', :border => 0), edit_game_score_path(:game_id => @game.id, :id => score.id) %>
+			<%= link_to image_tag('icons/delete.png', :border => 0), game_score_path(:game_id => @game.id, :id => score.id), :confirm => "Möchten sie diesen Eintrag wirklich löschen?", :method => :delete %>
+		</td>
+	</tr>
+	<% end %>
+</table>

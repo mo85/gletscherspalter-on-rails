@@ -1,0 +1,33 @@
+<h1>Skorer hinzufügen</h1>
+
+<% form_for [@score], :url => {:action => "create"},:html => {:class => :default} do |f|%>
+	<div>
+		<%= f.label "Spieler" %>
+		<%= f.text_field :player, :class => "autocomplete" %>
+		<div id="user_choices" class="autocomplete"></div>
+	</div>
+	
+	<div>
+		<%= f.label "Tore" %>
+		<%= f.text_field :goals %>
+	</div>
+	
+	<div>
+		<%= f.label "Assists" %>
+		<%= f.text_field :assists %>
+	</div>
+	
+	<div>
+		<%= f.submit "Speichern" %>
+	</div>
+
+<% end %>
+
+<div class="links">
+	<%= link_to "Zurück", @game %>
+</div>
+<script type="text/javascript" charset="utf-8">
+	new Ajax.Autocompleter('score_player', 'user_choices', '/users.ajax', {
+		method: 'get'
+	});
+</script>

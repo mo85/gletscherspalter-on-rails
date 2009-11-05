@@ -6,8 +6,10 @@ class UsersController < ApplicationController
   def index
     @users = []
     
-    if params[:usr_name]
+    if !params[:usr_name].blank?
       @users = User.find_by_first_or_lastname(params[:usr_name])
+    elsif !params[:score][:player].blank?
+      @users = User.find_by_first_or_lastname(params[:score][:player])
     else
       @title = "Gletscherspatler.ch::Benutzer"
       @users = User.find(:all, :order => :lastname)

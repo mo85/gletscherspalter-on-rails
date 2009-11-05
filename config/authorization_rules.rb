@@ -12,8 +12,9 @@ authorization do
   
   role :admin do
     includes :user
-    has_permission_on [:players, :games, :users, :locations, :events, :messages], :to => [:read, :manage]
+    has_permission_on [:players, :games, :users, :scores], :to => [:read, :manage]
     has_permission_on :players, :to => :subscribe_to_games
+    has_permission_on [:locations, :events, :messages], :to => [:read, :manage]
   end
 end
 
@@ -32,6 +33,10 @@ privileges do
   
   privilege :subscribe_to_games do
     includes :games, :update_games
+  end
+  
+  privilege :adjust_scores do
+    includes :edit_scores, :update_scores
   end
 
 end

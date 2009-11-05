@@ -15,7 +15,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
 
-  map.resources :games
+  map.resources :games do |games|
+    games.resources :scores
+  end
 
   map.resources :players, :member => {:games => :get, :update_games => :post}
 

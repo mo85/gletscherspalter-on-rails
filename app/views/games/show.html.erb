@@ -1,6 +1,6 @@
-<h1>Spielinformationen</h1>
+<h1>Spiel Gletscherspalter vs. <%= @game.opponent %></h1>
 
-<% form_for [@game], :html => {:class => :default} do |f|%>
+<% form_for [@game],:html => {:class => :default} do |f|%>
 
   <div>
     <%= f.label :date, "Datum:", {:class => :bold} %>
@@ -13,22 +13,30 @@
   </div>
 
   <div>
-    <%= f.label :opponent, "Gegner:", :class => :bold %>
-    <%= f.label @game.opponent %>
-  </div>
-
-  <div>
     <%= f.label :result, "Resultat:", :class => :bold %>
     <%= f.label @game.result %>
   </div>
 
 <% end %>
+<div class="clear"></div>
 
-
-
-
-<div style="margin-top: 30px;">
-	<h1>Besetzung</h1>
+<div style="margin-top: 20px;">
+<h2>Skorer Liste</h2>
+<% if !@game.score.blank? && @scores.empty? %>
+	Zu diesem Spiel wurden keine Skorerpunke erfasst.
+	<div class="links">
+		<%= link_to "Neuen Skorer erfassen", new_game_score_path(:game_id => @game.id) %>
+	</div>
+<% elsif !@scores.empty? %>
+	<%= render :partial => "/scores/score_table", :locals => {:scores => @scores, :game => @game } %>
+	<div class="links">
+		<%= link_to "Neuen Skorer erfassen", new_game_score_path(:game_id => @game.id) %>
+	</div>
+<% end %>
+</div>
+	
+<div style="margin-top: 20px;">
+	<h2>Besetzung</h2>
 	
 	<% if !@players.empty? %>
 		<%= render :partial => "players/roster", :locals => {:players => @players } %>

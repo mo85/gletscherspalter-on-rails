@@ -14,12 +14,17 @@ class GamesController < ApplicationController
   # GET /games/1
   def show
     @game = Game.find(params[:id])
-    
     @players = @game.players.group_by(&:position)
+    @scores = @game.scores.sort{|a,b| (a.goals + a.assists) <=> (b.goals + b.assists)}.reverse
     
     respond_to do |format|
       format.html # show.html.erb
     end
+  end
+
+  def edit_scores
+    @game = Game.find(params[:id])
+    @scores = @game.scores
   end
 
   # GET /games/new
