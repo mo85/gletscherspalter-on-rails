@@ -6,33 +6,26 @@
 	
 	<thead>
 		<tr>
-			<th width="30%">Datum</th>
-			<th width="20%">Ort</th>
-			<th width="25%">Gegner</th>
-			<th width="15%">Resultat</th>
-			<% if logged_in? %>
-				<th width="10%">&nbsp;</th>
-			<% end %>
+			<th width="38%">Spiel</th>
+			<th width="25%">Datum</th>
+			<th width="18%">Ort</th>
+			<th width="10%">Resultat</th>
+			<th width="7%">&nbsp;</th>
 		  </tr>
 	</thead>
 	  
 	<% @games.each do |game| %>
 	  <tr>
-
-		<td><%= game.date_formatted %></td>
-		<td><%= link_to game.rink.name, locations_path(:id => game.rink.id) %></td>
-		<td><%= game.opponent %></td>
-		<td><%= game.result %></td>
-		<% if logged_in? %>
-		<td>
-			<%= link_to(image_tag('icons/magnifier.png', :border => 0), game) %>
-			<% if permitted_to? :manage, game %>
-	    <%= link_to(image_tag('icons/pencil.png', :border => 0), edit_game_path(game)) %>
-	    <%= link_to(image_tag('icons/delete.png', :border => 0), game, :confirm => 'Möchten sie dieses Spiel wirklich löschen?', :method => :delete) %>
-			<% end %>
-		</td>
-		<% end %>
-		
+			<td><%= link_to "Gletscherspalter vs. #{game.opponent}", game %></td>
+			<td><%= game.date_formatted %></td>
+			<td><%= link_to game.rink.name, locations_path(:id => game.rink.id) %></td>
+			<td><%= game.result %></td>
+			<td>
+				<% if permitted_to? :manage, game %>
+		    <%= link_to(image_tag('icons/pencil.png', :border => 0), edit_game_path(game)) %>
+		    <%= link_to(image_tag('icons/delete.png', :border => 0), game, :confirm => 'Möchten sie dieses Spiel wirklich löschen?', :method => :delete) %>
+				<% end %>
+			</td>
 	  </tr>
 	<% end %>
 	</table>	
