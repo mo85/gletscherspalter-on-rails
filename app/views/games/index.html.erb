@@ -20,7 +20,7 @@
 	  <tr>
 
 		<td><%= game.date_formatted %></td>
-		<td><%= game.rink.name %></td>
+		<td><%= link_to game.rink.name, locations_path(:id => game.rink.id) %></td>
 		<td><%= game.opponent %></td>
 		<td><%= game.result %></td>
 		<% if logged_in? %>
@@ -38,7 +38,8 @@
 	</table>	
 </div>
 
-<br />
 <% if permitted_to? :manage, :games %>
-<%= link_to "Neues Spiel erstellen", new_game_path %>
+<div class="links">
+	<%= link_to "Neues Spiel erstellen", new_game_path %>
+</div>
 <% end %>

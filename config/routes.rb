@@ -22,6 +22,9 @@ ActionController::Routing::Routes.draw do |map|
     } do |games|
     games.resources :scores
   end
+  
+  map.locations "root/locations/:id", :controller => "root", :action => "locations"
+  map.contacts "root/contact", :controller => "root", :action => "contact"
 
   map.resources :players, :member => {:games => :get, :update_games => :post}
 

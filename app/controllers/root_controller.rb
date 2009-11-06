@@ -15,6 +15,10 @@ class RootController < ApplicationController
   end
   
   def locations
+    if params[:id]
+      @selected_rink = Rink.find(params[:id])
+    end
+    
     @title = "Gletscherspalter.ch::Orte"
     @rinks = Rink.all
   end

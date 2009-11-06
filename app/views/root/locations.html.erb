@@ -39,7 +39,7 @@ type="text/javascript"></script>
   function initialize() {
 	if (GBrowserIsCompatible()) {
 		map = new GMap2($("map_canvas"));
-		map.setCenter(new GLatLng(47.424139,8.644867),12);
+		map.setCenter(new GLatLng(47.383265, 8.528163), 11);
 		map.setUIToDefault();
 	}
   }
@@ -87,8 +87,14 @@ type="text/javascript"></script>
   }  
 
   initialize();
-  addMarkerForRestaurant("Stall-Stube","Rellikonstrasse 128, 8124 Maur", "http://www.stallstube-maur.ch");
+  //addMarkerForRestaurant("Stall-Stube","Rellikonstrasse 128, 8124 Maur", "http://www.stallstube-maur.ch");
+	
+	<% if @selected_rink %>
 
+	addMarkerWithInfoWindowToAddress('<%= @selected_rink.name %>', '<%= @selected_rink.address.to_s %>', '<%= @selected_rink.url %>');
+		
+	<% end %>
+	
 </script>
 
 	
