@@ -44,7 +44,7 @@ Rails::Initializer.run do |config|
 
 #  config.time_zone = 'Bern'
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
- # config.i18n.default_locale = :de
+ config.i18n.default_locale = :de
 
   # Your secret key for verifying cookie session data integrity.
   # If you change this key, all old sessions will become invalid!
