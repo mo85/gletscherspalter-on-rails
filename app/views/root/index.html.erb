@@ -20,7 +20,10 @@
 		Momentan sind keine Spiel angesetzt.
 	<% else %>
 		
-		<%= render :partial => "games/game_table", :locals => { :games => @games } %>
+		<%= render :partial => "games/game_table", :locals => { 
+			:games => @games, :show_result => false, :show_actions => false, 
+			:check_box_needed => false 
+			} %>
 	
 	<% end %>
 <div>

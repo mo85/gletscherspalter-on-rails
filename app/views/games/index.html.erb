@@ -2,33 +2,9 @@
 	
 	<h1>Spielplan Saison <%= current_season.to_s %></h1>
 
-	<table class="default">
-	
-	<thead>
-		<tr>
-			<th width="25%">Spiel</th>
-			<th width="30%">Datum</th>
-			<th width="20%">Ort</th>
-			<th width="15%">Resultat</th>
-			<th width="10%">&nbsp;</th>
-		  </tr>
-	</thead>
-	  
-	<% @games.each do |game| %>
-	  <tr>
-			<td style="font-size: 14px;"><%= link_to "Gletscherspalter vs. <br />#{game.opponent}", game %></td>
-			<td><%= game.date_formatted %></td>
-			<td><%= link_to game.rink.name, locations_path(:id => game.rink.id) %></td>
-			<td><%= game.result %></td>
-			<td>
-				<% if permitted_to? :manage, game %>
-		    <%= link_to(image_tag('icons/pencil.png', :border => 0), edit_game_path(game)) %>
-		    <%= link_to(image_tag('icons/delete.png', :border => 0), game, :confirm => 'Möchten sie dieses Spiel wirklich löschen?', :method => :delete) %>
-				<% end %>
-			</td>
-	  </tr>
-	<% end %>
-	</table>	
+	<%= render :partial => "game_table", :locals => { :games => @games, 
+		:show_actions => true, :show_result => true, :check_box_needed => false 
+		} %>
 </div>
 
 <% if permitted_to? :manage, :games %>

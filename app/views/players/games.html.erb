@@ -11,27 +11,9 @@
 <h2>Saison <%= current_season.to_s %></h2>
 
 <% form_tag 'update_games' do %>
-<table class="default">
-	<thead>
-		<tr>
-			<th>&nbsp;</th>
-			<th>Zeit</th>
-			<th>Ort</th>
-			<th>Gegner</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% for game in @games %>
-		<tr>
-			<td><%= check_box_tag 'player[game_ids][]', game.id, game.players.include?(@player) %></td>
-			<td><%= game.date_formatted %></td>
-			<td><%= game.rink.name %></td>
-			<td><%= game.opponent %></td>
-		</tr>
-		<% end %>
-	</tbody>
-	
-</table>
+
+	<%= render :partial => "games/game_table", :locals => { :games => @games, :show_result => false, :show_actions => false, :check_box_needed => true } %>
+
 </div>
 
 <div class="links" style="text-align: right;">

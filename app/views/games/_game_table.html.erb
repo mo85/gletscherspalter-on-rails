@@ -1,19 +1,41 @@
 <table class="default">
-	<thead>
-		<tr>
-			<th>Zeit</th>
-			<th>Ort</th>
-			<th>Gegner</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% for game in games %>
-		<tr>
-			<td><%= game.date_formatted %></td>
-			<td><%= game.rink.name %></td>
-			<td><%= game.opponent %></td>
-		</tr>
+
+<thead>
+	<tr>
+		<% if check_box_needed %>
+		<th width="3%">&nbsp;</th>
 		<% end %>
-	</tbody>
-	
+		<th width="25%">Spiel</th>
+		<th width="30%">Datum</th>
+		<th width="20%">Ort</th>
+		<% if show_result %>
+		<th width="15%">Resultat</th>
+		<% end %>
+		<% if show_actions %>
+		<th width="10%">&nbsp;</th>
+		<% end %>
+	  </tr>
+</thead>
+  
+<% @games.each do |game| %>
+  <tr>
+		<% if check_box_needed %>
+		<td><%= check_box_tag 'player[game_ids][]', game.id, game.players.include?(@player) %></td>
+		<% end %>
+		<td style="font-size: 14px;"><%= link_to "Gletscherspalter vs. <br />#{game.opponent}", game %></td>
+		<td><%= game.date_formatted %></td>
+		<td><%= link_to game.rink.name, locations_path(:id => game.rink.id) %></td>
+		<% if show_result %>
+		<td>
+			<%= game.result %>
+		</td>
+		<% end %>
+		<% if show_actions && permitted_to?(:manage, game) %>
+		<td>
+	    <%= link_to(image_tag('icons/pencil.png', :border => 0), edit_game_path(game)) %>
+	    <%= link_to(image_tag('icons/delete.png', :border => 0), game, :confirm => 'Möchten sie dieses Spiel wirklich löschen?', :method => :delete) %>
+		</td>
+		<% end %>
+  </tr>
+<% end %>
 </table>

@@ -39,23 +39,8 @@
 	<h2>Gebuchte Spiele</h2>
 	
 	<div style="margin-top: 10px">
-		<table class="default">
-			<tr>
-				<th>Zeit</th>
-				<th>Ort</th>
-				<th>Gegner</th>
-				<th>Resultat</th>
-			</tr>
-
-			<% for game in @player.games %>
-				<tr>
-					<td><%= game.date_formatted %></td>
-					<td><%= game.rink.name %></td>
-					<td><%= game.opponent %></td>
-					<td><%= game.result %></td>
-				</tr>
-			<% end %>
-		</table>
+		<%= render :partial => "games/game_table", :locals => { :games => @games, 
+			:show_result => true, :show_actions => false, :check_box_needed => false }%>
 	</div>
 	
 	<% if permitted_to? :games, @player %>
