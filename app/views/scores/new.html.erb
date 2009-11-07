@@ -1,6 +1,6 @@
 <h1>Skorer hinzufügen</h1>
 
-<% form_for [@score], :url => {:action => "create"},:html => {:class => :default} do |f|%>
+<% form_for [@score], :url => { :action => "create", :game_id => params[:game_id] },:html => {:class => :default} do |f|%>
 	<div>
 		<%= f.label "Spieler" %>
 		<%= f.text_field :player, :class => "autocomplete" %>

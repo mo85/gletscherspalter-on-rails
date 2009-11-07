@@ -52,6 +52,7 @@ class PlayersController < ApplicationController
     current_player.update_attributes(params[:player])
     
     respond_to do |format|
+      flash[:notice] = "Spiele erfolgreich angepasst."
       format.html { redirect_to player_path(current_user.player) }
     end
   end
@@ -75,11 +76,11 @@ class PlayersController < ApplicationController
     
     respond_to do |format|
       if user.update_attributes(params[:user]) && @player.update_attributes(params[:player])
-        flash[:notice] = 'Player was successfully updated.'
+        flash[:notice] = 'Spieler wurde erfolgreich angepasst.'
         format.html { redirect_to(@player) }
         format.xml  { head :ok }
       else
-        flash[:error] = "Player update failed."
+        flash[:error] = "Update des Spielers fehlgeschlagen."
         format.html { render :action => "edit" }
       end
     end
@@ -92,8 +93,8 @@ class PlayersController < ApplicationController
     @player.destroy
 
     respond_to do |format|
+      flash[:notice] = "#{@player.name} wurde gelöscht."
       format.html { redirect_to(players_url) }
-      format.xml  { head :ok }
     end
   end
   

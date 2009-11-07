@@ -14,7 +14,7 @@ class ScoresController < ApplicationController
   def new
     @score = Score.new
     @game = Game.find(params[:game_id])
-
+    
     respond_to do |format|
       format.html
     end
@@ -26,7 +26,7 @@ class ScoresController < ApplicationController
     
     respond_to do |format|
       if params[:score][:player_id] && @score.update_attributes(params[:score])
-        flash[:notice] = 'Score was successfully updated.'
+        flash[:notice] = 'Skore-Eintrag erfolgreich angepasst.'
         format.html { redirect_to(game_path(:id => params[:game_id])) }
       else
         format.html { render :action => "edit" }
@@ -37,13 +37,13 @@ class ScoresController < ApplicationController
   def create
     @score = Score.new(params[:id])
     update_params
-
+    
     respond_to do |format|
       if params[:score][:player_id] && @score.update_attributes(params[:score])
-        flash[:notice] = 'Score was successfully created.'
+        flash[:notice] = 'Skore-Eintrag erfolgreich hinzugefügt.'
         format.html { redirect_to(game_path(:id => params[:game_id])) }
       else
-        format.html { render :action => "new" }
+        format.html { redirect_to(new_game_score_path(:id => params[:game_id])) }
       end
     end
   end

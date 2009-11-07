@@ -4,8 +4,8 @@
   <%= f.error_messages %>
 
   <div>
-	<%= f.label "Datum" %>
-	<%= f.datetime_select :date %>
+	<%= f.label t('game.date') %>
+	<%= f.datetime_select :date, :start_year => Time.now.year - 1, :end_year => Time.now.year + 1 %>
   </div>
 
   <div>

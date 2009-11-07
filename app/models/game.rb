@@ -13,7 +13,7 @@ class Game < ActiveRecord::Base
   end
   
   def date_formatted
-    date.strftime("%d. %B %Y %H:%M")
+    I18n.l(date, :format => :default)
   end
 
   def result

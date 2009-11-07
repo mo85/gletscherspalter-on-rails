@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   
   helper :all # include all helpers, all the time
   before_filter :set_current_user_for_authorization
+  before_filter :set_locale
   
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
@@ -39,5 +40,24 @@ protected
     Season.current
   end
   helper_method :current_season
+  
+  def set_locale
+    session[:locale] = params[:locale] if params[:locale]
+    I18n.locale = session[:locale] || I18n.default_locale
+
+    locale_path = "#{LOCALES_DIRECTORY}#{I18n.locale}.yml"
+
+    unless I18n.load_path.include? locale_path
+      I18n.load_path << locale_path
+      I18n.backend.send(:init_translations)
+    end
+
+  rescue Exception => err
+    logger.error err
+    flash.now[:notice] = "#{I18n.locale} translation not available"
+
+    I18n.load_path -= [locale_path]
+    I18n.locale = session[:locale] = I18n.default_locale
+  end
 
 end

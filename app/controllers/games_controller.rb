@@ -21,11 +21,6 @@ class GamesController < ApplicationController
       format.html # show.html.erb
     end
   end
-
-  def edit_scores
-    @game = Game.find(params[:id])
-    @scores = @game.scores
-  end
   
   def remove_player
     @game = Game.find(params[:id])
@@ -50,10 +45,19 @@ class GamesController < ApplicationController
     
     user_names = params[:usr_name].split(" ")
     player = User.find_by_firstname_and_lastname(user_names[0],user_names[1]).player
+    players = @game.players
     
-    @game.players << player
+    player_added = false
+    
+    if !players.include?(player)
+      @game.players << player
+      player_added = true
+    end
     
     respond_to do |format|
+      if player_added
+        flash[:notice] = 'Spieler erfolgreich hinzugefügt.'
+      end
       format.html { redirect_to @game }
     end
   end
