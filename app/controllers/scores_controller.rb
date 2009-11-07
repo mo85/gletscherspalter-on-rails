@@ -3,7 +3,11 @@ class ScoresController < ApplicationController
   filter_access_to :all
   
   def edit
-    @score = Score.find(params[:id])
+    if session[:crappy_score]
+      @score = session[:crappy_score]
+    else
+      @score = Score.find(params[:id])
+    end
     @game = Game.find(params[:game_id])
     
     respond_to do |format|
@@ -12,7 +16,11 @@ class ScoresController < ApplicationController
   end
   
   def new
-    @score = Score.new
+    if session[:crappy_score]
+      @score = session[:crappy_score]
+    else
+      @score = Score.new
+    end
     @game = Game.find(params[:game_id])
     
     respond_to do |format|
@@ -25,11 +33,13 @@ class ScoresController < ApplicationController
     update_params
     
     respond_to do |format|
-      if params[:score][:player_id] && @score.update_attributes(params[:score])
+      if @score.update_attributes(params[:score])
+        session[:crappy_score] = nil
         flash[:notice] = 'Skore-Eintrag erfolgreich angepasst.'
         format.html { redirect_to(game_path(:id => params[:game_id])) }
       else
-        format.html { render :action => "edit" }
+        session[:crappy_score] = @score
+        format.html { redirect_to :back }
       end
     end
   end
@@ -39,13 +49,13 @@ class ScoresController < ApplicationController
     update_params
     
     respond_to do |format|
-      if params[:score][:player_id] && @score.update_attributes(params[:score])
+      if @score.update_attributes(params[:score])
+        session[:crappy_score] = nil
         flash[:notice] = 'Skore-Eintrag erfolgreich hinzugefügt.'
         format.html { redirect_to(game_path(:id => params[:game_id])) }
       else
-        debugger
-       flash[:notice] = @score.errors
-        format.html { redirect_to new_game_score_path() }
+        session[:crappy_score] = @score
+        format.html { redirect_to :back }
       end
     end
   end
@@ -68,6 +78,8 @@ class ScoresController < ApplicationController
     user = User.find_by_firstname_and_lastname(player_names[0], player_names[1])
     if user
       params[:score][:player_id] = user.player.id
+    else
+      params[:score][:player_id] = ""
     end
     
     params[:score][:game_id] = params[:game_id]

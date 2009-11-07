@@ -10,6 +10,7 @@ Views
 Models
 ============
 - Validator for URL correctness in location RB
+- Fehlermeldung für Spieler die nicht gefunden wurden anpassen (Score)
 
 
 

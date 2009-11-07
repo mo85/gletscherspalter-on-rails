@@ -1,9 +1,10 @@
 <h1>Skore anpassen</h1>
 
 <% form_for [@score], :url => {:action => "update"}, :html => {:class => :default} do |f| %>
+	<%= f.error_messages %>
 	<div>
 		<%= f.label "Spieler" %>
-		<%= f.text_field :player, :value => @score.player.user.full_name %>
+		<%= f.text_field :player, :value => @score.player ? @score.player.name : nil %>
 		<div id="user_choices" class="autocomplete"></div>
 	</div>
 	

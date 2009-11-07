@@ -6,5 +6,5 @@ class Score < ActiveRecord::Base
   validates_numericality_of :assists, :only_integer => true, :allow_nil => true
   validates_presence_of :player
   validates_presence_of :game
-  
+
 end

@@ -7,3 +7,4 @@ Flash funktioniert für:
 - Games
 - Player
 - Add Player to Game
+- Score
