@@ -1,1 +1,15 @@
-- BugFix: erstellen eines Benutzers (=> Benutzerrolle wird nicht richtig gespeichert) 
+Controllers
+============
+
+Views
+============
+
+
+Models
+============
+- Validator for URL correctness in location RB
+
+
+
+Bugs
+============

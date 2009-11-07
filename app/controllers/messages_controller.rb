@@ -34,12 +34,10 @@ class MessagesController < ApplicationController
       end
     end
     
-    debugger
-    
     respond_to do |format|
       if @message.save
         UserMailer.deliver_mail_news(@recipients, @message)
-        flash[:notice] = 'Message was successfully created.'
+        flash[:notice] = 'Nachricht erfolgreich versendet.'
         format.html { redirect_to(messages_path) }
       else
         format.html { render :action => "new" }
@@ -52,6 +50,7 @@ class MessagesController < ApplicationController
     @message.destroy
 
     respond_to do |format|
+      flash[:notice] = "Nachricht wurde gelöscht."
       format.html { redirect_to(messages_path) }
     end
   end

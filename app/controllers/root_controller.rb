@@ -7,7 +7,7 @@ class RootController < ApplicationController
     @news = Message.all :limit => 2
     
     @games = current_season.games.future_games :limit => 3
-    @events = Event.future_events
+    @events = Event.future_events(:order => "date DESC", :limit => 3)
   end
   
   def contact

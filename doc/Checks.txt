@@ -1,0 +1,6 @@
+Flash funktioniert für:
+- Users
+- Messages
+- Events
+- Rink
+- Location

@@ -1,16 +1,19 @@
 class RinksController < ApplicationController
 
-  def update
+  def edit
     @rink = Rink.find(params[:id])
-    address = @rink.address
+  end
+  
+  def update
+
+    @rink = Rink.find(params[:id])
+    @address = @rink.address
     respond_to do |format|
-      if address.update_attributes(params[:address]) && @rink.update_attributes(params[:rink])
-        flash[:notice] = 'Location was successfully updated.'
+      if @address.update_attributes(params[:address]) && @rink.update_attributes(params[:rink])
+        flash[:notice] = "Eisfeld #{@rink.name} erfolgreich angepasst."
         format.html { redirect_to(locations_path) }
-        format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @rink.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -20,8 +23,8 @@ class RinksController < ApplicationController
     @location.destroy
 
     respond_to do |format|
+      flash[:notice] = "Eisfeld #{@location.name} gelöscht."
       format.html { redirect_to(locations_url) }
-      format.xml  { head :ok }
     end
   end
 
