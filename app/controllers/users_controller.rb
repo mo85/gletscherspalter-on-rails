@@ -41,10 +41,14 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.login = "#{@user.firstname.downcase}.#{@user.lastname.downcase}"
     @user.password = "secret"
-    @user.save
     
     respond_to do |format|
+      if @user.save
+        flash[:notice] = "Benutzer #{@user.full_name} wurde erstellt."
         format.html { redirect_to(:action => 'index') }
+      else
+        format.html {render :action => "new" }
+      end
     end
   end
 
@@ -53,7 +57,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        flash[:notice] = "User #{@user.login} was successfully updated."
+        flash[:notice] = "Benutzer #{@user.full_name} erfolgreich geändert."
         format.html { redirect_to(:action=>'index') }
       else
         format.html { render :action => "edit" }
