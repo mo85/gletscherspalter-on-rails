@@ -56,21 +56,25 @@ class PlayersController < ApplicationController
   # GET /players/1/edit
   def edit
     @player = Player.find(params[:id])
+    @user = @player.user
   end
 
   # PUT /players/1
   def update
     @player = Player.find(params[:id])
-    user = @player.user
+    @user = @player.user
     
     if params[:user][:pwd_changed]
-      user.validate_new_password(params[:user][:password],params[:user][:password_confirmation])
-      user.password= params[:user][:password]
+      @user.validate_new_password(params[:user][:password], params[:user][:password_confirmation])
+      @user.password= params[:user][:password]
       params[:user].delete(:pwd_changed)
+    else
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
     end
     
     respond_to do |format|
-      if user.update_attributes(params[:user]) && @player.update_attributes(params[:player])
+      if @user.update_attributes(params[:user]) && @player.update_attributes(params[:player])
         flash[:notice] = 'Spieler wurde erfolgreich angepasst.'
         format.html { redirect_to(@player) }
       else
@@ -79,17 +83,6 @@ class PlayersController < ApplicationController
     end
   end
 
-  # DELETE /players/1
-  def destroy
-    @player = Player.find(params[:id])
-    @player.destroy
-
-    respond_to do |format|
-      flash[:notice] = "#{@player.name} wurde gelöscht."
-      format.html { redirect_to(players_url) }
-    end
-  end
-  
   private
   
   def future_games_of_current_season

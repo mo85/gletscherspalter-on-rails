@@ -4,3 +4,6 @@ Flash funktioniert für:
 - Events
 - Rink
 - Location
+- Games
+- Player
+- Add Player to Game

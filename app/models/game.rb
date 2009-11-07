@@ -5,8 +5,9 @@ class Game < ActiveRecord::Base
   belongs_to :rink
   belongs_to :season
   
-  validates_presence_of :rink, :opponent
-  validates_format_of :result, :with => /([0-9]):([0-9])/, :allow_blank => true
+  validates_presence_of :rink, :opponent, :date
+  validates_numericality_of :score, :only_integer => true, :allow_nil => true
+  validates_numericality_of :opponent_score, :only_integer => true, :allow_nil => true
   
   def self.last_game
     @last_game ||= last(:conditions => ["score != ?",""])
@@ -46,6 +47,16 @@ class Game < ActiveRecord::Base
   
   def score_of_player(player)
     scores.select{|s| s.player_id == player.id}.first
+  end
+  
+  def valid_player?(player)
+    result = false
+    if player.nil?
+      errors.add("Spieler", "wurde nicht gefunden!")
+    else
+      result = true
+    end
+    result
   end
   
 end

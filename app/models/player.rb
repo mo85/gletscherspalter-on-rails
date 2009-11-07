@@ -65,7 +65,7 @@ class Player < ActiveRecord::Base
   protected
   
     def number_must_not_be_negative
-      errors.add(:number, ' must be positive') if number && number < 0
+      errors.add("Nummer", 'muss positiv sein') if number && number < 0
     end
     
     def valid_position

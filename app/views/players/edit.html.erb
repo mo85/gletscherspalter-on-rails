@@ -2,6 +2,7 @@
 
 <% form_for [@player], :html => {:class => :default} do |f| %>
   <%= f.error_messages %>
+	<%= error_messages_for :user %>
 
   <h2>Spielerinformationen</h2>
   

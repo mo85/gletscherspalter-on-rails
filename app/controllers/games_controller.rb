@@ -44,21 +44,33 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     
     user_names = params[:usr_name].split(" ")
-    player = User.find_by_firstname_and_lastname(user_names[0],user_names[1]).player
-    players = @game.players
-    
-    player_added = false
-    
-    if !players.include?(player)
-      @game.players << player
-      player_added = true
+    begin
+      player = User.find_by_firstname_and_lastname(user_names[0],user_names[1]).player
+    rescue
+      player = nil
     end
     
-    respond_to do |format|
-      if player_added
-        flash[:notice] = 'Spieler erfolgreich hinzugefügt.'
+    if (valid_player = @game.valid_player?(player))
+      players = @game.players
+      player_added = false
+      
+      if !players.include?(player) 
+        @game.players << player
+        player_added = true
       end
-      format.html { redirect_to @game }
+    end 
+
+    respond_to do |format|
+      if valid_player && player_added
+        flash[:notice] = 'Spieler erfolgreich hinzugefügt.'
+        format.html { redirect_to @game }
+      elsif valid_player
+        flash[:notice] = 'Spieler ist bereits eingetragen.'
+        format.html { redirect_to @game }
+      else
+        format.html { render :action => "add_player" }
+      end
+      
     end
   end
 
@@ -83,7 +95,7 @@ class GamesController < ApplicationController
     respond_to do |format|
       if @game.save
         current_season.games << @game
-        flash[:notice] = 'Game was successfully created.'
+        flash[:notice] = 'Spiel erfolgreich erstellt.'
         format.html { redirect_to(@game) }
       else
         format.html { render :action => "new" }
@@ -97,7 +109,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.update_attributes(params[:game])
-        flash[:notice] = 'Game was successfully updated.'
+        flash[:notice] = 'Spiel wurde erfolgreich angepasst.'
         format.html { redirect_to(games_path) }
       else
         format.html { render :action => "edit" }
@@ -111,6 +123,7 @@ class GamesController < ApplicationController
     @game.destroy
 
     respond_to do |format|
+      flash[:notice] = "Spiel wurde gelöscht."
       format.html { redirect_to(games_url) }
     end
   end

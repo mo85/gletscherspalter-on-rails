@@ -1,6 +1,7 @@
 <h1>Spieler hinzufügen</h1>
 
 <%= form_tag save_added_player_game_path(@game), :class => :default %>
+<%= error_messages_for :game %>
 
 <div>
 	<%= label_tag "Spieler:" %>

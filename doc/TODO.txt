@@ -1,5 +1,7 @@
 Controllers
 ============
+filter_parameter_logging (application_controller) => for players_controller/update
+
 
 Views
 ============

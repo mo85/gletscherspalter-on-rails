@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   validates_format_of       :email, :with => EmailAddress, :allow_blank => true
 
   attr_accessor :password_confirmation
-  validates_confirmation_of :password, :message => "Passwšrter stimmen nicht Ÿberein."
+  validates_confirmation_of :password, :message => " erfolglos validiert."
 
   def full_name
     "#{firstname} #{lastname}"
