@@ -4,17 +4,17 @@
 
   <div>
     <%= f.label :date, "Datum:", {:class => :bold} %>
-    <%= f.label @game.date_formatted %>
+    <%= f.label nil, @game.date_formatted %>
   </div>
 
   <div>
     <%= f.label :rink, "Ort:", {:class => :bold} %>
-    <%= f.label @game.rink.name %>
+    <%= f.label nil, @game.rink.name %>
   </div>
 
   <div>
     <%= f.label :result, "Resultat:", :class => :bold %>
-    <%= f.label @game.result %>
+    <%= f.label nil, @game.result %>
   </div>
 
 <% end %>

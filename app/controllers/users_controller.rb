@@ -65,7 +65,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     begin
-      flash[:notice] = "User #{@user.user_name} deleted"
+      flash[:notice] = t('user.deleted_flash')
       @user.destroy
     rescue Exception => e
       flash[:notice] = e.message

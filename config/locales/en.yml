@@ -1,0 +1,10 @@
+en:
+  general:
+    new: "New"
+    show: "Show"
+    delete: "Delete"
+    edit: "Edit"
+
+  game:
+    date: "Date"
+  
