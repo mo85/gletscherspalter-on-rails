@@ -43,7 +43,9 @@ class ScoresController < ApplicationController
         flash[:notice] = 'Skore-Eintrag erfolgreich hinzugefügt.'
         format.html { redirect_to(game_path(:id => params[:game_id])) }
       else
-        format.html { redirect_to(new_game_score_path(:id => params[:game_id])) }
+        debugger
+       flash[:notice] = @score.errors
+        format.html { redirect_to new_game_score_path() }
       end
     end
   end
@@ -53,6 +55,7 @@ class ScoresController < ApplicationController
     @score.destroy
     @game = Game.find(params[:game_id])
     respond_to do |format|
+      flash[:notice] = 'Skore-Eintrag erfolgreich gelöscht.'
       format.html { redirect_to(game_path(@game.id)) }
     end
   end

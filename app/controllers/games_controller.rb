@@ -15,7 +15,7 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @players = @game.players.group_by(&:position)
-    @scores = @game.scores.sort{|a,b| (a.goals + a.assists) <=> (b.goals + b.assists)}.reverse
+    @scores = @game.scores.sort{|a,b| ((a.goals || 0) + (a.assists || 0)) <=> ((b.goals || 0) + (b.assists || 0))}.reverse
     
     respond_to do |format|
       format.html # show.html.erb

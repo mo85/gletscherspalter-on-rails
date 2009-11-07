@@ -13,25 +13,21 @@ class PlayersController < ApplicationController
   ::SUBSCRIPTION_TOLERANCE = 1.day
   
   # GET /players
-  # GET /players.xml
   def index
     @players = Player.all.group_by(&:position)
     @title = "Gletscherspalter.ch::Spieler"
     
     respond_to do |format|
-      format.html # insufficientcredentials.html.erb
-      format.xml  { render :xml => @players }
+      format.html
     end
   end
 
   # GET /players/1
-  # GET /players/1.xml
   def show
     @player = Player.find(params[:id])
     @games = @player.games_of_season
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @player }
+      format.html
     end
   end
   
@@ -63,7 +59,6 @@ class PlayersController < ApplicationController
   end
 
   # PUT /players/1
-  # PUT /players/1.xml
   def update
     @player = Player.find(params[:id])
     user = @player.user
@@ -78,16 +73,13 @@ class PlayersController < ApplicationController
       if user.update_attributes(params[:user]) && @player.update_attributes(params[:player])
         flash[:notice] = 'Spieler wurde erfolgreich angepasst.'
         format.html { redirect_to(@player) }
-        format.xml  { head :ok }
       else
-        flash[:error] = "Update des Spielers fehlgeschlagen."
         format.html { render :action => "edit" }
       end
     end
   end
 
   # DELETE /players/1
-  # DELETE /players/1.xml
   def destroy
     @player = Player.find(params[:id])
     @player.destroy
