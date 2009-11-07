@@ -5,6 +5,7 @@ class ScoresController < ApplicationController
   def edit
     if session[:crappy_score]
       @score = session[:crappy_score]
+      session[:crappy_score] = nil
     else
       @score = Score.find(params[:id])
     end
@@ -18,6 +19,7 @@ class ScoresController < ApplicationController
   def new
     if session[:crappy_score]
       @score = session[:crappy_score]
+      session[:crappy_score] = nil
     else
       @score = Score.new
     end
@@ -34,7 +36,6 @@ class ScoresController < ApplicationController
     
     respond_to do |format|
       if @score.update_attributes(params[:score])
-        session[:crappy_score] = nil
         flash[:notice] = 'Skore-Eintrag erfolgreich angepasst.'
         format.html { redirect_to(game_path(:id => params[:game_id])) }
       else
@@ -50,7 +51,6 @@ class ScoresController < ApplicationController
     
     respond_to do |format|
       if @score.update_attributes(params[:score])
-        session[:crappy_score] = nil
         flash[:notice] = 'Skore-Eintrag erfolgreich hinzugefügt.'
         format.html { redirect_to(game_path(:id => params[:game_id])) }
       else
