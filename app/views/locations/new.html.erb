@@ -1,41 +1,42 @@
 <h1>Neue Lokation erfassen</h1>
 
-<% form_for [@location], :html => {:class => :default} do |f| %>
+<% form_for [@location], :url => locations_path, :html => {:class => :default} do |f| %>
   <%= f.error_messages %>
+	<%= error_messages_for :address %>
 
   <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.label "Name" %>
+    <%= text_field_tag "location[name]", @location.name, :size => 30 %>
   </div>
 
 
   <div>
     <%= label_tag "Strasse" %>
-    <%= text_field_tag "address[street]", "",:size => 30 %>
+    <%= text_field_tag "address[street]", @address ? @address.street : "", :size => 30 %>
   </div>
 
   <div>
     <%= label_tag "Nummer" %>
-    <%= text_field_tag "address[number]", "",:size => 30 %>
+    <%= text_field_tag "address[number]", @address ? @address.number : "", :size => 30 %>
   </div>
 
   <div>
     <%= label_tag "Stadt" %>
-    <%= text_field_tag "address[city]", "",:size => 30 %>
+    <%= text_field_tag "address[city]", @address ? @address.city : "", :size => 30 %>
   </div>
 
   <div>
     <%= label_tag "Postleitzahl" %>
-    <%= text_field_tag "address[zip]", "",:size => 30 %>
+    <%= text_field_tag "address[zip]",  @address ? @address.zip : "", :size => 30 %>
   </div>
 
   <div>
     <%= f.label "Eisfeld" %>
-    <%= f.check_box :type, {:checked => true}, :rink, :location %>
+    <%= check_box_tag "location[type]", @location.is_a?(Rink) ? :rink : :location, true %>
   </div>
   <div>
-    <%= f.label :url %>
-    <%= f.text_field :url %>
+    <%= f.label "URL" %>
+    <%= text_field_tag "location[url]", @location.url, :size => 30 %>
   </div>
   <div>
     <%= f.submit "Erstellen" %>
