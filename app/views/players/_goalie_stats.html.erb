@@ -19,7 +19,7 @@
 		<td><%= @player.goal_against_average(current_season) %></td>
 	</tr>
 	
-<% if Season.count > 1%>
+<% if Season.count > 1 %>
 	<tr>
 		<td>Gesamt</td>
 		<td><%= @player.games_played.size %></td>
