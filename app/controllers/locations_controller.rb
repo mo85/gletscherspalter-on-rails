@@ -35,8 +35,13 @@ class LocationsController < ApplicationController
 
   # POST /locations
   def create
-    clazz = eval(params[:location][:type].camelize)
-    params[:location].delete(:type)
+    if params[:location][:type]
+      clazz = eval(params[:location][:type].camelize)
+      params[:location].delete(:type)
+    else
+      clazz = Location
+    end
+    
     @location = clazz.new(params[:location])
 
     @address = Address.new(params[:address])

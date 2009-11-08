@@ -32,7 +32,7 @@
 
   <div>
     <%= f.label "Eisfeld" %>
-    <%= check_box_tag "location[type]", @location.is_a?(Rink) ? :rink : :location, true %>
+    <%= check_box_tag "location[type]", :rink, true %>
   </div>
   <div>
     <%= f.label "URL" %>

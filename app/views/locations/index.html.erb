@@ -12,7 +12,7 @@
     <td><%= location.name %></td>
     <td><%= location.address.to_s %></td>
     <td><%= link_to image_tag('icons/pencil.png', :border => 0), edit_location_path(location) %>
-    		<%= link_to image_tag('icons/delete.png', :border => 0),location, :confirm => "Mšchten sie die Lokation '#{location.name}' wirklich lšschen?", :method => :delete %>
+    		<%= link_to image_tag('icons/delete.png', :border => 0),location, :confirm => "Mšchten sie die Lokation #{location.name} wirklich l&ouml;schen?", :method => :delete %>
 		</td>
   </tr>
 <% end %>
