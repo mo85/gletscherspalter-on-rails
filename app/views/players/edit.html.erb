@@ -53,6 +53,28 @@
     <%= text_field_tag "user[lastname]", @player.user.lastname, :size => 30 %>
   </div>
 
+	<div>
+		<%= label_tag :street, "Strasse und Nr." %>
+		<%= text_field_tag "user[street]", @user.street, :size => 20 %>
+		<%= text_field_tag "user[number]", @user.number, :size => 5 %>
+	</div>
+	
+	<div>
+		<%= label_tag :city, "Ort und PLZ" %>
+		<%= text_field_tag "user[city]", @user.city, :size => 20 %>
+		<%= text_field_tag "user[zip]", @user.zip, :size => 5 %>
+	</div>
+	
+	<div>
+		<%= label_tag "Telefon" %>
+		<%= text_field_tag "user[phone]", @user.phone, :size => 30 %>
+  </div>
+
+	<div>
+		<%= label_tag "Mobile" %>
+		<%= text_field_tag "user[mobile]", @user.phone, :size => 30 %>
+  </div>
+
   <div>
     <%= label_tag "Email:" %>
     <%= text_field_tag "user[email]", @player.user.email, :size => 30 %>

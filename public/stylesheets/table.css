@@ -28,3 +28,11 @@ table.default tr.summary_row td {
 table.default tr.marked td {
   background-color: #FAFAFA;
 }
+
+table.default tr.smaller td {
+	font-size: 12px;
+}
+
+table.default tr.smaller th {
+	font-size: 14px;
+}

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091105120021) do
+ActiveRecord::Schema.define(:version => 20091108130103) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -124,6 +124,12 @@ ActiveRecord::Schema.define(:version => 20091105120021) do
     t.string   "firstname"
     t.string   "lastname"
     t.boolean  "is_admin",        :default => false
+    t.string   "phone"
+    t.string   "mobile"
+    t.string   "street"
+    t.string   "number"
+    t.string   "city"
+    t.integer  "zip"
   end
 
 end

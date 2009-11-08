@@ -32,9 +32,10 @@ class User < ActiveRecord::Base
   validates_presence_of     :lastname, :firstname
   validates_uniqueness_of   :login
   validates_format_of       :email, :with => EmailAddress, :allow_blank => true
+  validates_confirmation_of :password, :message => " erfolglos validiert."
+  validates_numericality_of :zip, :allow_nil => true
 
   attr_accessor :password_confirmation
-  validates_confirmation_of :password, :message => " erfolglos validiert."
 
   def full_name
     "#{firstname} #{lastname}"
@@ -92,6 +93,14 @@ class User < ActiveRecord::Base
     if password.size < MINIMUM_PASSWORD_LENGTH
       errors.add(:password, " is too small. Use at least 6 characters.")
     end
+  end
+  
+  def address
+    "#{street} #{number}"
+  end
+  
+  def location
+    "#{zip} #{city}"
   end
   
 private

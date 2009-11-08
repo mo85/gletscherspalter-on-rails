@@ -1,24 +1,30 @@
 <h1>Registrierte Benutzer</h1>
 
 <table class="default">
-  <tr>
-		<th>Vorname</th>
-    <th>Nachname</th>
+  <tr class="smaller">
+		<th>Name</th>
+		<th>Adresse</th>
+		<th>Ort</th>
+		<th>Telefon</th>
+		<th>Mobile</th>
 		<th>Email</th>
 		<th>&nbsp;</th>
   </tr>
 
 <% for user in @users %>
-  <tr>
-		<td><%= user.firstname %></td>
-    <td><%= user.lastname %></td>
+  <tr class="smaller">
+		<td><%= user.name %></td>
+		<td><%= user.address %></td>
+		<td><%= user.location %></td>
+		<td><%= user.phone %></td>
+		<td><%= user.mobile %></td>
 		<td><%= user.email %></td>
-    <% if permitted_to? :manage, user %>
-	    <td>
-			  <%= link_to image_tag('icons/pencil.png', :border => 0), edit_user_path(user) %>
+		<td>    
+			<% if permitted_to? :manage, user %>
+	    	<%= link_to image_tag('icons/pencil.png', :border => 0), edit_user_path(user) %>
 			  <%= link_to image_tag('icons/delete.png', :border => 0), user, :confirm => "Möchten sie den Benutzer #{user.full_name} wirklich löschen?", :method => :delete %>
-			</td>
-		<% end %>
+			<% end %>
+		</td>
 	</tr>
 <% end %>
 </table>

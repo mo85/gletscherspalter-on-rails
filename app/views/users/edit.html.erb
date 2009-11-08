@@ -18,9 +18,31 @@
     <%= f.text_field :lastname %>
   </div>
 
+	<div>
+		<%= label_tag :street, "Strasse und Nr." %>
+		<%= text_field_tag "user[street]", @user.street, :size => 20 %>
+		<%= text_field_tag "user[number]", @user.number, :size => 5 %>
+	</div>
+	
+	<div>
+		<%= label_tag :city, "Ort und PLZ" %>
+		<%= text_field_tag "user[city]", @user.city, :size => 20 %>
+		<%= text_field_tag "user[zip]", @user.zip, :size => 5 %>
+	</div>
+	
+	<div>
+		<%= f.label "Telefon" %>
+		<%= f.text_field :phone %>
+  </div>
+
+	<div>
+		<%= f.label "Mobile" %>
+		<%= f.text_field :mobile %>
+  </div>
+	
   <div>
-	<%= f.label "E-Mail" %>
-	<%= f.text_field :email %>
+		<%= f.label "E-Mail" %>
+		<%= f.text_field :email %>
   </div>
 
   <div>
