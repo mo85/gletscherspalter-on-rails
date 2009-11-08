@@ -10,6 +10,7 @@ pascal:
     position: BW
     number: 10
     user: pisi
+    games: [goldies, schwinger, bandenbysser, jona, uusrutschers, dukla, sagmehlfeger, mistkerle]
 
 buesi:
     position: FW

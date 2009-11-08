@@ -1,15 +1,21 @@
 <table class="default">
-	<tr>
+	<tr class="smaller">
 		<th>&nbsp;</th>
 		<th># Spiele</th>
+		<th># Siege</th>
+		<th># Niederlagen</th>
+		<th># Unentschieden</th>
 		<th>Tore</th>
 		<th>Assists</th>
-		<th>Punkte Pro Spiel</th>
+		<th><abbr title="Points per Game">PPG</abbr></th>
 	</tr>
 	
 	<tr>
 		<td>aktuelle Saison</td>
-		<td><%= @player.games_of_season(current_season).size %></td>
+		<td><%= @player.games_played(current_season).size %></td>
+		<td><%= @player.wins(current_season) %></td>
+		<td><%= @player.defeats(current_season) %></td>
+		<td><%= @player.tied_games(current_season) %></td>
 		<td><%= @player.goals(current_season) %></td>
 		<td><%= @player.assists(current_season) %></td>
 		<td><%= @player.points_per_game(current_season) %></td>
@@ -18,10 +24,13 @@
 <% if Season.count > 1 %>
 	<tr>
 		<td>Gesamt</td>
-		<td><%= @player.games.size %></td>
+		<td><%= @player.games_played.size %></td>
+		<td><%= @player.wins %></td>
+		<td><%= @player.defeats %></td>
+		<td><%= @player.tied_games %></td>
 		<td><%= @player.goals %></td>
 		<td><%= @player.assists %></td>
-		<td><%= @player.points_per_game.round(2) %></td>
+		<td><%= @player.points_per_game %></td>
 	</tr>
 <% end %>
 </table>

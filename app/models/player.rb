@@ -23,39 +23,26 @@ class Player < ActiveRecord::Base
   end
   
   def goals(season = nil)
-    if season
-      g = games_of_season(season)
-    else
-      g = games
-    end
+    g = games_played(season)
     scores = collect_scores(g)
     points = scores.sum(&:goals)
   end
   
   def assists(season = nil)
-    if season
-      g = games_of_season(season)
-    else
-      g = games
-    end
+    g = games_played(season)
     scores = collect_scores(g)
     ass = scores.sum(&:assists)
   end
   
   def points_per_game(season = nil)
-    g = []
-    if season
-      g = games_of_season(season)
-    else
-      Season.all.each do |s|
-        g << games_of_season(s)
-      end
-      g = g.flatten
-    end
-    
+    g = games_played(season)
     scores = collect_scores(g)
-    points = scores.sum{ |s| s.goals + s.assists }
-    points.to_f / g.size
+    if g.empty? || scores.empty?
+      return 0
+    else
+      points = scores.sum{ |s| (s.goals || 0) + (s.assists || 0) }
+    end
+    (points.to_f / g.size).round(2)
   end
   
   def games_of_season(season = Season.current)

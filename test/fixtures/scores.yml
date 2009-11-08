@@ -1,0 +1,23 @@
+score_goldies:
+  goals: 2
+  assists: 1
+  game: goldies
+  player: pascal
+
+score_schwinger:
+  goals: 0
+  assists: 1
+  game: schwinger
+  player: pascal
+
+score_bandenbysser:
+  goals: 1
+  assists: 0
+  game: bandenbysser
+  player: pascal
+
+score_uusrutscher:
+  goals: 2
+  assists: 0
+  game: uusrutschers
+  player: pascal
