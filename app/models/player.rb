@@ -62,6 +62,43 @@ class Player < ActiveRecord::Base
     games.select{ |g| g.season == season }
   end
   
+  def games_played(season = nil)
+    g = []
+    if season
+      g = games_of_season(season).select{|g| g.result != nil}
+    else
+      g = games.select{|g| g.result != nil}
+    end 
+    g
+  end
+  
+  def goal_against_average(season = nil)
+    games = games_played(season)
+    no_of_games = games.size
+    goals_against = games.inject(0){ |sum, g| sum += g.opponent_score }
+    
+    if no_of_games == 0
+      return 0
+    end
+    (goals_against.to_f / no_of_games).round(2)
+  end
+  
+  def wins(season = nil)
+    games_played(season).select{ |g| g.score > g.opponent_score }.size
+  end
+  
+  def defeats(season = nil)
+    games_played(season).select{ |g| g.score < g.opponent_score }.size
+  end
+  
+  def tied_games(season = nil)
+    games_played(season).select{ |g| g.score == g.opponent_score }.size
+  end
+  
+  def goals_against(season = nil)
+    games_played(season).inject(0){ |sum, g| sum += g.opponent_score }
+  end
+  
   protected
   
     def number_must_not_be_negative

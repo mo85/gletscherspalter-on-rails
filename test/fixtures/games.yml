@@ -1,51 +1,53 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+goldies:
+  opponent: 'Goldies'
+  score: 9
+  opponent_score: 2
+  date: <%= 1.year.ago %>
+  season: previous
+
+schwinger:
+  opponent: 'Schwinger'
+  score: 2
+  opponent_score: 7
+  date: <%= 8.month.ago %>
+  season: previous
 
 bandenbysser:
-    rink_id: <%= Rink.find_by_name('Wetzikon').id %>
-    opponent: Bandenbysser
-    result: '3:2'
-    date: <%= 3.days.ago %>
-    season_id: 1
-    
-jonasharks:
-    rink_id: <%= Rink.find_by_name('Heuried').id %>
-    opponent: 'Jona Sharks'
-    result:
-    date: <%= 3.days.from_now %>
-    season_id: 1
-    
-goldies:
-    rink_id: <%= Rink.find_by_name('Wetzikon').id %>
-    opponent: 'Goldies'
-    result:
-    date: <%= 2.days.from_now %>
-    season_id: 1
+  opponent: 'Bandenbysser'
+  score: 4
+  opponent_score: 3
+  date: <%= 3.days.ago %>
+  season: actual
 
-bonecrashers:
-    rink_id: <%= Rink.find_by_name('Effretikon').id %>
-    opponent: 'Bonecrashers'
-    result: '4:1'
-    date: <%= 10.days.ago %>
-    season_id: 1
+jona:
+  opponent: 'Jona Sharks'
+  score: 2
+  opponent_score: 1
+  date: <%= 6.days.ago %>
+  season: actual
 
 uusrutschers:
-    rink_id: <%= Rink.find_by_name('Herti Zug').id %>
-    opponent: 'Uusrutscher'
-    result: '9:4'
-    date: <%= 3.weeks.ago %>
-    season_id: 1
+  opponent: 'Uusrutscher'
+  score: 2
+  opponent_score: 6
+  date: <%= 2.weeks.ago %>
+  season: actual
 
-sagmaelfaeger:
-    rink_id: <%= Rink.find_by_name('KEK Küsnacht').id %>
-    opponent: 'Sagmehlfeger'
-    result: '4:3'                              
-    date: <%= 50.days.ago %>
-    season_id: 1
+dukla:
+  opponent: 'Dukla VBZ'
+  score: 4
+  opponent_score: 4
+  date: <%= Time.now %>
+  season: actual
 
-        
+sagmehlfeger:
+  opponent: 'Sagmehlfeger'
+  date: <%= 3.days.from_now %>
+  season: actual
+
+mistkerle:
+  opponent: 'Penner'
+  date: <%= 5.months.from_now %>
+  season: next

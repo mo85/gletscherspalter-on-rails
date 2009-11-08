@@ -1,7 +1,12 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+previous:
+  start_year: 2008
+  end_year: 2009
 
-# one:
-#   start_year: value
-#
-# two:
-#   column: value
+actual:
+  start_year: 2009
+  end_year: 2010
+
+next:
+  start_year: 2010
+  end_year: 2011

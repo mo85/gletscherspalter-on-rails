@@ -30,7 +30,11 @@
 <div style="marin-top: 20px;">
 	<h2>Statistiken</h2>
 	
-	<%= render :partial => "stats_table", :locals => { :player => @player } %>
+	<% if @player.position_as_string == 'Goalie' %>
+		<%= render :partial => "goalie_stats", :locals => { :player => @player } %>
+	<% else %>
+		<%= render :partial => "player_stats", :locals => { :player => @player } %>
+	<% end %>
 	
 </div>
 <% end %>

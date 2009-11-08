@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :messages
-
   has_one :player, :dependent => :destroy
   
   after_create :add_player
