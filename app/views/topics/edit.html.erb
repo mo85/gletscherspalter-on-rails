@@ -1,16 +1,16 @@
-<h1>Editing topic</h1>
+<h1>Thread anpassen</h1>
 
-<% form_for(@topic) do |f| %>
+<% form_for [@topic], :html => {:class => :default} do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :title %><br />
+  <div>
+    <%= f.label "Titel" %>
     <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
+  </div>
+
+  <div>
+    <%= f.submit "Anpassen" %>
+  </div>
 <% end %>
 
-<%= link_to 'Show', @topic %> |
-<%= link_to 'Back', topics_path %>
+<%= link_to 'Zurück', topics_path %>

@@ -39,7 +39,8 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
-        flash[:notice] = 'Topic was successfully created.'
+        current_user.topics << @topic
+        flash[:notice] = 'Thread wurde erfolgreich erstellt.'
         format.html { redirect_to(@topic) }
       else
         format.html { render :action => "new" }
@@ -53,7 +54,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.update_attributes(params[:topic])
-        flash[:notice] = 'Topic was successfully updated.'
+        flash[:notice] = 'Thread wurde erfolgreich angepasst.'
         format.html { redirect_to(@topic) }
       else
         format.html { render :action => "edit" }
@@ -67,6 +68,7 @@ class TopicsController < ApplicationController
     @topic.destroy
 
     respond_to do |format|
+      flash[:notice] = "Thread wurde gelöscht."
       format.html { redirect_to(topics_url) }
     end
   end

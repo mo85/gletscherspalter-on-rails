@@ -14,11 +14,16 @@ authorization do
       if_attribute :owner => is { user }
     end
     
+    has_permission_on :posts, :to => [:read, :create_posts]
+    has_permission_on :posts, :to => :update_posts do
+      if_attribute :user => is { user }
+    end
+    
   end
   
   role :admin do
     includes :user
-    has_permission_on [:players, :users, :scores], :to => [:read, :manage]
+    has_permission_on [:players, :users, :scores, :topics], :to => [:read, :manage]
     has_permission_on :players, :to => :subscribe_to_games
     has_permission_on [:locations, :events, :messages], :to => [:read, :manage]
     has_permission_on :games, :to => [:read, :manage, :add_or_remove_players_from_games]
@@ -48,6 +53,14 @@ privileges do
   
   privilege :add_or_remove_players_from_games do
     includes :add_player, :save_added_player, :remove_player
+  end
+  
+  privilege :create_posts do
+    includes :new, :create
+  end
+  
+  privilege :update_posts do
+    includes :edit, :update
   end
 
 end

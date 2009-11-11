@@ -1,10 +1,10 @@
-<p>
+<h1><%= @topic.title %></h1>
 
-  <b>Title:</b>
-
-  <%=h @topic.title %>
-
-
+<% if @topic.posts.empty? %>
+	Zu diesem Thread gibt es noch keine Kommentarte.
+	
+<% else %>
+<div>
   <table class="forum-table">
 
   <% for post in @topic.posts %>
@@ -25,12 +25,17 @@
   
   </table>
 
-</p>
-
-
-
-<% if is_admin? %>
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
-<%= link_to 'New Post', new_topic_post_path(@topic) %>
+</div>
 <% end %>
+
+<div>
+	<% if permitted_to? :create_posts, :posts %>
+	<%= link_to 'Kommentar hinzufügen', new_topic_post_path(@topic) %>
+	<% end %>
+</div>
+
+<div class="links">
+	<%= link_to 'Zurück', topics_path %>
+</div>
+
+

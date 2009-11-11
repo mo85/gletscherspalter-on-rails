@@ -1,15 +1,18 @@
-<h1>New topic</h1>
+<h1>Neuen Thread erstellen</h1>
 
-<% form_for(@topic) do |f| %>
+<% form_for [@topic], :html => { :class => :default } do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :title %><br />
+  <div>
+    <%= f.label "Titel" %>
     <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
+  </div>
+
+  <div>
+    <%= f.submit "Erstellen" %>
+  </div>
 <% end %>
 
-<%= link_to 'Back', topics_path %>
+<div class="links">
+	<%= link_to 'Zurück', topics_path %>
+</div>
