@@ -1,22 +1,26 @@
-<h1>Listing topics</h1>
+<h1>Forum der Gletscherspalter</h1>
 
-<table class ="listing">
+<div style="margin-top: 10px">
+<table class ="default">
   <tr>
-    <th>Title</th>
+    <th width="90%">Titel</th>
+		<th width="10%">&nbsp;</th>
   </tr>
 
 <% for topic in @topics %>
   <tr>
-    <td><%= topic.title %></td>
-    <td class="list-actions"><%= link_to 'Show', topic %><br />
-	<% if is_admin? %>
-    <%= link_to 'Edit', edit_topic_path(topic) %><br />
-    <%= link_to 'Destroy', topic, :confirm => 'Are you sure?', :method => :delete %></td>
-	<% end %>
+    <td><%= link_to topic.title, topic %></td>
+		<td>
+		<% if permitted_to? :manage, topic %>
+	    <%= link_to image_tag("/images/icons/pencil.png", :border => 0), edit_topic_path(topic) %>
+	    <%= link_to image_tag("/images/icons/delete.png", :border => 0), topic, :confirm => 'Möchten sie diesen Thread wirklich löschen?', :method => :delete %></td>
+		<% end %>
+		</tr>
   </tr>
 <% end %>
 </table>
+</div>
 
-<br />
-
-<%= link_to 'New topic', new_topic_path %>
+<div class="links">
+	<%= link_to 'Neuen Thread erstellen', new_topic_path %>
+</div>

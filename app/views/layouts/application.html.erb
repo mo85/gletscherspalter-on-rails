@@ -43,6 +43,9 @@
 			<% end %>
 			<li><%= link_to "Team", players_path %></li>
 			<li><%= link_to "Saison", games_path %></li>
+			<% if logged_in? %>
+			<li><%= link_to "Forum", topics_path %></li>
+			<% end %>
 			<li><%= link_to "Orte", :controller => "root", :action => "locations" %></li>
 	    <li><%= link_to "Kontakt", :controller => "root", :action => "contact" %></li>
 

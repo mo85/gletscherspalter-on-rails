@@ -8,6 +8,12 @@ authorization do
     has_permission_on :players, :to => [:adjust, :subscribe_to_games] do
       if_attribute :user => is { user }
     end
+    
+    has_permission_on :topics, :to => [:read]
+    has_permission_on :topics, :to => :manage do 
+      if_attribute :owner => is { user }
+    end
+    
   end
   
   role :admin do
