@@ -20,7 +20,8 @@ class PostsController < ApplicationController
 
   # POST /topics/:topic_id/posts
   def create
-    @post = Topic.find(params[:topic_id]).posts.build(params[:post])
+    @topic = Topic.find(params[:topic_id])
+    @post = @topic.posts.build(params[:post])
 
     respond_to do |format|
       if @post.save
@@ -28,7 +29,7 @@ class PostsController < ApplicationController
         flash[:notice] = 'Kommentar wurde erfolgreich erstellt.'
         format.html { redirect_to(@post.topic) }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => "new", :locals => { :topic => @topic } }
       end
     end
   end
@@ -36,13 +37,14 @@ class PostsController < ApplicationController
   # PUT /posts/1
   def update
     @post = Post.find(params[:id])
+    @topic = @post.topic
     
     respond_to do |format|
       if @post.update_attributes(params[:post])
         flash[:notice] = 'Kommentar wurde erfolgreich angepasst.'
         format.html { redirect_to(topic_path(@post.topic)) }
       else
-        format.html { render :action => "edit" }
+        format.html { render :action => "edit", :locals => { :topic => @topic } }
       end
     end
   end

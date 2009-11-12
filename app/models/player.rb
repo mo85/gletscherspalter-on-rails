@@ -1,7 +1,7 @@
 class Player < ActiveRecord::Base
     
   has_and_belongs_to_many :games, :order => "Date ASC"
-  has_many :scores
+  has_many :scores, :dependent => :destroy
   belongs_to :user
 
   # validation stuff

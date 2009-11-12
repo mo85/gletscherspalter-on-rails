@@ -1,6 +1,6 @@
 <h1>Skorer hinzufügen</h1>
 
-<% form_for [@score], :url => { :action => "create", :game_id => params[:game_id] },:html => {:class => :default} do |f|%>
+<% form_for [@game, @score], :url => { :action => "create", :game_id => params[:game_id] },:html => {:class => :default} do |f|%>
 	<%= f.error_messages %>
 	
 	<div>

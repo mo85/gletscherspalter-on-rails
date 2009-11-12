@@ -39,11 +39,6 @@ table.default tr.smaller th {
 
 table.forum {
 	width: 100%;
-	border: 2px solid #d40610;
-}
-
-table.forum thead {
-	border: 2px solid #d40610;
 }
 
 table.forum tr th {

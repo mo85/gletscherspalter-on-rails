@@ -3,13 +3,8 @@ class ScoresController < ApplicationController
   filter_access_to :all
   
   def edit
-    if session[:crappy_score]
-      @score = session[:crappy_score]
-      session[:crappy_score] = nil
-    else
-      @score = Score.find(params[:id])
-    end
     @game = Game.find(params[:game_id])
+    @score = Score.find(params[:id])
     
     respond_to do |format|
       format.html
@@ -17,12 +12,7 @@ class ScoresController < ApplicationController
   end
   
   def new
-    if session[:crappy_score]
-      @score = session[:crappy_score]
-      session[:crappy_score] = nil
-    else
-      @score = Score.new
-    end
+    @score = Score.new
     @game = Game.find(params[:game_id])
     
     respond_to do |format|
@@ -32,21 +22,22 @@ class ScoresController < ApplicationController
   
   def update
     @score = Score.find(params[:id])
+    @game = @score.game
     update_params
     
     respond_to do |format|
       if @score.update_attributes(params[:score])
         flash[:notice] = 'Skore-Eintrag erfolgreich angepasst.'
-        format.html { redirect_to(game_path(:id => params[:game_id])) }
+        format.html { redirect_to(game_path(@game)) }
       else
-        session[:crappy_score] = @score
-        format.html { redirect_to :back }
+        format.html { render :action => "edit", :locals => { :score => @score } }
       end
     end
   end
   
   def create
-    @score = Score.new(params[:id])
+    @game = Game.find(params[:game_id])
+    @score = @game.scores.build
     update_params
     
     respond_to do |format|
@@ -54,8 +45,7 @@ class ScoresController < ApplicationController
         flash[:notice] = 'Skore-Eintrag erfolgreich hinzugefügt.'
         format.html { redirect_to(game_path(:id => params[:game_id])) }
       else
-        session[:crappy_score] = @score
-        format.html { redirect_to :back }
+        format.html { render :action => "new", :locals => { :score => @score } }
       end
     end
   end
