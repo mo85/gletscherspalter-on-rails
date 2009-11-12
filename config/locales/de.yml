@@ -26,6 +26,8 @@ de:
   time:
     formats:
       default: "%d. %B %Y - %H:%M"
+      default_2: "%d. %B %Y %H:%M"
+      short: "%d. %m. %Y %H:%M"
     am: "vormittags"
     pm: "nachmittags"
     

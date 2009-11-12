@@ -3,18 +3,23 @@
 <div style="margin-top: 10px">
 <table class ="default">
   <tr>
-    <th width="90%">Titel</th>
+    <th width="55%">Titel</th>
+		<th width="15%">Beiträge</th>
+		<th width="20%">Letzter Beitrag</th>
 		<th width="10%">&nbsp;</th>
   </tr>
 
 <% for topic in @topics %>
   <tr>
     <td><%= link_to topic.title, topic %></td>
+		<td><%= topic.posts.size %></td>
+		<td style="font-size: 12px;"><%= info_for_last_comment(topic.posts.last) %></td>
 		<td>
 		<% if permitted_to? :manage, topic %>
 	    <%= link_to image_tag("/images/icons/pencil.png", :border => 0), edit_topic_path(topic) %>
-	    <%= link_to image_tag("/images/icons/delete.png", :border => 0), topic, :confirm => 'Möchten sie diesen Thread wirklich löschen?', :method => :delete %></td>
+	    <%= link_to image_tag("/images/icons/delete.png", :border => 0), topic, :confirm => 'Möchten sie diesen Thread wirklich löschen?', :method => :delete %>
 		<% end %>
+		</td>
 		</tr>
   </tr>
 <% end %>

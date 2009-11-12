@@ -10,7 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :rinks
 
   map.resources :topics do |topics|
-    topics.resources :posts
+    topics.resources :posts, :except => [:show, :index]
   end
 
   map.resources :users

@@ -36,3 +36,44 @@ table.default tr.smaller td {
 table.default tr.smaller th {
 	font-size: 14px;
 }
+
+table.forum {
+	width: 100%;
+	border: 2px solid #d40610;
+}
+
+table.forum thead {
+	border: 2px solid #d40610;
+}
+
+table.forum tr th {
+	background-color: #093ea8;
+	color: white;
+	padding: 5px;
+	text-align: left;
+	border: 1px solid white;
+}
+
+table.forum tr td.author {
+	vertical-align: top;
+	font-weight: bold;
+	font-size: smaller;
+}
+
+table.forum tr td.date {
+	font-size: 10px;
+	vertical-align: top;
+}
+
+table.forum tr td {
+	border: 1px solid white;
+	padding: 5px;
+}
+
+table.forum tr.even-line td{
+	background-color: #cfddff;
+}
+
+table.forum tr.odd-line td {
+	background-color: #f0f0f0;
+}

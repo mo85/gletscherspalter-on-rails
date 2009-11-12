@@ -1,37 +1,49 @@
 <h1><%= @topic.title %></h1>
 
-<% if @topic.posts.empty? %>
-	Zu diesem Thread gibt es noch keine Kommentarte.
+<div style="margin-top: 10px;">
 	
-<% else %>
-<div>
-  <table class="forum-table">
+	<% if @topic.posts.empty? %>
+		Zu diesem Thread gibt es noch keine Kommentarte.
 
-  <% for post in @topic.posts %>
+	<% else %>
+	<div>
+	  <table class="forum">
 
-    <tr class="forum-author">
-	   <td>
-		    <%= post.user.full_name %>
-	   </td>
-    </tr>
+		<thead>
+			<tr>
+				<th width="20%">Author</th>
+				<th width="55%">Nachricht</th>
+				<th width="15%">Datum</th>
+				<th width="10%">&nbsp;</th>
+			</tr>
+		</thead>
 
-    <tr>
-	   <td class="forum-content">
-		    <%= post.content %>
-	   </td>
-    </tr>
+		<tbody>
+	  <% for post in @topic.posts %>
+	    <tr class="<%= cycle('odd-line', 'even-line') %>">
+		   	<td class="author"><%= post.user.full_name %></td>
+		   	<td><%= post.content %></td>
+				<td class="date"><%= l(post.updated_at ? post.updated_at : post.created_at, :format => :default_2) %></td>
+				<td>
+					<% if permitted_to? :update_posts, post %>
+						<%= link_to image_tag("/images/icons/pencil.png", :border => 0), edit_topic_post_path(:topic_id => @topic.id, :id => post.id) %>
+						<%= link_to image_tag("/images/icons/delete.png", :border => 0), topic_post_path(:topic_id => @topic.id, :id => post.id), :confirm => "Möchten sie diesen Kommentar wirklich löschen?", :method => :delete %>
+					<% end %>
+				</td>
+	    </tr>
+	  <% end %>
+		</tbody>
+	  </table>
 
-  <% end %>
-  
-  </table>
-
-</div>
-<% end %>
-
-<div>
-	<% if permitted_to? :create_posts, :posts %>
-	<%= link_to 'Kommentar hinzufügen', new_topic_post_path(@topic) %>
+	</div>
 	<% end %>
+
+	<div style="margin-top: 5px;">
+		<% if permitted_to? :create_posts, :posts %>
+		<%= link_to 'Kommentar hinzufügen', new_topic_post_path(@topic) %>
+		<% end %>
+	</div>
+	
 </div>
 
 <div class="links">

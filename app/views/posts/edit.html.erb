@@ -1,12 +1,29 @@
-<h1>Editing post</h1>
+<% include_tinymce %>
+<h1>Kommentar anpassen</h1>
 
-<% form_for(@post) do |f| %>
+<% form_for [@topic, @post], :html => { :class => :default } do |f| %>
   <%= f.error_messages %>
-
-  <p>
-    <%= f.submit "Update" %>
-  </p>
+	
+	<div>
+		<%= f.label "Nachricht" %>
+		<%= f.text_area :content %>
+	</div>
+	
+  <div>
+    <%= f.submit "Anpassen" %>
+  </div>
 <% end %>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Zurück', topic_path(@topic) %>
+
+<script type="text/javascript" charset="utf-8">
+	tinyMCE.init({
+		mode 					: "textareas",
+		theme				 	: "advanced",
+		theme_advanced_buttons1 : "bold, italic, underline, |, justifyleft, justifycenter, justifyright, justifyfull,|, fontselect, fontsizeselect, bullist, numlist, link",
+		theme_advanced_buttons2 : "",
+		theme_advanced_toolbar_location : "top",
+		theme_advanced_toolbar_align : "left",
+		convert_urls	: false,
+	});
+</script>

@@ -1,16 +1,29 @@
-<h1>New post</h1>
+<% include_tinymce %>
+<h1>Neuen Kommentar erstellen</h1>
 
-<% form_for [@topic, @post] do |f| %>
+<% form_for [@topic, @post], :url => topic_posts_path, :html => {:class => :default} do |f| %>
   <%= f.error_messages %>
 
-  <p>
-      <%= f.label :content %><br />
+  <div>
+      <%= f.label "Nachricht" %>
       <%= f.text_area :content %>
-  </p>
+  </div>
 
-  <p>
-    <%= f.submit "Create" %>
-  </p>
+  <div>
+    <%= f.submit "Abschicken" %>
+  </div>
 <% end %>
 
-<%= link_to 'Back', topic_path(@topic) %>
+<%= link_to 'Zurück', topic_path(@topic) %>
+
+<script type="text/javascript" charset="utf-8">
+	tinyMCE.init({
+		mode 					: "textareas",
+		theme				 	: "advanced",
+		theme_advanced_buttons1 : "bold, italic, underline, |, justifyleft, justifycenter, justifyright, justifyfull,|, fontselect, fontsizeselect, bullist, numlist, link",
+		theme_advanced_buttons2 : "",
+		theme_advanced_toolbar_location : "top",
+		theme_advanced_toolbar_align : "left",
+		convert_urls	: false,
+	});
+</script>
