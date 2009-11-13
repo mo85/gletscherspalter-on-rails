@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :messages
   has_one :player, :dependent => :destroy
   
+  before_create :generate_token
   after_create :add_player
   
   EmailAddress = begin
@@ -103,6 +104,10 @@ class User < ActiveRecord::Base
     "#{zip} #{city}"
   end
   
+  def generate_token
+    self.token = Digest::SHA1.hexdigest(Time.now.to_s.split(//).sort_by { rand }.join)
+  end
+  
 private
 
   def password_non_blank
@@ -123,6 +128,5 @@ private
       self.player = Player.create(:position => "FW")
     end
   end
-  
 
 end

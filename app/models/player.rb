@@ -1,5 +1,7 @@
+include ActionView::Helpers::UrlHelper
+
 class Player < ActiveRecord::Base
-    
+  
   has_and_belongs_to_many :games, :order => "Date ASC"
   has_many :scores, :dependent => :destroy
   belongs_to :user
@@ -86,6 +88,22 @@ class Player < ActiveRecord::Base
     games_played(season).inject(0){ |sum, g| sum += g.opponent_score }
   end
   
+  def games_to_ical(host)
+    cal = Icalendar::Calendar.new 
+    games_of_season.each do |game|
+      game_url = game_link(host, game)
+      cal.event do
+        dtstart       game.date.strftime("%Y%m%dT%H%M%S")
+        dtend         2.hours.since(game.date).strftime("%Y%m%dT%H%M%S")
+        summary       "#{game.name}"
+        location      game.rink.name
+        uid           game.ical_id
+        url           game_url
+      end
+    end
+    cal.to_ical
+  end
+  
   protected
   
     def number_must_not_be_negative
@@ -103,6 +121,10 @@ class Player < ActiveRecord::Base
   
   def collect_scores(games)
     games.collect{ |g| g.score_of_player(self) }.compact
+  end
+  
+  def game_link(host, game)
+    helpers.link_to(game.name, url_for(:host => host, :controller => "games", :action => "show", :id => game.to_param))
   end
   
 end

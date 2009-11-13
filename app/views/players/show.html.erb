@@ -47,7 +47,8 @@
 	
 	<% if permitted_to? :games, @player %>
 	<div class="links">
-		<%= link_to 'Weitere Spiele buchen', games_player_path %>
+		<%= link_to 'Weitere Spiele buchen', games_player_path %> | 
+		<%= link_to 'Meine Spiele exportieren', games_player_url(:format => "ics", :protocol => "webcal", :token => current_user.token) %>
 	</div>
 	<% end %>
 </div>

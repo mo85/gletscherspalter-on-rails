@@ -14,7 +14,10 @@ Rails::Initializer.run do |config|
   
   config.gem "stffn-declarative_authorization", :lib => "declarative_authorization",
     :source => "http://gems.github.com"
-    
+  
+  config.gem "icalendar"
+  
+  
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.

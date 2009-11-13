@@ -1,3 +1,5 @@
+require 'digest/sha1'
+
 class Game < ActiveRecord::Base
   
   has_and_belongs_to_many :players
@@ -8,6 +10,13 @@ class Game < ActiveRecord::Base
   validates_presence_of :rink, :opponent, :date
   validates_numericality_of :score, :only_integer => true, :allow_nil => true
   validates_numericality_of :opponent_score, :only_integer => true, :allow_nil => true
+  
+  def name
+    if opponent == "Training"
+      return "Training"
+    end
+    "Gletscherspalter vs. #{opponent}"
+  end
   
   def self.last_game
     @last_game ||= last(:conditions => ["score != ?",""])
@@ -57,6 +66,10 @@ class Game < ActiveRecord::Base
       result = true
     end
     result
+  end
+  
+  def ical_id
+    "gletscherspalter-game##{Digest::SHA1.hexdigest(self.id.to_s)[0...10]}"
   end
   
 end

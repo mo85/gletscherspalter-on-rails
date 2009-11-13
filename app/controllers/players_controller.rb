@@ -34,9 +34,21 @@ class PlayersController < ApplicationController
   def games
     @title = "Gletscherspalter.ch::Spiele Saison #{current_season.to_s}"
     @games = future_games_of_current_season
-    @player = Player.find(params[:id])
+    
+    if params[:token]
+      @user = current_user
+      @player = @user.player
+    else 
+      @player = Player.find(params[:id])
+    end
+    
     respond_to do |format|
       format.html
+      format.ics do
+        send_data(@player.games_to_ical(request.raw_host_with_port), :type => 'text/calendar',
+                  :disposition => "inline; filename=Gletscherspalter.ics",
+                  :filename => "Gletscherspalter.ics")
+      end
     end
   end
   
