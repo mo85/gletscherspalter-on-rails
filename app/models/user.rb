@@ -103,11 +103,7 @@ class User < ActiveRecord::Base
   def location
     "#{zip} #{city}"
   end
-  
-  def generate_token
-    self.token = Digest::SHA1.hexdigest(Time.now.to_s.split(//).sort_by { rand }.join)
-  end
-  
+
 private
 
   def password_non_blank
@@ -127,6 +123,10 @@ private
     if is_player?
       self.player = Player.create(:position => "FW")
     end
+  end
+  
+  def generate_token
+    self.token = Digest::SHA1.hexdigest(Time.now.to_s.split(//).sort_by { rand }.join)
   end
 
 end
