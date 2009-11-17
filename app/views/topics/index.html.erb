@@ -13,7 +13,7 @@
   <tr>
     <td><%= link_to h(topic.title), topic %></td>
 		<td><%=h topic.posts.size %></td>
-		<td style="font-size: 12px;"><%=h info_for_last_comment(topic.posts.last) %></td>
+		<td style="font-size: 12px;"><%=sanitize info_for_last_comment(topic.posts.last) %></td>
 		<td>
 		<% if permitted_to? :manage, topic %>
 	    <%= link_to image_tag("/images/icons/pencil.png", :border => 0), edit_topic_path(topic) %>
