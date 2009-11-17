@@ -8,12 +8,12 @@
   
 	<div>
 		<%= f.label "Mitglied seit:" %>
-		<%= f.text_field :member_since, :size => 10 %>
+		<%= f.text_field h(:member_since), :size => 10 %>
 	</div>
 
   <div>
 	<%= f.label "Nummer:" %>
-	<%= f.text_field :number, :size => 10 %>
+	<%= f.text_field h(:number), :size => 10 %>
   </div>
 
   <div>
@@ -25,7 +25,7 @@
 
   <div>
     <%= label_tag "Benutzername:" %>
-    <%= text_field_tag "user[login]", @player.user.login, :size => 30 %>
+    <%= text_field_tag "user[login]", h(@player.user.login), :size => 30 %>
   </div>
 
 	<div>
@@ -45,39 +45,39 @@
 	
   <div>
     <%= label_tag "Vorname:" %>
-    <%= text_field_tag "user[firstname]", @player.user.firstname, :size => 30 %>
+    <%= text_field_tag "user[firstname]", h(@player.user.firstname), :size => 30 %>
   </div>
 
   <div>
     <%= label_tag "Nachname:" %>
-    <%= text_field_tag "user[lastname]", @player.user.lastname, :size => 30 %>
+    <%= text_field_tag "user[lastname]", h(@player.user.lastname), :size => 30 %>
   </div>
 
 	<div>
 		<%= label_tag :street, "Strasse und Nr." %>
-		<%= text_field_tag "user[street]", @user.street, :size => 20 %>
-		<%= text_field_tag "user[number]", @user.number, :size => 5 %>
+		<%= text_field_tag "user[street]", h(@user.street), :size => 20 %>
+		<%= text_field_tag "user[number]", h(@user.number), :size => 5 %>
 	</div>
 	
 	<div>
 		<%= label_tag :city, "Ort und PLZ" %>
-		<%= text_field_tag "user[city]", @user.city, :size => 20 %>
-		<%= text_field_tag "user[zip]", @user.zip, :size => 5 %>
+		<%= text_field_tag "user[city]", h(@user.city), :size => 20 %>
+		<%= text_field_tag "user[zip]", h(@user.zip), :size => 5 %>
 	</div>
 	
 	<div>
 		<%= label_tag "Telefon" %>
-		<%= text_field_tag "user[phone]", @user.phone, :size => 30 %>
+		<%= text_field_tag "user[phone]", h(@user.phone), :size => 30 %>
   </div>
 
 	<div>
 		<%= label_tag "Mobile" %>
-		<%= text_field_tag "user[mobile]", @user.phone, :size => 30 %>
+		<%= text_field_tag "user[mobile]", h(@user.phone), :size => 30 %>
   </div>
 
   <div>
     <%= label_tag "Email:" %>
-    <%= text_field_tag "user[email]", @player.user.email, :size => 30 %>
+    <%= text_field_tag "user[email]", h(@player.user.email), :size => 30 %>
   </div>
 
   <div>

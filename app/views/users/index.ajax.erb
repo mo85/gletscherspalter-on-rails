@@ -1,5 +1,5 @@
 <ul>
 <% @users.each do |u| %>
-	<li title="<%= u.id %>"><%= u.full_name %></input></li>
+	<li title="<%=h u.id %>"><%=h u.full_name %></input></li>
 <% end %>
 </ul>

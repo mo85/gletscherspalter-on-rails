@@ -22,12 +22,12 @@
 		<% if check_box_needed %>
 		<td><%= check_box_tag 'player[game_ids][]', game.id, game.players.include?(@player) %></td>
 		<% end %>
-		<td style="font-size: 14px;"><%= link_to "Gletscherspalter vs. <br />#{game.opponent}", game %></td>
-		<td><%= game.date_formatted %></td>
-		<td><%= link_to game.rink.name, location_on_map_path(:id => game.rink.id) %></td>
+		<td style="font-size: 14px;"><%= link_to "Gletscherspalter vs. <br />#{h(game.opponent)}", game %></td>
+		<td><%=h game.date_formatted %></td>
+		<td><%= link_to h(game.rink.name), location_on_map_path(:id => game.rink.id) %></td>
 		<% if show_result %>
 		<td>
-			<%= game.result %>
+			<%=h game.result %>
 		</td>
 		<% end %>
 		<% if show_actions && permitted_to?(:manage, game) %>

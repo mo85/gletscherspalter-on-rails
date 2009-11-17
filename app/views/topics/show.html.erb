@@ -21,8 +21,8 @@
 		<tbody>
 	  <% for post in @topic.posts %>
 	    <tr class="<%= cycle('odd-line', 'even-line') %>">
-		   	<td class="author"><%= post.user.full_name %></td>
-		   	<td style="font-size: 14px;"><%= post.content %></td>
+		   	<td class="author"><%=h post.user.full_name %></td>
+		   	<td style="font-size: 14px;"><%=sanitize post.content %></td>
 				<td class="date"><%= l(post.updated_at ? post.updated_at : post.created_at, :format => :default_2) %></td>
 				<td>
 					<% if permitted_to? :update_posts, post %>

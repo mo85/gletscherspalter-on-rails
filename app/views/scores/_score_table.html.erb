@@ -7,9 +7,9 @@
 	</tr>
 	<% for score in @scores %>
 	<tr>
-		<td><%= link_to score.player.name, score.player %></td>
-		<td><%= score.goals %></td>
-		<td><%= score.assists %></td>
+		<td><%= link_to h(score.player.name), score.player %></td>
+		<td><%=h score.goals %></td>
+		<td><%=h score.assists %></td>
 		<td>
 			<% if permitted_to? :manage, score %>
 			<%= link_to image_tag('icons/pencil.png', :border => 0), edit_game_score_path(:game_id => @game.id, :id => score.id) %>

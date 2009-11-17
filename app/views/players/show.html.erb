@@ -4,17 +4,17 @@
 	
 	<div>
 		<%= f.label :member_since, "Mitglied seit:", :class => :bold %>
-		<%= @player.member_since %>
+		<%=h @player.member_since %>
 	</div>
 	
 	<div>
 		<%= f.label :player, "Trikot Nummer:", :class => :bold %> 
-		<%= @player.number %>
+		<%=h @player.number %>
 	</div>
 
 	<div>
 		<%= f.label :player, "Position:", :class => :bold %>
-		<%= @player.position_as_string %>
+		<%=h @player.position_as_string %>
 	</div>
 	
 	<% if permitted_to? :adjust, @player %>

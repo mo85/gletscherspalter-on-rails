@@ -1,6 +1,6 @@
 <div id="players">
 <% players.each do |position_players_pair| %>
-	<h2 style="margin-top: 10px"><%= position_players_pair.second.first.position_as_string %></h2>
+	<h2 style="margin-top: 10px"><%=h position_players_pair.second.first.position_as_string %></h2>
   <table class="default">
 	<colgroup>
 		<col width="60%" />
@@ -15,10 +15,10 @@
 	<% position_players_pair.second.each do |player| %>
 	  <tr>
 		<td>
-			<%= link_to player.user.full_name, player %>
+			<%= link_to h(player.user.full_name), player %>
 		</td>
 		<td>
-			<%= player.number %>
+			<%=h player.number %>
 		</td>
 		<% if permitted_to? :read, player %>
 		<td>

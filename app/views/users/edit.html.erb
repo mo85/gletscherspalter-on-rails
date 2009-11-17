@@ -5,44 +5,44 @@
 
   <div>
 	<%= f.label "Benutzername" %>
-	<%= f.text_field :login %>
+	<%= f.text_field h(:login) %>
   </div>
 
   <div>
 	<%= f.label "Vorname" %>
-	<%= f.text_field :firstname %>
+	<%= f.text_field h(:firstname) %>
   </div>
 
   <div>
     <%= f.label "Nachname" %>
-    <%= f.text_field :lastname %>
+    <%= f.text_field h(:lastname) %>
   </div>
 
 	<div>
 		<%= label_tag :street, "Strasse und Nr." %>
-		<%= text_field_tag "user[street]", @user.street, :size => 20 %>
-		<%= text_field_tag "user[number]", @user.number, :size => 5 %>
+		<%= text_field_tag "user[street]", h(@user.street), :size => 20 %>
+		<%= text_field_tag "user[number]", h(@user.number), :size => 5 %>
 	</div>
 	
 	<div>
 		<%= label_tag :city, "Ort und PLZ" %>
-		<%= text_field_tag "user[city]", @user.city, :size => 20 %>
-		<%= text_field_tag "user[zip]", @user.zip, :size => 5 %>
+		<%= text_field_tag "user[city]", h(@user.city), :size => 20 %>
+		<%= text_field_tag "user[zip]", h(@user.zip), :size => 5 %>
 	</div>
 	
 	<div>
 		<%= f.label "Telefon" %>
-		<%= f.text_field :phone %>
+		<%= f.text_field h(:phone) %>
   </div>
 
 	<div>
 		<%= f.label "Mobile" %>
-		<%= f.text_field :mobile %>
+		<%= f.text_field h(:mobile) %>
   </div>
 	
   <div>
 		<%= f.label "E-Mail" %>
-		<%= f.text_field :email %>
+		<%= f.text_field h(:email) %>
   </div>
 
   <div>

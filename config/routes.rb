@@ -1,26 +1,26 @@
 ActionController::Routing::Routes.draw do |map|
   #map.resources :roles
 
-  map.resources :messages
+  map.resources :messages, :except => [:show, :edit]
 
-  map.resources :events
+  map.resources :events, :except => [:show]
 
-  map.resources :locations
+  map.resources :locations, :except => [:show]
 
-  map.resources :rinks
+  map.resources :rinks, :except => [:show]
 
   map.resources :topics do |topics|
     topics.resources :posts, :except => [:show, :index]
   end
 
-  map.resources :users
+  map.resources :users, :except => :show
 
   map.resources :games, :member => { 
     :remove_player => :delete,
     :add_player => :get,
     :save_added_player => :post 
     } do |games|
-    games.resources :scores
+    games.resources :scores, :except => [:show, :index]
   end
   
   map.location_on_map "root/locations/:id", :controller => "root", :action => "locations"
@@ -29,17 +29,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :players, :member => {:games => :get, :update_games => :post}
 
   # The priority is based upon order of creation: first created -> highest priority.
-
-  # Sample of regular route:
-  #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   map.resources :products
 
   # Sample resource route with options:
   #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }

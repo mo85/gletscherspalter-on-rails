@@ -4,18 +4,18 @@
 	<%= f.error_messages %>
 	<div>
 		<%= f.label "Spieler" %>
-		<%= f.text_field :player, :value => @score.player ? @score.player.name : nil %>
+		<%= f.text_field :player, :value => @score.player ? h(@score.player.name) : nil %>
 		<div id="user_choices" class="autocomplete"></div>
 	</div>
 	
 	<div>
 		<%= f.label "Tore" %>
-		<%= f.text_field :goals %>
+		<%= f.text_field h(:goals) %>
 	</div>
 	
 	<div>
 		<%= f.label "Assists" %>
-		<%= f.text_field :assists %>
+		<%= f.text_field h(:assists) %>
 	</div>
 	
 	<div>

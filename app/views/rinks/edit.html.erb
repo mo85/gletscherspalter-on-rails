@@ -6,27 +6,27 @@
 
   <div>
     <%= f.label "Name" %>
-    <%= f.text_field :name %>
+    <%= f.text_field h(:name) %>
   </div>
 
   <div>
     <%= label_tag "Strasse" %>
-    <%= text_field_tag "address[street]",@rink.address.street ,:size => 30 %>
+    <%= text_field_tag "address[street]", h(@rink.address.street) ,:size => 30 %>
   </div>
 
   <div>
     <%= label_tag "Nummer" %>
-    <%= text_field_tag "address[number]", @rink.address.number, :size => 30 %>
+    <%= text_field_tag "address[number]", h(@rink.address.number), :size => 30 %>
   </div>
 
   <div>
     <%= label_tag "Stadt" %>
-    <%= text_field_tag "address[city]", @rink.address.city, :size => 30 %>
+    <%= text_field_tag "address[city]", h(@rink.address.city), :size => 30 %>
   </div>
 
   <div>
     <%= label_tag "Postleitzahl" %>
-    <%= text_field_tag "address[zip]", @rink.address.zip, :size => 30 %>
+    <%= text_field_tag "address[zip]", h(@rink.address.zip), :size => 30 %>
   </div>
 
   <div>
@@ -34,8 +34,8 @@
     <%= f.check_box :type, { :checked => @rink.is_a?(Rink) ? true : false }, :rink, :location %>
   </div>
   <div>
-    <%= f.label :url %>
-    <%= f.text_field :url %>
+    <%= f.label "URL" %>
+    <%= f.text_field h(:url) %>
   </div>
   <div>
     <%= f.submit "Anpassen" %>
