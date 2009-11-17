@@ -27,13 +27,13 @@ authorization do
     has_permission_on :players, :to => :subscribe_to_games
     has_permission_on [:locations, :events, :messages], :to => [:read, :manage]
     has_permission_on :games, :to => [:read, :manage, :add_or_remove_players_from_games]
-    has_permission_on :posts, :to => :update_posts 
+    has_permission_on :posts, :to => :update_posts
   end
 end
 
 privileges do
   privilege :manage do
-    includes :new, :create, :adjust, :delete, :destroy
+    includes :new, :create, :adjust, :destroy
   end
   
   privilege :read do
@@ -61,7 +61,7 @@ privileges do
   end
   
   privilege :update_posts do
-    includes :edit, :update
+    includes :edit, :update, :destroy
   end
 
 end
