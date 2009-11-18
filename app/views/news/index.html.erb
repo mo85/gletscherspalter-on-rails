@@ -1,29 +1,8 @@
 <h1>News</h1>
 
-<table class="default">
-	<thead>
-		<th width="20%">Author</th>
-		<th width="50%">Nachricht</th>
-		<th width="20%">Erstellt am</th>
-		<th width="10%">&nbsp;</th>
-	</thead>
-
-	<% for news in @news %>
-		<tr>
-			<td class="author"><%=h news.user.full_name %></td>
-			<td><%=sanitize news.message %></td>
-			<td class="date"><%=h l(news.created_at, :format => :default_2) %></td>
-			
-			<% if permitted_to? :manage, news %>
-				<td>
-					<%= link_to image_tag("icons/pencil.png", :border => 0), edit_news_path(news) %>
-					<%= link_to image_tag("icons/delete.png", :border => 0), news, :confirm => "Möchten sie diesen Eintrag wirklich löschen?", :method => :delete %>
-				</td>
-			<% end %>
-		</tr>
-	<% end %>
-</table>
-
+<div style="margin-top: 10px;">
+	<%= render :partial => "news_table", :locals => { :news => @news }%>
+</div>
 
 <div class="links">
 	<%= link_to "News erstellen", new_news_path %>

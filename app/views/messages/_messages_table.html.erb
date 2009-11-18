@@ -1,9 +1,9 @@
 <table class="default">
 	<thead>
 		<tr>
-			<th width="25%">Zeitpunk</th>
 			<th width="15%">Verfasser</th>
 			<th width="55%">Nachricht</th>
+			<th width="25%">Zeitpunkt</th>
 			<th width="5%">&nbsp;</th>
 		</tr>
 	</thead>
@@ -11,9 +11,9 @@
 	<tbody>
 		<% for message in @messages %>
 			<tr>
-				<td style="font-size: 12px;"><%=h format_date(message.created_at) %></td>
-				<td style="font-size: 12px;"><%=h message.publisher.name %></td>
-				<td style="font-size: 10px;"><%=sanitize message.text %></td>
+				<td class="author"><%=h message.publisher.name %></td>
+				<td style="font-size: smaller;"><%=sanitize message.text %></td>
+				<td class="date"><%=h format_date(message.created_at) %></td>
 				<% if permitted_to? :manage, message %>
 				<td>
 		    <%= link_to(image_tag('icons/delete.png', :border => 0), message, :confirm => 'Möchten sie diese Nachricht wirklich löschen?', :method => :delete) %>
