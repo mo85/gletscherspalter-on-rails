@@ -10,7 +10,7 @@
 	<%= render :partial => "news/news_table", :locals => { :news => @news } %>
 	
 	<div class="links">
-		<%= link_to "Weitere Neuigkeiten", news_index_path %>
+		<%= link_to "Andere Neuigkeiten", news_index_path %>
 	</div>
 
 </div>
@@ -20,7 +20,7 @@
 	<div style="margin-top: 15px;">
 		<h2>Nächste Veranstaltungen</h2>
 
-		<%= render :partial => "events/event_table", :locals => { :events => @events, :actions => false } %>
+		<%= render :partial => "events/event_table", :locals => { :events => @events, :actions => true } %>
 		
 	</div>
 <% end %>
@@ -33,7 +33,7 @@
 	<% else %>
 		
 		<%= render :partial => "games/game_table", :locals => { 
-			:games => @games, :show_result => false, :show_actions => false, 
+			:games => @games, :show_result => false, :show_actions => true, 
 			:check_box_needed => false 
 			} %>
 	

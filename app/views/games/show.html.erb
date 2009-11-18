@@ -20,6 +20,10 @@
 <% end %>
 <div class="clear"></div>
 
+<div class="links">
+	<%= link_to "Anpassen", edit_game_path(@game) %>
+</div>
+
 <div style="margin-top: 20px;">
 <% if !@game.score.blank? %>
 	<h2>Skorer Liste</h2>

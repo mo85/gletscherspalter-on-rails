@@ -4,7 +4,7 @@ class RootController < ApplicationController
 
   def index
     @title = "Gletscherspalter.ch::Home"
-    @news = News.find :all, :limit => 2, :order => "created_at DESC"
+    @news = News.find :all, :limit => 3, :order => "created_at DESC"
     
     @games = current_season.games.future_games :limit => 3
     @events = Event.future_events(:order => "date DESC", :limit => 3)

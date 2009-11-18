@@ -1,0 +1,33 @@
+<h2 style="margin-top: 10px"><%=h position %></h2>
+<table class="default">
+<colgroup>
+	<col width="60%" />
+	<% if logged_in? %>
+	<col width="30%" />
+	<col width="10%" />
+	<% else %>
+	<col width="40%" />
+	<% end %>
+</colgroup>
+
+<% players.each do |player| %>
+  <tr>
+	<td>
+		<%= link_to h(player.user.full_name), player %>
+	</td>
+	<td>
+		<%=h player.number %>
+	</td>
+	<% if permitted_to? :read, player %>
+	<td>
+		<% if editable && permitted_to?(:adjust, player) %>
+		<%= link_to(image_tag('icons/pencil.png', :border => 0) , edit_player_path(player)) %>
+		<% end %>
+		<% if deletable && permitted_to?(:manage, player) %>
+			<%= link_to(image_tag('icons/delete.png', :border => 0), delete_path + player.id.to_s, :confirm => "Möchten sie den Spieler #{player.user.full_name} wirklich löschen?", :method => :delete) %>
+		<% end %>
+	</td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
