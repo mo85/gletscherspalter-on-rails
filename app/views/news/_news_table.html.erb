@@ -9,7 +9,7 @@
 	<% for news in @news %>
 		<tr>
 			<td class="author"><%=h news.user.full_name %></td>
-			<td><%=sanitize news.message %></td>
+			<td style="font-size: smaller;"><%=sanitize news.message %></td>
 			<td class="date"><%=h l(news.created_at, :format => :default_2) %></td>
 			
 			<% if permitted_to? :manage, news %>
