@@ -1,7 +1,11 @@
 <h1>News</h1>
 
 <div style="margin-top: 10px;">
+<% if @news.empty? %>
+	Zur Zeit gibt es keine Neuigkeiten.
+<% else %>
 	<%= render :partial => "news_table", :locals => { :news => @news }%>
+<% end %>
 </div>
 
 <% if permitted_to? :manage, :news %>
