@@ -1,0 +1,22 @@
+<h1>News</h1>
+
+<table class="default">
+	<thead>
+		<th>Author</th>
+		<th>Nachricht</th>
+		<th>&nbsp;</th>
+	</thead>
+
+	<% for news in @news %>
+		<tr>
+			<td><%=h news.publisher.full_name %></td>
+			<td><%=h news.message %></td>
+			<td><%=h news.created_at %></td>
+		</tr>
+	<% end %>
+</table>
+
+
+<div class="links">
+	<%= link_to "News erstellen", new_news_path %>
+</div>

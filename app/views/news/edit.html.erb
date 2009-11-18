@@ -1,0 +1,18 @@
+<h1>News anpassen</h1>
+
+<% form_for @news, :url => {:action => "update"}, :html => {:class => :default} do |f| %>
+	
+	<div>
+		<%= f.label "Nachricht" %>
+		<%= f.text_area :message %>
+	</div>
+	
+	<div>
+		<%= f.submit "Speichern" %>
+	</div>
+	
+<% end %>
+
+<div class="links">
+	<%= link_to "Zurück", news_index_path %>
+</div>
