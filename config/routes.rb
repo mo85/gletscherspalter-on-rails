@@ -1,6 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
   #map.resources :roles
 
+  map.resources :news
+
   map.resources :messages, :except => [:show, :edit]
 
   map.resources :events, :except => [:show]

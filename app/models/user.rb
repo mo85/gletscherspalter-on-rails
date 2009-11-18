@@ -1,11 +1,11 @@
 require 'digest/sha1'
 
-
 class User < ActiveRecord::Base
 
   has_many :topics
   has_many :posts
   has_many :messages
+  has_many :news
   has_one :player, :dependent => :destroy
   
   before_create :generate_token
