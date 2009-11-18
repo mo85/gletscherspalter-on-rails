@@ -49,13 +49,13 @@ table.forum tr th {
 	border: 1px solid white;
 }
 
-table.forum tr td.author {
+table tr td.author {
 	vertical-align: top;
 	font-weight: bold;
 	font-size: smaller;
 }
 
-table.forum tr td.date {
+table tr td.date {
 	font-size: 10px;
 	vertical-align: top;
 }

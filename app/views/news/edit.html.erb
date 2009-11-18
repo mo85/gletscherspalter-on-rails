@@ -1,3 +1,4 @@
+<% include_tinymce %>
 <h1>News anpassen</h1>
 
 <% form_for @news, :url => {:action => "update"}, :html => {:class => :default} do |f| %>
@@ -16,3 +17,15 @@
 <div class="links">
 	<%= link_to "Zurück", news_index_path %>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+	tinyMCE.init({
+		mode 					: "textareas",
+		theme				 	: "advanced",
+		theme_advanced_buttons1 : "bold, italic, underline, |, justifyleft, justifycenter, justifyright, justifyfull,|, fontselect, fontsizeselect, bullist, numlist, link",
+		theme_advanced_buttons2 : "",
+		theme_advanced_toolbar_location : "top",
+		theme_advanced_toolbar_align : "left",
+		convert_urls	: false,
+	});
+</script>

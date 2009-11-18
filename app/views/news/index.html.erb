@@ -2,16 +2,24 @@
 
 <table class="default">
 	<thead>
-		<th>Author</th>
-		<th>Nachricht</th>
-		<th>&nbsp;</th>
+		<th width="20%">Author</th>
+		<th width="50%">Nachricht</th>
+		<th width="20%">Erstellt am</th>
+		<th width="10%">&nbsp;</th>
 	</thead>
 
 	<% for news in @news %>
 		<tr>
-			<td><%=h news.publisher.full_name %></td>
-			<td><%=h news.message %></td>
-			<td><%=h news.created_at %></td>
+			<td class="author"><%=h news.user.full_name %></td>
+			<td><%=sanitize news.message %></td>
+			<td class="date"><%=h l(news.created_at, :format => :default_2) %></td>
+			
+			<% if permitted_to? :manage, news %>
+				<td>
+					<%= link_to image_tag("icons/pencil.png", :border => 0), edit_news_path(news) %>
+					<%= link_to image_tag("icons/delete.png", :border => 0), news, :confirm => "Möchten sie diesen Eintrag wirklich löschen?", :method => :delete %>
+				</td>
+			<% end %>
 		</tr>
 	<% end %>
 </table>
