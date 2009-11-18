@@ -1,0 +1,12 @@
+<div class="photoset">
+  <h2><%=h photoset.title %></h2>
+  <% if photoset.description %>
+		<div>
+			<%=h photoset.description %>
+		</div>
+  <% end %>
+  <div class="photo">
+    <%= link_to photoset_image_tag(photoset, :size => :medium, :lightbox => :large), photo_path(photoset.id) %>
+    <br/><%=h photoset.photos %> Fotos
+  </div>
+</div>

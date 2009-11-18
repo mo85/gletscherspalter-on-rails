@@ -23,4 +23,8 @@ class RootController < ApplicationController
     @rinks = Rink.all
   end
 
+  def galleries
+    
+  end
+  
 end

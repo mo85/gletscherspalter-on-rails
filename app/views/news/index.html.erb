@@ -4,6 +4,8 @@
 	<%= render :partial => "news_table", :locals => { :news => @news }%>
 </div>
 
+<% if permitted_to? :manage, :news %>
 <div class="links">
 	<%= link_to "News erstellen", new_news_path %>
 </div>
+<% end %>
