@@ -3,4 +3,7 @@
     <p><%= @photoset.description %></p>
 <% end %>
 <%= render :partial => 'photo', :collection => @photos  %>
-<%= link_to "Zurück zur den Fotoalben", photos_path %>
+
+<div class="links">
+	<%= link_to "Zurück zu den Fotoalben", photos_path %>
+</div>

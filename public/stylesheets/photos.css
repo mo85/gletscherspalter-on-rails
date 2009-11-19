@@ -1,0 +1,16 @@
+.photoset {
+    width: 50%;
+		display: inline;
+		height: 240px;
+}
+
+.photo {
+    margin-bottom: 40px;
+		display: inline;
+		width: 0px;
+}
+
+img {
+    border: 0px;
+}
+

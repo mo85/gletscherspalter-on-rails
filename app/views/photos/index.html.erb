@@ -1,7 +1,10 @@
 <h1>Fotoalbum</h1>
 
-<div>
+<div style="margin-bottom: 10px;">
 	Suche Dir unten ein Fotoalbum aus und klicke auf das Bild um die darin enthaltenen Fotos anzuschauen:
 </div>
 
-<%= render :partial => 'photoset', :collection => @photosets  %>
+<% for photoset in @photosets %>
+	<% float_value = cycle("left", "right") %>
+	<%= render :partial => 'photoset', :locals => { :photoset => photoset, :float_value => float_value } %>
+<% end %>

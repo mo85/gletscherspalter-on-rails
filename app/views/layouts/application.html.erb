@@ -14,6 +14,7 @@
 <%= stylesheet_link_tag "form" %>
 <%= stylesheet_link_tag "autocompleter" %>
 <%= stylesheet_link_tag "lightbox" %>
+<%= stylesheet_link_tag "photos" %>
 
 <%= yield(:javascripts) %>
 <%= javascript_include_tag :all %>
@@ -48,9 +49,7 @@
 			<% if logged_in? %>
 			<li><%= link_to "Forum", topics_path %></li>
 			<% end %>
-			<% if logged_in? && current_user.is_admin %>
 			<li><%= link_to "Galleries", :controller => "photos", :action => "index" %>
-			<% end %>
 			<li><%= link_to "Orte", :controller => "root", :action => "locations" %></li>
 	    <li><%= link_to "Kontakt", :controller => "root", :action => "contact" %></li>
 

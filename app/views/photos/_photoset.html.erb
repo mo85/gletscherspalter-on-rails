@@ -1,12 +1,21 @@
-<div class="photoset">
+<div class="photoset" style="float:<%= float_value %>;">
   <h2><%=h photoset.title %></h2>
   <% if photoset.description %>
-		<div>
+		<div style="margin-top: 10px;">
 			<%=h photoset.description %>
 		</div>
   <% end %>
-  <div class="photo">
+  
+	<div class="photo">
     <%= link_to photoset_image_tag(photoset, :size => :medium, :lightbox => :large), photo_path(photoset.id) %>
-    <br/><%=h photoset.photos %> Fotos
+    <div>
+			<%=h photoset.photos %> Fotos
+		</div>
   </div>
 </div>
+
+<% if float_value == 'right' %>
+<div class="clear">
+</div>
+<% end %>
+	

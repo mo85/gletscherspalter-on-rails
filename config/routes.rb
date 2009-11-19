@@ -1,11 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
   #map.resources :roles
 
-  map.resources :photos
+  map.resources :photos, :except => [:edit, :new, :create, :update, :destroy]
   
   map.resources :news
   
-  map.resources :messages, :except => [:show, :edit]
+  map.resources :messages, :except => [:show, :edit, :update]
 
   map.resources :events, :except => [:show]
 
