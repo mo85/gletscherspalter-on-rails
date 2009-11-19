@@ -1,0 +1,6 @@
+<h1><%= @photoset.title %></h1>
+<% if @photoset.description %>
+    <p><%= @photoset.description %></p>
+<% end %>
+<%= render :partial => 'photo', :collection => @photos  %>
+<%= link_to "Zurück zur den Fotoalben", photos_path %>
