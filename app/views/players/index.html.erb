@@ -1,6 +1,9 @@
 <div id="player-list">
 	<h1>Mannschaft</h1>
 	
+	<% if permitted_to? :manage, :users %>
+	In der unten stehenden Liste sind alle Spieler der Gletscherspalter geordnet nach deren Position aufgeführt. Eine erweiterte Mitgliederliste findest du <%= link_to "hier", users_path %>.
+	<% end %>
 	<div style="margin-top: 15px;">
 		<%= render :partial => "roster", 
 			:locals => {

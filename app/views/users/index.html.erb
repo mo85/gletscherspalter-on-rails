@@ -1,5 +1,8 @@
-<h1>Registrierte Benutzer</h1>
+<h1>Registrierte Benutzer
+<%= link_to image_tag("icons/page_white_acrobat.png"), users_path(:format => "pdf") %>
+</h1>
 
+<div style="margin-top: 10px;">
 <table class="default">
   <tr class="smaller">
 		<th>Name</th>
@@ -28,6 +31,7 @@
 	</tr>
 <% end %>
 </table>
+</div>
 
 <div class="links">
 	<% if permitted_to? :manage, :users %>

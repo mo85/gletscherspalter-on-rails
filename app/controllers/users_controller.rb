@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :index
   filter_access_to :all
-
+  
+  prawnto :prawn => { :page_layout => :landscape }
+  
   # GET /users
   def index
     @users = []
@@ -18,6 +20,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html
       format.ajax
+      format.pdf
     end
   end
 

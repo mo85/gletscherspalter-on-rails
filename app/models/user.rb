@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   attr_accessor :password_confirmation
 
   def full_name
-    "#{firstname} #{lastname}"
+   name
   end
   
   def role_symbols
@@ -103,7 +103,15 @@ class User < ActiveRecord::Base
   def location
     "#{zip} #{city}"
   end
-
+  
+  def active
+    is_player ? "Ja" : "Nein"
+  end
+  
+  def self.number_of_active_players
+    User.count(:conditions => ["is_player == ?", true])
+  end
+  
 private
 
   def password_non_blank
