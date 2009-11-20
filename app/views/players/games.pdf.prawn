@@ -15,11 +15,16 @@ end
 
 pdf.move_down(25)
 
-pdf.table games_table_entries, :border_style => :grid,
+cell_options = { :font_size => 11, :font_style => :bold }
+
+pdf.table(games_table_entries, :border_style => :grid,
   :row_colors => ["FFFFFF", "DDDDDD"],
-  :headers => ["Spiel", "Zeit", "Ort", "Resultat"]
-  
-  
+  :headers => [ Prawn::Table::Cell.new(cell_options.merge(:text => "Spiel")), 
+                Prawn::Table::Cell.new(cell_options.merge(:text => "Zeit")), 
+                Prawn::Table::Cell.new(cell_options.merge(:text => "Ort")), 
+                Prawn::Table::Cell.new(cell_options.merge(:text => "Resultat"))
+              ]
+)
 pdf.move_down(20)
 
 pdf.text "Anzahl Spiele: #{games.size}", :size => 14, :style => :bold
