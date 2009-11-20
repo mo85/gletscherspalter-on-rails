@@ -89,14 +89,16 @@ class PlayersController < ApplicationController
       params[:user].delete(:password_confirmation)
     end
     
-    respond_to do |format|
-      if @user.update_attributes(params[:user]) && @player.update_attributes(params[:player])
-        flash[:notice] = 'Spieler wurde erfolgreich angepasst.'
-        format.html { redirect_to(@player) }
-      else
-        format.html { render :action => "edit" }
-      end
+    Player.transaction do
+      @player.update_attributes!(params[:player])
+      @user.update_attributes!(params[:user])
+      flash[:notice] = 'Spieler wurde erfolgreich angepasst.'
+      redirect_to(@player)
     end
+    rescue ActiveRecord::RecordInvalid => e
+      @player.valid?
+      @user.valid? 
+      render :action => "edit"
   end
 
   private
