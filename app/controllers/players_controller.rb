@@ -44,7 +44,10 @@ class PlayersController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.pdf
+      format.pdf do 
+        games = @player.games
+        render :file => "players/games.pdf.prawn", :locals => { :games => games } 
+      end
       format.ics do
         send_data(@player.games_to_ical(request.raw_host_with_port), :type => 'text/calendar',
                   :disposition => "inline; filename=Gletscherspalter.ics",
