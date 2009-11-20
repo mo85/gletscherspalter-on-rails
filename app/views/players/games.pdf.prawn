@@ -4,6 +4,8 @@ else
   pdf.text "Saisonplan der Gletscherpalter", :size => 22, :style => :bold 
 end
 
+pdf.move_down(25)
+
 if games.empty?
   pdf.text "Bisher wurden keine Spiele gebucht."
 else
@@ -15,8 +17,6 @@ else
       game.result
     ]
   end
-
-  pdf.move_down(25)
 
   cell_options = { :font_size => 11, :font_style => :bold }
 
