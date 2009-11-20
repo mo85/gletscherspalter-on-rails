@@ -20,9 +20,11 @@
 <% end %>
 <div class="clear"></div>
 
+<% if permitted_to? :manage, @game %>
 <div class="links">
 	<%= link_to "Anpassen", edit_game_path(@game) %>
 </div>
+<% end %>
 
 <div style="margin-top: 20px;">
 <% if !@game.score.blank? %>
