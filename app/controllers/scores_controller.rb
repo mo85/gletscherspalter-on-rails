@@ -2,18 +2,34 @@ class ScoresController < ApplicationController
   
   filter_access_to :all
   
-  def edit
+  def new
+    @score = Score.new
     @game = Game.find(params[:game_id])
-    @score = Score.find(params[:id])
     
     respond_to do |format|
       format.html
     end
   end
   
-  def new
-    @score = Score.new
+  def create
     @game = Game.find(params[:game_id])
+    @score = @game.scores.build
+    update_params
+    
+    Score.transaction do
+      @score.update_attributes!(params[:score])
+      flash[:notice] = 'Skore-Eintrag erfolgreich hinzugefügt.'
+      redirect_to(game_path(:id => params[:game_id]))
+    end
+    rescue ActiveRecord::RecordInvalid => e
+      @score.valid?
+      render :action => "new", :locals => { :score => @score }
+
+  end
+  
+  def edit
+    @game = Game.find(params[:game_id])
+    @score = Score.find(params[:id])
     
     respond_to do |format|
       format.html
@@ -25,29 +41,14 @@ class ScoresController < ApplicationController
     @game = @score.game
     update_params
     
-    respond_to do |format|
-      if @score.update_attributes(params[:score])
+    Score.transaction do
+      @score.update_attributes!(params[:score])
         flash[:notice] = 'Skore-Eintrag erfolgreich angepasst.'
-        format.html { redirect_to(game_path(@game)) }
-      else
-        format.html { render :action => "edit", :locals => { :score => @score } }
-      end
+        redirect_to(game_path(@game))
     end
-  end
-  
-  def create
-    @game = Game.find(params[:game_id])
-    @score = @game.scores.build
-    update_params
-    
-    respond_to do |format|
-      if @score.update_attributes(params[:score])
-        flash[:notice] = 'Skore-Eintrag erfolgreich hinzugefügt.'
-        format.html { redirect_to(game_path(:id => params[:game_id])) }
-      else
-        format.html { render :action => "new", :locals => { :score => @score } }
-      end
-    end
+    rescue ActiveRecord::RecordInvalid => e
+      @score.valid?
+      render :action => "edit", :locals => { :score => @score }
   end
 
   def destroy
