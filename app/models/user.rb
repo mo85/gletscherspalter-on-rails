@@ -109,7 +109,7 @@ class User < ActiveRecord::Base
   end
   
   def self.number_of_active_players
-    User.count(:conditions => ["is_player == ?", true])
+    User.find_by_is_player(true).count
   end
   
 private
