@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
   
+  filter_access_to :all
+  
   include FlickRaw
   
   FlickRaw.api_key = "02c75fd7a65f0e72affa799b7105afc9"

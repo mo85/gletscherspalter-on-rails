@@ -16,7 +16,7 @@ Rails::Initializer.run do |config|
     :source => "http://gems.github.com"
   
   config.gem "icalendar"
-  config.gem "flickraw"
+  #config.gem "flickraw"
   config.gem "prawn"
   
   # Settings in config/environments/* take precedence over those specified here.

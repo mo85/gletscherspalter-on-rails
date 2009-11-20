@@ -1,4 +1,5 @@
 class NewsController < ApplicationController
+  filter_access_to :all
   
   def index
     @news = News.all

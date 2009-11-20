@@ -22,7 +22,4 @@ class AdminController < ApplicationController
     redirect_to(:controller => 'root')
   end
 
-  def insufficientcredentials
-  end
-
 end
