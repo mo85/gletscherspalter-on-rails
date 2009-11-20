@@ -38,7 +38,10 @@
 </div>
 
 <div id="my_games" style="margin-top: 20px;">
-	<h2>Gebuchte Spiele</h2>
+	<h2>Gebuchte Spiele
+	<%= link_to image_tag("icons/calendar.png", :alt => 'Spiele in Outlook einfügen'), games_player_url(:format => "ics", :protocol => "webcal", :token => current_user.token) %>
+	<%= link_to image_tag("icons/page_white_acrobat.png", :alt => 'Spiele als PDF'), games_player_path(:format => "pdf") %>
+	</h2>
 	
 	<div style="margin-top: 10px">
 		<%= render :partial => "games/game_table", :locals => { :games => @games, 
@@ -47,9 +50,7 @@
 	
 	<% if permitted_to? :games, @player %>
 	<div class="links">
-		<%= link_to 'Weitere Spiele buchen', games_player_path %> | 
-		<%= link_to 'Spiele in Outlook einfügen', games_player_url(:format => "ics", :protocol => "webcal", :token => current_user.token) %> |
-		<%= link_to 'Spiele als PDF', games_player_path(:format => "pdf") %>
+		<%= link_to 'Weitere Spiele buchen', games_player_path %> 
 	</div>
 	<% end %>
 </div>
