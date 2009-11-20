@@ -39,7 +39,9 @@
 
 <div id="my_games" style="margin-top: 20px;">
 	<h2>Gebuchte Spiele
+	<% if logged_in? %>
 	<%= link_to image_tag("icons/calendar.png", :alt => 'Spiele in Outlook einfügen'), games_player_url(:format => "ics", :protocol => "webcal", :token => current_user.token) %>
+	<% end %>
 	<%= link_to image_tag("icons/page_white_acrobat.png", :alt => 'Spiele als PDF'), games_player_path(:format => "pdf") %>
 	</h2>
 	
