@@ -1,12 +1,15 @@
 <div id="players">
 
+<% if @players["G"] %>
 <%= render :partial => "players/player_table", :locals => {:position => "Goalie", 
 	:players => @players["G"], :editable => editable, :deletable => deletable, :delete_icon => delete_icon, :delete_path => delete_path } %>
-
+<% end %>
+<% if @players["BW"] %>
 <%= render :partial => "players/player_table", :locals => {:position => "Verteidiger", 
 	:players => @players["BW"], :editable => editable, :deletable => deletable, :delete_icon => delete_icon, :delete_path => delete_path } %>
-
+<% end %>
+<% if @players["FW"] %>
 <%= render :partial => "players/player_table", :locals => {:position => "Stürmer", 
 	:players => @players["FW"], :editable => editable, :deletable => deletable, :delete_icon => delete_icon, :delete_path => delete_path } %>
-
+<% end %>
 </div>
