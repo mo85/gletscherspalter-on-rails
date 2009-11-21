@@ -109,7 +109,7 @@ class User < ActiveRecord::Base
   end
   
   def self.number_of_active_players
-    User.find_by_is_player(true).size
+    User.find_all_by_is_player(true).size
   end
   
 private
