@@ -19,7 +19,7 @@ class Game < ActiveRecord::Base
   end
   
   def self.last_game
-    @last_game ||= last(:conditions => ["score != ?",""])
+    last(:conditions => ["score != ?",""])
   end
   
   def date_formatted
