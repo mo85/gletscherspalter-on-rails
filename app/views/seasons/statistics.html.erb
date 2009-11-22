@@ -9,7 +9,7 @@
 	<h2>Team Statistiken</h2>
 	<% uri =  Gchart.pie_3d( :size => '500x200', 
 								:bg => 'ffffff',
-							 	:bar_colors => ['d40610', 'ffcf32', '232e99'],
+							 	:bar_colors => ['be0400', 'ffcf32', '232e99'],
 	             	:labels => [
 									"Siege (#{@game_stats[0]})", 
 									"Niederlagen (#{@game_stats[1]})", 
@@ -25,7 +25,7 @@
 <div style="margin-top: 10px;">
 	<h2>Spieler Statistiken</h2>
 	
-	<% url = Gchart.bar( :size => '700x400',
+	<% url = Gchart.bar( :size => '750x320',
 	 									:title => "Skorerpunkte",
 										:title_size => 16,
 										:data => @score_stats,
