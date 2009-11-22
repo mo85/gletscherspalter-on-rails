@@ -1,7 +1,46 @@
-<h1>Statistik Saison <%= @season.to_s %></h1>
+<h1>Saison <%= @season.to_s %></h1>
+
+<div>
+	Auf dieser Seite werden die Statistiken der Gletscherspalter der jeweiligen Saison angezeigt. Nach den Team Statistiken, folgen die individuellen Werte der Spieler. <strong>Die Seite befindet sich noch in der Entwicklung. Fehler können deshalb durchaus enthalten sein.</strong>
+</div>
 
 <div style="margin-top: 10px;">
-This site is currently under construction.
+	
+	<h2>Team Statistiken</h2>
+	<% uri =  Gchart.pie_3d( :size => '500x200', 
+								:bg => 'ffffff',
+							 	:bar_colors => ['d40610', 'ffcf32', '232e99'],
+	             	:labels => [
+									"Siege (#{@game_stats[0]})", 
+									"Niederlagen (#{@game_stats[1]})", 
+									"Unentschieden (#{@game_stats[2]})"
+								],
+	              :data => @game_stats)
+	%>
+	
+	<%= image_tag(uri)%>
+
+</div>
+
+<div style="margin-top: 10px;">
+	<h2>Spieler Statistiken</h2>
+	
+	<% url = Gchart.bar( :size => '700x400',
+	 									:title => "Skorerpunkte",
+										:title_size => 16,
+										:data => @score_stats,
+										:bar_colors => ['be0400','33d200'],
+										:bar_width_and_spacing => [60,20],
+										:stacked => false,
+										:labels => ["Tore", "Assists"])
+		url += "&chxt=x,y&chxl=0:|#{@scorer_names.join('|')}|"
+		
+
+	%>
+
+	
+	<%= image_tag(url) %>
+
 </div>
 
 <div style="links">

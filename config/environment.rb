@@ -17,6 +17,7 @@ Rails::Initializer.run do |config|
   
   config.gem "icalendar"
   config.gem "flickraw"
+  config.gem "googlecharts", :lib => "gchart" 
   config.gem "prawn"
   
   # Settings in config/environments/* take precedence over those specified here.

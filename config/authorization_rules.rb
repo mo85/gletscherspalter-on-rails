@@ -2,6 +2,7 @@ authorization do
   role :guest do
     has_permission_on [:players, :games, :news, :photos], :to => :read
     has_permission_on :root, :to => [:index, :contact, :locations]
+    has_permission_on :seasons, :to => [:index, :statistics]
   end
   
   role :user do
