@@ -63,7 +63,7 @@
 			<li><%= link_to "Saison", games_path %>
 				<ul>
 					<li><%= link_to "Spielplan", games_path %></li>
-					<li><%= link_to "Statistiken" %></li>
+					<li><%= link_to "Statistiken", statistics_season_path(current_season) %></li>
 				</ul>
 			</li>
 			<li><%= link_to "Galleries", :controller => "photos", :action => "index" %></li>

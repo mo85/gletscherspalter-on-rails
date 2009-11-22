@@ -26,6 +26,29 @@ class Season < ActiveRecord::Base
   def to_s
     "#{start_year}/#{end_year}"
   end
+  
+  def games_played
+    @games_played ||= games.select{ |g| g.result != nil }
+  end
+  
+  def wins
+    games_played.select{ |g| g.score > g.opponent_score }
+  end
 
+  def tied_games
+    games_played.select{ |g| g.score == g.opponent_score }
+  end
+  
+  def defeats
+    games_played.select{ |g| g.score < g.opponent_score }
+  end
+  
+  def scored_goals
+    games_played.sum(&:score)
+  end
+  
+  def goals_against
+    games_played.sum(&:opponent_score)
+  end
   
 end

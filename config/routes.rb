@@ -12,6 +12,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :locations, :except => [:show]
 
   map.resources :rinks, :except => [:show]
+  
+  map.resources :seasons, :only => [:index],
+    :member => { :statistics => :get }
 
   map.resources :topics do |topics|
     topics.resources :posts, :except => [:show, :index]
