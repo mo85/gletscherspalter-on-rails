@@ -21,7 +21,7 @@
 
 </head>
 
-<body>
+<body onload="DynarchMenu.setup('header_main_menu', { shadows: false, electric: true });">
 
 <div id="wrapper">   
 
@@ -37,39 +37,57 @@
    
 	</div>
 	
-	<div>
-		<ul id="menu">
-			<li><%= link_to "Home" , root_path %></li>
+	<div id="menu_container">
+		<ul id="header_main_menu">
+			<li class="first"><%= link_to "Home" , root_path %></li>
 			<li><%= link_to "News", news_index_path %></li>
-			<% if logged_in? %>
+			<% if logged_in? && current_user.is_player %>
 				<li><%= link_to "Mein Profil", player_path(current_user.player) %>
+					<ul>
+						<li><%= link_to "Profil Anpassen", edit_player_path(current_user.player) %></li>
+						<li><%= link_to "Spiele Verwalten", games_player_path(current_user.player) %>
+					</ul>
+				</li>
 			<% end %>
-			<li><%= link_to "Team", players_path %></li>
-			<li><%= link_to "Saison", games_path %></li>
-			<% if logged_in? %>
-			<li><%= link_to "Forum", topics_path %></li>
-			<% end %>
-			<li><%= link_to "Galleries", :controller => "photos", :action => "index" %>
-			<li><%= link_to "Orte", :controller => "root", :action => "locations" %></li>
-	    <li><%= link_to "Kontakt", :controller => "root", :action => "contact" %></li>
-
-			<% if logged_in? && current_user.is_admin %>
-	        <li onmouseover="$('admin_links').show()" onmousemove="$('admin_links').show()" onmouseout="$('admin_links').hide()"><%= link_to "Admin" %></li>
-					<div id="admin_links" class="admin_menu" style="display: none;" onmouseover="$('admin_links').show();" onmousemove="$('admin_links').show()" onmouseout="$('admin_links').hide()">
-						<ul>
-							<li><%= link_to "Nachrichten", messages_path %></li>
-							<li><%= link_to "Events", events_path %></li>
-		        	<li><%= link_to "Benutzer", users_path %></li>
-		        	<li><%= link_to "Austragungsorte", locations_path %></li>
-						</ul>
-					</div>
+			<li><%= link_to "Team", players_path %>
+				<% if logged_in? %>
+				<ul>
+					<li><%= link_to "Aufstellung", players_path %></li>
+					<% if current_user.is_admin? %>
+					<li><%= link_to "Mitglieder", users_path %></li>
 					<% end %>
-
-	        <% if logged_in? %>
-	            <li><%= link_to "Logout", :controller => "admin", :action => "logout" %></li>
-	        <% else %>
-			    <li><%= link_to "Login", :controller => "admin", :action => "login" %></li>
-	        <% end %>
+					<li><%= link_to "Forum", topics_path %></li>
+				</ul>
+				<% end %>
+			</li>
+			<li><%= link_to "Saison", games_path %>
+				<ul>
+					<li><%= link_to "Spielplan", games_path %></li>
+					<li><%= link_to "Statistiken" %></li>
+				</ul>
+			</li>
+			<li><%= link_to "Galleries", :controller => "photos", :action => "index" %></li>
+			<li>Informationen
+				<ul>
+					<li><%= link_to "Orte", :controller => "root", :action => "locations" %></li>
+					<li><%= link_to "Kontakt", :controller => "root", :action => "contact" %></li>
+				</ul>
+			</li>
+			<% if logged_in? %>
+				<% if current_user.is_admin? %>
+				<li>Admin
+					<ul>
+						<li><%= link_to "Nachrichten", messages_path %></li>
+						<li><%= link_to "Events", events_path %></li>
+	        	<li><%= link_to "Benutzer", users_path %></li>
+	        	<li><%= link_to "Austragungsorte", locations_path %></li>
+					</ul>
+				</li>
+				<% end %>
+        <li><%= link_to "Logout", :controller => "admin", :action => "logout" %></li>
+      <% else %>
+	    	<li><%= link_to "Login", :controller => "admin", :action => "login" %></li>
+      <% end %>
 		</ul>
 	</div>
 	
@@ -89,7 +107,6 @@
 		<% end %>
 		<%= yield :layout %>
 	</div>
-
 </div> 
 </body>
 </html>

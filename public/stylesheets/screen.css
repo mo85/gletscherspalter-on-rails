@@ -21,7 +21,7 @@ div.clear {
 
 #leftcolumn { 
 	position: relative;
-	top: -32px;
+	top: -27px;
 	color: #333;
 	background: #ccc;
 	margin: 0px 0px 5px 0px;
@@ -34,7 +34,7 @@ div.clear {
 
 #rightcolumn {
 	position: relative;
-	top: -32px;
+	top: -27px;
 	float: right;
 	color: #333;
 	background: #fff;

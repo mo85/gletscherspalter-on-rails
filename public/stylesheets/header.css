@@ -3,13 +3,14 @@
  padding: 0px;
  height: 150px;
  margin: 10px 0px 5px 0px;
-	position: relative;
+ position: relative;
 }
 
 #title{
 	background: url(/images/header_background.jpg);
 	text-align: center;
-	height: 150px;}
+	height: 150px;
+}
 
 #ward {
   position: absolute;
@@ -21,5 +22,5 @@
 #wesley {
   position: absolute;
   top: 5px;
-  right: 45px;
+  right: 30px;
 }
