@@ -33,7 +33,10 @@
 										:bar_width_and_spacing => [35,20],
 										:stacked => false,
 										:labels => ["Tore", "Assists"])
+		# adding player names as bar labels
 		url += "&chxt=x,y&chxl=0:|#{@scorer_names.join('|')}|"
+		# adjusting the range at y axis
+		url += "&chxr=1,0,#{@max_value},1"
 		
 
 	%>
