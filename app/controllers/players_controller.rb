@@ -25,7 +25,7 @@ class PlayersController < ApplicationController
   # GET /players/1
   def show
     @player = Player.find(params[:id])
-    @games = @player.games_of_season
+    @games = @player.games_of_season.paginate :page => params[:page], :per_page => 10
     respond_to do |format|
       format.html
     end
