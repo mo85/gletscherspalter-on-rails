@@ -34,7 +34,7 @@
 										:stacked => false,
 										:labels => ["Tore", "Assists"])
 		# adding player names as bar labels
-		url += "&chxt=x,y&chxl=1:|#{@scorer_names.join('|')}|"
+		url += "&chxt=x,y&chxl=1:|#{@scorer_names.reverse.join('|')}|"
 		# adjusting the range at y axis
 		url += "&chxr=0,0,#{@max_value},1"
 		
