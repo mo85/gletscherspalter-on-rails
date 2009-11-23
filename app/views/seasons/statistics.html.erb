@@ -1,7 +1,7 @@
 <h1>Saison <%= @season.to_s %></h1>
 
 <div>
-	Auf dieser Seite werden die Statistiken der Gletscherspalter der jeweiligen Saison angezeigt. Nach den Team Statistiken, folgen die individuellen Werte der Spieler. <strong>Die Seite befindet sich noch in der Entwicklung. Fehler können deshalb durchaus enthalten sein.</strong>
+	Auf dieser Seite werden die Statistiken der Gletscherspalter der jeweiligen Saison angezeigt. Nach den Team Statistiken, folgen die individuellen Werte der Spieler.
 </div>
 
 <div style="margin-top: 10px;">
@@ -25,18 +25,18 @@
 <div style="margin-top: 10px;">
 	<h2>Spieler Statistiken</h2>
 	
-	<% url = Gchart.bar( :size => '750x320',
+	<% url = Gchart.bar( :size => '750x350',
+										:orientation => 'horizontal',
 	 									:title => "Skorerpunkte",
 										:title_size => 16,
 										:data => @score_stats,
 										:bar_colors => ['be0400','33d200'],
-										:bar_width_and_spacing => [35,20],
 										:stacked => false,
 										:labels => ["Tore", "Assists"])
 		# adding player names as bar labels
-		url += "&chxt=x,y&chxl=0:|#{@scorer_names.join('|')}|"
+		url += "&chxt=x,y&chxl=1:|#{@scorer_names.join('|')}|"
 		# adjusting the range at y axis
-		url += "&chxr=1,0,#{@max_value},1"
+		url += "&chxr=0,0,#{@max_value},1"
 		
 
 	%>
