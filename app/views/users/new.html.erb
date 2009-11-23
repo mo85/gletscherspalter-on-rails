@@ -13,6 +13,28 @@
     <%= f.text_field :lastname %>
   </div>
 
+	<div>
+		<%= label_tag :street, "Strasse und Nr." %>
+		<%= text_field_tag "user[street]", h(@user.street), :size => 20 %>
+		<%= text_field_tag "user[number]", h(@user.number), :size => 5 %>
+	</div>
+	
+	<div>
+		<%= label_tag :city, "Ort und PLZ" %>
+		<%= text_field_tag "user[city]", h(@user.city), :size => 20 %>
+		<%= text_field_tag "user[zip]", h(@user.zip), :size => 5 %>
+	</div>
+	
+	<div>
+		<%= f.label "Telefon" %>
+		<%= f.text_field h(:phone) %>
+  </div>
+
+	<div>
+		<%= f.label "Mobile" %>
+		<%= f.text_field h(:mobile) %>
+  </div>
+
   <div>
     <%= f.label "E-Mail" %>
     <%= f.text_field :email %>
@@ -21,11 +43,6 @@
 	<div>
 		<%= f.label "Aktivmitglied" %>
 		<%= f.check_box  :is_player %>
-	</div>
-	
-	<div>
-		<%= f.label "Admin" %>
-		<%= f.check_box :is_admin %>
 	</div>
 	
   <div>
