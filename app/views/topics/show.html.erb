@@ -2,7 +2,7 @@
 
 <div style="margin-top: 10px;">
 	
-	<% if @topic.posts.empty? %>
+	<% if @posts.empty? %>
 		Zu diesem Thread gibt es noch keine Kommentarte.
 
 	<% else %>
@@ -19,7 +19,7 @@
 		</thead>
 
 		<tbody>
-	  <% for post in @topic.posts %>
+	  <% for post in @posts %>
 	    <tr class="<%= cycle('odd-line', 'even-line') %>">
 		   	<td class="author"><%=h post.user.full_name %></td>
 		   	<td style="font-size: 14px;"><%=sanitize post.content %></td>
@@ -34,7 +34,13 @@
 	  <% end %>
 		</tbody>
 	  </table>
-
+		
+		<div style="margin-top: 5px;">
+			<hr/>
+			<%= will_paginate @posts %>
+			<hr/>
+		</div>
+		
 	</div>
 	<% end %>
 

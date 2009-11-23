@@ -13,7 +13,7 @@ class TopicsController < ApplicationController
   # GET /topics/1
   def show
     @topic = Topic.find(params[:id], :include => {:posts => :user})
-
+    @posts = @topic.posts.paginate :page => params[:page], :per_page => 10
     respond_to do |format|
       format.html # show.html.erb
     end
