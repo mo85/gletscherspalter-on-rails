@@ -5,7 +5,7 @@ class GamesController < ApplicationController
   # GET /games
   def index
     @title = "Gletscherspatler.ch::Spiele"
-    @games = current_season.games
+    @games = current_season.games.paginate :page => params[:page], :per_page => 10
     respond_to do |format|
       format.html
       format.pdf do
