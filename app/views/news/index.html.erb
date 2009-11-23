@@ -5,6 +5,13 @@
 	Zur Zeit gibt es keine Neuigkeiten.
 <% else %>
 	<%= render :partial => "news_table", :locals => { :news => @news }%>
+	
+	<div style="margin-top: 5px;">
+		<hr/>
+		<%= will_paginate @news%>
+		<hr/>
+	</div>
+	
 <% end %>
 </div>
 

@@ -2,7 +2,7 @@ class NewsController < ApplicationController
   filter_access_to :all
   
   def index
-    @news = News.all
+    @news = News.all.paginate :page => params[:page], :per_page => 3
     
     respond_to do |format|
       format.html

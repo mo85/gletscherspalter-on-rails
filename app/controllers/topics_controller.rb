@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
   
   # GET /topics
   def index
-    @topics = Topic.find(:all)
+    @topics = Topic.all.paginate :page => params[:page], :per_page => 15
 
     respond_to do |format|
       format.html # insufficientcredentials.html.erb

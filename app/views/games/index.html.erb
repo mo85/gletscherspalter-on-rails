@@ -6,9 +6,11 @@
 	<%= render :partial => "game_table", :locals => { :games => @games, 
 		:show_actions => true, :show_result => true, :check_box_needed => false 
 		} %>
+	<div style="margin-top: 5px;">
 	<hr/>
-	<%= will_paginate @games %>
+		<%= will_paginate @games %>
 	<hr/>
+	</div>
 </div>
 
 <% if permitted_to? :manage, :games %>
