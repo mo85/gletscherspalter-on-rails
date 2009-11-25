@@ -5,7 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :news
   
-  map.resources :guestnotes, :except => [:edit, :update, :show]
+  map.resources :guestnotes, :except => [:show]
   
   map.resources :messages, :except => [:show, :edit, :update]
 

@@ -26,6 +26,9 @@ class SeasonsController < ApplicationController
     assists = player_goal_assist_entries.collect{|e| e[2]}
     @score_stats = [goals, assists]
     @max_value = [goals,assists].flatten.max
+    
+    @goals = @season.scored_goals
+    @goals_against = @season.goals_against
   
     respond_to do |format|
       format.html

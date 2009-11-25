@@ -1,18 +1,12 @@
 <% include_tinymce %>
-<h1>Neuer Gästebuch Eintrag</h1>
+<h1>Gästebucheintrag Anpassen</h1>
 
-<% form_for @note, :url => { :action => :create, :token => @token }, :html => { :class => :default } do |f| %>
+<% form_for @note, :url => { :action => :update }, :html => { :class => :default } do |f| %>
 	<%= f.error_messages %>
-	<%= error_messages_for :result %>
 	
 	<div>
 		<%= f.label "Name" %>
 		<%= f.text_field :author %>
-	</div>
-	
-	<div>
-		<%= label_tag nil, "Summe von #{@random_no1} und #{@random_no2}" %>
-		<%= text_field_tag :result, nil, :size => 30 %>
 	</div>
 	
 	<div>
@@ -21,7 +15,7 @@
 	</div>
 	
 	<div>
-		<%= f.submit "Speichern" %>
+		<%= f.submit "Anpassen" %>
 	</div>
 <% end %>
 

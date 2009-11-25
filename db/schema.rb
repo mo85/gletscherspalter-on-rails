@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091125083318) do
+ActiveRecord::Schema.define(:version => 20091125192432) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20091125083318) do
   create_table "guestnotes", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "note"
+    t.text     "note",       :limit => 255
     t.string   "author"
   end
 

@@ -7,7 +7,9 @@
 <div style="margin-top: 10px;">
 	
 	<h2>Team Statistiken</h2>
-	<% uri =  Gchart.pie_3d( :size => '500x200', 
+	
+	<div style="float: left; width: 50%">
+	<% uri =  Gchart.pie_3d( :size => '360x110', 
 								:bg => 'ffffff',
 							 	:bar_colors => ['be0400', 'ffcf32', '232e99'],
 	             	:labels => [
@@ -19,13 +21,26 @@
 	%>
 	
 	<%= image_tag(uri)%>
+	</div>
+	
+	<div style = "width: 50%; float:right;">
+		<%= image_tag(Gchart.pie_3d( :size => '360x110',
+									:bar_colors => ['be0400', '232e99'],
+									:labels => [
+										"Tore (#{@goals})", "Gegentore (#{@goals_against})"],
+									:data => [@goals, @goals_against]
+		)) %>
+	</div>
+	
+	<div class="clear">
+	</div>
 
 </div>
 
 <div style="margin-top: 10px;">
 	<h2>Spieler Statistiken</h2>
 	
-	<% url = Gchart.bar( :size => '750x350',
+	<% url = Gchart.bar( :size => '750x300',
 										:orientation => 'horizontal',
 	 									:title => "Skorerpunkte",
 										:title_size => 16,

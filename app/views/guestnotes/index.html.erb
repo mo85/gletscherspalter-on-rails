@@ -1,23 +1,38 @@
 <h1>Gästebuch</h1>
 
 <div style="margin-top: 10px;">
-<table class="default">
+<table class="forum">
 	<thead>
-		<th>Author</th>
-		<th>Nachricht</th>
-		<th>&nbsp;</th>
+		<tr>
+			<th width="20%">Autor</th>
+			<th width="55%">Nachricht</th>
+			<th width="15%">&nbsp;</th>
+			<% if permitted_to? :manage, :guestnotes %>
+			<th width="10%">Aktion</th>
+			<% end %>
+		</tr>
 	</thead>
 	
 	<tbody>
 		<% for note in @notes %>
-		<tr>
-			<td><%=h note.author %></td>
-			<td><%=sanitize note.note %></td>
-			<td><%= l(note.created_at, :format => :default) %></td>
+		<tr class="<%= cycle('odd-line', 'even-line') %>">
+			<td class="author"><%=h note.author %></td>
+			<td style="font-size: 14px;"><%=sanitize note.note %></td>
+			<td class="date"><%= l(note.created_at, :format => :default_2) %></td>
+			<% if permitted_to? :manage, note %>
+			<td><%= link_to(image_tag("icons/pencil.png"), edit_guestnote_path(note)) %><%= link_to(image_tag("icons/delete.png"), note, :confirm => "Möchten sie diesen Eintrag wirklich löschen?", :method => :delete) %>
+			</td>
+			<% end %>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
+</div>
+
+<div style="margin-top: 5px;">
+	<hr/>
+	<%= will_paginate @notes %>
+	<hr/>
 </div>
 
 <div class="links">

@@ -3,6 +3,7 @@ authorization do
     has_permission_on [:players, :games, :news, :photos], :to => :read
     has_permission_on :root, :to => [:index, :contact, :locations]
     has_permission_on :seasons, :to => [:index, :statistics]
+    has_permission_on :guestnotes, :to => [:index, :new, :create]
   end
   
   role :user do
@@ -25,7 +26,7 @@ authorization do
   
   role :admin do
     includes :user
-    has_permission_on [:players, :users, :scores, :topics, :news], :to => [:read, :manage]
+    has_permission_on [:players, :users, :scores, :topics, :news, :guestnotes], :to => [:read, :manage]
     has_permission_on :players, :to => :subscribe_to_games
     has_permission_on [:locations, :events, :messages], :to => [:read, :manage]
     has_permission_on :games, :to => [:read, :manage, :add_or_remove_players_from_games]
