@@ -1,5 +1,6 @@
 <h1>Gästebuch</h1>
 
+<% unless @notes.empty? %>
 <div style="margin-top: 10px;">
 <table class="forum">
 	<thead>
@@ -34,6 +35,9 @@
 	<%= will_paginate @notes %>
 	<hr/>
 </div>
+<% else %>
+Momentan gibt es noch keine Einträge im Gästebuch.
+<% end %>
 
 <div class="links">
 	<%= link_to "Neuen Eintrag erstellen", new_guestnote_path %>
