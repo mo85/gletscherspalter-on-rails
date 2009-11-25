@@ -1,0 +1,25 @@
+<h1>Gästebuch</h1>
+
+<div style="margin-top: 10px;">
+<table class="default">
+	<thead>
+		<th>Author</th>
+		<th>Nachricht</th>
+		<th>&nbsp;</th>
+	</thead>
+	
+	<tbody>
+		<% for note in @notes %>
+		<tr>
+			<td><%=h note.author %></td>
+			<td><%=sanitize note.note %></td>
+			<td><%= l(note.created_at, :format => :default) %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+</div>
+
+<div class="links">
+	<%= link_to "Neuen Eintrag erstellen", new_guestnote_path %>
+</div>

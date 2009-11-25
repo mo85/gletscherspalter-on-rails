@@ -35,7 +35,7 @@ class Game < ActiveRecord::Base
   end
 
   def self.next_game
-    @next_game ||= find(:first, :conditions => ["date > ?", Time.now]) 
+    find(:first, :conditions => ["date > ?", Time.now]) 
   end
   
   def self.future_games(options = {})
