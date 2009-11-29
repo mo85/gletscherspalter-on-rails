@@ -1,12 +1,23 @@
-load 'deploy' if respond_to?(:namespace) # cap2 differentiator
 Dir['vendor/plugins/*/recipes/*.rb'].each { |plugin| load(plugin) }
 
-load 'config/deploy' # remove this line to skip loading any of the default tasks
+set :user, "gletsche"
+set :rails_dir, "/home/gletsche/railsapp"
 
-task :restart, :roles => :app do
+server "gletscherspalter.railsplayground.net", :anything
+
+desc "update + restart"
+task :deploy do
+  update
+  restart
 end
 
-task :after_update_code, :roles => [:web, :db, :app] do 
+desc "git pull"
+task :update do
+  run "cd #{rails_dir} && git pull"
+end
+
+desc "kill all dispatch.fcgi"
+task :restart do 
   run "chmod 755 railsapp/public -R"
   run "pkill -9 dispatch.fcgi"
 end

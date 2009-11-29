@@ -20,7 +20,6 @@ class SeasonsController < ApplicationController
         [p.name, p.goals(@season), p.assists(@season)]
       end
     }.compact
-    
     @scorer_names = player_goal_assist_entries.collect{|e| e[0]}
     goals = player_goal_assist_entries.collect{|e| e[1]}
     assists = player_goal_assist_entries.collect{|e| e[2]}

@@ -1,17 +1,15 @@
 set :user, 'gletsche'
 
-set :server, 'gletscherspalter.railsplayground.net'
+set :server_address, 'gletscherspalter.railsplayground.net'
 set :application, "gletscherspalter-on-rails"
 set :applicationdir, 'railsapp'
 set :repository,  "git://github.com/mo85/gletscherspalter-on-rails.git"
-set :use_suod, false
+set :use_sudo, false
 
 set :scm, :git
 set :branch, :master
 
-role :web, server                          # Your HTTP server, Apache/etc
-role :app, server                          # This may be the same as your `Web` server
-role :db,  server, :primary => true        # This is where Rails migrations will run
+server server_address, :app, :db, :web, :primary => true
 
 set :deploy_to, "/home/gletsche/railsapp"
 set :group_writable, false
@@ -27,3 +25,11 @@ set :group_writable, false
 #     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
 #   end
 # end
+
+task :restart, :roles => :app do
+end
+
+task :after_update_code, :roles => [:web, :db, :app] do 
+  run "chmod 755 railsapp/public -R"
+  run "pkill -9 dispatch.fcgi"
+end
