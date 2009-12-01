@@ -40,7 +40,8 @@
 <div style="margin-top: 10px;">
 	<h2>Spieler Statistiken</h2>
 	
-	<% url = Gchart.bar( :size => "750x#{(@scorer_names.size * 2 * 35 + 50).to_s}",
+	<% 
+	url = Gchart.bar( :size => "725x400",
 										:orientation => 'horizontal',
 	 									:title => "Skorerpunkte",
 										:title_size => 16,
