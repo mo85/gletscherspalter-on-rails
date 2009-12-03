@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+  fixtures :users
   
   test "user_and_player_creation" do
     @user = User.create(:login => "chris.stettler", :firstname => "chris", :lastname => "stettler")
@@ -18,5 +19,20 @@ class UserTest < ActiveSupport::TestCase
 
     player = Player.find_by_user_id(@user.id)
     assert_equal player, nil
+  end
+  
+  test "deleting a user should also delete its player" do
+    @user = User.create!(:login => "chris.stettler", :firstname => "chris", :lastname => "stettler")
+    
+    assert_not_nil @user.player
+    
+    player_id = @user.player.id
+    
+    @user.destroy
+    
+    assert_raise ActiveRecord::RecordNotFound do
+      Player.find(player_id)
+    end
+    
   end
 end
