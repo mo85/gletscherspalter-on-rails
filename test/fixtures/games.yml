@@ -39,7 +39,7 @@ dukla:
   opponent: 'Dukla VBZ'
   score: 4
   opponent_score: 4
-  date: <%= Time.now %>
+  date: <%= 2.hours.ago %>
   season: actual
 
 sagmehlfeger:
