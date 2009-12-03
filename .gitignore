@@ -2,4 +2,4 @@ log/*.log
 .idea/*
 db/development.sqlite3
 config/database.yml
-doc/flickr_account_infox.txt
+doc/flickr*
