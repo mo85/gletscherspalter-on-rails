@@ -24,7 +24,7 @@ class Season < ActiveRecord::Base
   end
   
   def to_s
-    "#{start_year}/#{end_year}"
+    "#{start_year} / #{end_year}"
   end
   
   def games_played

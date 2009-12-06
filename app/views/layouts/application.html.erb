@@ -1,131 +1,146 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="language" content="de">
-<meta name="description" content="Homepage des Plauscheishockey Vereins Gletscherspalter des Zürcher Oberlandes in der Schweiz">
-<meta name="author" content="Mark Odermatt">
-<meta name="keyword" content="Eishockey, Eishockeymannschaft, Plausch, Plauscheishockey, Plauschmannschaft, Gletscherspalter, Hockey, Hockeymannschaft,EHC Gletscherspalter, Sport, www.gletscherspalter.ch, Gletschis, Zürich Oberland">
-<meta name="robots" content="index,follow">
-<meta name="zipcode" content="8623">
-<meta name="city" content="Wetzikon">
-<meta name="state" content="Zurich">
-<meta name="country" content="CH">
-<meta name="DC.Creator" content="Mark Odermatt">
-<meta name="DC.Subject" content="EHC Gletscherspalter - Homepage für Mitglieder und Interessierte">
-<meta name="DC.Publisher" content="Gletscherspalter">
-<meta name="DC.Date" content="2009-11-27">
-<meta name="DC.Language" content="de">
-<meta name="DC.Coverage" content="Zurich">
-<meta name="DC.Identifier" content="http://gletscherspalter.railsplayground.net">
-<meta name="DC.Type" content="Text">
-<meta name="DC.Format" content="text/html">
-<meta name="DC.Rights" content="Alle Rechte liegen beim Autor">
-
-<title><%= @title || "Glescherspalter.ch" %></title>
-<%= stylesheet_link_tag "screen" %>
-<%= stylesheet_link_tag "header" %>
-<%= stylesheet_link_tag "menu" %>
-<%= stylesheet_link_tag "table" %>
-<%= stylesheet_link_tag "gletscherspalter" %>
-<%= stylesheet_link_tag "form" %>
-<%= stylesheet_link_tag "autocompleter" %>
-<%= stylesheet_link_tag "lightbox" %>
-<%= stylesheet_link_tag "photos" %>
-
-<%= yield(:javascripts) %>
-<%= javascript_include_tag :all %>
-
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="language" content="de">
+	<meta name="description" content="Homepage des Plauscheishockey Vereins Gletscherspalter des Zürcher Oberlandes in der Schweiz">
+	<meta name="author" content="Mark Odermatt">
+	<meta name="keyword" content="Eishockey, Eishockeymannschaft, Plausch, Plauscheishockey, Plauschmannschaft, Gletscherspalter, Hockey, Hockeymannschaft,EHC Gletscherspalter, Sport, www.gletscherspalter.ch, Gletschis, Zürich Oberland">
+	<meta name="robots" content="index,follow">
+	<meta name="zipcode" content="8623">
+	<meta name="city" content="Wetzikon">
+	<meta name="state" content="Zurich">
+	<meta name="country" content="CH">
+	<meta name="DC.Creator" content="Mark Odermatt">
+	<meta name="DC.Subject" content="EHC Gletscherspalter - Homepage für Mitglieder und Interessierte">
+	<meta name="DC.Publisher" content="Gletscherspalter">
+	<meta name="DC.Date" content="2009-11-27">
+	<meta name="DC.Language" content="de">
+	<meta name="DC.Coverage" content="Zurich">
+	<meta name="DC.Identifier" content="http://gletscherspalter.railsplayground.net">
+	<meta name="DC.Type" content="Text">
+	<meta name="DC.Format" content="text/html">
+	<meta name="DC.Rights" content="Alle Rechte liegen beim Autor">
+	
+	<%= stylesheet_link_tag :all %>
+	
+	<%= javascript_include_tag :all %>
 </head>
 
-<body onload="DynarchMenu.setup('header_main_menu', { shadows: false, electric: true });">
-
-<div id="wrapper">   
-
-	<div id="header">
-
-  	<%= image_tag("cam_ward.png", :id => "ward") %>
-		
-		<%= image_tag("/images/glen_wesley.png", :id => "wesley") %>
-		
-		<div id="title">
-		<%= image_tag("/images/glet_title.png") %>
-		</div>
-   
-	</div>
+<body>
 	
-	<div id="menu_container">
-		<ul id="header_main_menu">
-			<li class="first"><%= link_to "Home" , root_path %></li>
-			<li><%= link_to "News", news_index_path %></li>
-			<% if logged_in? && current_user.is_player %>
-				<li><%= link_to "Mein Profil", player_path(current_user.player) %>
-					<ul>
-						<li><%= link_to "Profil Anpassen", edit_player_path(current_user.player) %></li>
-						<li><%= link_to "Spiele Verwalten", games_player_path(current_user.player) %>
-					</ul>
-				</li>
-			<% end %>
-			<li><%= link_to "Team", players_path %>
-				<% if logged_in? %>
-				<ul>
-					<li><%= link_to "Aufstellung", players_path %></li>
-					<% if current_user.is_admin? %>
-					<li><%= link_to "Mitglieder", users_path %></li>
+	<div id="wrapper">
+
+		<div id="header">
+			<%= image_tag("new_style/header_people.png") %>
+			
+			<div id="menu_container">
+				<ul id="header_main_menu">
+					<li class="first"><%= link_to "Home" , root_path %></li>
+					<li><%= link_to "News", news_index_path %></li>
+					<% if logged_in? %>
+					<li><%= link_to "Mein Profil", player_path(current_user.player) %>
+						<ul>
+							<li><%= link_to "Profil Anpassen", edit_player_path(current_user.player) %></li>
+							<li><%= link_to "Spiele Verwalten", games_player_path(current_user.player) %>
+						</ul>
+					</li>
 					<% end %>
-					<li><%= link_to "Forum", topics_path %></li>
+					<li><%= link_to "Team", players_path %>
+						<ul>
+							<li><%= link_to "Aufstellung", players_path %></li>
+							<% if user_is_admin? %>
+							<li><%= link_to "Mitglieder", users_path %></li>
+							<% end %>
+							<li><%= link_to "Forum", topics_path %></li>
+						</ul>
+					</li>
+					<li><%= link_to "Saison", games_path %></li>
+					<li><%= link_to "Kontakt", :controller => "root", :action => "contact" %>
+						<ul>
+							<li><%= link_to "Vorstand", :controller => "root", :action => "contact" %></li>
+							<li><%= link_to "Gästebuch", guestnotes_path %></li>
+						</ul>
+					</li>
+					<% if user_is_admin? %>
+					<li><%= link_to "Admin" %>
+						<ul>
+							<li><%= link_to "Nachrichten", messages_path %></li>
+							<li><%= link_to "Events", events_path %></li>
+		        	<li><%= link_to "Benutzer", users_path %></li>
+		        	<li><%= link_to "Austragungsorte", locations_path %></li>
+						</ul>
+					</li>
+					<% end %>
 				</ul>
-				<% end %>
-			</li>
-			<li><%= link_to "Saison", games_path %>
-				<ul>
-					<li><%= link_to "Spielplan", games_path %></li>
-					<li><%= link_to "Statistiken", statistics_season_path(current_season) %></li>
-					<li><%= link_to "Austragungsorte", :controller => "root", :action => "locations" %></li>
-				</ul>
-			</li>
-			<li><%= link_to "Galleries", :controller => "photos", :action => "index" %></li>
-			<li>Kontakt
-				<ul>
-					<li><%= link_to "Vorstand", :controller => "root", :action => "contact" %></li>
-					<li><%= link_to "Gästebuch", guestnotes_path %></li>
-				</ul>
-			</li>
-			<% if logged_in? %>
-				<% if current_user.is_admin? %>
-				<li>Admin
-					<ul>
-						<li><%= link_to "Nachrichten", messages_path %></li>
-						<li><%= link_to "Events", events_path %></li>
-	        	<li><%= link_to "Benutzer", users_path %></li>
-	        	<li><%= link_to "Austragungsorte", locations_path %></li>
-					</ul>
-				</li>
-				<% end %>
-        <li><%= link_to "Logout", :controller => "admin", :action => "logout" %></li>
-      <% else %>
-	    	<li><%= link_to "Login", :controller => "admin", :action => "login" %></li>
-      <% end %>
-		</ul>
-	</div>
-	
-	<div class="clear">
-	</div>
-	
-	<div id="leftcolumn">
-		<%= render :partial => "root/side_bar" %>
- 	</div>
+			</div>
+			
+			<script>
+				DynarchMenu.setup('header_main_menu', { shadows: false, electric: true });
+			</script>
+			
+			<div id="status_bar">
+				<div id="status_info">
+					<% if logged_in? %>
+						angemeldet als: <%= current_user.full_name %>
+					<% else %>
+						nicht angemeldet
+					<% end %>
+				</div>
+				<div id="status_action">
+					<% if logged_in? %>
+						<%= link_to "ausloggen", :controller => "admin", :action => "logout" %>
+					<% else %>
+						<%= link_to "einloggen", :controller => "admin", :action => "login" %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		
+		<div id="container">
 
- 	<div id="rightcolumn">
-		<% if flash[:notice] -%>
-			<div id="notice"><%= flash[:notice] %></div>
-		<% end -%>
-		<% if flash[:error] -%>
-			<div id="error"><%= flash[:error] %></div>
-		<% end %>
-		<%= yield :layout %>
+			<div id="left_column">
+				
+				<div id="sub_menu">
+					<div id="sub_menu_text">
+						<h2>Aktionen</h2>
+						
+						<p>
+							<ul class="none-list">
+								<li class="none-list">Profil Anpassen</li>
+								<li class="none-list">Profil Anpassen</li>
+								<li class="none-list">Profil Anpassen</li>
+							</ul>
+						</p>
+					</div>
+				</div>
+					
+				<div id="news">
+					<div id="news_text">
+						<%= render :partial => "root/side_bar" %>
+					</div>
+				</div>
+				
+			</div>
+			
+			<div id="right_column">
+				<div id="content">
+				<% if flash[:notice] %>
+					<div id="notice"><%= flash[:notice] -%></div>
+				<% end %>
+				<%= yield %>
+				</div>
+				
+				<div id="footer">
+					<ul>
+						<li>Mein Profil</li>
+						<li>Saison</li>
+						<li>Team</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
 	</div>
-</div> 
 </body>
-</html>

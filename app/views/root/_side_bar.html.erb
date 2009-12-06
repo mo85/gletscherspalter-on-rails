@@ -1,32 +1,31 @@
-<div id="news">
-	<h2>News</h2>
-	<% next_event = Event.next_event %>
-	<% next_game = current_season.games.next_game %>
-	
-	<% if next_event != nil %>
-  <p style="margin-top: 10px;">
-	
-		<h3>Nächstes Event</h3>
-		
-      <b><%=h next_event.date_formatted %></b><br />
-      <b><%=h next_event.title %></b>,
-      <%=h next_event.location %>
-  </p>
-	<% end %>
-	<% if next_game != nil %>
-  <p style="margin-top: 10px;">
-    <h3>Nächstes Spiel:</h3>
+<h2 class="side_bar">News</h2>
+<% next_event = Event.next_event %>
+<% next_game = current_season.games.next_game %>
 
-    <%=h next_game.date_formatted %>
-    Gletscherspalter vs. <%= next_game.opponent %>
-   
-  </p>
-	<% end %>
-	<% if Game.last_game %>
+<% if next_event != nil %>
+ <p class="side_bar">
+
+	<h3 class="side_bar">Nächstes Event</h3>
 	
-	<p style="margin-top: 10px;">
- 		<h3>Letztes Spiel:</h3>
-		Gletscherspalter vs.<br /> <% game = Game.last_game %><%=h game.opponent %> <%=h game.result %>
-	</p>
-	<% end %>
-</div>
+     <%=h next_event.date_formatted %><br />
+     <%=h next_event.title %>,
+     <%=h next_event.location %>
+ </p>
+<% end %>
+<% if next_game != nil %>
+ <p>
+   <h3 class="side_bar">Nächstes Spiel:</h3>
+
+   <%=h next_game.date_formatted %>
+   Gletscherspalter vs. <br />
+		<%= next_game.opponent %>
+  
+ </p>
+<% end %>
+<% if Game.last_game %>
+
+<p style="margin-top: 10px;">
+		<h3 class="side_bar">Letztes Spiel:</h3>
+	Gletscherspalter vs.<br /> <% game = Game.last_game %><%=h game.opponent %> <%=h game.result %>
+</p>
+<% end %>

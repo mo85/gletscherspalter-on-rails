@@ -1,98 +1,18 @@
-h1 {
-	font-size: 24px;
-}
-
-h2 {
-	font-size: 22px;
-}
-
-a {
-	color: #093ea8;
-	text-decoration: underline;
-}
-
-div.links {
-	margin-top: 10px;
-}
-
-div.details {
-	margin-top: 20px;
-}
-
-div.admin_menu {
-	position: absolute;
-	top: 22px;
-	left: 495px;
-	height: 109px;
-	width: 140px;
-	background-color: #d40610;
-	z-index: 1;
-	
-	border: 1px solid #093ea8;
-}
-
-div.admin_menu ul {
+.none-list ul {
 	list-style: none;
-	margin-left: 3px;
 }
 
-div.admin_menu ul li {
-	width: 96%;
-	border-bottom: 1px solid #093ea8;
-	height: 20px;
-	line-height: 20px;
-	padding: 0px;
-	margin: 0px;
+.none-list li {
+	list-style: none;
 }
 
-.fieldWithErrors {
-	border: 2px solid #f40610;
-	background-color: red;
-
+h1, h2, h3 {
+	font-weight: normal;
+	font-variant: small-caps;
 }
 
-#errorExplanation {
-  width: 410px;
-  border: 2px solid #d40610;
-  padding: 7px;
-  padding-bottom: 12px;
-  margin: 10px 0px 20px 0px;
-  background-color: #f0f0f0;
-}
 
-#errorExplanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: -7px;
-  background-color: #d40610;
-  color: #fff;
-}
-
-#errorExplanation p {
-  color: #333;
-  margin: 15px 0px 0px 10px;
-  padding: 5px;
-}
-
-#errorExplanation ul li {
-	margin-left: 40px;
-  font-size: 12px;
- 
-}
-
-#map_canvas {
-	margin-top: 20px;
-	height: 400px;
-	width: 70%;
-}
-
-#notice {
-  border: 2px solid #d40610;
-  padding: 1em;
-  margin-bottom: 2em;
-  background-color: #f0f0f0;
-  font: bold smaller sans-serif;
-	text-align: center;
+h1 .content {
+	padding: 10px 10px 20px 0px;
+	color: #ca0000;
 }

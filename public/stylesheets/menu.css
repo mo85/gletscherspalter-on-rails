@@ -1,17 +1,27 @@
 @CHARSET "UTF-8";
 
 #menu_container {
+	margin: 0 10px 0 10px;
+	padding: 4px;
 	position: relative;
-	top: -30px;
-	left: 220px;
+	top: -60px;
+	height: 25px;
+	background: black;
+	opacity: .8;
+	/* Internet Explorer */
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+	filter: alpha(opacity=80);
+	/* end */
+	
+	-moz-border-radius:5px;
+	-khtml-border-radius:5px;
 	z-index: 1;
-	width: 760px;
 }
 
 #header_main_menu {
-	position: relative;
+/*	position: relative;
 	top: -50px;
-	left: 220px;
+	left: 220px;*/
 }
 
 
@@ -42,18 +52,20 @@
 div.dynarch-horiz-menu { 
 	border: none; 
 	cursor: default;
+	float: right;
 }
 div.dynarch-horiz-menu table {
 	position: relative;
+	top: 1px;
 	color: #ccc;
 }
 div.dynarch-horiz-menu table tr td { 
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 13px;
-	font-weight: bold;
+	font-size: 15px;
 	color: white;
-	padding: 3px 10px 1px;
+	padding: 3px 10px 3px;
 	cursor: pointer;
+	border-left: 1px solid;
 }
 div.dynarch-horiz-menu table tr td.first { 
 	border-left: none;
@@ -70,14 +82,11 @@ div.dynarch-horiz-menu table tr td.activated {
 
 div.dynarch-popup-menu {
   position: absolute;
-  left: 0px;
-  top: 0px;
-  padding-top: 3px;
   cursor: default;
   z-index: 1000;
-  border: 1px solid #093da7;
-	border-top: 1px solid #093da7;
-	border-bottom: none;
+
+	border-left: 1px solid white;
+	border-right: 1px solid white;
 }
 div.dynarch-popup-menu div.dynarch-menu-scroll { 
 	overflow: hidden; 
@@ -89,9 +98,16 @@ div.dynarch-popup-base-menu {
 div.dynarch-popup-menu tr.item td {
 	color: white;
 	font-size: 12px;
-	background: #d40610;
+
+	background: black;
+	opacity: .8;
+	/* Internet Explorer */
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+	filter: alpha(opacity=80);
+	/* end */
+
 	padding: 0;
-	border-bottom: 1px solid #093da7;
+	border-bottom: 1px solid white;
 	cursor: pointer;
 }
 div.dynarch-popup-menu tr.hover td.label,
@@ -99,7 +115,7 @@ div.dynarch-popup-menu tr.active td.label {
 	text-decoration: underline;
 }
 div.dynarch-popup-menu tr.item td.label { 
-	padding: 4px 14px 4px 3px;
+	padding: 6px 14px 4px 3px;
 }
 div.dynarch-popup-menu tr.activated td {
 	background: #9c0;

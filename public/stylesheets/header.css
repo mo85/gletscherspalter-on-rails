@@ -1,26 +1,30 @@
 #header {
- width: 1000px;
- padding: 0px;
- height: 150px;
- margin: 10px 0px 5px 0px;
- position: relative;
+	background: url(/images/new_style/header_background.png);	
 }
 
-#title{
-	background: url(/images/header_background.jpg);
-	text-align: center;
-	height: 150px;
+#status_bar {
+	position: relative;
+	top: -58px;
+	height: 22px;
+	background: url(/images/new_style/status_bar.png);
+	background-repeat: repeat-x;
 }
 
-#ward {
-  position: absolute;
-  top: 5px;
-  left: 80px;
+#status_info {
+	padding: 8px 0 4px 15px;
+	color: white;
+	font-size: 11px;
+	text-align: left;
 }
 
+#status_action {
+	padding: 2px 15px 0 4px;
+	position: relative;
+	top: -20px;
+	text-align: right;
+}
 
-#wesley {
-  position: absolute;
-  top: 5px;
-  right: 30px;
+#status_action a {
+	color: white;
+	font-size: 11px;
 }

@@ -1,8 +1,17 @@
 * { padding: 0; margin: 0; }
 
+html {
+	background: black;
+}
+
 body {
  font-family: Arial, Helvetica, sans-serif;
  font-size: 16px;
+ background: black;
+}
+
+img {
+	border: 0px;
 }
 
 div.clear {
@@ -12,6 +21,7 @@ div.clear {
 }
 
 #wrapper { 
+	background: black;
  	margin: 0 auto;
 	padding: 0px;
 	height: 100%;
@@ -19,30 +29,29 @@ div.clear {
 
 }
 
-#leftcolumn { 
+#container {
 	position: relative;
-	top: -27px;
-	color: #333;
-	background: #ccc;
-	margin: 0px 0px 5px 0px;
-	padding: 10px;
-	height: 100%;
-	min-height: 700px;
-	width: 200px;
+	top: -60px;
+	background: black;
+}
+
+#left_column {
 	float: left;
+	background: black;
+	width: 240px;
 }
 
-#rightcolumn {
-	position: relative;
-	top: -27px;
-	float: right;
-	color: #333;
-	background: #fff;
-	margin: 0px 0px 5px 0px;
+#right_column {
 	padding: 10px;
-	height: 100%;
-	min-height: 500px;
-	width: 760px;
-	display: inline;
+	position: relative;
+	background: black;
+	float: right;
+	width: 740px;
 }
 
+#content {
+	padding: 10px;
+	background: white;
+	-moz-border-radius:10px;
+	-khtml-border-radius:10px;
+}

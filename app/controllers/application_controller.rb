@@ -31,6 +31,11 @@ protected
   end
   helper_method :current_user
   
+  def user_is_admin?
+    logged_in? && current_user.is_admin
+  end
+  helper_method :user_is_admin?
+  
   def set_current_user_for_authorization
     Authorization.current_user = current_user
   end
