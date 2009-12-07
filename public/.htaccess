@@ -1,6 +1,6 @@
 # General Apache options
 Options +FollowSymLinks +ExecCGI
-# AddHandler fastcgi-script .fcgi
+AddHandler fastcgi-script .fcgi
 AddHandler cgi-script .cgi
 
 # If you don't want Rails to look in certain directories,
