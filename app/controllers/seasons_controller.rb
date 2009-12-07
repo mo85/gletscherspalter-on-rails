@@ -2,7 +2,7 @@ class SeasonsController < ApplicationController
   
   filter_access_to :all
   
-  caches_page :statistics
+  #caches_page :statistics
   
   def index
     @seasons = Season.all :order => "created_at DESC"
