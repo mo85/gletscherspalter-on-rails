@@ -25,11 +25,12 @@
 
 <% end %>
 
-<div class="links">
-	<%= link_to "Zurück", game_path(@game) %>
-</div>
 <script type="text/javascript" charset="utf-8">
 	new Ajax.Autocompleter('score_player', 'user_choices', '/users.ajax', {
 		method: 'get'
 	});
 </script>
+
+<% content_for :sub_menu do %>
+	<li class="side_bar"><%= link_to "Zurück", game_path(@game) %></li>
+<% end %>
