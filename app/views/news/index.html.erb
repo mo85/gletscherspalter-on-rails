@@ -15,8 +15,8 @@
 <% end %>
 </div>
 
-<% content_for :sub_menu do %>
-	<% if permitted_to? :manage, :news %>
-	<li class="side_bar"><%= link_to "News erstellen", new_news_path %></li>
+<% if permitted_to? :manage, :news %>
+	<% content_for :sub_menu do %>
+		<li class="side_bar"><%= link_to "News erstellen", new_news_path %></li>
 	<% end %>
 <% end %>

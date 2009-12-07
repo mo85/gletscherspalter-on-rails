@@ -47,13 +47,15 @@
 	
 </div>
 
-<% content_for :sub_menu do %>
-	<% if permitted_to? :adjust, @player %>
-	<li class="side_bar"><%= link_to 'Spieler Details anpassen', edit_player_path(@player) %></li>
-	<li class="side_bar"><%= link_to 'Spiele in Outlook einfügen', games_player_url(:format => "ics", :protocol => "webcal", :token => current_user.token) %></li>
-	<li class="side_bar"><%= link_to 'Spiele als PDF', games_player_path(:format => "pdf") %></li>
-	<% end %>
-	<% if permitted_to? :games, @player %>
-	<li class="side_bar"><%= link_to 'Spiele verwalten', games_player_path %></li>
+<% if permitted_to?(:adjust, @player) || permitted_to?(:games, @player) %>
+	<% content_for :sub_menu do %>
+		<% if permitted_to? :adjust, @player %>
+		<li class="side_bar"><%= link_to 'Spieler Details anpassen', edit_player_path(@player) %></li>
+		<li class="side_bar"><%= link_to 'Spiele in Outlook einfügen', games_player_url(:format => "ics", :protocol => "webcal", :token => current_user.token) %></li>
+		<li class="side_bar"><%= link_to 'Spiele als PDF', games_player_path(:format => "pdf") %></li>
+		<% end %>
+		<% if permitted_to? :games, @player %>
+		<li class="side_bar"><%= link_to 'Spiele verwalten', games_player_path %></li>
+		<% end %>
 	<% end %>
 <% end %>

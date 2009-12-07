@@ -9,8 +9,8 @@
 	<%= render :partial => 'photoset', :locals => { :photoset => photoset, :float_value => float_value, :last_album => i == (@photosets.size - 1) } %>
 <% end %>
 
-<% content_for :sub_menu do %>
-	<% if permitted_to? :manage, :photos %>
+<% if permitted_to? :manage, :photos %>
+	<% content_for :sub_menu do %>
 		<li class="side_bar"><%= link_to "Fotos hinzufügen (Flickr)", "http://www.flickr.com/", :target => "_blank" %></li>
 	<% end %>
 <% end %>
