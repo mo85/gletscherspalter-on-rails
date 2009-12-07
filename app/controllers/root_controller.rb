@@ -2,7 +2,11 @@ class RootController < ApplicationController
   
   filter_access_to :all
   
-  ::GMAPS_API_KEY = "ABQIAAAA5HvxKEk6euzB7DUyH0_WQRTpKOENAK7M60P_iZyjsCmeWfdXDBRvBLY2QxpZG45FwPCzYLQvO4CdXw"
+  # API key gletscherspalter.railsplayground.net
+  #::GMAPS_API_KEY = "ABQIAAAA5HvxKEk6euzB7DUyH0_WQRTpKOENAK7M60P_iZyjsCmeWfdXDBRvBLY2QxpZG45FwPCzYLQvO4CdXw"
+  
+  # API 
+  ::GMAPS_API_KEY = "ABQIAAAA5Cg2aLm1iTTYL6oUisE3ZBSuXVNLgnrcQJUWSG2AreT3guZgphSOO4UVDmj7UXBqb8uhZ0n4unLssg"
   
   #caches_page :contact
   #caches_page :locations
