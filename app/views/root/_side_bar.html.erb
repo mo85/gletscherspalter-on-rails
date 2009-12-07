@@ -14,7 +14,7 @@
 <% end %>
 <% if next_game != nil %>
  <p>
-   <h3 class="side_bar">Nächstes Spiel:</h3>
+   <h3 class="side_bar">Nächstes Spiel</h3>
 
    <%=h next_game.date_formatted %>
    Gletscherspalter vs. <br />
@@ -26,7 +26,7 @@
 <% if Game.last_game %>
 
 <p style="margin-top: 10px;">
-		<h3 class="side_bar">Letztes Spiel:</h3>
+		<h3 class="side_bar">Letztes Spiel</h3>
 	Gletscherspalter vs.<br /> <% game = Game.last_game %><%=h game.opponent %> <%=h game.result %>
 </p>
 <% end %>

@@ -26,11 +26,12 @@ authorization do
   
   role :admin do
     includes :user
-    has_permission_on [:players, :users, :scores, :topics, :news, :guestnotes], :to => [:read, :manage]
+    has_permission_on [:players, :users, :scores, :topics, :news, :guestnotes, :photos], :to => [:read, :manage]
     has_permission_on :players, :to => :subscribe_to_games
     has_permission_on [:locations, :events, :messages], :to => [:read, :manage]
     has_permission_on :games, :to => [:read, :manage, :add_or_remove_players_from_games]
     has_permission_on :posts, :to => :update_posts
+
   end
 end
 

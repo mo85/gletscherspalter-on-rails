@@ -4,6 +4,6 @@
 <% end %>
 <%= render :partial => 'photo', :collection => @photos  %>
 
-<div class="links">
-	<%= link_to "Zurück zu den Fotoalben", photos_path %>
-</div>
+<% content_for :sub_menu do %>
+	<li class="side_bar"><%= link_to "Zurück", photos_path %></li>
+<% end %>

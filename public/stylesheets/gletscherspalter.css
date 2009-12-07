@@ -38,14 +38,14 @@ a {
 
 
 .fieldWithErrors {
-	border: 2px solid #f40610;
+	border: 2px solid #ca0000;
 	background-color: red;
 
 }
 
 #errorExplanation {
   width: 410px;
-  border: 2px solid #d40610;
+  border: 2px solid #ca0000;
   padding: 7px;
   padding-bottom: 12px;
   margin: 10px 0px 20px 0px;
@@ -58,7 +58,7 @@ a {
   padding: 5px 5px 5px 15px;
   font-size: 12px;
   margin: -7px;
-  background-color: #d40610;
+  background-color: #ca0000;
   color: #fff;
 }
 
@@ -81,7 +81,7 @@ a {
 }
 
 #notice {
-  border: 2px solid #d40610;
+  border: 2px solid #ca0000;
   padding: 1em;
   margin-bottom: 2em;
   background-color: #f0f0f0;
