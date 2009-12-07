@@ -34,7 +34,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.location_on_map "root/locations/:id", :controller => "root", :action => "locations"
   map.contacts "root/contact", :controller => "root", :action => "contact"
-
+  map.home "root/index", :controller => "root", :action => "index"
+  
   map.resources :players, :member => {:games => :get, :update_games => :post}
 
   # The priority is based upon order of creation: first created -> highest priority.

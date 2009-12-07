@@ -136,11 +136,43 @@
 				</div>
 				
 				<div id="footer">
-					<ul>
-						<li>Mein Profil</li>
-						<li>Saison</li>
-						<li>Team</li>
-					</ul>
+					<table style="width: 100%;">
+						<colgroup>
+						<col width="25%" /><col width="25%" /><col width="25%" /><col width="25%" />
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>
+									<ul>
+										<li><%= link_to "Home", home_path %></li>
+										<li><%= link_to "News", news_index_path %></li>
+										<li><%= link_to "Team", players_path %></li>
+									</ul>
+								</td>
+								<td>
+									<ul>
+										<li><%= link_to "Mannschaft", players_path %></li>
+										<li><%= link_to "Forum", topics_path %></li>
+										<li><%= link_to "Saison", games_path %></li>
+									</ul>
+								</td>
+								<td>
+									<ul>
+										<li><%= link_to "Spielplan", games_path %></li>
+										<li><%= link_to "Statistiken", statistics_season_path(current_season) %></li>
+										<li><%= link_to "Austragungsorte", :controller => "root", :action => "locations" %></li>
+									</ul>
+								</td>
+								<td>
+									<ul>
+										<li><%= link_to "Galleries", photos_path %></li>
+										<li><%= link_to "Kontakt", contacts_path %></li>
+										<li><%= link_to "Gästebuch", guestnotes_path %></li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 				<div class="clear"></div>
 			</div>
