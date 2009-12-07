@@ -1,6 +1,4 @@
-<h1>Registrierte Mitglieder
-<%= link_to image_tag("icons/page_white_acrobat.png"), users_path(:format => "pdf") %>
-</h1>
+<h1>Registrierte Mitglieder</h1>
 
 <div style="margin-top: 10px;">
 <table class="default">
@@ -33,8 +31,9 @@
 </table>
 </div>
 
-<div class="links">
+<% content_for :sub_menu do %>
 	<% if permitted_to? :manage, :users %>
-	<%= link_to 'Neuen Benutzer erstellen', new_user_path %>
+	<li class="side_bar"><%= link_to "Liste als PDF", users_path(:format => "pdf") %></li>
+	<li class="side_bar"><%= link_to 'Benutzer erstellen', new_user_path %></li>
 	<% end %>
-</div>
+<% end %>

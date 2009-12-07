@@ -1,6 +1,4 @@
-<h1>Spielplan Saison <%=h current_season.to_s %>
-	<%= link_to image_tag("icons/page_white_acrobat.png", :alt => 'Spiele als PDF'), games_path(:format => "pdf") %>
-</h1>
+<h1>Spielplan Saison <%=h current_season.to_s %></h1>
 	
 <div style="margin-top: 10px;">
 	<%= render :partial => "game_table", :locals => { :games => @games, 
@@ -13,8 +11,9 @@
 	</div>
 </div>
 
-<% if permitted_to? :manage, :games %>
-<div class="links">
-	<%= link_to "Neues Spiel erstellen", new_game_path %>
-</div>
+<% content_for :sub_menu do %>
+	<% if permitted_to? :manage, :games %>
+	<li class="side_bar"><%= link_to "Neues Spiel erstellen", new_game_path %></li>
+	<% end %>
+	<li class="side_bar"><%= link_to "Spielplan als PDF", games_path(:format => "pdf") %></li>
 <% end %>

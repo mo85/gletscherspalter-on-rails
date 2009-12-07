@@ -32,6 +32,8 @@
 	<hr/>
 </div>
 
-<div class="links">
-	<%= link_to 'Neuen Thread erstellen', new_topic_path %>
-</div>
+<% content_for :sub_menu do %>
+	<% if permitted_to? :create_posts, :posts %>
+		<li class="side_bar"><%= link_to 'Neuen Thread erstellen', new_topic_path %></li>
+	<% end %>
+<% end %>

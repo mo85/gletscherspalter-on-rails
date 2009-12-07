@@ -14,8 +14,6 @@
   </div>
 <% end %>
 
-<%= link_to 'Zurück', topic_path(@topic) %>
-
 <script type="text/javascript" charset="utf-8">
 	tinyMCE.init({
 		mode 					: "textareas",
@@ -27,3 +25,7 @@
 		convert_urls	: false,
 	});
 </script>
+
+<% content_for :sub_menu do %>
+	<li class="side_bar"><%= link_to 'Zurück', topic_path(@topic) %></li>
+<% end %>

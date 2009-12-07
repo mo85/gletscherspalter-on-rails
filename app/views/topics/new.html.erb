@@ -13,6 +13,8 @@
   </div>
 <% end %>
 
-<div class="links">
-	<%= link_to 'Zurück', topics_path %>
-</div>
+<% content_for :sub_menu do %>
+	<% if permitted_to? :create_posts, :posts %>
+		<li class="side_bar"><%= link_to 'Zurück', topics_path %></li>
+	<% end %>
+<% end %>

@@ -25,10 +25,6 @@
 	</div>
 <% end %>
 
-<div class="links">
-	<%= link_to "Zurück", guestnotes_path %>
-</div>
-
 <script type="text/javascript" charset="utf-8">
 	tinyMCE.init({
 		mode 					: "textareas",
@@ -40,3 +36,7 @@
 		convert_urls	: false,
 	});
 </script>
+
+<% content_for :sub_menu do %>
+	<li class="side_bar"><%= link_to 'Zurück', guestnotes_path %></li>
+<% end %>

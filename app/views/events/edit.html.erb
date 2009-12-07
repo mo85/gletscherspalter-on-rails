@@ -24,6 +24,8 @@
   </div>
 <% end %>
 
-<div class="links">
-	<%= link_to 'Zurück', events_path %>
-</div>
+<% content_for :sub_menu do %>
+	<% if permitted_to? :read, :events %>
+	<li class="side_bar"><%= link_to 'Zurück', events_path %></li>
+	<% end %>
+<% end %>

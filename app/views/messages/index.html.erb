@@ -7,6 +7,8 @@ Neu verfasste Nachrichten versenden automatisch eine Email an die jeweiligen Emp
 <%= render :partial => "messages_table", :locals => { :messages => @messages } %>
 </div>
 
-<div class="links">
-	<%= link_to "Neue Nachricht verfassen", new_message_path %>
-</div>
+<% content_for :sub_menu do %>
+	<% if permitted_to? :manage, :messages %>
+	<li class="side_bar"><%= link_to "Neue Nachricht verfassen", new_message_path %></li>
+	<% end %>
+<% end %>

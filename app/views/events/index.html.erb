@@ -2,8 +2,10 @@
 
 <div>
 	<%= render :partial => "event_table", :locals => { :events => @events, :actions => true } %>
-</div>	
-
-<div class="links">
-	<%= link_to 'Neue Veranstaltung erstellen', new_event_path %>
 </div>
+
+<% content_for :sub_menu do %>
+	<% if permitted_to? :manage, :events %>
+	<li class="side_bar"><%= link_to 'Neue Veranstaltung', new_event_path %></li>
+	<% end %>
+<% end %>

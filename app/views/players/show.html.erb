@@ -17,12 +17,6 @@
 		<%=h @player.position_as_string %>
 	</div>
 	
-	<% if permitted_to? :adjust, @player %>
-	<div>
-		<%= link_to 'Anpassen', edit_player_path(@player) %>
-	</div>
-	<% end %>
-	
 <% end %>
 <div class="clear"></div>
 
@@ -38,12 +32,7 @@
 </div>
 
 <div id="my_games" style="margin-top: 20px;">
-	<h2>Gebuchte Spiele
-	<% if logged_in? %>
-		<%= link_to image_tag("icons/calendar.png", :alt => 'Spiele in Outlook einfügen'), games_player_url(:format => "ics", :protocol => "webcal", :token => current_user.token) %>
-		<%= link_to image_tag("icons/page_white_acrobat.png", :alt => 'Spiele als PDF'), games_player_path(:format => "pdf") %>
-	<% end %>
-	</h2>
+	<h2>Gebuchte Spiele</h2>
 	
 	<div style="margin-top: 10px">
 		<%= render :partial => "games/game_table", :locals => { :games => @games, 
@@ -55,9 +44,16 @@
 		</div>
 	</div>
 	
-	<% if permitted_to? :games, @player %>
-	<div class="links">
-		<%= link_to 'Spiele verwalten', games_player_path %> 
-	</div>
-	<% end %>
+	
 </div>
+
+<% content_for :sub_menu do %>
+	<% if permitted_to? :adjust, @player %>
+	<li class="side_bar"><%= link_to 'Spieler Details anpassen', edit_player_path(@player) %></li>
+	<li class="side_bar"><%= link_to 'Spiele in Outlook einfügen', games_player_url(:format => "ics", :protocol => "webcal", :token => current_user.token) %></li>
+	<li class="side_bar"><%= link_to 'Spiele als PDF', games_player_path(:format => "pdf") %></li>
+	<% end %>
+	<% if permitted_to? :games, @player %>
+	<li class="side_bar"><%= link_to 'Spiele verwalten', games_player_path %></li>
+	<% end %>
+<% end %>

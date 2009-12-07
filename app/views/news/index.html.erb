@@ -8,15 +8,15 @@
 	
 	<div style="margin-top: 5px;">
 		<hr/>
-		<%= will_paginate @news%>
+		<%= will_paginate @news %>
 		<hr/>
 	</div>
 	
 <% end %>
 </div>
 
-<% if permitted_to? :manage, :news %>
-<div class="links">
-	<%= link_to "News erstellen", new_news_path %>
-</div>
+<% content_for :sub_menu do %>
+	<% if permitted_to? :manage, :news %>
+	<li class="side_bar"><%= link_to "News erstellen", new_news_path %></li>
+	<% end %>
 <% end %>

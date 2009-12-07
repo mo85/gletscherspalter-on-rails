@@ -22,7 +22,7 @@ class RootController < ApplicationController
     end
     
     @title = "Gletscherspalter.ch::Orte"
-    @rinks = Rink.all
+    @rinks = Rink.all :order => "name ASC"
   end
   
 end

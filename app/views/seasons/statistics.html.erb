@@ -1,4 +1,4 @@
-<h1>Saison <%= @season.to_s %></h1>
+<h1>Statistiken Saison <%= @season.to_s %></h1>
 
 <div>
 	Auf dieser Seite werden die Statistiken der Gletscherspalter der jeweiligen Saison angezeigt. Nach den Team Statistiken, folgen die individuellen Werte der Spieler.
@@ -62,6 +62,6 @@
 
 </div>
 
-<div style="links">
-	<%= link_to "Statistiken anderer Saisons", seasons_path %>
-</div>
+<% content_for :sub_menu do %>
+	<li class="side_bar"><%= link_to "Verganene Saisons", seasons_path %></li>
+<% end %>

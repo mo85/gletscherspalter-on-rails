@@ -18,6 +18,8 @@
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'Neue Lokation erfassen', new_location_path %>
+<% content_for :sub_menu do %>
+	<% if permitted_to? :manage, :locations %>
+	<li class="side_bar"><%= link_to 'Lokation erfassen', new_location_path %></li>
+	<% end %>
+<% end %>

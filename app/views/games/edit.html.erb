@@ -33,5 +33,7 @@
   </div>
 <% end %>
 
-<%= link_to 'Anzeigen', @game %> |
-<%= link_to 'Saison', games_path %>
+<% content_for :sub_menu do %>
+	<li class="side_bar"><%= link_to 'Spiel Anzeigen', @game %></li>
+	<li class="side_bar"><%= link_to 'Saisonübersicht', games_path %></li>
+<% end %>

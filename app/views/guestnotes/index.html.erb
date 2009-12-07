@@ -1,7 +1,7 @@
 <h1>Gästebuch</h1>
 
 <% unless @notes.empty? %>
-<div style="margin-top: 10px;">
+<div>
 <table class="forum">
 	<thead>
 		<tr>
@@ -36,9 +36,9 @@
 	<hr/>
 </div>
 <% else %>
-Momentan gibt es noch keine Einträge im Gästebuch.
+Momentan gibt es keine Einträge im Gästebuch.
 <% end %>
 
-<div class="links">
-	<%= link_to "Neuen Eintrag erstellen", new_guestnote_path %>
-</div>
+<% content_for :sub_menu do %>
+	<li class="side_bar"><%= link_to 'Eintrag erstellen', new_guestnote_path %></li>
+<% end %>

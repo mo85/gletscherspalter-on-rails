@@ -1,6 +1,6 @@
 <h1><%= @topic.title %></h1>
 
-<div style="margin-top: 10px;">
+<div>
 	
 	<% if @posts.empty? %>
 		Zu diesem Thread gibt es noch keine Kommentarte.
@@ -43,17 +43,16 @@
 		
 	</div>
 	<% end %>
-
-	<div style="margin-top: 5px;">
-		<% if permitted_to? :create_posts, :posts %>
-		<%= link_to 'Kommentar hinzufügen', new_topic_post_path(@topic) %>
-		<% end %>
-	</div>
 	
 </div>
 
-<div class="links">
-	<%= link_to 'Zurück', topics_path %>
-</div>
+<% content_for :sub_menu do %>
+	<% if permitted_to? :create_posts, :posts %>
+		<li class="side_bar"><%= link_to 'Kommentar hinzufügen', new_topic_post_path(@topic) %></li>
+	<% end %>
+	<% if permitted_to? :create_posts, :posts %>
+		<li class="side_bar"><%= link_to 'Zurück', topics_path %></li>
+	<% end %>
+<% end %>
 
 

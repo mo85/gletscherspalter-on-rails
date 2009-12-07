@@ -18,7 +18,8 @@
 
    <%=h next_game.date_formatted %>
    Gletscherspalter vs. <br />
-		<%= next_game.opponent %>
+		<%= next_game.opponent %> <br />
+		<%= "(#{next_game.rink.name})" %>
   
  </p>
 <% end %>

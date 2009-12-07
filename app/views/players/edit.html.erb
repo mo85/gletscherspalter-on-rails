@@ -85,5 +85,7 @@
   </div>
 <% end %>
 
-<%= link_to 'Profil Seite', @player %> |
-<%= link_to 'Team Seite', players_path %>
+<% content_for :sub_menu do %>
+	<li class="side_bar"><%= link_to 'Profil Seite', @player %></li>
+	<li class="side_bar"><%= link_to 'Team Seite', players_path %></li>
+<% end %>

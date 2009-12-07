@@ -1,4 +1,4 @@
-<h1>Spiel Gletscherspalter vs. <%= @game.opponent %></h1>
+<h1>Gletscherspalter vs. <%= @game.opponent %></h1>
 
 <% form_for [@game],:html => {:class => :default} do |f|%>
 
@@ -20,12 +20,6 @@
 <% end %>
 <div class="clear"></div>
 
-<% if permitted_to? :manage, @game %>
-<div class="links">
-	<%= link_to "Anpassen", edit_game_path(@game) %>
-</div>
-<% end %>
-
 <div style="margin-top: 20px;">
 <% if !@game.score.blank? %>
 	<h2>Skorer Liste</h2>
@@ -40,11 +34,7 @@
 	<% end %>
 <% end %>
 
-<% if !@game.score.blank? && permitted_to?(:manage, :scores) %>
-<div class="links">
-	<%= link_to "Neuen Skorer erfassen", new_game_score_path(:game_id => @game.id) %>
-</div>
-<% end %>
+
 
 </div>
 	
@@ -63,16 +53,18 @@
 	<% else %>
 		Für dieses Spiel haben sich keine Spieler eingetragen.
 	<% end %>
-	<div>
-		<% if permitted_to? :manage, @game %>
-		<div class="links">
-			<%= link_to "Spieler hinzufügen", add_player_game_path(@game) %>
-		</div>
-		<% end %>
-	</div>
-	
 </div>
 
-<div class="links">
-	<%= link_to 'Zurück', games_path %>
-</div>
+<% content_for :sub_menu do %>
+	<% if permitted_to? :manage, @game %>
+	<li class="side_bar"><%= link_to "Spiel Details anpassen", edit_game_path(@game) %></li>
+	<% end %>
+	<% if permitted_to? :manage, @game %>
+	<li class="side_bar"><%= link_to "Spieler hinzufügen", add_player_game_path(@game) %></li>
+	<% end %>
+	<% if !@game.score.blank? && permitted_to?(:manage, :scores) %>
+		<li class="side_bar"><%= link_to "Skorer erfassen", new_game_score_path(:game_id => @game.id) %></li>
+	<% end %>
+	<li class="side_bar"><%= link_to 'Zurück', games_path %></li>
+<% end %>
+

@@ -41,10 +41,6 @@
 	<% end %>
 </div>
 
-<div class="links">
-	<%= link_to "Zurück", messages_path %>
-</div>
-
 <script type="text/javascript" charset="utf-8">
 	tinyMCE.init({
 		mode 					: "textareas",
@@ -57,4 +53,10 @@
 	});
 	new Glacier.Selector("usr");
 </script>
+
+<% content_for :sub_menu do %>
+	<% if permitted_to? :read, :messages %>
+	<li class="side_bar"><%= link_to "Zurück", messages_path %></li>
+	<% end %>
+<% end %>
 

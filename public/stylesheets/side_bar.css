@@ -41,6 +41,8 @@
 }
 
 h2.side_bar {
+	padding-top: 0px;
+	padding-bottom: 5px;
 	color: #d4d4d4;
 }
 
