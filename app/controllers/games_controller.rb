@@ -101,6 +101,7 @@ class GamesController < ApplicationController
       if @game.save
         current_season.games << @game
         flash[:notice] = 'Spiel erfolgreich erstellt.'
+        expire_page :controller => "seasons", :action => "statistics"
         format.html { redirect_to(@game) }
       else
         format.html { render :action => "new" }
