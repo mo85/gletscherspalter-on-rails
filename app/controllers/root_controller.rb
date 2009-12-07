@@ -4,8 +4,8 @@ class RootController < ApplicationController
   
   ::GMAPS_API_KEY = "ABQIAAAA5HvxKEk6euzB7DUyH0_WQRTpKOENAK7M60P_iZyjsCmeWfdXDBRvBLY2QxpZG45FwPCzYLQvO4CdXw"
   
-  page_cache :contact
-  page_cache :locations
+  caches_page :contact
+  caches_page :locations
   
   def index
     @title = "Gletscherspalter.ch::Home"
