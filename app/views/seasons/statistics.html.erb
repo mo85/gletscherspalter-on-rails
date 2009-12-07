@@ -40,15 +40,16 @@
 <div style="margin-top: 10px;">
 	<h2>Spieler Statistiken</h2>
 	
-	<% 
-	url = Gchart.bar( :size => "725x400",
+	<% width = ((350 - (4 * @scorer_names.size * 2)) / (@scorer_names.size * 2))
+	url = Gchart.bar( :size => "700x428",
 										:orientation => 'horizontal',
 	 									:title => "Skorerpunkte",
 										:title_size => 16,
 										:data => @score_stats,
 										:bar_colors => ['be0400','33d200'],
 										:stacked => false,
-										:labels => ["Tore", "Assists"])
+										:labels => ["Tore", "Assists"],
+										:bar_width_and_spacing => width)
 		# adding player names as bar labels
 		url += "&chxt=x,y&chxl=1:|#{@scorer_names.reverse.join('|')}|"
 		# adjusting the range at y axis
