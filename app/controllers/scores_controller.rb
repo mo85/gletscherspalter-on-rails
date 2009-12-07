@@ -18,7 +18,7 @@ class ScoresController < ApplicationController
     
     Score.transaction do
       @score.update_attributes!(params[:score])
-      expire_page "/seasons/#{current_season}/statistics"
+      expire_page :controller => "seasons", :action => "statistics"
       flash[:notice] = 'Skore-Eintrag erfolgreich hinzugefügt.'
       redirect_to(game_path(:id => params[:game_id]))
     end
@@ -45,7 +45,7 @@ class ScoresController < ApplicationController
     Score.transaction do
       @score.update_attributes!(params[:score])
         flash[:notice] = 'Skore-Eintrag erfolgreich angepasst.'
-        expire_page "/seasons/#{current_season}/statistics"
+        expire_page :controller => "seasons", :action => "statistics"
         redirect_to(game_path(@game))
     end
     rescue ActiveRecord::RecordInvalid => e
@@ -57,7 +57,7 @@ class ScoresController < ApplicationController
     @score = Score.find(params[:id])
     @score.destroy
     @game = Game.find(params[:game_id])
-    expire_page "/seasons/#{current_season}/statistics"
+    expire_page :controller => "seasons", :action => "statistics"
     respond_to do |format|
       flash[:notice] = 'Skore-Eintrag erfolgreich gelöscht.'
       format.html { redirect_to(game_path(@game.id)) }

@@ -114,7 +114,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.update_attributes(params[:game])
-        expire_page "/seasons/#{current_season}/statistics"
+        expire_page :controller => "seasons", :action => "statistics"
         flash[:notice] = 'Spiel wurde erfolgreich angepasst.'
         format.html { redirect_to(games_path) }
       else
@@ -125,7 +125,7 @@ class GamesController < ApplicationController
 
   # DELETE /games/1
   def destroy
-    expire_page "/seasons/#{current_season}/statistics"
+    expire_page :controller => "seasons", :action => "statistics"
     @game = Game.find(params[:id])
     @game.destroy
 
