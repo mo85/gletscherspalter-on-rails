@@ -2,8 +2,6 @@
 class GuestnotesController < ApplicationController
   filter_access_to :all
   
-  caches_page :index
-  
   def index
     @notes = Guestnote.find(:all, :order => "created_at DESC").paginate :page => params[:page], :per_page => 10
     respond_to do |format|
@@ -48,7 +46,6 @@ class GuestnotesController < ApplicationController
 
     respond_to do |format|
       if token_valid && @note.save
-        expire_page :action => "index"
         flash[:notice] = "Eintrag erfolgreich erstellt."
         format.html { redirect_to guestnotes_path }
       else
