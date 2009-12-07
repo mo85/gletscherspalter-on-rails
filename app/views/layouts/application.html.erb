@@ -146,12 +146,12 @@
 									<ul>
 										<li><%= link_to "Home", home_path %></li>
 										<li><%= link_to "News", news_index_path %></li>
-										<li><%= link_to "Team", players_path %></li>
+										<li><%= link_to_remote "Team", :update => "content", :url => players_url, :method => :get %></li>
 									</ul>
 								</td>
 								<td>
 									<ul>
-										<li><%= link_to "Mannschaft", players_path %></li>
+										<li><%= link_to_remote "Mannschaft", :update => "content", :method => :get, :url => players_url %></li>
 										<li><%= link_to "Forum", topics_path %></li>
 										<li><%= link_to "Saison", games_path %></li>
 									</ul>

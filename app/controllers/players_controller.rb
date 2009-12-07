@@ -18,7 +18,12 @@ class PlayersController < ApplicationController
     @title = "Gletscherspalter.ch::Spieler"
     
     respond_to do |format|
-      format.html
+      if request.xhr?
+        format.js { render :partial => "index", :locals => { :players => @players } }
+      else
+        format.html
+      end
+      
     end
   end
 

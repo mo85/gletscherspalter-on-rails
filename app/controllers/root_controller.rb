@@ -3,7 +3,10 @@ class RootController < ApplicationController
   filter_access_to :all
   
   ::GMAPS_API_KEY = "ABQIAAAA5HvxKEk6euzB7DUyH0_WQRTpKOENAK7M60P_iZyjsCmeWfdXDBRvBLY2QxpZG45FwPCzYLQvO4CdXw"
-
+  
+  page_cache :contact
+  page_cache :locations
+  
   def index
     @title = "Gletscherspalter.ch::Home"
     @news = News.find :all, :limit => 3, :order => "created_at DESC"

@@ -48,6 +48,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @address.save && @location.save
+        expire_page "/root/locations"
         @location.address = @address
         flash[:notice] = "Lokation #{@location.name} erfolgreich erstellt."
         format.html { redirect_to(locations_path) }
@@ -63,6 +64,7 @@ class LocationsController < ApplicationController
     @address = @location.address
     respond_to do |format|
       if @address.update_attributes(params[:address]) && @location.update_attributes(params[:location])
+        expire_page "/root/locations"
         flash[:notice] = "Lokation #{@location.name} erfolgreich angepasst."
         format.html { redirect_to(locations_path) }
        else
@@ -75,7 +77,9 @@ class LocationsController < ApplicationController
   def destroy
     @location = Location.find(params[:id])
     @location.destroy
-
+    
+    expire_page "/root/locations"
+    
     respond_to do |format|
       flash[:notice] = "Lokation #{@location.name} gelöscht."
       format.html { redirect_to(locations_url) }

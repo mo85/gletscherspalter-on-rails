@@ -10,6 +10,7 @@ class RinksController < ApplicationController
     @address = @rink.address
     respond_to do |format|
       if @address.update_attributes(params[:address]) && @rink.update_attributes(params[:rink])
+        expire_page "/root/locations"
         flash[:notice] = "Eisfeld #{@rink.name} erfolgreich angepasst."
         format.html { redirect_to(locations_path) }
       else
@@ -21,7 +22,7 @@ class RinksController < ApplicationController
   def destroy
     @location = Location.find(params[:id])
     @location.destroy
-
+    expire_page "/root/locations"
     respond_to do |format|
       flash[:notice] = "Eisfeld #{@location.name} gelöscht."
       format.html { redirect_to(locations_url) }
