@@ -1,3 +1,12 @@
+#side_bar ul,
+#side_bar li {
+	list-style: none;
+}
+
+#side_bar li a {
+	color: white;
+}
+
 #news {
 	padding: 10px 0px 10px 10px;
 	background: black;
