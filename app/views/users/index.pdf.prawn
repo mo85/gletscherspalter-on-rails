@@ -7,7 +7,6 @@ if @users.empty?
 else
   users = @users.collect do |u|
     [ u.name,
-      u.active,
       u.address,
       u.location,
       u.phone, 
@@ -22,7 +21,6 @@ else
      :row_colors => ["FFFFFF", "DDDDDD"],
      :headers => [
        Prawn::Table::Cell.new(cell_options.merge(:text => "Name")),
-       Prawn::Table::Cell.new(cell_options.merge(:text => "Aktiv")),
        Prawn::Table::Cell.new(cell_options.merge(:text => "Adresse")),
        Prawn::Table::Cell.new(cell_options.merge(:text => "Ort")),
        Prawn::Table::Cell.new(cell_options.merge(:text => "Telefon")),

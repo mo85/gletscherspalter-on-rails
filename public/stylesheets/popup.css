@@ -1,0 +1,146 @@
+div.popup_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  background: url(/images/popup/popup_overlay.png);
+}
+
+#popup_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+#popup_content, #popup_content td, #popup_content th {
+  color: #000;
+  font-size: 12px;
+}
+
+#popup_content a {
+  color: #909;
+  text-decoration: underline;
+}
+
+#popup_content a:hover {
+  text-decoration: none;
+}
+
+#popup_content div.r66 {
+  width: 66%;
+  float: left;
+}
+
+#popup_content div.l33 {
+  width: 34%;
+  float: left;
+}
+
+div.popup_error_message {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #900;
+  background: #fcc;
+}
+
+.dialog {
+  min-width: 57px;
+  max-width: 760px; /* based on image dimensions - not quite consistent with drip styles yet */
+  color: #fff;
+  z-index: 5;
+}
+
+.dialog a.close_link {
+  display: block;
+  float: right;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.dialog .content, .dialog .t, .dialog .b, .dialog .b div {
+  background: transparent url(/images/popup/rounded_corners.png) no-repeat top right;
+}
+
+.dialog .content {
+  position: relative;
+  zoom: 1;
+  _overflow-y: hidden;
+  padding: 0px 12px 0px 0px;
+}
+
+.dialog .t {
+/* top+left vertical slice */
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 12px; /* top slice width */
+  margin-left: -12px;
+  height: 100%;
+  _height: 1600px; /* arbitrary long height, IE 6 */
+  background-position: top left;
+}
+
+.dialog .b {
+/* bottom */
+  position: relative;
+  width: 100%;
+}
+
+.dialog .b,
+  .dialog .b div {
+  height: 12px; /* height of bottom cap/shade */
+  font-size: 1px;
+}
+
+.dialog .b {
+  background-position: bottom right;
+}
+
+.dialog .b div {
+  position: relative;
+  width: 12px; /* bottom corner width */
+  margin-left: -12px;
+  background-position: bottom left;
+}
+
+.dialog .hd,
+  .dialog .bd,
+  .dialog .ft {
+  position: relative;
+}
+
+.dialog .wrapper {
+/* extra content protector - preventing vertical overflow (past background) */
+  position: static;
+  max-height: 1000px;
+  overflow: auto; /* note that overflow:auto causes a rather annoying redraw "lag" in Firefox 2, and may degrade performance. Might be worth trying without if you aren't worried about height/overflow issues. */
+}
+
+.dialog h1,
+  .dialog p {
+  margin: 0px; /* margins will blow out backgrounds, leaving whitespace. */
+  padding: 0.5em 0px 0.5em 0px;
+}
+
+.dialog h1 {
+  padding-bottom: 0px;
+}
+
+#popup_content h1 {
+  font-size: 16px;
+	padding-bottom: 5px;
+}
+
+#popup_content h2 {
+  font-size: 14px;
+}
+
+#popup_content h3 {
+  font-size: 12px;
+}

@@ -41,7 +41,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     
     respond_to do |format|
-      format.html
+      format.ajax
     end
   end
   
