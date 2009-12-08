@@ -50,6 +50,7 @@ div.clear {
 }
 
 #content {
+	min-height: 520px;
 	padding: 10px;
 	background: white;
 	-moz-border-radius:10px;
