@@ -50,7 +50,7 @@ Rails::Initializer.run do |config|
   # (by default production uses :info, the others :debug)
   # config.log_level = :debug
 
- config.time_zone = 'Bern'
+ #config.time_zone = 'Bern'
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
  config.i18n.default_locale = :de
 
