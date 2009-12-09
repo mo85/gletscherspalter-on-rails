@@ -1,0 +1,27 @@
+<h1>Trainingslager erstellen</h1>
+
+<% form_for @trainingscamp, :html => { :class => :default } do |f| %>
+	
+	<div>
+		<%= f.label "Datum" %>
+		<%= f.datetime_select :date %>
+	</div>
+	
+	<div>
+		<%= f.label "Ort" %>
+		<%= f.text_field :location_id %>
+	</div>
+	
+	<div>
+		<%= f.label "Notiz" %>
+		<%= f.text_area :note %>
+	</div>
+	
+	<div>
+		<%= f.submit "Speichern" %>
+	</div>
+<% end %>
+
+<% content_for :sub_menu do %>
+	<li class="side_bar"><%= link_to "Zurück", games_path %></li>
+<% end %>
