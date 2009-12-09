@@ -109,7 +109,7 @@ class PlayersController < ApplicationController
   private
   
   def future_games_of_current_season
-    @games ||= current_season.games.find(:all, :conditions => ["date >= ?", Time.now + SUBSCRIPTION_TOLERANCE])
+    @games ||= current_season.games.find(:all, :conditions => ["date >= ?", Time.zone.now + SUBSCRIPTION_TOLERANCE])
   end
   
 end
