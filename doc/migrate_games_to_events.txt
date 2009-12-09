@@ -1,0 +1,4 @@
+1. Create a Match instance for each Entry in the games table
+2. For each game instance in player.games create a new Match instance and insert it in player.events
+3. For each score entry, change the id of the game to the appropriate one in the matches table
+
