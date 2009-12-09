@@ -24,6 +24,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users, :except => :show
 
+  map.resources :trainings, :except => [:show, :index]
+  map.resources :trainingscamps, :except => [:show, :index]
+
   map.resources :games, :member => { 
     :remove_player => :delete,
     :add_player => :get,

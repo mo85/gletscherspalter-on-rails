@@ -13,7 +13,12 @@
 
 <% content_for :sub_menu do %>
 	<% if permitted_to? :manage, :games %>
-	<li class="side_bar"><%= link_to "Neues Spiel erstellen", new_game_path %></li>
+	<li class="side_bar"><%= link_to "Spiel erstellen", new_game_path %></li>
+	<% if false %>
+	<li class="side_bar"><%= link_to "Training erstellen", new_training_path %></li>
+	<li class="side_bar"><%= link_to "Trainingslager erstellen", new_trainingscamp_path %></li>
+	<li class="side_bar"><%= link_to "Ereignis erstellen", new_event_path %></li>
+	<% end %>
 	<% end %>
 	<li class="side_bar"><%= link_to "Spielplan als PDF", games_path(:format => "pdf") %></li>
 <% end %>
