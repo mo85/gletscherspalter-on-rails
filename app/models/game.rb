@@ -35,13 +35,13 @@ class Game < ActiveRecord::Base
   end
 
   def self.next_game
-    find(:first, :conditions => ["date > ?", Time.now]) 
+    find(:first, :conditions => ["date > ?", Time.zone.now]) 
   end
   
   def self.future_games(options = {})
     result = []
     with_scope :find => options do
-      result << find(:all, :conditions => ["date >= ?", Time.now])
+      result << find(:all, :conditions => ["date >= ?", Time.zone.now])
     end
     result.flatten
   end
@@ -49,7 +49,7 @@ class Game < ActiveRecord::Base
   def self.passed_games(options = {})
     result = []
     with_scope :find => options do
-      result << find(:all, :conditions => ["date <= ?", Time.now])
+      result << find(:all, :conditions => ["date <= ?", Time.zone.now])
     end
     result.flatten
   end
