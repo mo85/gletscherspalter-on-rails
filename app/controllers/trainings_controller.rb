@@ -1,5 +1,7 @@
 class TrainingsController < ApplicationController
   
+  filter_access_to :all
+  
   def new
     @training = "hihi"
     respond_to do |format|
