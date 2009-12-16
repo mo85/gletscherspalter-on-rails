@@ -28,7 +28,7 @@ else
                   Prawn::Table::Cell.new(cell_options.merge(:text => "Resultat"))
                 ], 
     :header_text_color => "FFFFFF",
-    :header_color => "093ea8"
+    :header_color => "051659"
   )
   pdf.move_down(20)
   

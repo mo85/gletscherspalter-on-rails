@@ -1,4 +1,4 @@
-pdf.text "Mitgliederlist der Gletscherspalter", :size => 22, :style => :bold
+pdf.text "Mitgliederliste der Gletscherspalter", :size => 22, :style => :bold
 
 pdf.move_down(25)
 

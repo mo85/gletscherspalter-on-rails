@@ -23,7 +23,7 @@
 	<meta name="DC.Format" content="text/html">
 	<meta name="DC.Rights" content="Alle Rechte liegen beim Autor">
 	
-	<%= stylesheet_link_tag :all %>
+	<%= stylesheet_link_tag :all, :cache => true %>
 	
 	<!--[if IE]><%= stylesheet_link_tag "ie_hacks/ie_status_action_hack" %><![endif]-->
 	
@@ -33,7 +33,7 @@
 	<title><%= @title || "Glescherspalter.ch" %></title>
 </head>
 
-<body>
+<body onload="DynarchMenu.setup('header_main_menu', { shadows: false, electric: true });">
 	
 	<div id="wrapper">
 
@@ -193,7 +193,6 @@
 	</div>
 	
 	<script type="text/javascript">
-		DynarchMenu.setup('header_main_menu', { shadows: false, electric: true });
 		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 	</script>
