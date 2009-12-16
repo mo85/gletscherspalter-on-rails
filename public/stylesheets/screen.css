@@ -36,16 +36,16 @@ div.clear {
 }
 
 #left_column {
-	float: left;
 	background: black;
 	width: 240px;
+	float: left;
 }
 
 #right_column {
 	padding: 10px;
+	margin-left: 240px;
 	position: relative;
 	background: black;
-	float: right;
 	width: 740px;
 }
 
@@ -55,4 +55,7 @@ div.clear {
 	background: white;
 	-moz-border-radius:10px;
 	-khtml-border-radius:10px;
+	-webkit-border-radius: 10px;
+	-opera-border-radius: 10px;
+	border-radius: 10px;
 }

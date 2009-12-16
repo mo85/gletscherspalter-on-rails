@@ -25,6 +25,8 @@
 	
 	<%= stylesheet_link_tag :all %>
 	
+	<!--[if IE]><%= stylesheet_link_tag "ie_hacks/ie_status_action_hack" %><![endif]-->
+	
 	<%= yield(:javascripts) %>
 	<%= javascript_include_tag :all %>
 </head>
@@ -81,10 +83,6 @@
 					<% end %>
 				</ul>
 			</div>
-			
-			<script>
-				DynarchMenu.setup('header_main_menu', { shadows: false, electric: true });
-			</script>
 			
 			<div id="status_bar">
 				<div id="status_info">
@@ -180,6 +178,7 @@
 	</div>
 	
 	<script type="text/javascript">
+		DynarchMenu.setup('header_main_menu', { shadows: false, electric: true });
 		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 	</script>

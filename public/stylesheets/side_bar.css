@@ -23,6 +23,9 @@
 	color: white;
 	-moz-border-radius:10px;
 	-khtml-border-radius:10px;
+	-webkit-border-radius: 10px;
+	-opera-border-radius: 10px;
+	border-radius: 10px;
 	
 	font-weight: 100;
 }
@@ -47,6 +50,9 @@
 	color: white;
 	-moz-border-radius:10px;
 	-khtml-border-radius:10px;
+	-webkit-border-radius: 10px;
+	-opera-border-radius: 10px;
+	border-radius: 10px;
 }
 
 h2.side_bar {
