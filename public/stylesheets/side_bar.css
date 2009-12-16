@@ -34,6 +34,15 @@
 	margin-top: 10px;
 }
 
+#news a {
+	color: white;
+	text-decoration: none;
+}
+
+#news a:hover {
+	text-decoration: underline;
+}
+
 #sub_menu {
 	background: black;
 	padding: 10px 0px 0px 10px;

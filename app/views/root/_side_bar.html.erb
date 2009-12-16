@@ -17,9 +17,8 @@
    <h3 class="side_bar">Nächstes Spiel</h3>
 
    <%=h next_game.date_formatted %>
-   Gletscherspalter vs. <br />
-		<%= next_game.opponent %> <br />
-		<%= "(#{next_game.rink.name})" %>
+   <%= link_to "Gletscherspalter vs. <br /> #{next_game.opponent}", game_path(next_game) %> <br />
+		<%= link_to "(#{next_game.rink.name})", location_on_map_path(next_game.rink) %>
   
  </p>
 <% end %>
@@ -27,6 +26,7 @@
 
 <p style="margin-top: 10px;">
 		<h3 class="side_bar">Letztes Spiel</h3>
-	Gletscherspalter vs.<br /> <% game = Game.last_game %><%=h game.opponent %> <%=h game.result %>
+		<% game = Game.last_game %>
+	<%= link_to "Gletscherspalter vs.<br /> #{game.opponent} #{game.result}", game_path(game)%>
 </p>
 <% end %>
