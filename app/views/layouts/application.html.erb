@@ -107,6 +107,19 @@
 		<div id="container">
 
 			<div id="left_column">
+				<!--[if IE]>
+				<div id="ie_warning">
+					This page is <b>optimized for Firefox or WebKit browsers </b>. 
+					Internet Explorer is only partially supported. Please get one of the 
+					listed browsers to receive the full user experience.
+					
+					<ul>
+						<li><%= link_to "Firefox", "http://www.mozilla-europe.org/de/firefox/", :target => :blank %></li>
+						<li><%= link_to "Chrome", "http://www.google.com/chrome", :target => :blank  %></li>
+						<li><%= link_to "Safari", "http://www.apple.com/safari/download/", :target => :blank  %></li>
+					</ul>
+				</div>
+				<![endif]-->
 				
 				<% if yield :sub_menu %>
 				<div id="sub_menu">

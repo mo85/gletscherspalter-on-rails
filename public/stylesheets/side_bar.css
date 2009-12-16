@@ -74,3 +74,18 @@ h3.side_bar {
 	color: #ca0000;
 	padding: 5px 0px 10px 0px;
 }
+
+#ie_warning {
+	margin: 10px 0px 10px 10px; 
+	padding: 10px; 
+	background: white; 
+	font-size: smaller;
+}
+
+#ie_warning ul, li {
+	list-style: none;
+}
+
+#ie_warning ul {
+	padding: 5px;
+}
