@@ -16,10 +16,11 @@ else
     ]
   end
 
-  cell_options = { :font_size => 11, :font_style => :bold }
+  cell_options = { :font_size => 10, :font_style => :bold }
 
   pdf.table(users, :border_style => :grid,
      :row_colors => ["FFFFFF", "DDDDDD"],
+     :font_size => 11,
      :headers => [
        Prawn::Table::Cell.new(cell_options.merge(:text => "Name")),
        Prawn::Table::Cell.new(cell_options.merge(:text => "Adresse")),
