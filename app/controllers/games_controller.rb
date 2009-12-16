@@ -9,7 +9,7 @@ class GamesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        games = @games
+        games = current_season.games
         render :file => "/players/games.pdf.prawn", :locals => { :games => games } 
       end
     end
