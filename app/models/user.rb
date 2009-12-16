@@ -105,7 +105,7 @@ class User < ActiveRecord::Base
   end
   
   def active
-    is_player ? "Ja" : "Nein"
+    is_player ? "ja" : "nein"
   end
   
   def self.number_of_active_players
