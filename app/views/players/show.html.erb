@@ -1,24 +1,21 @@
 <h1><%= @player.user.full_name %></h1>
 
-<% form_for [@player], :html => {:class => :default} do |f| %>
-	
-	<div>
-		<%= f.label :member_since, "Mitglied seit:", :class => :bold %>
-		<%=h @player.member_since %>
-	</div>
-	
-	<div>
-		<%= f.label :player, "Trikot Nummer:", :class => :bold %> 
-		<%=h @player.number %>
-	</div>
-
-	<div>
-		<%= f.label :player, "Position:", :class => :bold %>
-		<%=h @player.position_as_string %>
-	</div>
-	
-<% end %>
-<div class="clear"></div>
+<div>
+	<table class="facts">
+		<tr>
+			<td class="key">Mitglied seit:</td>
+			<td><%=h @player.member_since %></td>
+		</tr>
+		<tr>
+			<td class="key">Position:</td>
+			<td><%=h @player.position_as_string %></td>
+		</tr>
+		<tr>
+			<td class="key">Trickot Nummer:</td>
+			<td><%=h @player.number %></td>
+		</tr>
+	</table>
+</div>
 
 <div style="marin-top: 20px;">
 	<h2>Statistiken</h2>

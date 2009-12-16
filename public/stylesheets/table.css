@@ -72,3 +72,13 @@ table.forum tr.even-line td{
 table.forum tr.odd-line td {
 	background-color: #f0f0f0;
 }
+
+table.facts {
+	line-height: 1.5em;
+	margin-bottom: 10px;
+}
+
+table.facts tr td.key {
+	width: 150px;
+	font-weight: bold;
+}

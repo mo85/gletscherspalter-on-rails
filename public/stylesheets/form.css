@@ -1,6 +1,9 @@
+form.default {
+	margin-top: 0px;
+}
+
 form.default div {
   padding: 5px;
-  clear: both;
 }
 
 form.default label {

@@ -1,24 +1,21 @@
 <h1><%= @game.name %></h1>
 
-<% form_for [@game],:html => {:class => :default} do |f|%>
-
-  <div>
-    <%= f.label :date, "Datum:", {:class => :bold} %>
-    <%= f.label nil, h(@game.date_formatted) %>
-  </div>
-
-  <div>
-    <%= f.label :rink, "Ort:", {:class => :bold} %>
-    <%= f.label nil, h(@game.rink.name) %>
-  </div>
-
-  <div>
-    <%= f.label :result, "Resultat:", :class => :bold %>
-    <%= f.label nil, h(@game.result) %>
-  </div>
-
-<% end %>
-<div class="clear"></div>
+<div>
+	<table class="facts">
+		<tr>
+			<td class="key">Datum:</td>
+			<td><%=h @game.date_formatted %></td>
+		</tr>
+		<tr>
+			<td class="key">Ort:</td>
+			<td><%=h @game.rink.name %></td>
+		</tr>
+		<tr>
+			<td class="key">Resultat</td>
+			<td><%=h @game.result %></td>
+		</tr>
+	</table>
+</div>
 
 <div style="margin-top: 20px;">
 <% if !@game.score.blank? %>

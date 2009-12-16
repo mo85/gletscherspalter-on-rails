@@ -40,6 +40,10 @@
 <div style="margin-top: 10px;">
 	<h2>Spieler Statistiken</h2>
 	
+	<% if @scorer_names.empty? %>
+		Zurzeit sind keine Spieler Statistiken erfasst.
+	<% else %>
+	
 	<% width = ((350 - (4 * @scorer_names.size * 2)) / (@scorer_names.size * 2))
 	url = Gchart.bar( :size => "700x428",
 										:orientation => 'horizontal',
@@ -60,9 +64,9 @@
 
 	
 	<%= image_tag(url) %>
-
+	<% end %>
 </div>
 
 <% content_for :sub_menu do %>
-	<li class="side_bar"><%= link_to "Verganene Saisons", seasons_path %></li>
+	<li class="side_bar"><%= link_to "Andere Saisons", seasons_path %></li>
 <% end %>
