@@ -4,7 +4,8 @@ class TopicsController < ApplicationController
   # GET /topics
   def index
     @topics = Topic.all.paginate :page => params[:page], :per_page => 15
-
+    @ordered_topics = Topic.sort_topics(@topics)
+    
     respond_to do |format|
       format.html # insufficientcredentials.html.erb
     end
