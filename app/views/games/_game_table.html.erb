@@ -24,7 +24,7 @@
 		<% end %>
 		<td style="font-size: 14px;"><%= link_to "#{h(game.name)}", game %></td>
 		<td><%=h game.date_formatted %></td>
-		<td><%= link_to h(game.rink.name), location_on_map_path(:id => game.rink.id) %></td>
+		<td><%= link_to h(game.location.name), location_on_map_path(:id => game.location.id) %></td>
 		<% if show_result %>
 		<td>
 			<%=h game.result %>

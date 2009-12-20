@@ -4,7 +4,7 @@ class Game < ActiveRecord::Base
   
   has_and_belongs_to_many :players
   has_many :scores
-  belongs_to :rink
+  belongs_to :location
   belongs_to :season
   
   validates_presence_of :rink, :opponent, :date
