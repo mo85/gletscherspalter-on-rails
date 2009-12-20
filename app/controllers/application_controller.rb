@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   filter_parameter_logging :password
   
-  #layout "maintenance"
+  layout "maintenance"
 
 protected
   def logged_in?
