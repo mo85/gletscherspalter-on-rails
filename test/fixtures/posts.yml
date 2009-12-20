@@ -6,8 +6,50 @@
 # two:
 #   column: value
 
-one:
-    content: alskdf
-    topic: one
-    user: mark
-    
+first:
+  content: this is the first post
+  topic: first
+  user: mark
+  created_at: <%= Time.parse("2009/12/16 - 20:00") %>
+
+help:
+  content: hi, I need some help!
+  topic: first
+  user: mark
+  created_at: <%= Time.parse("2009/12/16 - 18:00") %>
+
+eat:
+  content: We are going to eat in a few minutes
+  topic: first
+  user: mark
+  created_at: <%= Time.parse("2009/12/16 - 23:10") %>
+  
+digest:
+  content: Now I have to digest a lot of cookies
+  topic: second
+  user: mark
+  created_at: <%= Time.parse("2009/12/17 - 20:00") %>
+
+go_to_bed:
+  content: I'm tired, I'll have a nap.
+  topic: second
+  user: mark
+  created_at: <%= Time.parse("2009/12/14 - 14:00") %>
+
+test_2:
+  content: Hello I'm mark
+  topic: second
+  user: mark
+  created_at: <%= Time.parse("2009/12/14 - 20:00") %>
+
+test:
+  content: This is used for testing purpose
+  topic: third
+  user: mark
+  created_at: <%= Time.parse("2009/12/15 - 10:00") %>
+
+hellou:
+  content: Hello, I'm an ice hockey player
+  topic: third
+  user: mark
+  created_at: <%= Time.parse("2009/12/16 - 23:00") %>

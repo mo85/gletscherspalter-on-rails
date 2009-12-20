@@ -1,4 +1,12 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  title: topic one
+first:
+  title: Hello world!
+
+second:
+  title: This is a very good test
+
+third:
+  title: Today it's very cold
+
+  
