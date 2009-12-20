@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
 
-  validates_presence_of :title, :date, :location
+  validates_presence_of :date
 
   def date_formatted
     I18n.l(date, :format => :default)

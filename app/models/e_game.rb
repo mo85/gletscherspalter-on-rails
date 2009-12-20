@@ -1,0 +1,3 @@
+class EGame < Event
+  
+end
