@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :news
   has_one :player, :dependent => :destroy
   
+  has_and_belongs_to_many :events
+  
   before_create :generate_token
   after_create :add_player
   
