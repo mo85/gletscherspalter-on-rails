@@ -14,6 +14,10 @@ class Game < Event
     "Gletscherspalter vs. #{opponent}"
   end
   
+  def players
+    users.collect(&:player)
+  end
+  
   def self.last_game
     last(:conditions => ["score != ?",""])
   end
