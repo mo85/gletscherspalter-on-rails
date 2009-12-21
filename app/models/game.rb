@@ -1,15 +1,11 @@
 require 'digest/sha1'
 
-class Game < ActiveRecord::Base
+class Game < Event
   
-  has_and_belongs_to_many :players
   has_many :scores
-  belongs_to :location
   belongs_to :season
   
-  validates_presence_of :rink, :opponent, :date
-  validates_numericality_of :score, :only_integer => true, :allow_nil => true
-  validates_numericality_of :opponent_score, :only_integer => true, :allow_nil => true
+  validates_presence_of :opponent
   
   def name
     if opponent == "Training"

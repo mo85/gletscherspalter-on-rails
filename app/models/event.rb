@@ -1,8 +1,11 @@
 class Event < ActiveRecord::Base
 
   has_and_belongs_to_many :users
+  belongs_to :location
 
   validates_presence_of :date
+  validates_numericality_of :score, :only_integer => true, :allow_nil => true
+  validates_numericality_of :opponent_score, :only_integer => true, :allow_nil => true
 
   def date_formatted
     I18n.l(date, :format => :default)
