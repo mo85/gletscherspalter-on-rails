@@ -2,7 +2,7 @@ include ActionView::Helpers::UrlHelper
 
 class Player < ActiveRecord::Base
   
-  has_and_belongs_to_many :games, :order => "Date ASC"
+  #has_and_belongs_to_many :games, :order => "Date ASC"
   has_many :scores, :dependent => :destroy
   belongs_to :user
 
@@ -15,6 +15,14 @@ class Player < ActiveRecord::Base
   validate :valid_position  
   
   ::Positions = {:BW => 'Verteidiger', :G => 'Goalie', :FW => 'Stürmer'}
+  
+  def games
+    user.events.select{ |e| e.is_a?(Game) }
+  end
+  
+  def passed_games
+    games.select{ |g| g.date <= Time.zone.now }
+  end
   
   def position_as_string
     ::Positions[self.position.to_sym]
@@ -96,7 +104,7 @@ class Player < ActiveRecord::Base
         dtstart       game.date.strftime("%Y%m%dT%H%M%S")
         dtend         2.hours.since(game.date).strftime("%Y%m%dT%H%M%S")
         summary       "#{game.name}"
-        location      game.rink.name
+        location      game.location.name
         uid           game.ical_id
         url           game_url
       end

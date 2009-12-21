@@ -20,7 +20,7 @@
 <% @games.each do |game| %>
   <tr>
 		<% if check_box_needed %>
-		<td><%= check_box_tag 'player[game_ids][]', game.id, game.players.include?(@player) %></td>
+		<td><%= check_box_tag 'user[event_ids][]', game.id, game.players.include?(@player) %></td>
 		<% end %>
 		<td style="font-size: 14px;"><%= link_to "#{h(game.name)}", game %></td>
 		<td><%=h game.date_formatted %></td>

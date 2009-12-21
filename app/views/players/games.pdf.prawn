@@ -13,7 +13,7 @@ else
     [
       game.name,
       l(game.date, :format => :default),
-      game.rink.name,
+      game.location.name,
       game.result
     ]
   end

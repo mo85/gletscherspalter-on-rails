@@ -30,7 +30,7 @@ class PlayersController < ApplicationController
   # GET /players/1
   def show
     @player = Player.find(params[:id])
-    @games = @player.games_of_season.paginate :page => params[:page], :per_page => 10
+    @games = @player.games.paginate :page => params[:page], :per_page => 10
     respond_to do |format|
       format.html
     end
@@ -63,10 +63,12 @@ class PlayersController < ApplicationController
   
   def update_games
     current_player = Player.find(params[:id])
-    params[:player][:game_ids] ||= []
-    params[:player][:game_ids] << current_player.games.passed_games
-    params[:player][:game_ids] = params[:player][:game_ids].flatten.compact
-    current_player.update_attributes(params[:player])
+    
+    params[:user] ||= {}
+    params[:user][:event_ids] ||= []  
+    params[:user][:event_ids] << current_player.passed_games
+    params[:user][:event_ids] = params[:user][:event_ids].flatten.compact
+    current_player.user.update_attributes(params[:user])
     
     respond_to do |format|
       flash[:notice] = "Spiele erfolgreich angepasst."

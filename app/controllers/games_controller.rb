@@ -30,7 +30,7 @@ class GamesController < ApplicationController
   def remove_player
     @game = Game.find(params[:id])
     player = Player.find(params[:p_id])
-    @game.players.delete(player)
+    @game.users.delete(player.user)
     
     respond_to do |format|
       format.html { redirect_to @game }
@@ -60,7 +60,7 @@ class GamesController < ApplicationController
       player_added = false
       
       if !players.include?(player) 
-        @game.players << player
+        @game.users << player.user
         player_added = true
       end
     end 
