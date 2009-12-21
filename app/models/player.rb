@@ -8,7 +8,8 @@ class Player < ActiveRecord::Base
 
   # validation stuff
   validates_numericality_of :number, :allow_nil => true
-  validates_numericality_of :member_since, :only_integer => true, :allow_nil => true
+  validates_numericality_of :member_since, :only_integer => true, :allow_nil => true, 
+                            :greater_than => 1950, :less_than_or_equal_to => (Time.zone.now.year + 1)
   validate :number_must_not_be_negative
   validates_presence_of :position
   validates_presence_of :user_id
