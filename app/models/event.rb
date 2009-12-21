@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
   has_and_belongs_to_many :users
   belongs_to :location
 
-  validates_presence_of :date
+  validates_presence_of :date, :season_id
   validates_numericality_of :score, :only_integer => true, :allow_nil => true
   validates_numericality_of :opponent_score, :only_integer => true, :allow_nil => true
 
@@ -21,6 +21,10 @@ class Event < ActiveRecord::Base
 
   def self.next_event
     find(:first, :conditions => ["date > :now", {:now => Time.now}], :order => "date ASC")
+  end
+  
+  def name
+    title
   end
 
 end

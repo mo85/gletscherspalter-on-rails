@@ -9,7 +9,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :messages, :except => [:show, :edit, :update]
 
-  map.resources :events, :except => [:show]
+  map.resources :events, :as => "seasons/:season_start_year.:season_end_year",
+                :except => [:show]
 
   map.resources :locations, :except => [:show]
 

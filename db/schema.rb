@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091220225418) do
+ActiveRecord::Schema.define(:version => 20091221165647) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -33,27 +33,12 @@ ActiveRecord::Schema.define(:version => 20091220225418) do
     t.integer  "opponent_score"
     t.integer  "season_id"
     t.string   "type"
+    t.string   "locality"
   end
 
-  create_table "events_users", :force => true do |t|
-    t.integer "user_id"
+  create_table "events_users", :id => false, :force => true do |t|
     t.integer "event_id"
-  end
-
-  create_table "games", :force => true do |t|
-    t.datetime "date"
-    t.integer  "location_id"
-    t.string   "opponent"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "season_id"
-    t.integer  "score"
-    t.integer  "opponent_score"
-  end
-
-  create_table "games_players", :id => false, :force => true do |t|
-    t.integer "game_id"
-    t.integer "player_id"
+    t.integer "user_id"
   end
 
   create_table "guestnotes", :force => true do |t|
@@ -103,13 +88,6 @@ ActiveRecord::Schema.define(:version => 20091220225418) do
     t.datetime "updated_at"
   end
 
-  create_table "roles", :force => true do |t|
-    t.string   "name"
-    t.integer  "classification"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "scores", :force => true do |t|
     t.integer "game_id"
     t.integer "player_id"
@@ -129,13 +107,6 @@ ActiveRecord::Schema.define(:version => 20091220225418) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-  end
-
-  create_table "user_roles", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "role_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

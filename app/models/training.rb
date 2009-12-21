@@ -1,0 +1,3 @@
+class Training < Event
+  
+end

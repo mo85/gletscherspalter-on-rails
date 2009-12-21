@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   # GET /events
   def index
-    @events = Event.find(:all, :order => "date DESC")
+    @events = current_season.events
 
     respond_to do |format|
       format.html 
@@ -27,7 +27,8 @@ class EventsController < ApplicationController
   # POST /events
   def create
     @event = Event.new(params[:event])
-
+    @event.season_id = current_season.id
+    
     respond_to do |format|
       if @event.save
         flash[:notice] = 'Ereignis erfolgreich erstellt.'

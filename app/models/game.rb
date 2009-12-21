@@ -7,6 +7,10 @@ class Game < Event
   
   validates_presence_of :opponent
   
+  def locality
+    location.name
+  end
+  
   def name
     if opponent == "Training"
       return "Training"
@@ -20,10 +24,6 @@ class Game < Event
   
   def self.last_game
     last(:conditions => ["score != ?",""])
-  end
-  
-  def date_formatted
-    I18n.l(date, :format => :default)
   end
 
   def result

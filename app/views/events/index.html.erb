@@ -1,11 +1,19 @@
-<h1>Veranstaltungen</h1>
+<h1>Saison <%= "#{current_season.to_s}" %></h1>
 
 <div>
-	<%= render :partial => "event_table", :locals => { :events => @events, :actions => true } %>
+	<%= render :partial => "events_table" %>
 </div>
 
+
 <% content_for :sub_menu do %>
+	<% if permitted_to? :manage, :games %>
+	<li class="side_bar"><%= link_to "Spiel erstellen", new_game_path %></li>
 	<% if permitted_to? :manage, :events %>
-	<li class="side_bar"><%= link_to 'Neue Veranstaltung', new_event_path %></li>
+	<li class="side_bar"><%= link_to "Training erstellen", new_training_path %></li>
+	<li class="side_bar"><%= link_to "Trainingslager erstellen", new_trainingscamp_path %></li>
+	<li class="side_bar"><%= link_to "Ereignis erstellen", new_event_path(
+			:season_start_year => current_season.start_year, :season_end_year => current_season.end_year) %></li>
 	<% end %>
+	<% end %>
+	<li class="side_bar"><%= link_to "Spielplan als PDF", games_path(:format => "pdf") %></li>
 <% end %>

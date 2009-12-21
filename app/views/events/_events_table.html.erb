@@ -1,0 +1,30 @@
+<table class="default">
+	<thead>
+		<tr>
+			<th>Anlass</th>
+			<th>Datum</th>
+			<th>Ort</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	
+	<% for event in @events %>
+		<tr>
+			<td>
+				<% if event.is_a?(Game) || event.is_a?(Training) %>
+				<%= link_to event.name, game_path(event) %>
+				<% else %>
+				<%= event.name %>
+				<% end %>
+			</td>
+			<td><%= event.date_formatted %></td>
+			<td>
+				<% if event.is_a?(Game) || event.is_a?(Training) %>
+				<%= link_to h(event.locality), location_on_map_path(:id => event.location.id) %>
+				<% else %>
+				<%= h(event.locality) %>
+				<% end %>
+			</td>
+		</tr>
+	<% end %>
+</table>

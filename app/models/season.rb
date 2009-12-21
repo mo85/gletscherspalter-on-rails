@@ -1,6 +1,7 @@
 class Season < ActiveRecord::Base
 
   has_many :games, :order => "Date ASC", :dependent => :destroy
+  has_many :events, :order => "Date ASC", :dependent => :destroy
   
   validates_presence_of :start_year
   validates_presence_of :end_year
