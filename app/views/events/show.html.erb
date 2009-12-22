@@ -1,0 +1,38 @@
+<h1><%= @event.name %></h1>
+
+<div>
+	<table class="facts">
+		<tr>
+			<td class="key">Datum:</td>
+			<td><%=h @event.date_formatted %></td>
+		</tr>
+		<tr>
+			<td class="key">Ort:</td>
+			<td><%=h @event.locality %></td>
+		</tr>
+	</table>
+</div>
+
+<% unless @event.note.empty? %>
+	<h3>Anmerkungen</h3>
+	
+	<%=sanitize @event.note %>
+<% end %>
+
+<div style="margin-top: 20px;">
+	<h2>Teilnehmer</h2>
+	
+	<% if !@event.users.empty? %>
+		
+	<% else %>
+		Für dieses Ereignis haben sich keine Benutzer eingetragen.
+	<% end %>
+</div>
+
+<% content_for :sub_menu do %>
+	<% if permitted_to? :manage, :games %>
+	<li class="side_bar"><%= link_to "Anpassen", :controller => @event.controller_name, :action => "edit" %></li>
+	<li class="side_bar"><%= link_to "Teilnehmer hinzufügen" %></li>
+	<li class="side_bar"><%= link_to "Zurück", events_path %></li>
+	<% end %>
+<% end %>

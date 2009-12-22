@@ -2,8 +2,16 @@ class TrainingscampsController < ApplicationController
   
   filter_access_to :all 
   
+  def show
+    @event = Trainingscamp.find(params[:id])
+    
+    respond_to do |format|
+      format.html { render :template => "events/show", :locals => { :event => @event }}
+    end
+  end
+  
   def new
-    @trainingscamp = "hihi"
+    @event = Trainingscamp.new
     
     respond_to do |format|
       format.html
@@ -11,15 +19,21 @@ class TrainingscampsController < ApplicationController
   end
   
   def create
-    @trainingscamp = "hihi"
+    @trainingscamp = Trainingscamp.new(params[:trainingscamp])
+    @trainingscamp.season_id = current_season.id
     
     respond_to do |format|
-      format.html
+      if @trainingscamp.save
+        flash[:notice] = 'Trainingslager erfolgreich erstellt.'
+        format.html { redirect_to(events_path) }
+      else
+        format.html { render :action => "new" }
+      end
     end
   end
   
   def edit
-    @trainingscamp = "hihi"
+    @event = Trainingscamp.find(params[:id])
     
     respond_to do |format|
       format.html
@@ -27,10 +41,26 @@ class TrainingscampsController < ApplicationController
   end
   
   def update
-    @trainingscamp = "hihi"
+    @trainingscamp = Trainingscamp.find(params[:id])
+
+    respond_to do |format|
+      if @trainingscamp.update_attributes(params[:trainingscamp])
+        flash[:notice] = 'Trainingslager erfolgreich angepasst.'
+        format.html { redirect_to(events_path) }
+      else
+        format.html { render :action => "edit" }
+      end
+    end
   end
   
   def destroy
+    @trainingscamp = Trainingscamp.find(params[:id])
+    @trainingscamp.destroy
+
+    respond_to do |format|
+      flash[:notice] = "Trainingslager wurde gelöscht."
+      format.html { redirect_to(events_path) }
+    end
   end
   
 end

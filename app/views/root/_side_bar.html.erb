@@ -1,5 +1,5 @@
 <h2 class="side_bar">News</h2>
-<% next_event = nil #Event.next_event %>
+<% next_event = Event.next_non_game_event %>
 <% next_game = current_season.games.next_game %>
 
 <% if next_event != nil %>
@@ -8,8 +8,8 @@
 	<h3 class="side_bar">Nächstes Event</h3>
 	
      <%=h next_event.date_formatted %><br />
-     <%=h next_event.title %>,
-     <%=h next_event.location %>
+     <%=h next_event.name %>,
+     <%=h next_event.locality %>
  </p>
 <% end %>
 <% if next_game != nil %>

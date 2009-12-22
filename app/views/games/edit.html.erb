@@ -10,7 +10,7 @@
 
   <div>
 	<%= f.label "Ort" %>
-	<%= f.collection_select(:rink_id, Rink.all, :id, :name, {:promt => "Select a location"}) %>
+	<%= f.collection_select(:location_id, Rink.all, :id, :name, {:promt => "Select a location"}) %>
   </div>
 
   <div>

@@ -59,8 +59,7 @@
 							<% end %>
 						</ul>
 					</li>
-					<li><%= link_to "Saison", events_path(:season_start_year => current_season.start_year, 
-										:season_end_year => current_season.end_year) %>
+					<li><%= link_to "Saison", events_path %>
 						<ul>
 							<li><%= link_to "Spielplan", games_path %></li>
 							<li><%= link_to "Statistiken", statistics_season_path(current_season) %></li>
@@ -167,8 +166,7 @@
 									<ul>
 										<li><%= link_to_remote "Mannschaft", :update => "content", :method => :get, :url => players_url %></li>
 										<li><%= link_to "Forum", topics_path %></li>
-										<li><%= link_to "Saison", events_path(:season_start_year => current_season.start_year, 
-															:season_end_year => current_season.end_year) %></li>
+										<li><%= link_to "Saison", events_path %></li>
 									</ul>
 								</td>
 								<td>

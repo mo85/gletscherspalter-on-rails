@@ -9,8 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :messages, :except => [:show, :edit, :update]
 
-  map.resources :events, :as => "seasons/:season_start_year.:season_end_year",
-                :except => [:show]
+  map.resources :events
 
   map.resources :locations, :except => [:show]
 
@@ -25,8 +24,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users, :except => :show
 
-  map.resources :trainings, :except => [:show, :index]
-  map.resources :trainingscamps, :except => [:show, :index]
+  map.resources :trainings, :except => :index
+  map.resources :trainingscamps, :except => :index
 
   map.resources :games, :member => { 
     :remove_player => :delete,

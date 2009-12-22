@@ -79,6 +79,7 @@ table.facts {
 }
 
 table.facts tr td.key {
+	vertical-align: top;
 	width: 150px;
 	font-weight: bold;
 }

@@ -3,10 +3,20 @@ class EventsController < ApplicationController
 
   # GET /events
   def index
-    @events = current_season.events
+    @events = current_season.events.find_all_non_game_events.paginate :page => params[:page], :per_page => 10
 
     respond_to do |format|
-      format.html 
+      format.html
+      format.pdf 
+    end
+  end
+  
+  def show
+    @event = Event.find params[:id]
+    @users = @event.users
+    
+    respond_to do |format|
+      format.html
     end
   end
 

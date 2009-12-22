@@ -1,25 +1,29 @@
 <h1>Spielplan Saison <%=h current_season.to_s %></h1>
 	
 <div style="margin-top: 10px;">
-	<%= render :partial => "game_table", :locals => { :games => @games, 
-		:show_actions => true, :show_result => true, :check_box_needed => false 
-		} %>
-	<div style="margin-top: 5px;">
-	<hr/>
-		<%= will_paginate @games %>
-	<hr/>
+	
+	Diese Seite zeigt den Spielplan der Gletscherspalter. Alle anderen 
+	Vereinsanlässe findest du <%= link_to "hier", events_path %>.
+	
+	<div style="margin-top: 10px;">
+		<% if @games.empty? %>
+			Zur Zeit sind keine Anlässe registriert.
+		<% else %>
+			<%= render :partial => "game_table", :locals => { :games => @games, 
+				:show_actions => true, :show_result => true, :check_box_needed => false 
+				} %>
+			<div style="margin-top: 5px;">
+			<hr/>
+				<%= will_paginate @games %>
+			<hr/>
+			</div>
+		<% end %>
 	</div>
 </div>
 
 <% content_for :sub_menu do %>
 	<% if permitted_to? :manage, :games %>
 	<li class="side_bar"><%= link_to "Spiel erstellen", new_game_path %></li>
-	<% if permitted_to? :manage, :events %>
-	<li class="side_bar"><%= link_to "Training erstellen", new_training_path %></li>
-	<li class="side_bar"><%= link_to "Trainingslager erstellen", new_trainingscamp_path %></li>
-	<li class="side_bar"><%= link_to "Ereignis erstellen", new_event_path(
-			:season_start_year => current_season.start_year, :season_end_year => current_season.end_year) %></li>
-	<% end %>
 	<% end %>
 	<li class="side_bar"><%= link_to "Spielplan als PDF", games_path(:format => "pdf") %></li>
 <% end %>

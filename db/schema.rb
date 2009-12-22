@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091221165647) do
+ActiveRecord::Schema.define(:version => 20091222204757) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20091221165647) do
     t.integer  "score"
     t.integer  "opponent_score"
     t.integer  "season_id"
-    t.string   "type"
+    t.string   "type",                          :default => "Event"
     t.string   "locality"
   end
 

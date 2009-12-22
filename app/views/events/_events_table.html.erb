@@ -11,11 +11,7 @@
 	<% for event in @events %>
 		<tr>
 			<td>
-				<% if event.is_a?(Game) || event.is_a?(Training) %>
-				<%= link_to event.name, game_path(event) %>
-				<% else %>
-				<%= event.name %>
-				<% end %>
+				<%= link_to event.name, :controller => event.controller_name, :action => "show", :id => event.id %>
 			</td>
 			<td><%= event.date_formatted %></td>
 			<td>
@@ -24,6 +20,10 @@
 				<% else %>
 				<%= h(event.locality) %>
 				<% end %>
+			</td>
+			<td>
+				<%= link_to(image_tag('icons/pencil.png', :border => 0), :controller => event.controller_name, :action => "edit", :id => event.id) %>
+		    <%= link_to(image_tag('icons/delete.png', :border => 0), event, :confirm => 'Möchten sie dieses Ereignis wirklich löschen?', :method => :delete) %>
 			</td>
 		</tr>
 	<% end %>

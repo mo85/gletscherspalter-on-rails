@@ -5,7 +5,7 @@ class Game < Event
   has_many :scores
   belongs_to :season
   
-  validates_presence_of :opponent
+  validates_presence_of :opponent, :location_id
   
   def locality
     location.name

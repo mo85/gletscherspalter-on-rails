@@ -1,7 +1,7 @@
 if @player
   pdf.text "Gletscherspalter: Spielplan von #{@player.name}", :size => 22, :style => :bold
 else
-  pdf.text "Saisonplan der Gletscherpalter", :size => 22, :style => :bold 
+  pdf.text "Spielplan der Gletscherpalter", :size => 22, :style => :bold 
 end
 
 pdf.move_down(25)
