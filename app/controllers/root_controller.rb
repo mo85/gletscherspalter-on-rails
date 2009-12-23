@@ -16,7 +16,6 @@ class RootController < ApplicationController
     @news = News.find :all, :limit => 3, :order => "created_at DESC"
     
     @games = current_season.games.future_games :limit => 3
-    @events = Event.future_events(:order => "date DESC", :limit => 3)
   end
   
   def contact

@@ -1,3 +1,4 @@
+<% include_tinymce %>
 <h1>Trainingslager Anpassen</h1>
 
 <% form_for @event, :html => { :class => :default } do |f| %>
@@ -21,6 +22,8 @@
 		<%= f.submit "Anpassen" %>
 	</div>
 <% end %>
+
+<%= render :partial => "scripts/tinymce_init" %>
 
 <% content_for :sub_menu do %>
 	<li class="side_bar"><%= link_to "Zurück", events_path %></li>

@@ -1,3 +1,4 @@
+<% include_tinymce %>
 <h1>Training Erstellen</h1>
 
 <% form_for @training, :html => { :class => :default } do |f| %>
@@ -22,6 +23,8 @@
 	</div>
 <% end %>
 
+<%= render :partial => "scripts/tinymce_init" %>
+
 <% content_for :sub_menu do %>
-	<li class="side_bar"><%= link_to "Zurück", games_path %></li>
+	<li class="side_bar"><%= link_to "Zurück", events_path %></li>
 <% end %>

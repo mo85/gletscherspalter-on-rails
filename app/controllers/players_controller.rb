@@ -36,37 +36,27 @@ class PlayersController < ApplicationController
     end
   end
   
-  # def games
-  #   @title = "Gletscherspalter.ch::Spiele Saison #{current_season.to_s}"
-  #   @games = future_games_of_current_season
-  #   
-  #   if params[:token]
-  #     @user = current_user
-  #     @player = @user.player
-  #   else 
-  #     @player = Player.find(params[:id])
-  #   end
-  #   
-  #   respond_to do |format|
-  #     format.html
-  #     format.pdf do 
-  #       games = @player.games
-  #       render :file => "players/games.pdf.prawn", :locals => { :games => games } 
-  #     end
-  #     format.ics do
-  #       send_data(@player.games_to_ical(request.raw_host_with_port), :type => 'text/calendar',
-  #                 :disposition => "inline; filename=Gletscherspalter.ics",
-  #                 :filename => "Gletscherspalter.ics")
-  #     end
-  #   end
-  # end
-  
   def events
-    @events = current_season.events.future_events
-    @player = Player.find params[:id]
+    @events = current_season.events.future_events(SUBSCRIPTION_TOLERANCE)
+    
+    if params[:token]
+      @user = current_user
+      @player = @user.player
+    else 
+      @player = Player.find(params[:id])
+    end
     
     respond_to do |format|
       format.html
+      format.pdf do
+        @events = @player.user.events
+        render :file => "players/events.pdf.prawn", :locals => { :events => @events, :player => @player }
+      end
+      format.ics do
+        send_data(@player.user.events_to_ical(request.raw_host_with_port), :type => 'text/calendar',
+                  :disposition => "inline; filename=Gletscherspalter.ics",
+                  :filename => "Gletscherspalter.ics")
+      end
     end
   end
   
@@ -117,10 +107,4 @@ class PlayersController < ApplicationController
       render :action => "edit"
   end
 
-  private
-  
-  def future_games_of_current_season
-    @games ||= current_season.games.find(:all, :conditions => ["date >= ?", Time.zone.now + SUBSCRIPTION_TOLERANCE])
-  end
-  
 end

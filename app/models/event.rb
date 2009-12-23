@@ -4,8 +4,6 @@ class Event < ActiveRecord::Base
   belongs_to :location
 
   validates_presence_of :date, :season_id
-  validates_numericality_of :score, :only_integer => true, :allow_nil => true
-  validates_numericality_of :opponent_score, :only_integer => true, :allow_nil => true
   
   def date_formatted
     I18n.l(date, :format => :default)
@@ -35,8 +33,12 @@ class Event < ActiveRecord::Base
     self.class.to_s.downcase.pluralize
   end
   
-  def self.future_events
-    find(:all, :conditions => ["date > ?", Time.zone.now ], :order => "date ASC")
+  def self.future_events(tolerance = 0.seconds, options = {})
+    result = []
+    with_scope :find => options do
+      result << find(:all, :conditions => ["date > ?", Time.zone.now + tolerance], :order => "date ASC")
+    end
+    result.flatten
   end
   
   def self.passed_events
@@ -47,4 +49,11 @@ class Event < ActiveRecord::Base
     "-"
   end
   
+  def self.games
+    find :all, :conditions => ["type = ?", "Game"]
+  end
+  
+  def ical_id
+    "gletscherspalter-event##{Digest::SHA1.hexdigest(self.id.to_s)[0...10]}"
+  end
 end

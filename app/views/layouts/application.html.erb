@@ -47,7 +47,7 @@
 					<% if logged_in? %>
 					<li><%= link_to "Mein Profil", player_path(current_user.player) %>
 						<ul>
-							<li><%= link_to "Anlässe Verwalten", events_player_path(current_user.player) %>
+							<li><%= link_to "Termine Verwalten", events_player_path(current_user.player) %>
 						</ul>
 					</li>
 					<% end %>
@@ -59,9 +59,9 @@
 							<% end %>
 						</ul>
 					</li>
-					<li><%= link_to "Saison", events_path %>
+					<li><%= link_to "Saison", games_path %>
 						<ul>
-							<li><%= link_to "Spielplan", games_path %></li>
+							<li><%= link_to "Anlässe", events_path %></li>
 							<li><%= link_to "Statistiken", statistics_season_path(current_season) %></li>
 							<li><%= link_to "Austragungsorte", :controller => "root", :action => "locations" %></li>
 						</ul>

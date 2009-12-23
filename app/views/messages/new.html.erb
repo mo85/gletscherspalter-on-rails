@@ -42,15 +42,9 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
-	tinyMCE.init({
-		mode 					: "textareas",
-		theme				 	: "advanced",
-		theme_advanced_buttons1 : "bold, italic, underline, |, justifyleft, justifycenter, justifyright, justifyfull,|, fontselect, fontsizeselect, bullist, numlist, link",
-		theme_advanced_buttons2 : "",
-		theme_advanced_toolbar_location : "top",
-		theme_advanced_toolbar_align : "left",
-		convert_urls	: false,
-	});
+	
+	<%= render :partial => "scripts/tinymce_init", :locals => { :with_script_tags => false } %>
+	
 	new Glacier.Selector("usr");
 </script>
 

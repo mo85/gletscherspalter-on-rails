@@ -7,7 +7,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.pdf 
+      format.pdf
     end
   end
   

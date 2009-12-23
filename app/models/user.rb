@@ -1,4 +1,5 @@
 require 'digest/sha1'
+include ActionView::Helpers::UrlHelper
 
 class User < ActiveRecord::Base
 
@@ -115,6 +116,22 @@ class User < ActiveRecord::Base
     User.find_all_by_is_player(true).size
   end
   
+  def events_to_ical(host)
+    cal = Icalendar::Calendar.new 
+    events.each do |event|
+      event_url = event_link(host, event)
+      cal.event do
+        dtstart       event.date.strftime("%Y%m%dT%H%M%S")
+        dtend         2.hours.since(event.date).strftime("%Y%m%dT%H%M%S")
+        summary       "#{event.name}"
+        location      event.locality
+        uid           event.ical_id
+        url           event_url
+      end
+    end
+    cal.to_ical
+  end
+  
 private
 
   def password_non_blank
@@ -139,5 +156,9 @@ private
   def generate_token
     self.token = Digest::SHA1.hexdigest(Time.now.to_s.split(//).sort_by { rand }.join)
   end
-
+  
+  def event_link(host, event)
+    helpers.link_to(event.name, url_for(:host => host, :controller => event.controller_name, :action => "show", :id => event.to_param))
+  end
+  
 end
