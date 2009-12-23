@@ -1,0 +1,27 @@
+<h1>Anlässe Buchen</h1>
+
+<div>
+	Hier kannst du dich für Anlässe der aktuellen Saison einschreiben. 
+	Beachte, dass du dich spätestens bis 24 Stunden vor Beginn eingetragen oder abgemeldet haben musst.
+	Danach sind keine Änderungen mehr möglich. Wende dich bei dringenden Fällen bitte an Marcel.
+</div>
+
+<div style="margin-top: 10px;">
+
+	<h2>Saison <%= current_season.to_s %></h2>
+
+
+	<% form_tag 'update_events' do %>
+
+	<%= render :partial => "events/events_table", :locals => { :events => @events, :check_box_needed => true, :actions_needed => false } %>
+
+	<div style="margin-top: 10px;">
+		<%= submit_tag "Speichern" %>
+	</div>
+
+	<% end %>
+</div>
+
+<% content_for :sub_menu do %>
+<li class="side_bar"><%= link_to "Zurück", player_path(@player) %></li>
+<% end %>

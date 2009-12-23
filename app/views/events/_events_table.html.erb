@@ -1,15 +1,30 @@
+<% check_box_needed ||= false %>
+<% actions_needed = true if actions_needed.nil? %>
+<% show_result = false if show_result.nil? %>
+
 <table class="default">
 	<thead>
 		<tr>
+			<% if check_box_needed %>
+			<th>&nbsp;</th>
+			<% end %>
 			<th>Anlass</th>
 			<th>Datum</th>
 			<th>Ort</th>
+			<% if show_result %>
+			<th>Resultat</th>
+			<% end %>
+			<% if actions_needed %>
 			<th>&nbsp;</th>
+			<% end %>
 		</tr>
 	</thead>
 	
 	<% for event in @events %>
 		<tr>
+			<% if check_box_needed %>
+			<td><%= check_box_tag 'user[event_ids][]', event.id, event.users.include?(@player.user) %></td>
+			<% end %>
 			<td>
 				<%= link_to event.name, :controller => event.controller_name, :action => "show", :id => event.id %>
 			</td>
@@ -21,10 +36,15 @@
 				<%= h(event.locality) %>
 				<% end %>
 			</td>
-			<td>
-				<%= link_to(image_tag('icons/pencil.png', :border => 0), :controller => event.controller_name, :action => "edit", :id => event.id) %>
-		    <%= link_to(image_tag('icons/delete.png', :border => 0), event, :confirm => 'Möchten sie dieses Ereignis wirklich löschen?', :method => :delete) %>
-			</td>
+			<% if show_result %>
+			<td style="text-align: center;"><%= event.result %></td>
+			<% end %>
+			<% if actions_needed && permitted_to?(:manage, event) %>
+				<td>
+					<%= link_to(image_tag('icons/pencil.png', :border => 0), :controller => event.controller_name, :action => "edit", :id => event.id) %>
+			    <%= link_to(image_tag('icons/delete.png', :border => 0), event, :confirm => 'Möchten sie dieses Ereignis wirklich löschen?', :method => :delete) %>
+				</td>
+			<% end %>
 		</tr>
 	<% end %>
 </table>

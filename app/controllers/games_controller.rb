@@ -96,10 +96,10 @@ class GamesController < ApplicationController
   # POST /games
   def create
     @game = Game.new(params[:game])
-
+    @game.season_id = current_season.id
+    
     respond_to do |format|
       if @game.save
-        current_season.games << @game
         flash[:notice] = 'Spiel erfolgreich erstellt.'
         expire_page(:controller => "seasons", :action => "statistics", :id => current_season.id)
         format.html { redirect_to(@game) }

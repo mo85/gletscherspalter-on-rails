@@ -1,0 +1,60 @@
+<h1><%= @user.full_name %></h1>
+
+<% if @user.is_player %>
+	<div>
+		<table class="facts">
+			<tr>
+				<td class="key">Mitglied seit:</td>
+				<td><%=h @player.member_since %></td>
+			</tr>
+			<tr>
+				<td class="key">Position:</td>
+				<td><%=h @player.position_as_string %></td>
+			</tr>
+			<tr>
+				<td class="key">Trickot Nummer:</td>
+				<td><%=h @player.number %></td>
+			</tr>
+		</table>
+	</div>
+
+	<div style="marin-top: 20px;">
+		<h2>Statistiken</h2>
+	
+		<% if @player.position_as_string == 'Goalie' %>
+			<%= render :partial => "goalie_stats", :locals => { :player => @player } %>
+		<% else %>
+			<%= render :partial => "player_stats", :locals => { :player => @player } %>
+		<% end %>
+	
+	</div>
+<% end %>
+
+<div id="my_games" style="margin-top: 20px;">
+	<h2>Gebuchte Anlässe</h2>
+
+	<div style="margin-top: 10px">
+		<%= render :partial => "games/game_table", :locals => { :games => @games, 
+			:show_result => true, :show_actions => false, :check_box_needed => false }%>
+		<div style="margin-top: 5px;">
+			<hr/>
+			<%= will_paginate @games %>
+			<hr/>
+		</div>
+	</div>
+</div>
+
+
+<% if permitted_to?(:adjust, @player) || permitted_to?(:games, @player) %>
+	<% content_for :sub_menu do %>
+		<% if permitted_to? :adjust, @player %>
+		<li class="side_bar"><%= link_to 'Spieler Details anpassen', edit_player_path(@player) %></li>
+		<li class="side_bar"><%= link_to 'Anlässe in Outlook einfügen', games_player_url(:format => "ics", :protocol => "webcal", :token => current_user.token) %></li>
+		<li class="side_bar"><%= link_to 'Spiele als PDF', games_player_path(:format => "pdf") %></li>
+		<% end %>
+		<% if permitted_to? :games, @player %>
+		<li class="side_bar"><%= link_to 'Meine Spiele', games_player_path %></li>
+		<li class="side_bar"><%= link_to "Meine Anlässe", events_player_path %></li>
+		<% end %>
+	<% end %>
+<% end %>

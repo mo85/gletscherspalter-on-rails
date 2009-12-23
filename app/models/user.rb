@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_one :player, :dependent => :destroy
   
   has_and_belongs_to_many :events, :order => "Date ASC"
+  has_and_belongs_to_many :games, :order => "Date ASC", :join_table => "events_users", :association_foreign_key => "event_id"
   
   before_create :generate_token
   after_create :add_player

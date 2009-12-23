@@ -47,7 +47,7 @@
 					<% if logged_in? %>
 					<li><%= link_to "Mein Profil", player_path(current_user.player) %>
 						<ul>
-							<li><%= link_to "Spiele Verwalten", games_player_path(current_user.player) %>
+							<li><%= link_to "Anlässe Verwalten", events_player_path(current_user.player) %>
 						</ul>
 					</li>
 					<% end %>

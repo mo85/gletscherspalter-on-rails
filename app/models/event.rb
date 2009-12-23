@@ -11,10 +11,10 @@ class Event < ActiveRecord::Base
     I18n.l(date, :format => :default)
   end
 
-  def self.future_events(options = {})
+  def self.future_non_game_events(options = {})
     result = []
     with_scope :find => options do
-      result << find(:all, :conditions => ["date > ?", Time.zone.now])
+      result << find(:all, :conditions => ["date > ? AND type != ?", Time.zone.now, "Game"])
     end
     result.flatten
   end
@@ -34,5 +34,17 @@ class Event < ActiveRecord::Base
   def controller_name
     self.class.to_s.downcase.pluralize
   end
-
+  
+  def self.future_events
+    find(:all, :conditions => ["date > ?", Time.zone.now ], :order => "date ASC")
+  end
+  
+  def self.passed_events
+    find :all, :conditions => ["date < ?", Time.zone.now]
+  end
+  
+  def result
+    "-"
+  end
+  
 end

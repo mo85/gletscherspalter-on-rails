@@ -8,7 +8,7 @@
 	<h3 class="side_bar">Nächstes Event</h3>
 	
      <%=h next_event.date_formatted %><br />
-     <%=h next_event.name %>,
+     <%= link_to "#{next_event.name}", event_path(next_event.id) %>,
      <%=h next_event.locality %>
  </p>
 <% end %>

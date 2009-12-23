@@ -30,48 +30,57 @@ class PlayersController < ApplicationController
   # GET /players/1
   def show
     @player = Player.find(params[:id])
-    @games = @player.games.paginate :page => params[:page], :per_page => 10
+    @events = @player.user.events.paginate :page => params[:page], :per_page => 10
     respond_to do |format|
       format.html
     end
   end
   
-  def games
-    @title = "Gletscherspalter.ch::Spiele Saison #{current_season.to_s}"
-    @games = future_games_of_current_season
-    
-    if params[:token]
-      @user = current_user
-      @player = @user.player
-    else 
-      @player = Player.find(params[:id])
-    end
+  # def games
+  #   @title = "Gletscherspalter.ch::Spiele Saison #{current_season.to_s}"
+  #   @games = future_games_of_current_season
+  #   
+  #   if params[:token]
+  #     @user = current_user
+  #     @player = @user.player
+  #   else 
+  #     @player = Player.find(params[:id])
+  #   end
+  #   
+  #   respond_to do |format|
+  #     format.html
+  #     format.pdf do 
+  #       games = @player.games
+  #       render :file => "players/games.pdf.prawn", :locals => { :games => games } 
+  #     end
+  #     format.ics do
+  #       send_data(@player.games_to_ical(request.raw_host_with_port), :type => 'text/calendar',
+  #                 :disposition => "inline; filename=Gletscherspalter.ics",
+  #                 :filename => "Gletscherspalter.ics")
+  #     end
+  #   end
+  # end
+  
+  def events
+    @events = current_season.events.future_events
+    @player = Player.find params[:id]
     
     respond_to do |format|
       format.html
-      format.pdf do 
-        games = @player.games
-        render :file => "players/games.pdf.prawn", :locals => { :games => games } 
-      end
-      format.ics do
-        send_data(@player.games_to_ical(request.raw_host_with_port), :type => 'text/calendar',
-                  :disposition => "inline; filename=Gletscherspalter.ics",
-                  :filename => "Gletscherspalter.ics")
-      end
     end
   end
   
-  def update_games
+  def update_events
     current_player = Player.find(params[:id])
     
     params[:user] ||= {}
     params[:user][:event_ids] ||= []  
-    params[:user][:event_ids] << current_player.passed_games
+    params[:user][:event_ids] << current_player.user.events.passed_events
     params[:user][:event_ids] = params[:user][:event_ids].flatten.compact
     current_player.user.update_attributes(params[:user])
     
     respond_to do |format|
-      flash[:notice] = "Spiele erfolgreich angepasst."
+      flash[:notice] = "Anlässe erfolgreich angepasst."
       format.html { redirect_to player_path(current_user.player) }
     end
   end

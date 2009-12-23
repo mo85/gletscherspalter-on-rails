@@ -8,7 +8,7 @@ authorization do
   
   role :user do
     includes :guest
-    has_permission_on :players, :to => [:adjust, :subscribe_to_games] do
+    has_permission_on :players, :to => [:adjust, :subscribe_to_events] do
       if_attribute :user => is { user }
     end
     
@@ -27,7 +27,7 @@ authorization do
   role :admin do
     includes :user
     has_permission_on [:players, :users, :scores, :topics, :news, :guestnotes, :photos], :to => [:read, :manage]
-    has_permission_on :players, :to => :subscribe_to_games
+    has_permission_on :players, :to => :subscribe_to_events
     has_permission_on [:locations, :events, :messages, :trainings, :trainingscamps], :to => [:read, :manage]
     has_permission_on :games, :to => [:read, :manage, :add_or_remove_players_from_games]
     has_permission_on :posts, :to => :update_posts
@@ -48,8 +48,8 @@ privileges do
     includes :edit, :update
   end
   
-  privilege :subscribe_to_games do
-    includes :games, :update_games
+  privilege :subscribe_to_events do
+    includes :events, :update_events
   end
   
   privilege :adjust_scores do
