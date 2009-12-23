@@ -4,19 +4,20 @@ Auf dieser Seite werden alle Anlässe der Gletscherspalter aufgelistet, die kein
 Dazu gehören Trainings, Trainingslager oder alle anderen Termine, wie zum Beispiel die jährliche Generalversammlung.
 Den Spielplan mit allen Resultaten findest du <%= link_to "hier", games_path %>.
 
-<% if @events.empty? %>
-	Zur Zeit sind keine Anlässe registriert.
-<% else %>
-	<div style="margin-top: 15px;">
+<div style="margin-top: 15px;">
+	<% if @events.empty? %>
+		Zur Zeit sind keine Anlässe registriert.
+	<% else %>
 		<%= render :partial => "events_table" %>
-	</div>
-	
-	<div style="margin-top: 5px;">
-	<hr/>
-		<%= will_paginate @games %>
-	<hr/>
-	</div>
-<% end %>
+		
+		<div style="margin-top: 5px;">
+		<hr/>
+			<%= will_paginate @games %>
+		<hr/>
+		</div>
+	<% end %>
+</div>
+
 
 <% content_for :sub_menu do %>
 	<% if permitted_to? :manage, :events %>

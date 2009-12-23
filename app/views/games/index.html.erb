@@ -2,8 +2,10 @@
 	
 <div style="margin-top: 10px;">
 	
-	Diese Seite zeigt den Spielplan der Gletscherspalter. Alle anderen 
-	Vereinsanlässe findest du <%= link_to "hier", events_path %>.
+	<% if current_season.events.next_non_game_event %>
+		Diese Seite zeigt den Spielplan der Gletscherspalter. Alle anderen 
+		Vereinsanlässe findest du <%= link_to "hier", events_path %>.
+	<% end %>
 	
 	<div style="margin-top: 10px;">
 		<% if @games.empty? %>
