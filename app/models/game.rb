@@ -14,9 +14,6 @@ class Game < Event
   end
   
   def name
-    if opponent == "Training"
-      return "Training"
-    end
     "Gletscherspalter vs. #{opponent}"
   end
   
