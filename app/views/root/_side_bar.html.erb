@@ -9,7 +9,11 @@
 	
      <%=h next_event.date_formatted %><br />
      <%= link_to "#{next_event.name}", event_path(next_event.id) %><br />
-     <%=h next_event.locality %>
+    <% if next_event.is_a?(Game) || next_event.is_a?(Training) %> 
+			<%= link_to "(#{next_event.location.name})", location_on_map_path(next_event.location) %>
+		<% else %>
+			<%=h next_event.locality %>
+		<% end %>
  </p>
 <% end %>
 <% if next_game != nil %>
@@ -18,7 +22,7 @@
 
    <%=h next_game.date_formatted %>
    <%= link_to "Gletscherspalter vs. <br /> #{next_game.opponent}", game_path(next_game) %> <br />
-		<%= link_to "(#{next_game.location.name})", location_on_map_path(next_game.location) %>
+	 <%= link_to "(#{next_game.location.name})", location_on_map_path(next_game.location) %>
   
  </p>
 <% end %>
