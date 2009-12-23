@@ -45,7 +45,7 @@
 				:editable => false, 
 				:deletable => true,
 				:delete_icon => "icons/cross.png",
-				:delete_path => "/games/#{@game.id}/remove_player?p_id="
+				:delete_path => "/events/#{@game.id}/remove_player?p_id="
 			} %>
 	<% else %>
 		Für dieses Spiel haben sich keine Spieler eingetragen.
@@ -57,7 +57,7 @@
 	<li class="side_bar"><%= link_to "Spiel Details anpassen", edit_game_path(@game) %></li>
 	<% end %>
 	<% if permitted_to? :manage, :games %>
-	<li class="side_bar"><%= link_to_function "Spieler hinzufügen", "Glacier.Popup.init('" + add_player_game_path(@game) + ".ajax', {width: 500})" %></li>
+	<li class="side_bar"><%= link_to_function "Spieler hinzufügen", "Glacier.Popup.init('" + add_player_event_path(@game) + ".ajax', {width: 500})" %></li>
 	<% end %>
 	<% if !@game.score.blank? && permitted_to?(:manage, :scores) %>
 		<li class="side_bar"><%= link_to_function "Skorer erfassen", "Glacier.Popup.init('" + new_game_score_path(:game_id => @game.id) + ".ajax', {width: 500})" %></li>

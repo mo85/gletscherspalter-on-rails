@@ -60,14 +60,4 @@ class Game < Event
     scores.select{|s| s.player_id == player.id}.first
   end
   
-  def valid_player?(player)
-    result = false
-    if player.nil?
-      errors.add("Spieler", "wurde nicht gefunden!")
-    else
-      result = true
-    end
-    result
-  end
-  
 end

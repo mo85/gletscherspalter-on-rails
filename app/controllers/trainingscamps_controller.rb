@@ -4,6 +4,7 @@ class TrainingscampsController < ApplicationController
   
   def show
     @event = Trainingscamp.find(params[:id])
+    @players = @event.group_players_by_position
     
     respond_to do |format|
       format.html { render :template => "events/show", :locals => { :event => @event }}

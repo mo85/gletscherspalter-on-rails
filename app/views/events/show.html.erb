@@ -23,16 +23,23 @@
 	<h2>Teilnehmer</h2>
 	
 	<% if !@event.users.empty? %>
-		
+		<%= render :partial => "players/roster", 
+			:locals => {
+				:players => @players,
+				:editable => false, 
+				:deletable => true,
+				:delete_icon => "icons/cross.png",
+				:delete_path => "/events/#{@event.id}/remove_player?p_id="
+			} %>
 	<% else %>
 		Für dieses Ereignis haben sich keine Benutzer eingetragen.
 	<% end %>
 </div>
 
 <% content_for :sub_menu do %>
-	<% if permitted_to? :manage, :games %>
+	<% if permitted_to? :manage, :events %>
 	<li class="side_bar"><%= link_to "Anpassen", :controller => @event.controller_name, :action => "edit" %></li>
-	<li class="side_bar"><%= link_to "Teilnehmer hinzufügen" %></li>
+	<li class="side_bar"><%= link_to_function "Teilnehmer hinzufügen", "Glacier.Popup.init('" + add_player_event_path(@event) + ".ajax', {width: 500})" %></li>
 	<li class="side_bar"><%= link_to "Zurück", events_path %></li>
 	<% end %>
 <% end %>

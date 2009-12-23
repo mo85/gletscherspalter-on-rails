@@ -26,10 +26,10 @@ authorization do
   
   role :admin do
     includes :user
-    has_permission_on [:players, :users, :scores, :topics, :news, :guestnotes, :photos], :to => [:read, :manage]
+    has_permission_on [:players, :users, :scores, :topics, :news, :guestnotes, :photos, :games], :to => [:read, :manage]
     has_permission_on :players, :to => :subscribe_to_events
     has_permission_on [:locations, :events, :messages, :trainings, :trainingscamps], :to => [:read, :manage]
-    has_permission_on :games, :to => [:read, :manage, :add_or_remove_players_from_games]
+    has_permission_on :events, :to => [:read, :manage, :add_or_remove_players_from_events]
     has_permission_on :posts, :to => :update_posts
 
   end
@@ -56,7 +56,7 @@ privileges do
     includes :edit_scores, :update_scores
   end
   
-  privilege :add_or_remove_players_from_games do
+  privilege :add_or_remove_players_from_events do
     includes :add_player, :save_added_player, :remove_player
   end
   

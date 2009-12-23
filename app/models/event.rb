@@ -5,6 +5,10 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :date, :season_id
   
+  def players
+    users.collect(&:player)
+  end
+  
   def date_formatted
     I18n.l(date, :format => :default)
   end
@@ -51,6 +55,20 @@ class Event < ActiveRecord::Base
   
   def self.games
     find :all, :conditions => ["type = ?", "Game"]
+  end
+  
+  def group_players_by_position
+    players.group_by(&:position)
+  end
+  
+  def valid_player?(player)
+    result = false
+    if player.nil?
+      errors.add("Spieler", "wurde nicht gefunden!")
+    else
+      result = true
+    end
+    result
   end
   
   def ical_id

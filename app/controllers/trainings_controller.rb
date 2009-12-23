@@ -4,6 +4,7 @@ class TrainingsController < ApplicationController
   
   def show
     @event = Training.find(params[:id])
+    @players = @event.group_players_by_position
     
     respond_to do |format|
       format.html { render :template => "events/show", :locals => { :event => @event }}
@@ -58,6 +59,5 @@ class TrainingsController < ApplicationController
       format.html { redirect_to(events_path) }
     end
   end
-  
   
 end

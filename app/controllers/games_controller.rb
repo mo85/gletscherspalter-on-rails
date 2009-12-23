@@ -27,58 +27,6 @@ class GamesController < ApplicationController
     end
   end
   
-  def remove_player
-    @game = Game.find(params[:id])
-    player = Player.find(params[:p_id])
-    @game.users.delete(player.user)
-    
-    respond_to do |format|
-      format.html { redirect_to @game }
-    end
-  end
-  
-  def add_player
-    @game = Game.find(params[:id])
-    
-    respond_to do |format|
-      format.ajax
-    end
-  end
-  
-  def save_added_player
-    @game = Game.find(params[:id])
-    
-    user_names = params[:usr_name].split(" ")
-    begin
-      player = User.find_by_firstname_and_lastname(user_names[0],user_names[1]).player
-    rescue
-      player = nil
-    end
-    
-    if (valid_player = @game.valid_player?(player))
-      players = @game.players
-      player_added = false
-      
-      if !players.include?(player) 
-        @game.users << player.user
-        player_added = true
-      end
-    end 
-
-    respond_to do |format|
-      if valid_player && player_added
-        flash[:notice] = 'Spieler erfolgreich hinzugefügt.'
-        format.html { redirect_to @game }
-      elsif valid_player
-        flash[:notice] = 'Spieler ist bereits eingetragen.'
-        format.html { redirect_to @game }
-      else
-        format.html { render :action => "add_player" }
-      end
-      
-    end
-  end
-
   # GET /games/new
   def new
     @game = Game.new
