@@ -11,7 +11,7 @@
 			<td><%=h @player.position_as_string %></td>
 		</tr>
 		<tr>
-			<td class="key">Trickot Nummer:</td>
+			<td class="key">Trikot Nummer:</td>
 			<td><%=h @player.number %></td>
 		</tr>
 	</table>
@@ -29,7 +29,7 @@
 </div>
 
 <div id="my_games" style="margin-top: 20px;">
-	<h2>Gebuchte Spiele</h2>
+	<h2>Gebuchte Termine</h2>
 	
 	<div style="margin-top: 10px">
 		<%= render :partial => "events/events_table", :locals => { :events => @events, 
