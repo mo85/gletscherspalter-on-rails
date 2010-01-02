@@ -11,6 +11,14 @@ class SeasonTest < ActiveSupport::TestCase
     @next_season = seasons(:next)
   end
   
+  def teardown
+    season_to_delete = Season.find_by_start_year_and_end_year(2011, 2012)
+    if season_to_delete
+      Season.delete season_to_delete
+    end
+    assert_equal 3, Season.count
+  end
+  
   
   test "games played" do
     assert_equal 2, @previous_season.games_played.size
@@ -49,7 +57,21 @@ class SeasonTest < ActiveSupport::TestCase
   end
   
   test "current season" do
-    assert true
+    s_2010_2011 = @next_season
+    
+    # August 2010 to July 2011
+    assert_equal s_2010_2011, Season.current(Time.parse("2010/8/1"))
+    assert_equal s_2010_2011, Season.current(Time.parse("2010/11/15"))
+    assert_equal s_2010_2011, Season.current(Time.parse("2011/5/10"))
+    assert_equal s_2010_2011, Season.current(Time.parse("2011/7/31"))
+    
+    # creation of a new season in August 2011
+    newly_created_season = Season.current(Time.parse("2011/8/1"))
+    assert_equal 2011, newly_created_season.start_year
+    assert_equal 2012, newly_created_season.end_year
+    
+    assert_equal Season.find_by_start_year_and_end_year(2011,2012), newly_created_season
+    
   end
   
 end
