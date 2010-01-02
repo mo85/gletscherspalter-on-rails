@@ -1,6 +1,6 @@
 authorization do
   role :guest do
-    has_permission_on [:players, :games, :news, :photos, :events], :to => :read
+    has_permission_on [:players, :games, :news, :photos, :events, :trainings, :trainingscamps], :to => :read
     has_permission_on :root, :to => [:index, :contact, :locations]
     has_permission_on :seasons, :to => [:index, :statistics]
     has_permission_on :guestnotes, :to => [:index, :new, :create]
