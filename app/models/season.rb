@@ -8,17 +8,22 @@ class Season < ActiveRecord::Base
   validates_numericality_of :start_year
   validates_numericality_of :end_year
   
-  def self.current
-    year = Time.now.year
+  SWITCHING_MONTH = 7 # Switch on July
+  
+  def self.current(time = Time.zone.now)
+    year = time.year
     next_year = year + 1
     
     @season = Season.find(:first, :conditions => ["start_year = ? AND end_year = ?", year, next_year])
     
     if !@season 
-      if Time.now.month > 7
-        @season = Season.create(:start_year => next_year, :end_year => next_year + 1)
-      else
+      if time.month > SWITCHING_MONTH
         @season = Season.create(:start_year => year, :end_year => next_year)
+      else
+        @season = Season.find_by_start_year_and_end_year(year - 1, next_year - 1)
+        if !@season
+          @season = Season.create(:start_year => year, :end_year => next_year)
+        end
       end 
     end
     @season

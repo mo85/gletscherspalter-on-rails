@@ -47,4 +47,9 @@ class SeasonTest < ActiveSupport::TestCase
     assert_equal 14, @current_season.goals_against
     assert_equal 0, @next_season.goals_against
   end
+  
+  test "current season" do
+    assert_true true
+  end
+  
 end
