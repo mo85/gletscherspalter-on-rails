@@ -36,10 +36,12 @@
 	<% end %>
 </div>
 
+<% if permitted_to? :manage, :events %>
 <% content_for :sub_menu do %>
 	<% if permitted_to? :manage, :events %>
 	<li class="side_bar"><%= link_to "Anpassen", :controller => @event.controller_name, :action => "edit" %></li>
 	<li class="side_bar"><%= link_to_function "Teilnehmer hinzufügen", "Glacier.Popup.init('" + add_player_event_path(@event) + ".ajax', {width: 500})" %></li>
 	<li class="side_bar"><%= link_to "Zurück", events_path %></li>
 	<% end %>
+<% end %>
 <% end %>
