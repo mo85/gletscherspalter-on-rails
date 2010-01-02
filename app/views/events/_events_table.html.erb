@@ -14,7 +14,7 @@
 			<% if show_result %>
 			<th>Resultat</th>
 			<% end %>
-			<% if actions_needed %>
+			<% if actions_needed && permitted_to?(:manage, :events) %>
 			<th>&nbsp;</th>
 			<% end %>
 		</tr>
