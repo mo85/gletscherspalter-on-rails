@@ -3,7 +3,7 @@ require 'test_helper'
 class SeasonTest < ActiveSupport::TestCase
   
   fixtures :seasons
-  fixtures :games
+  fixtures :events
   
   def setup
     @previous_season = seasons(:previous)
@@ -49,7 +49,7 @@ class SeasonTest < ActiveSupport::TestCase
   end
   
   test "current season" do
-    assert_true true
+    assert true
   end
   
 end

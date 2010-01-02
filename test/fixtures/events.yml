@@ -1,15 +1,60 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+goldies:
+  opponent: 'Goldies'
+  score: 9
+  opponent_score: 2
+  date: <%= 1.year.ago %>
+  type: Game
+  season_id: <%= Fixtures.identify(:previous) %>
 
-one:
-  title: GV
-  date: 2010-05-20 20:00:00
-  location: 'Restaurant Rustica, Effretikon'
-  note: 'Vollzaehliges erscheinen erwuenscht!'
+schwinger:
+  opponent: 'Schwinger'
+  score: 2
+  opponent_score: 7
+  date: <%= 8.month.ago %>
+  type: Game
+  season_id: <%= Fixtures.identify(:previous) %>
 
+bandenbysser:
+  opponent: 'Bandenbysser'
+  score: 4
+  opponent_score: 3
+  date: <%= 3.days.ago %>
+  type: Game
+  season_id: <%= Fixtures.identify(:actual) %>
 
-two:
-    title: Fest
-    date: 2009-05-30 20:00:00
-    location: 'Eisfeld Wetzikon'
-    note: 'Freiwillig'
+jona:
+  opponent: 'Jona Sharks'
+  score: 2
+  opponent_score: 1
+  date: <%= 6.days.ago %>
+  type: Game
+  season_id: <%= Fixtures.identify(:actual) %>
 
+uusrutschers:
+  opponent: 'Uusrutscher'
+  score: 2
+  opponent_score: 6
+  date: <%= 2.weeks.ago %>
+  type: Game
+  season_id: <%= Fixtures.identify(:actual) %>
+
+dukla:
+  opponent: 'Dukla VBZ'
+  score: 4
+  opponent_score: 4
+  date: <%= 2.hours.ago %>
+  type: Game  
+  season_id: <%= Fixtures.identify(:actual) %>
+
+sagmehlfeger:
+  opponent: 'Sagmehlfeger'
+  date: <%= 3.days.from_now %>
+  type: Game  
+  season_id: <%= Fixtures.identify(:actual) %>
+
+mistkerle:
+  opponent: 'Penner'
+  date: <%= 5.months.from_now %>
+  type: Game  
+  season_id: <%= Fixtures.identify(:next) %>

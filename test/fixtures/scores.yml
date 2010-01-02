@@ -2,22 +2,22 @@ score_goldies:
   goals: 2
   assists: 1
   game: goldies
-  player: pascal
+  player: pisi
 
 score_schwinger:
   goals: 0
   assists: 1
   game: schwinger
-  player: pascal
+  player: pisi
 
 score_bandenbysser:
   goals: 1
   assists: 0
   game: bandenbysser
-  player: pascal
+  player: pisi
 
 score_uusrutscher:
   goals: 2
   assists: 0
   game: uusrutschers
-  player: pascal
+  player: pisi

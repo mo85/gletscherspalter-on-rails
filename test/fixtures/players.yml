@@ -4,13 +4,12 @@ mark:
     position: G
     number: 27
     user: mark
-    games: [goldies, schwinger, bandenbysser, jona, uusrutschers, dukla, sagmehlfeger, mistkerle]
 
-pascal:
+pisi:
     position: BW
     number: 10
-    user: pisi
-    games: [goldies, schwinger, bandenbysser, jona, uusrutschers, dukla, sagmehlfeger, mistkerle]
+    user: pascal
+
 
 buesi:
     position: FW

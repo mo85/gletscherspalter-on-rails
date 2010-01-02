@@ -10,6 +10,7 @@ mark:
   firstname: Mark
   email: mark_odermatt@bluewin.ch
   is_admin: true
+  games: [goldies, schwinger, bandenbysser, jona, uusrutschers, dukla, sagmehlfeger, mistkerle]
   
 president:
   lastname: Buesser
@@ -19,13 +20,14 @@ president:
   firstname: Patrick
   email: test@bluewin.ch
 
-pisi:
+pascal:
   lastname: Maechler
   hashed_password: <%= User.encrypted_password('secret', "7143736") %>
   salt: "7143736"
   login: pisi
   firstname: Pascal
   email: p.maechler@richner.ch
+  games: [goldies, schwinger, bandenbysser, jona, uusrutschers, dukla, sagmehlfeger, mistkerle]
 
 gondini:
   lastname: Gondini
