@@ -44,6 +44,7 @@
 	
 </div>
 
+<% if permitted_to?(:adjust, @player) || permitted_to?(:subscribe_to_events, @player) %>
 <% content_for :sub_menu do %>
 	<% if permitted_to? :adjust, @player %>
 	<li class="side_bar"><%= link_to 'Spieler Details anpassen', edit_player_path(@player) %></li>
@@ -53,4 +54,5 @@
 	<% if permitted_to? :subscribe_to_events, @player %>
 	<li class="side_bar"><%= link_to "Termine verwalten", events_player_path %></li>
 	<% end %>
+<% end %>
 <% end %>
