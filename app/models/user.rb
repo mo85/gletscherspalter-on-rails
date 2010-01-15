@@ -158,7 +158,7 @@ private
   end
   
   def event_link(host, event)
-    helpers.link_to(event.name, url_for(:host => host, :controller => event.controller_name, :action => "show", :id => event.to_param))
+    url_for(:host => host, :controller => event.controller_name, :action => "show", :id => event.to_param)
   end
   
 end
