@@ -39,14 +39,21 @@
 	<h2>Besetzung</h2>
 	
 	<% if !@players.empty? %>
-		<%= render :partial => "players/roster", 
-			:locals => {
-				:players => @players, 
-				:editable => false, 
-				:deletable => true,
-				:delete_icon => "icons/cross.png",
-				:delete_path => "/events/#{@game.id}/remove_player?p_id="
-			} %>
+		
+		<div style="margin-top: 5px;">
+			<%= summary_sentence(@game.players) %>
+		</div>
+		
+		<div style="margin-top: 5px;">
+			<%= render :partial => "players/roster", 
+				:locals => {
+					:players => @players, 
+					:editable => false, 
+					:deletable => true,
+					:delete_icon => "icons/cross.png",
+					:delete_path => "/events/#{@game.id}/remove_player?p_id="
+				} %>
+		</div>
 	<% else %>
 		Für dieses Spiel haben sich keine Spieler eingetragen.
 	<% end %>
