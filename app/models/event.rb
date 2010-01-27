@@ -2,6 +2,7 @@ class Event < ActiveRecord::Base
 
   has_and_belongs_to_many :users
   belongs_to :location
+  belongs_to :season
 
   validates_presence_of :date, :season_id
   

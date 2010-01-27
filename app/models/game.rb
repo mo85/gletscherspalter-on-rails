@@ -1,10 +1,11 @@
 require 'digest/sha1'
 
 class Game < Event
-  
+  has_and_belongs_to_many :users, :join_table =>"events_users", :foreign_key => "event_id"
   has_many :scores
   belongs_to :season
-  
+  belongs_to :rink, :foreign_key => "location_id"
+
   validates_presence_of :opponent, :location_id
   validates_numericality_of :score, :only_integer => true, :allow_nil => true
   validates_numericality_of :opponent_score, :only_integer => true, :allow_nil => true
