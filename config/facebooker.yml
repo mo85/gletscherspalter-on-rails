@@ -12,7 +12,7 @@ development:
   api_key: 22e44713c610ac95c490ca354f5e88af
   secret_key: 5d169486e08f8484fe5c3e6cfa6d9881
   canvas_page_name: gletscherspalter
-  callback_url: http://gletscherspalter.ch/
+  callback_url: http://gletscherspalter.ch/root/fb_news
   pretty_errors: true
   set_asset_host_to_callback_url: false
   tunnel:
@@ -26,7 +26,7 @@ test:
   api_key: 22e44713c610ac95c490ca354f5e88af
   secret_key: 5d169486e08f8484fe5c3e6cfa6d9881
   canvas_page_name: gletscherspalter
-  callback_url: http://gletscherspalter.ch/
+  callback_url: http://gletscherspalter.ch/root/fb_news
   set_asset_host_to_callback_url: false
   tunnel:
     public_host_username: 
@@ -39,7 +39,7 @@ production:
   api_key: 22e44713c610ac95c490ca354f5e88af
   secret_key: 5d169486e08f8484fe5c3e6cfa6d9881
   canvas_page_name: gletscherspalter
-  callback_url: http://gletscherspalter.ch/
+  callback_url: http://gletscherspalter.ch/root/fb_news
   set_asset_host_to_callback_url: false   
   tunnel:
     public_host_username: 
