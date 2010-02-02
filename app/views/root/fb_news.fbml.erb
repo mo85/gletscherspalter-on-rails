@@ -2,15 +2,15 @@
 
 <div style="margin-top: 10px;">
 
-  <h2>NŠchstes Spiel</h2>
+  <h2>N&auml;chstes Spiel</h2>
   <%= @next_game.date_formatted %>   <br/>
-  <%= @next_game.name %>   <br/>
-  (<%= @next_game.locality %>)
+  <%= link_to @next_game.name, game_url(@next_game) %>   <br/>
+  (<%= link_to @next_game.locality, location_on_map_url(@next_game.location) %>)
   
 </div>
 
 <div style="margin-top: 10px;">
   <h2>Letztes Spiel</h2>
 
-  <%= "#{@last_game.name} #{@last_game.result}" %>
+  <%= link_to "#{@last_game.name} #{@last_game.result}", game_url(@last_game) %>
 </div>
