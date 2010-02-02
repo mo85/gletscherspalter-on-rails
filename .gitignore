@@ -2,5 +2,4 @@ log/*.log
 .idea/*
 db/development.sqlite3
 config/database.yml
-config/facebooker.yml
 doc/flickr*
