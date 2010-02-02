@@ -1,1 +1,16 @@
 <h1>Gletscherspalter.ch::News</h1>
+
+<div style="margin-top: 10px;">
+
+  <h2>NŠchstes Spiel</h2>
+  <%= @next_game.date_formatted %>   <br/>
+  <%= @next_game.name %>   <br/>
+  (<%= @next_game.locality %>)
+  
+</div>
+
+<div style="margin-top: 10px;">
+  <h2>Letztes Spiel</h2>
+
+  <%= "#{@last_game.name} #{@last_game.result}" %>
+</div>

@@ -32,7 +32,8 @@ class RootController < ApplicationController
   end
 
   def fb_news
-    @title = "News der Gletscherspalter"
+    @last_game = Game.last_game
+    @next_game = Game.next_game
   end
   
 end
