@@ -38,6 +38,8 @@ ActionController::Routing::Routes.draw do |map|
   map.location_on_map "root/locations/:id", :controller => "root", :action => "locations"
   map.contacts "root/contact", :controller => "root", :action => "contact"
   map.home "root/index", :controller => "root", :action => "index"
+
+  map.facebook "root/fb_news", :controller => "root", :action => "fb_news"
   
   map.resources :players, :member => { :events => :get, :update_events => :post }
 

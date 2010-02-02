@@ -30,5 +30,9 @@ class RootController < ApplicationController
     @title = "Gletscherspalter.ch::Orte"
     @rinks = Rink.all :order => "name ASC"
   end
+
+  def fb_news
+    @title = "News der Gletscherspalter"
+  end
   
 end
