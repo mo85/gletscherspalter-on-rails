@@ -1,0 +1,12 @@
+div .photo {
+    float: left;
+    width: 150px;
+    height: 210px;
+}
+
+div .description {
+    padding: 0px;
+    margin-left: 0px;
+    position: relative;
+    left: 10px;
+}

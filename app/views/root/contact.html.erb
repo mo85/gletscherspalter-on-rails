@@ -1,25 +1,88 @@
 <h1>Kontakt Adressen:</h1>
 
-<table class="default">
 
-	<thead>
-		<tr>
-			<th width="50%">Funktion</th>
-			<th width="50%">Adresse</th>
-		</tr>
-	</thead>
-	
-	<tr>
-		<td>Allgemeiner Kontakt</td>
-		<td>contact [at] gletscherspalter.ch</td>
-	</tr>
-	<tr>
-		<td>Präsident</td>
-		<td>president [at] gletscherspalter.ch</td>
-	</tr>
-	<tr>
-		<td>Webmaster</td>
-		<td><%= mail_to "gletscherspalter.web@gmail.com", "gletscherspalter.web [at] gmail.com" %></td>
-	</tr>
+<!-- LEFT COLUMN -->
+<div style="float: left; width: 350px;">
 
-</table>
+  <h2>Präsident</h2>
+
+    <div class="photo">
+        <%= image_tag("portraits/buesi.jpg") %>
+    </div>
+
+    <div class="description">
+      <ul>
+        <li>Patrick Büsser</li>
+        <li>Würenlos, AG</li>
+        <li><%= mail_to "p.buesser@luetze.ch", "Nachricht senden" %></li>
+      </ul>
+    </div>
+
+
+    <div class="clear"></div>
+
+
+    <h2>Spielbetrieb</h2>
+
+    <div class="photo">
+        <%= image_tag("portraits/marcel.jpg") %>
+    </div>
+
+    <div class="description">
+      <ul>
+        <li>Marcel Franze</li>
+        <li>Ebmatingen, ZH</li>
+        <li><%= mail_to "marcel.franze@greenmail.ch", "Nachricht senden" %></li>
+      </ul>
+    </div>
+
+
+    <div class="clear"></div>
+
+</div>
+
+<!-- RIGHT COLUMN -->
+<div style="position:absolute; left: 370px; width: 350px; margin-left: 10px;">
+    <h2>Finanzen</h2>
+
+    <div class="photo">
+        <%= image_tag("portraits/enzi.jpg") %>
+    </div>
+
+    <div class="description">
+      <ul>
+        <li>Marc Enzler</li>
+        <li>Fehraltorf, ZH</li>
+        <li><%= mail_to "marc.enzler@gmx.ch", "Nachricht senden" %></li>
+      </ul>
+    </div>
+
+    <div class="clear"></div>
+
+    <h2>Webseite</h2>
+
+    <div class="photo">
+        <%= image_tag("portraits/mark.jpg") %>
+    </div>
+
+    <div class="description">
+      <ul>
+        <li>Mark Odermatt</li>
+        <li>Galgenen, SZ</li>
+        <li><%= mail_to "gletscherspalter.web@gmail.com", "Nachricht senden" %></li>
+      </ul>
+    </div>
+
+
+    <div class="clear"></div>
+  
+</div>
+
+<div class="clear"></div>
+
+
+
+
+
+
+
