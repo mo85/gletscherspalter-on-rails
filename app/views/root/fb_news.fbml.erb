@@ -4,13 +4,13 @@
 
   <h2>N&auml;chstes Spiel</h2>
   <%= @next_game.date_formatted %>   <br/>
-  <%= link_to @next_game.name, game_url(@next_game) %>   <br/>
-  (<%= link_to @next_game.locality, location_on_map_url(@next_game.location) %>)
+  <%= link_to @next_game.name, game_url(@next_game), :target => :blank %>   <br/>
+  (<%= link_to @next_game.locality, location_on_map_url(@next_game.location), :target => :blank %>)
   
 </div>
 
 <div style="margin-top: 10px;">
   <h2>Letztes Spiel</h2>
 
-  <%= link_to "#{@last_game.name} #{@last_game.result}", game_url(@last_game) %>
+  <%= link_to "#{@last_game.name} #{@last_game.result}", game_url(@last_game), :target => :blank %>
 </div>
