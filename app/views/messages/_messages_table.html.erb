@@ -13,7 +13,7 @@
 			<tr>
 				<td class="author"><%=h message.publisher.name %></td>
 				<td style="font-size: smaller;"><%=sanitize message.text %></td>
-				<td class="date"><%=h format_date(message.created_at) %></td>
+				<td class="date"><%=h l(message.created_at, :format => :default) %></td>
 				<% if permitted_to? :manage, message %>
 				<td>
 		    <%= link_to(image_tag('icons/delete.png', :border => 0), message, :confirm => 'Möchten sie diese Nachricht wirklich löschen?', :method => :delete) %>

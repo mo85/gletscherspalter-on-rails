@@ -24,10 +24,10 @@ config.action_mailer.raise_delivery_errors = false
 config.action_mailer.delivery_method = :smtp
 
 config.action_mailer.smtp_settings = {
-  :address        => 'mail.gletscherspalter.railsplayground.net',
+  :address        => 'mail.gletscherspalter.ch',
   :port           => 26,
-  :domain         => 'mail.gletscherspalter.railsplayground.net',
+  :domain         => 'mail.gletscherspalter.ch',
   :authentication => :login, 
-  :user_name       => 'no-reply+gletscherspalter.railsplayground.net',
+  :user_name       => 'no-reply+gletscherspalter.ch',
   :password       => '-p?!?fYvdivU'
 }
