@@ -17,12 +17,16 @@ class GuestnotesController < ApplicationController
     @token = generate_token(@random_no1 + @random_no2)
     
     respond_to do |format|
-      format.html
+      format.ajax
     end
   end
   
   def edit
     @note = Guestnote.find params[:id]
+
+    respond_to do |format|
+      format.ajax
+    end
   end
   
   def update
@@ -33,7 +37,8 @@ class GuestnotesController < ApplicationController
         flash[:notice] = "Eintrag wurde erfolgreich editiert."
         format.html { redirect_to guestnotes_path }
       else
-        format.html { render :action => "edit" }
+        flash[:notice] = "Die Änderungen waren unzulässig und konnten nicht gespeichert werden."
+        format.html { redirect_to guestnotes_path }
       end
     end
   end
@@ -49,10 +54,8 @@ class GuestnotesController < ApplicationController
         flash[:notice] = "Eintrag erfolgreich erstellt."
         format.html { redirect_to guestnotes_path }
       else
-        @random_no1 = rand(50)
-        @random_no2 = rand(50)
-        @token = generate_token(@random_no1 + @random_no2)
-        format.html { render :action => "new", :locals => {:token => @token, :random_no1 => @random_no1, :random_no2 => @random_no2}}
+        flash[:notice] = "Eintrag konnte nicht gespeichert werden. Die Angaben waren entweder unvollständig oder falsch."
+        format.html { redirect_to guestnotes_path }
       end
     end
   end

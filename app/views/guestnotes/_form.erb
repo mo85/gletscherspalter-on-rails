@@ -1,27 +1,27 @@
-<% include_tinymce %>
-<h1>Neuer Gästebuch Eintrag</h1>
-
-<% form_for @note, :url => { :action => :create, :token => @token }, :html => { :class => :default } do |f| %>
+<% bot_protection_needed ||= false %>
+<% form_for @note, :url => url, :html => { :class => :default } do |f| %>
 	<%= f.error_messages %>
 	<%= error_messages_for :result %>
-	
+
 	<div>
 		<%= f.label "Name" %>
 		<%= f.text_field :author %>
 	</div>
-	
+
+    <% if bot_protection_needed %>
 	<div>
 		<%= label_tag nil, "Summe von #{@random_no1} und #{@random_no2}" %>
 		<%= text_field_tag :result, nil, :size => 30 %>
 	</div>
-	
+    <% end %>
+
 	<div>
 		<%= f.label "Nachricht" %>
 		<%= f.text_area :note %>
 	</div>
-	
+
 	<div>
-		<%= f.submit "Speichern" %>
+		<%= f.submit label %>
 	</div>
 <% end %>
 
@@ -29,14 +29,10 @@
 	tinyMCE.init({
 		mode 					: "textareas",
 		theme				 	: "advanced",
-		theme_advanced_buttons1 : "bold, italic, underline, |, justifyleft, justifycenter, justifyright, justifyfull,|, fontselect, fontsizeselect, bullist, numlist, link",
+		theme_advanced_buttons1 : "bold, italic, underline, |, justifyleft, justifycenter, justifyright, justifyfull,|, fontsizeselect, bullist, numlist, link",
 		theme_advanced_buttons2 : "",
 		theme_advanced_toolbar_location : "top",
 		theme_advanced_toolbar_align : "left",
-		convert_urls	: false,
+		convert_urls	: false
 	});
 </script>
-
-<% content_for :sub_menu do %>
-	<li class="side_bar"><%= link_to 'Zurück', guestnotes_path %></li>
-<% end %>

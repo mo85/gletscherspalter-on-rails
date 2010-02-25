@@ -1,0 +1,3 @@
+<h1>Neuer Gästebuch Eintrag</h1>
+
+<%= render :partial => "form", :locals => { :note => @note, :url => { :action => :create, :token => @token }, :label => "Speichern", :random_no1 => @random_no1, :random_no2 => @random_no2, :bot_protection_needed => true } %>

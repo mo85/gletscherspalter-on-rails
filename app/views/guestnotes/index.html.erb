@@ -1,3 +1,4 @@
+<% include_tinymce %>
 <h1>Gästebuch</h1>
 
 <% unless @notes.empty? %>
@@ -21,7 +22,9 @@
 			<td style="font-size: 14px;"><%=sanitize note.note %></td>
 			<td class="date"><%= l(note.created_at, :format => :default_2) %></td>
 			<% if permitted_to? :manage, note %>
-			<td><%= link_to(image_tag("icons/pencil.png"), edit_guestnote_path(note)) %><%= link_to(image_tag("icons/delete.png"), note, :confirm => "Möchten sie diesen Eintrag wirklich löschen?", :method => :delete) %>
+			<td>
+              <%= link_to_function(image_tag("icons/pencil.png"), "Glacier.Popup.init('" + edit_guestnote_path(note) + ".ajax', {width: 700})") %>
+              <%= link_to(image_tag("icons/delete.png"), note, :confirm => "Möchten sie diesen Eintrag wirklich löschen?", :method => :delete) %>
 			</td>
 			<% end %>
 		</tr>
@@ -40,5 +43,5 @@ Momentan gibt es keine Einträge im Gästebuch.
 <% end %>
 
 <% content_for :sub_menu do %>
-	<li class="side_bar"><%= link_to 'Eintrag erstellen', new_guestnote_path %></li>
+	<li class="side_bar"><%= link_to_function 'Eintrag erstellen', "Glacier.Popup.init('" + new_guestnote_path  + ".ajax', {width: 700})" %></li>
 <% end %>
