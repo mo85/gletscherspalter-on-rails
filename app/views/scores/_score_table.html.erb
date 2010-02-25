@@ -12,7 +12,7 @@
 		<td><%=h score.assists %></td>
 		<td>
 			<% if permitted_to? :manage, score %>
-			<%= link_to image_tag('icons/pencil.png', :border => 0), edit_game_score_path(:game_id => @game.id, :id => score.id) %>
+			<%= link_to_function image_tag('icons/pencil.png', :border => 0), "Glacier.Popup.init('" + edit_game_score_path(:game_id => @game.id, :id => score.id) + ".ajax', {width: 500})" %>
 			<%= link_to image_tag('icons/delete.png', :border => 0), game_score_path(:game_id => @game.id, :id => score.id), :confirm => "Möchten sie diesen Eintrag wirklich löschen?", :method => :delete %>
 			<% else %>
 			&nbsp;

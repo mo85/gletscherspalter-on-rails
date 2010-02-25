@@ -5,7 +5,10 @@ class ScoresController < ApplicationController
   def new
     @score = Score.new
     @game = Game.find(params[:game_id])
-    
+
+    respond_to do |format|
+      format.ajax
+    end
   end
   
   def create
@@ -30,7 +33,7 @@ class ScoresController < ApplicationController
     @score = Score.find(params[:id])
     
     respond_to do |format|
-      format.html
+      format.ajax
     end
   end
   

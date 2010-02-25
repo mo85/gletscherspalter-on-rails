@@ -1,0 +1,30 @@
+<% form_for [@game, @score], :url => url, :html => {:class => :default} do |f|%>
+	<%= f.error_messages %>
+
+	<div>
+		<%= f.label "Spieler" %>
+		<%= f.text_field :player, { :value => @score.player ? @score.player.name : nil, :class => "autocomplete" } %>
+		<div id="user_choices" class="autocomplete"></div>
+	</div>
+
+	<div>
+		<%= f.label "Tore" %>
+		<%= f.text_field :goals %>
+	</div>
+
+	<div>
+		<%= f.label "Assists" %>
+		<%= f.text_field :assists %>
+	</div>
+
+	<div>
+		<%= f.submit label %>
+	</div>
+
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+	new Ajax.Autocompleter('score_player', 'user_choices', '/users.ajax', {
+		method: 'get'
+	});
+</script>
