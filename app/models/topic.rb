@@ -8,6 +8,6 @@ class Topic < ActiveRecord::Base
   end
   
   def self.sort_topics(topics)
-    topics.sort_by{ |t| t.last_post.created_at }.reverse
+    topics.sort_by{ |t| t.created_at }.reverse
   end
 end

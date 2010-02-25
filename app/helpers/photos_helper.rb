@@ -57,7 +57,7 @@ module PhotosHelper
   
   # Returns the image tag options depending on the choosen size
   def get_options(photo, size)
-    options = { :alt => photo.title, :class => 'bevel' }
+    options = { :alt => photo.title }
     case size  
       when :small
         options['size'] = "75x75"

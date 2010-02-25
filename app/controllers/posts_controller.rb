@@ -2,13 +2,12 @@ class PostsController < ApplicationController
   filter_access_to :all
   filter_access_to :edit, :attribute_check => true
   
-  # GET /topics/:topic_id/posts/new
   def new
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.build
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.ajax
     end
   end
 
@@ -16,6 +15,10 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @topic = @post.topic
+
+    respond_to do |format|
+      format.ajax
+    end
   end
 
   # POST /topics/:topic_id/posts

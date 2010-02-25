@@ -5,9 +5,10 @@
 }
 
 .photo {
-    margin-bottom: 40px;
-		display: inline;
-		width: 0px;
+    padding: 3px;
+	display: inline;
+    min-width: 240px;
+    min-height: 320px;
 }
 
 img {

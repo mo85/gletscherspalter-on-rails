@@ -1,3 +1,4 @@
+<% include_tinymce %>
 <h1><%= @topic.title %></h1>
 
 <div>
@@ -26,7 +27,7 @@
 				<td class="date"><%= l(post.updated_at ? post.updated_at : post.created_at, :format => :default_2) %></td>
 				<td>
 					<% if permitted_to? :update_posts, post %>
-						<%= link_to image_tag("/images/icons/pencil.png", :border => 0), edit_topic_post_path(:topic_id => @topic.id, :id => post.id) %>
+						<%= link_to_function image_tag("/images/icons/pencil.png", :border => 0), "Glacier.Popup.init('" + edit_topic_post_path(:topic_id => @topic.id, :id => post.id) + ".ajax', {width: 700})" %>
 						<%= link_to image_tag("/images/icons/delete.png", :border => 0), topic_post_path(:topic_id => @topic.id, :id => post.id), :confirm => "Möchten sie diesen Kommentar wirklich löschen?", :method => :delete %>
 					<% end %>
 				</td>
@@ -48,7 +49,7 @@
 
 <% content_for :sub_menu do %>
 	<% if permitted_to? :create_posts, :posts %>
-		<li class="side_bar"><%= link_to 'Kommentar hinzufügen', new_topic_post_path(@topic) %></li>
+		<li class="side_bar"><%= link_to_function 'Kommentar hinzufügen', "Glacier.Popup.init('" + new_topic_post_path(@topic) + ".ajax', {width: 700})" %></li>
 	<% end %>
 	<% if permitted_to? :create_posts, :posts %>
 		<li class="side_bar"><%= link_to 'Zurück', topics_path %></li>

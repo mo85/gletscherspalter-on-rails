@@ -16,7 +16,7 @@
 		<td style="font-size: 12px;"><%=sanitize info_for_last_comment(topic.posts.first) %></td>
 		<td>
 		<% if permitted_to? :manage, topic %>
-	    <%= link_to image_tag("/images/icons/pencil.png", :border => 0), edit_topic_path(topic) %>
+	    <%= link_to_function image_tag("/images/icons/pencil.png", :border => 0), "Glacier.Popup.init('" + edit_topic_path(topic) + ".ajax', {width: 500})" %>
 	    <%= link_to image_tag("/images/icons/delete.png", :border => 0), topic, :confirm => 'Möchten sie diesen Thread wirklich löschen?', :method => :delete %>
 		<% end %>
 		</td>
@@ -34,6 +34,6 @@
 
 <% content_for :sub_menu do %>
 	<% if permitted_to? :create_posts, :posts %>
-		<li class="side_bar"><%= link_to 'Neuen Thread erstellen', new_topic_path %></li>
+		<li class="side_bar"><%= link_to_function 'Neuen Thread erstellen', "Glacier.Popup.init('" + new_topic_path + ".ajax', {width: 500})" %></li>
 	<% end %>
 <% end %>

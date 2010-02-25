@@ -20,18 +20,22 @@ class TopicsController < ApplicationController
     end
   end
 
-  # GET /topics/new
   def new
     @topic = Topic.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.ajax
     end
   end
 
   # GET /topics/1/edit
   def edit
     @topic = Topic.find(params[:id])
+    
+    respond_to do |format|
+      format.ajax
+    end
+
   end
 
   # POST /topics
@@ -56,7 +60,7 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.update_attributes(params[:topic])
         flash[:notice] = 'Thread wurde erfolgreich angepasst.'
-        format.html { redirect_to(@topic) }
+        format.html { redirect_to topics_path }
       else
         format.html { render :action => "edit" }
       end

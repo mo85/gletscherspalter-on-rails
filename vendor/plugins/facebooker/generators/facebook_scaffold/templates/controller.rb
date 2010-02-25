@@ -29,7 +29,7 @@ class <%= controller_class_name %>Controller < ApplicationController
     @<%= file_name %> = <%= class_name %>.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.ajax.erb
       format.fbml # new.fbml.erb
       format.xml  { render :xml => @<%= file_name %> }
     end

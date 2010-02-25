@@ -1,0 +1,12 @@
+<% form_for [@topic], :url => url, :html => { :class => :default } do |f| %>
+  <%= f.error_messages %>
+
+  <div>
+    <%= f.label "Titel" %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.submit label %>
+  </div>
+<% end %>
