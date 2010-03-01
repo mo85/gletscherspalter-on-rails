@@ -70,4 +70,15 @@ protected
     I18n.locale = session[:locale] = I18n.default_locale
   end
 
+  def permission_denied
+    if logged_in?
+      flash[:notice] = "Du besitzt nicht die erforderlichen Rechte um diese Seite zu sehen."
+      path = home_path
+    else
+      flash[:notice] = "Du musst dich einloggen um diese Seite zu sehen."
+      path = login_path
+    end
+    redirect_to path
+  end
+
 end

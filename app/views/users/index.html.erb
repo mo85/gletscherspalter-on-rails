@@ -32,8 +32,10 @@
 </div>
 
 <% content_for :sub_menu do %>
-	<% if permitted_to? :manage, :users %>
+	<% if permitted_to? :read, :users %>
 	<li class="side_bar"><%= link_to "Liste als PDF", users_path(:format => "pdf") %></li>
+    <% end %>
+    <% if permitted_to? :manage, :users %>
 	<li class="side_bar"><%= link_to 'Benutzer erstellen', new_user_path %></li>
 	<% end %>
 <% end %>

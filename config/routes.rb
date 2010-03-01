@@ -38,6 +38,9 @@ ActionController::Routing::Routes.draw do |map|
   map.location_on_map "root/locations/:id", :controller => "root", :action => "locations"
   map.contacts "root/contact", :controller => "root", :action => "contact"
   map.home "root/index", :controller => "root", :action => "index"
+  map.denied "root/denied", :controller => "root", :action => "denied"
+
+  map.login "admin/login", :controller => "admin", :action => "login"
 
   map.facebook "root/fb_news", :controller => "root", :action => "fb_news"
   

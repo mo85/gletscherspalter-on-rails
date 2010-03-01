@@ -35,5 +35,9 @@ class RootController < ApplicationController
     @last_game = Game.last_game
     @next_game = Game.next_game
   end
+
+  def denied
+    
+  end
   
 end
