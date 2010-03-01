@@ -55,6 +55,8 @@
 						<ul>
                             <% if permitted_to? :read, :users %>
                             <li><%= link_to "Adressliste", users_path %></li>
+                            <% else %>
+                            <li><%= link_to "Mannschaft", players_path %></li>
                             <% end %>
 							<% if permitted_to? :read, :topics %>
 							<li><%= link_to "Forum", topics_path %></li>
