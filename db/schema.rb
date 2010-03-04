@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20091222204757) do
   create_table "events", :force => true do |t|
     t.string   "title"
     t.datetime "date"
-    t.integer  "location_id",    :limit => 255
+    t.integer  "location_id"
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20091222204757) do
     t.integer  "score"
     t.integer  "opponent_score"
     t.integer  "season_id"
-    t.string   "type",                          :default => "Event"
+    t.string   "type",           :default => "Event"
     t.string   "locality"
   end
 
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20091222204757) do
   create_table "guestnotes", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "note",       :limit => 255
+    t.text     "note"
     t.string   "author"
   end
 
