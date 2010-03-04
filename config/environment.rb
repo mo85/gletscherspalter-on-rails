@@ -22,6 +22,8 @@ Rails::Initializer.run do |config|
   config.gem "flickraw"
   config.gem "googlecharts", :lib => "gchart" 
   config.gem "prawn"
+
+  config.gem "hoptoad_notifier"
   
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers

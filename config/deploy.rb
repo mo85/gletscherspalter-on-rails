@@ -33,3 +33,9 @@ task :after_update_code, :roles => [:web, :db, :app] do
   run "chmod 755 railsapp/public -R"
   run "pkill -9 dispatch.fcgi"
 end
+
+Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-*')].each do |vendored_notifier|
+  $: << File.join(vendored_notifier, 'lib')
+end
+
+require 'hoptoad_notifier/capistrano'
