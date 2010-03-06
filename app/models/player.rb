@@ -29,6 +29,14 @@ class Player < ActiveRecord::Base
   def name
     user.full_name
   end
+
+  def firstname
+    user.firstname
+  end
+
+  def lastname
+    user.lastname
+  end
   
   def goals(season = nil)
     g = games_played(season)
@@ -40,6 +48,10 @@ class Player < ActiveRecord::Base
     g = games_played(season)
     scores = collect_scores(g)
     ass = scores.sum(&:assists)
+  end
+
+  def points(season = nil)
+    assists(season) + goals(season)
   end
   
   def points_per_game(season = nil)
@@ -92,6 +104,18 @@ class Player < ActiveRecord::Base
   
   def goals_against(season = nil)
     games_played(season).inject(0){ |sum, g| sum += g.opponent_score }
+  end
+
+  def self.goalies
+    Player.find_all_by_position('G')
+  end
+
+  def self.players
+    Player.find(:all, :conditions => ["position != ?", 'G'])
+  end
+
+  def self.players_with_scores(season)
+    players.select{|p| p.points(season) > 0}
   end
   
   protected

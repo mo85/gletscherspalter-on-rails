@@ -30,7 +30,11 @@ class SeasonsController < ApplicationController
     
     @goals = @season.scored_goals
     @goals_against = @season.goals_against
-  
+
+    @players = Player.players_with_scores(@season).sort_by(&:points).reverse
+
+    @goalies = Player.goalies.select{|p| p.games_played(@season).size > 0}
+
     respond_to do |format|
       format.html
     end

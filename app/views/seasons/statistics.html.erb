@@ -1,11 +1,12 @@
 <h1>Statistiken Saison <%= @season.to_s %></h1>
 
 <div>
-	Auf dieser Seite werden die Statistiken der Gletscherspalter der jeweiligen Saison angezeigt. Nach den Team Statistiken, folgen die individuellen Werte der Spieler.
+  Auf dieser Seite werden die Statistiken der Gletscherspalter der jeweiligen Saison angezeigt. Nach den Team Statistiken, folgen die individuellen Werte der Spieler.
+  Die Tabellen sind mit einem Klick auf eine Spalte auf- oder absteigend sortierbar.
 </div>
 
 <div style="margin-top: 10px;">
-	
+
 	<h2>Team Statistiken</h2>
 	
 	<div style="float: left; width: 50%">
@@ -38,6 +39,71 @@
 
 <div style="margin-top: 10px;">
 	<h2>Spieler Statistiken</h2>
+
+  <% unless @players.empty?  %>
+  <div style="margin-top: 10px">
+    <table class="stats_table">
+      <thead>
+        <tr>
+          <th>Spieler</th>
+          <th># Spiele</th>
+          <th># Siege</th>
+          <th># Niederlagen</th>
+          <th>Tore</th>
+          <th>Assists</th>
+          <th>Punkte</th>
+          <th><abbr title="Points per Game">PPG</abbr></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @players.each do |p| %>
+          <tr>
+            <td><%= p.name %></td>
+            <td><%= p.games_of_season(@season).size %></td>
+            <td><%= p.wins(@season) %></td>
+            <td><%= p.defeats(@season) %></td>
+            <td><%= p.goals(@season) %></td>
+            <td><%= p.assists(@season) %></td>
+            <td><%= p.points(@season) %></td>
+            <td><%= p.points_per_game(@season) %></td>
+          </tr>
+        <% end  %>
+      </tbody>
+    </table>
+  </div>
+  <% end %>
+
+  <% unless @goalies.empty? %>
+  <div style="margin-top: 20px">
+    <table class="stats_table">
+      <thead>
+        <tr>
+          <th>Goalie</th>
+          <th># Spiele</th>
+          <th># Siege</th>
+          <th># Niederlagen</th>
+          <th>Gegentore</th>
+          <th><abbr title="Goal against Average">GAA</abbr></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @goalies.each do |g|  %>
+        <tr>
+          <td><%= g.name %></td>
+          <td><%= g.games_of_season(@season).size %></td>
+          <td><%= g.wins(@season) %></td>
+          <td><%= g.defeats(@season) %></td>
+          <td><%= g.goals_against(@season) %></td>
+          <td><%= g.goal_against_average(@season) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <% end %>
+
+
 	
 	<% if @scorer_names.empty? %>
 		Zurzeit sind keine Spieler Statistiken erfasst.
@@ -68,3 +134,7 @@
 <% content_for :sub_menu do %>
 	<li class="side_bar"><%= link_to "Andere Saisons", seasons_path %></li>
 <% end %>
+
+<script type="text/javascript">
+  $$('table').each(function(table) { new TableSorter(table);})
+</script>

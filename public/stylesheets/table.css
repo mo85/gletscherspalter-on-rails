@@ -83,3 +83,36 @@ table.facts tr td.key {
 	width: 150px;
 	font-weight: bold;
 }
+
+table.stats_table {
+  width: 100%;
+}
+
+table.stats_table th,
+table.stats_table td {
+    padding: 3px 5px;
+}
+table.stats_table th {
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+}
+table.stats_table td {
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+.stats_table th.sort-asc, .stats_table th.sort-desc {
+  background: lightgray url('/images/sort-asc.png') no-repeat right center;
+  color: black;
+}
+
+.stats_table th.sort-desc {
+  background-image: url('/images/sort-desc.png');
+}
+
+.stats_table th {
+    background: #051659;
+    color: white;
+    cursor: pointer;
+}
