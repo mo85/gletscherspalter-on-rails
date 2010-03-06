@@ -51,7 +51,7 @@ var TableSorter = Class.create({
 		this.adjustSortMarkers(index);
 		var rows = this.body.childElements();
 		rows = rows.sortBy(function(row) {
-			return row.childElements()[this.sortIndex].collectTextNodes();
+			return row.childElements()[this.sortIndex].collectTextNodesIgnoreClass();
 		}.bind(this));
 
 		if ('asc' == this.sortOrder) {
