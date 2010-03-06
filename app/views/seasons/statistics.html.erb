@@ -58,9 +58,9 @@
       <tbody>
         <% @players.each do |p| %>
           <tr>
-            <td><%= p.name %></td>
-            <td><%= p.games_of_season(@season).size %></td>
-            <td><%= p.wins(@season) %></td>
+            <td><%= "#{p.name}" %></td>
+            <td><%= "#{p.games_of_season(@season).size}" %></td>
+            <td><%= "#{p.wins(@season)}" %></td>
             <td><%= p.defeats(@season) %></td>
             <td><%= p.goals(@season) %></td>
             <td><%= p.assists(@season) %></td>
@@ -68,6 +68,16 @@
             <td><%= p.points_per_game(@season) %></td>
           </tr>
         <% end  %>
+                  <tr>
+            <td>test</td>
+            <td>12</td>
+            <td>6</td>
+            <td>4</td>
+            <td>18</td>
+            <td>3</td>
+            <td>21</td>
+            <td>2.2</td>
+          </tr>
       </tbody>
     </table>
   </div>
@@ -137,5 +147,7 @@
 <% end %>
 
 <script type="text/javascript">
-  $$('table').each(function(table) { new TableSorter(table);})
+  $$('table').each(function(table) {
+    sorttable.makeSortable(table);
+  });
 </script>

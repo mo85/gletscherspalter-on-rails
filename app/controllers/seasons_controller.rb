@@ -31,7 +31,7 @@ class SeasonsController < ApplicationController
     @goals = @season.scored_goals
     @goals_against = @season.goals_against
 
-    @players = Player.players_with_scores(@season).sort_by(&:name)
+    @players = Player.players_with_scores(@season).sort{|p1, p2| p1.points_per_game(@season) <=> p2.points_per_game(@season)}.reverse
 
     @goalies = Player.goalies.select{|p| p.games_played(@season).size > 0}
 

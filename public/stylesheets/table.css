@@ -102,13 +102,13 @@ table.stats_table td {
     vertical-align: middle;
 }
 
-.stats_table th.sort-asc, .stats_table th.sort-desc {
-  background: lightgray url('/images/sort-asc.png') no-repeat right center;
+.stats_table th.sorttable_sorted, .stats_table th.sorttable_sorted_reverse {
+  background: lightgray url('/images/sort-desc.png') no-repeat right center;
   color: black;
 }
 
-.stats_table th.sort-desc {
-  background-image: url('/images/sort-desc.png');
+.stats_table th.sorttable_sorted_reverse {
+  background-image: url('/images/sort-asc.png');
 }
 
 .stats_table th {
