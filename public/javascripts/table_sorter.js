@@ -1,3 +1,12 @@
+//Borrowed from script.aculo.us effects.js...
+Element.addMethods({
+	collectTextNodes: function(element) {
+		return $A($(element).childNodes).collect( function(node) {
+			return (node.nodeType == 3 ? node.nodeValue : (node.hasChildNodes ? Element.collectTextNodes(node) : ''));
+		}).flatten().join('');
+	}
+}); 
+
 var TableSorter = Class.create({
 	initialize: function(element) {
 		this.element = element;
@@ -51,7 +60,7 @@ var TableSorter = Class.create({
 		this.adjustSortMarkers(index);
 		var rows = this.body.childElements();
 		rows = rows.sortBy(function(row) {
-			return row.childElements()[this.sortIndex].collectTextNodesIgnoreClass();
+			return row.childElements()[this.sortIndex].collectTextNodes();
 		}.bind(this));
 
 		if ('asc' == this.sortOrder) {
