@@ -37,7 +37,7 @@
 
 </div>
 
-<div style="margin-top: 10px;">
+<div>
 	<h2>Spieler Statistiken</h2>
 
   <% unless @players.empty?  %>
@@ -103,7 +103,7 @@
 
   <% end %>
 
-
+    <div style="margin-top: 20px;">
 	
 	<% if @scorer_names.empty? %>
 		Zurzeit sind keine Spieler Statistiken erfasst.
@@ -125,10 +125,11 @@
 		
 
 	%>
-
 	
 	<%= image_tag(url) %>
 	<% end %>
+
+   </div>
 </div>
 
 <% content_for :sub_menu do %>
