@@ -1,5 +1,6 @@
-<div class="photoset" style="float:<%= float_value %>;">
+<div class="<%= style_class %>">
   <h2><%=h photoset.title %></h2>
+
   <% if photoset.description %>
 		<div style="margin-top: 10px;">
 			<%=h photoset.description %>
@@ -14,12 +15,7 @@
   </div>
 </div>
 
-<% if float_value == 'right' || last_album %>
+<% if style_class == 'photoset_right' %>
 <div class="clear">
 </div>
 <% end %>
-
-<% if last_album %>
-	<div style="height: 15px;"></div>
-<% end %>
-	

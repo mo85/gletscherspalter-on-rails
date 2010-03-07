@@ -1,12 +1,18 @@
-.photoset {
-    width: 50%;
-		display: inline;
-		height: 240px;
+.photoset_left{
+  float: left;
+  width: 365px;
+  height: 260px;
+}
+
+.photoset_right {
+  position: absolute;
+  left: 385px;
+  width: 365px;
+  height: 260px;
 }
 
 .photo {
-    padding: 0px;
-	display: inline;
+  padding: 0px;
 }
 
 img {

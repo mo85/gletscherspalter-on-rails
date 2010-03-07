@@ -5,10 +5,12 @@
         Suche Dir unten ein Fotoalbum aus und klicke auf das Bild um die darin enthaltenen Fotos anzuschauen.
     </div>
 
-    <% @photosets.each_with_index do |photoset, i| %>
-        <% float_value = cycle("left", "right") %>
-        <%= render :partial => 'photoset', :locals => { :photoset => photoset, :float_value => float_value, :last_album => i == (@photosets.size - 1) } %>
+    <% @photosets.each do |set| %>
+        <% style_class = cycle("photoset_left", "photoset_right") %>
+        <%= render :partial => 'photoset', :locals => { :photoset => set, :style_class => style_class } %>
     <% end %>
+
+    <div class="clear"></div>
 
 <% end  %>
 
