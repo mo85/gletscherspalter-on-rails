@@ -16,7 +16,7 @@
 			
 			<% if permitted_to? :manage, news %>
 				<td>
-					<%= link_to image_tag("icons/pencil.png", :border => 0), edit_news_path(news) %>
+					<%= link_to_function image_tag("icons/pencil.png", :border => 0), "Glacier.Popup.init('" + edit_news_path(news) + ".ajax', {width: 700});" %>
 					<%= link_to image_tag("icons/delete.png", :border => 0), news, :confirm => "Möchten sie diesen Eintrag wirklich löschen?", :method => :delete %>
 				</td>
 			<% end %>

@@ -6,7 +6,7 @@ module ApplicationHelper
   end
   
   def include_tinymce
-    javascript("tiny_mce/tiny_mce", "tiny_mce")
+    javascript("tiny_mce/tiny_mce")
   end
   
   def format_date(date)

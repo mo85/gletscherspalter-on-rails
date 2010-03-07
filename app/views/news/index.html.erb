@@ -1,3 +1,4 @@
+<% include_tinymce %>
 <h1>News</h1>
 
 <div style="margin-top: 10px;">
@@ -17,6 +18,6 @@
 
 <% if permitted_to? :manage, :news %>
 	<% content_for :sub_menu do %>
-		<li class="side_bar"><%= link_to "News erstellen", new_news_path %></li>
+		<li class="side_bar"><%= link_to_function "News erstellen", "Glacier.Popup.init('" + new_news_path + ".ajax', {width: 700});" %></li>
 	<% end %>
 <% end %>

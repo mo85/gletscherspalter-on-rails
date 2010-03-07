@@ -1,4 +1,4 @@
-/*function $(element) {
+function $(element) {
     if (typeof element == "string") {
         element=document.getElementById(element);
     }
@@ -26,7 +26,7 @@ extendInstance(Ajax, { //Extends the native Facebook Ajax object
      * Make a request to a remote server. Call the 'success' callback with the result.
      * Ex: 	Ajax.Load('JSON','http://...',{ success: function(result){console.log(result.toSource())} }, {'json':test_content})
      */
-/*    Load: function(response_type, action_path, callbacks, post_parameters) {
+    Load: function(response_type, action_path, callbacks, post_parameters) {
         callbacks = Ajax.checkCallbacks(callbacks);		
         var ajax = new Ajax();
         switch(response_type) {
@@ -66,7 +66,7 @@ extendInstance(Ajax, { //Extends the native Facebook Ajax object
      * Make a request to a remote server. Update target_element with result. Calls the 'success' callback with the result
      * Ex: Ajax.Update('test1', 'FBML', 'http://...',{ success: function(result){console.log(result)} })
      */
- /*   Update: function(target_element, response_type, action_path, callbacks, post_parameters) {
+    Update: function(target_element, response_type, action_path, callbacks, post_parameters) {
         callbacks = Ajax.checkCallbacks(callbacks);        
         var update_element = function(content) {
             switch(response_type) {
@@ -172,7 +172,7 @@ extendInstance(Ajax, { //Extends the native Facebook Ajax object
      * Pass the data inside of a form to a target url and place the result inside target_element. 
      * Calls the 'success' callback with the result
      */
- /*   UpdateRemoteForm: function(form_element, target_element, response_type, target_action, callbacks) {
+    UpdateRemoteForm: function(form_element, target_element, response_type, target_action, callbacks) {
         callbacks = callbacks || {};
         Ajax.Update(target_element, response_type, target_action, callbacks, $(form_element).serialize());
     },	
@@ -191,7 +191,7 @@ extendInstance(Ajax, { //Extends the native Facebook Ajax object
 /*
  * Displays a confirmation dialog. If the user clicks "continue" then callback will be evaluated.
  * title and message can be strings or fb:js-string objects
- */ /*
+ */
 function confirm(title,message,callback) {
     dialog = new Dialog(Dialog.DIALOG_POP);
 
@@ -250,7 +250,7 @@ var Element = {
     /*
      * Returns calculated element size
      */
-/*    getDimensions: function() {
+    getDimensions: function() {
         var display = this.getStyle('display');
         if (display != 'none' && display != null) // Safari bug
             return {
@@ -295,7 +295,7 @@ function encodeURIComponent(str) {
 
 /*
  * Applies block to all elements of an array. Return the array itself.
- */ /*
+ */
 function map(array, block){ 
     results = [];
     for (var i=0,l=array.length;i<l;i++){ 
@@ -307,7 +307,7 @@ function map(array, block){
 /*
  * Collects all elements within the 'element' tree that 'matcher' returns true for
  * For an example, see selectElementsByClass
- */ /*
+ */
 function domCollect(element, matcher) {
     collection = [];
     var recurse = function(subelement){		
@@ -330,4 +330,4 @@ PeriodicalExecuter = function (callback, frequency) {
         setTimeout(callback, frequency *1000);
         setTimeout(function() { new PeriodicalExecuter(callback,frequency); }, frequency*1000);
 };
-        */
+        

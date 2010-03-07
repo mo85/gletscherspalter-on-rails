@@ -27,7 +27,7 @@
 	
 	<!--[if IE]><%= stylesheet_link_tag "ie_hacks/ie_status_action_hack" %><![endif]-->
 	
-	<%= yield(:javascripts) %>
+	<%= yield :javascripts %>
 	<%= javascript_include_tag :all %>
 	
 	<title><%= @title || "Glescherspalter.ch" %></title>

@@ -20,7 +20,7 @@ class NewsController < ApplicationController
     @news = News.new
     
     respond_to do |format|
-      format.html
+      format.ajax
     end
   end
   
@@ -31,7 +31,7 @@ class NewsController < ApplicationController
     respond_to do |format|
       if @news.save
         flash[:notice] = "News Eintrag erstellt."
-        format.html { redirect_to news_index_path }
+        format.html { redirect_to :back }
       else
         format.html { render :action => "new" } 
       end
@@ -40,6 +40,10 @@ class NewsController < ApplicationController
   
   def edit
     @news = News.find(params[:id])
+
+    respond_to do |format|
+      format.ajax
+    end
   end
   
   def update
@@ -47,7 +51,7 @@ class NewsController < ApplicationController
     
     respond_to do |format|
       if @news.update_attributes(params[:news])
-        format.html { redirect_to news_index_path }
+        format.html { redirect_to :back }
       else
         format.html { render :action => "edit" }
       end

@@ -24,6 +24,11 @@ Rails::Initializer.run do |config|
   config.gem "prawn"
 
   config.gem "hoptoad_notifier"
+
+  config.gem "mmangino-facebooker", :lib => "facebooker",
+    :source => "http://gems.github.com"
+    # requires
+  config.gem "json"
   
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
