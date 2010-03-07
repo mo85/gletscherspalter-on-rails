@@ -76,6 +76,7 @@
 <% if permitted_to?(:adjust, @player) || permitted_to?(:subscribe_to_events, @player) %>
 <% content_for :sub_menu do %>
 	<% if permitted_to? :adjust, @player %>
+    <li class="side_bar"><%= link_to "Profil Bild ändern" %></li>
 	<li class="side_bar"><%= link_to 'Spieler Details anpassen', edit_player_path(@player) %></li>
 	<li class="side_bar"><%= link_to 'Termine in Outlook einfügen', events_player_url(:format => "ics", :protocol => "webcal", :token => current_user.token) %></li>
 	<li class="side_bar"><%= link_to 'Termine als PDF', events_player_path(:format => "pdf") %></li>

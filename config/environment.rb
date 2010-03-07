@@ -23,6 +23,8 @@ Rails::Initializer.run do |config|
   config.gem "googlecharts", :lib => "gchart" 
   config.gem "prawn"
 
+  config.gem "mini_magick"
+  
   config.gem "hoptoad_notifier"
 
   config.gem "mmangino-facebooker", :lib => "facebooker",
