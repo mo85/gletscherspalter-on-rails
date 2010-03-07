@@ -13,6 +13,7 @@
 
 .photo {
   padding: 0px;
+  display: inline;
 }
 
 img {
