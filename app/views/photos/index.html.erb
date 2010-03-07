@@ -1,13 +1,16 @@
-<h1>Fotoalbum</h1>
+<% cache do %>
+    <h1>Fotoalbum</h1>
 
-<div style="margin-bottom: 10px;">
-	Suche Dir unten ein Fotoalbum aus und klicke auf das Bild um die darin enthaltenen Fotos anzuschauen.
-</div>
+    <div style="margin-bottom: 10px;">
+        Suche Dir unten ein Fotoalbum aus und klicke auf das Bild um die darin enthaltenen Fotos anzuschauen.
+    </div>
 
-<% @photosets.each_with_index do |photoset, i| %>
-	<% float_value = cycle("left", "right") %>
-	<%= render :partial => 'photoset', :locals => { :photoset => photoset, :float_value => float_value, :last_album => i == (@photosets.size - 1) } %>
-<% end %>
+    <% @photosets.each_with_index do |photoset, i| %>
+        <% float_value = cycle("left", "right") %>
+        <%= render :partial => 'photoset', :locals => { :photoset => photoset, :float_value => float_value, :last_album => i == (@photosets.size - 1) } %>
+    <% end %>
+
+<% end  %>
 
 <% if permitted_to? :manage, :photos %>
 	<% content_for :sub_menu do %>

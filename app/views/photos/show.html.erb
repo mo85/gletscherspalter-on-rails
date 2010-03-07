@@ -1,3 +1,4 @@
+<% cache do %>
 <div>
 <h1><%= @photoset.title %></h1>
 <% if @photoset.description %>
@@ -13,7 +14,7 @@
 
 
 </div>
-
+<% end %>
 
 <% content_for :sub_menu do %>
 	<li class="side_bar"><%= link_to "Zurück", photos_path %></li>
