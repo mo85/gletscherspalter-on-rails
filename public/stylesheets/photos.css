@@ -16,6 +16,10 @@
   display: inline;
 }
 
+.photoset {
+  display: inline;
+}
+
 img {
     border: 0px;
 }
