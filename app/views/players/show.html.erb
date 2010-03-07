@@ -1,21 +1,51 @@
 <h1><%= @player.user.full_name %></h1>
 
+<% if RAILS_ENV == "development" %>
 <div>
-	<table class="facts">
-		<tr>
-			<td class="key">Mitglied seit:</td>
-			<td><%=h @player.member_since %></td>
-		</tr>
-		<tr>
-			<td class="key">Position:</td>
-			<td><%=h @player.position_as_string %></td>
-		</tr>
-		<tr>
-			<td class="key">Trikot Nummer:</td>
-			<td><%=h @player.number %></td>
-		</tr>
-	</table>
+
+    <div class="player_pic">
+      <%= image_tag('/images/player_pics/profile_pic.png') %>
+    </div>
+
+    <div class="player_facts">
+        <table class="facts">
+            <tr>
+                <td class="key">Mitglied seit:</td>
+                <td><%=h @player.member_since %></td>
+            </tr>
+            <tr>
+                <td class="key">Position:</td>
+                <td><%=h @player.position_as_string %></td>
+            </tr>
+            <tr>
+                <td class="key">Trikot Nummer:</td>
+                <td><%=h @player.number %></td>
+            </tr>
+        </table>
+    </div>
+
+
+
+<div class="clear"></div>
 </div>
+<% else %>
+      <div>
+        <table class="facts">
+            <tr>
+                <td class="key">Mitglied seit:</td>
+                <td><%=h @player.member_since %></td>
+            </tr>
+            <tr>
+                <td class="key">Position:</td>
+                <td><%=h @player.position_as_string %></td>
+            </tr>
+            <tr>
+                <td class="key">Trikot Nummer:</td>
+                <td><%=h @player.number %></td>
+            </tr>
+        </table>
+    </div>
+<% end %>
 
 <div style="marin-top: 20px;">
 	<h2>Statistiken</h2>

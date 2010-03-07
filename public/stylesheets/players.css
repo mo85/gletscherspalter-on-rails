@@ -1,0 +1,10 @@
+div .player_facts {
+  position: absolute;
+  left: 300px;
+}
+
+div .player_pic {
+  float: left;
+  width: 200px;
+  height: 290px;
+}
