@@ -1,3 +1,4 @@
+<% cache do %>
 <h1>Statistiken Saison <%= @season.to_s %></h1>
 
 <div>
@@ -132,12 +133,14 @@
    </div>
 </div>
 
-<% content_for :sub_menu do %>
-	<li class="side_bar"><%= link_to "Andere Saisons", seasons_path %></li>
-<% end %>
-
 <script type="text/javascript">
   $$('table').each(function(table) {
     sorttable.makeSortable(table);
   });
 </script>
+
+<% end %>
+
+<% content_for :sub_menu do %>
+	<li class="side_bar"><%= link_to "Andere Saisons", seasons_path %></li>
+<% end %>

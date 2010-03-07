@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   
   filter_access_to :all
+  after_filter :invalidate_stats_cache, :only => [:create, :update, :destroy]
   
   # GET /games
   def index
@@ -19,7 +20,6 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @players = @game.players.group_by(&:position)
-    
     @scores = @game.scores.sort{|a,b| ((a.goals || 0) + (a.assists || 0)) <=> ((b.goals || 0) + (b.assists || 0))}.reverse
     
     respond_to do |format|
@@ -49,7 +49,6 @@ class GamesController < ApplicationController
     respond_to do |format|
       if @game.save
         flash[:notice] = 'Spiel erfolgreich erstellt.'
-        expire_page(:controller => "seasons", :action => "statistics", :id => current_season.id)
         format.html { redirect_to(@game) }
       else
         format.html { render :action => "new" }
@@ -63,7 +62,6 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.update_attributes(params[:game])
-        expire_page(:controller => "seasons", :action => "statistics", :id => current_season.id)
         flash[:notice] = 'Spiel wurde erfolgreich angepasst.'
         format.html { redirect_to(games_path) }
       else
@@ -74,7 +72,6 @@ class GamesController < ApplicationController
 
   # DELETE /games/1
   def destroy
-    expire_page(:controller => "seasons", :action => "statistics", :id => current_season.id)
     @game = Game.find(params[:id])
     @game.destroy
 
@@ -82,5 +79,11 @@ class GamesController < ApplicationController
       flash[:notice] = "Spiel wurde gelöscht."
       format.html { redirect_to(games_url) }
     end
+  end
+
+  private
+
+  def invalidate_stats_cache
+    expire_fragment(:controller => "seasons", :action => "statistics", :id => @game.season.id)
   end
 end

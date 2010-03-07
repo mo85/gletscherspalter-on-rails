@@ -1,6 +1,7 @@
 class ScoresController < ApplicationController
   
   filter_access_to :all
+  after_filter :invalidate_stats_cache, :only => [:create, :update, :destroy]
   
   def new
     @score = Score.new
@@ -78,6 +79,10 @@ class ScoresController < ApplicationController
     
     params[:score][:game_id] = params[:game_id]
     params[:score].delete(:player)
+  end
+
+  def invalidate_stats_cache
+    expire_fragment(:controller => "seasons", :action => "statistics", :id => @score.game.season.id)
   end
   
 end
