@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091222204757) do
+ActiveRecord::Schema.define(:version => 20100309200621) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20091222204757) do
   create_table "events", :force => true do |t|
     t.string   "title"
     t.datetime "date"
-    t.integer  "location_id"
+    t.integer  "location_id",    :limit => 255
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20091222204757) do
     t.integer  "score"
     t.integer  "opponent_score"
     t.integer  "season_id"
-    t.string   "type",           :default => "Event"
+    t.string   "type",                          :default => "Event"
     t.string   "locality"
   end
 
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20091222204757) do
   create_table "guestnotes", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "note"
+    t.text     "note",       :limit => 255
     t.string   "author"
   end
 
@@ -104,6 +104,19 @@ ActiveRecord::Schema.define(:version => 20091222204757) do
 
   create_table "topics", :force => true do |t|
     t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "user_pictures", :force => true do |t|
+    t.integer  "parent_id"
+    t.string   "content_type"
+    t.string   "filename"
+    t.string   "thumbnail"
+    t.integer  "size"
+    t.integer  "width"
+    t.integer  "height"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"

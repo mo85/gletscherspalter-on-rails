@@ -13,4 +13,14 @@ module ApplicationHelper
     "#{date.strftime('%d. %B %Y - %H:%M')}"
   end
 
+  def user_profile_pic user, size = :thumb
+    filename = "/images/profile_thumb.png"
+
+    if user && user.user_picture
+      filename = user.user_picture.public_filename(size)
+    end
+
+    "<img src=\"#{filename}\" alt=\"\" />"
+  end
+
 end

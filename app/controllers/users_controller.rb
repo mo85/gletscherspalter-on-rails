@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   filter_access_to :all
   
   prawnto :prawn => { :page_layout => :landscape }
-  
+
   # GET /users
   def index
     @users = []

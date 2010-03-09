@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :messages
   has_many :news
+  has_one :user_picture
   has_one :player, :dependent => :destroy
   
   has_and_belongs_to_many :events, :order => "Date ASC"

@@ -23,6 +23,9 @@ authorization do
     end
 
     has_permission_on :users, :to => :read
+    has_permission_on :user_pics, :to => [:new, :create] do
+      if_attribute :user => is { user }
+    end
     
   end
   
@@ -34,6 +37,7 @@ authorization do
     has_permission_on :events, :to => [:read, :manage, :add_or_remove_players_from_events]
     has_permission_on :posts, :to => :update_posts
 
+    has_permission_on :user_pics, :to => [:new, :create]
   end
 end
 

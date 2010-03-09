@@ -26,7 +26,9 @@ ActionController::Routing::Routes.draw do |map|
     topics.resources :posts, :except => [:show, :index]
   end
 
-  map.resources :users, :except => :show
+  map.resources :users, :except => :show do |users|
+    users.resources :user_pictures, :only => [:new, :create]
+  end
 
   map.resources :trainings, :except => :index
   map.resources :trainingscamps, :except => :index
