@@ -51,6 +51,8 @@ table.forum tr th {
 
 table tr td.author {
 	font-size: 11px;
+    text-align: left;
+    vertical-align: top;
 }
 
 table tr td.date {
