@@ -6,7 +6,7 @@ class UserPicture < ActiveRecord::Base
   has_attachment :content_type => :image,
                  :storage => :file_system,
                  :resize_to => '200x400>',
-                 :thumbnails => { :thumb => "50x50^" },
+                 :thumbnails => { :thumb => "50x50>" },
                  :partition => false,
                  :path_prefix => "public/users",
                  :processor => "mini_magick"
@@ -18,12 +18,14 @@ class UserPicture < ActiveRecord::Base
 
   private
 
+begin
   def crop_thumbnail
     if parent_id.blank?
       file = "#{RAILS_ROOT}/public#{public_filename(:thumb)}"
       `mogrify -gravity center -crop 50x50+0+0 +repage #{file}`
     end
   end
+end
 
   def set_filename
     if parent_id.blank?
