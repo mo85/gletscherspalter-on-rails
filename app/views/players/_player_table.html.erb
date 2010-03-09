@@ -1,29 +1,29 @@
 <h3><%=h position %></h3>
 <table class="default">
 <colgroup>
-	<col width="60%" />
-	<% if logged_in? %>
-	<col width="30%" />
-	<col width="10%" />
-	<% else %>
-	<col width="40%" />
-	<% end %>
+
+	<col width="25%" />
+	<col width="35%" />
+	<col width="20%" />
+    <% if logged_in? && current_user.is_player %>
+	<col width="20%" />
+    <% end %>
+
 </colgroup>
 
 <% players.each do |player| %>
   <tr>
+        <td><%= link_to user_profile_pic(player.user), player %></td>
 		<td><%= link_to h(player.user.full_name), player %></td>
 		<td><%=h player.number %></td>
-		<% if permitted_to? :read, player %>
 		<td>
 			<% if editable && permitted_to?(:adjust, player) %>
 				<%= link_to(image_tag('icons/pencil.png', :border => 0) , edit_player_path(player)) %>
 			<% end %>
 			<% if deletable && permitted_to?(:manage, player) %>
 				<%= link_to(image_tag(delete_icon, :border => 0), delete_path + player.id.to_s, :confirm => "Möchten sie #{player.user.full_name} aus dieser Liste entfernen?", :method => :delete) %>
-				<% end %>
+			<% end %>
 		</td>
-		<% end %>
   </tr>
 <% end %>
 </table>

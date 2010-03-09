@@ -10,7 +10,12 @@
 
 	<% for news in @news %>
 		<tr>
-			<td class="author"><%=h news.user.full_name %></td>
+			<td class="author">
+              <%=link_to news.user.full_name, player_path(news.user.player) %>
+              <div style="margin: 2px 0 0 5px;">
+                <%= link_to user_profile_pic(news.user) , player_path(news.user.player) %>
+              </div>
+            </td>
 			<td style="font-size: smaller;"><%=sanitize news.message %></td>
 			<td class="date"><%=h l(news.created_at, :format => :default_2) %></td>
 			

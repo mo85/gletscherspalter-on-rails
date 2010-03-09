@@ -50,9 +50,8 @@ table.forum tr th {
 }
 
 table tr td.author {
-	vertical-align: top;
-	font-weight: bold;
-	font-size: smaller;
+    text-decoration: underline;
+	font-size: 11px;
 }
 
 table tr td.date {

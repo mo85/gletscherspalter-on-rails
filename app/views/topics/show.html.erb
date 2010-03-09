@@ -22,7 +22,12 @@
 		<tbody>
 	  <% for post in @posts %>
 	    <tr class="<%= cycle('odd-line', 'even-line') %>">
-		   	<td class="author"><%=h post.user.full_name %></td>
+		   	<td class="author">
+              <%=h post.user.full_name %>
+              <div style="margin: 2px 0 0 5px;">
+                <%= link_to user_profile_pic(post.user) , player_path(post.user.player) %>
+              </div>
+            </td>
 		   	<td style="font-size: 14px;"><%=sanitize post.content %></td>
 				<td class="date"><%= l(post.updated_at ? post.updated_at : post.created_at, :format => :default_2) %></td>
 				<td>
