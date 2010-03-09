@@ -1,0 +1,10 @@
+<h1>Profilbild erstellen</h1>
+<% form_for :user_picture, :url => user_user_pictures_path(:user_id => @user.id), :html => { :multipart => true, :class => :default } do |up| %>
+    
+    <div>
+      <%= up.label "Datei:" %>
+      <%= up.file_field :uploaded_data %>
+    </div>
+
+    <%= up.submit "Speichern" %>
+<% end %>
