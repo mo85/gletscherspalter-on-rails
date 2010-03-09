@@ -23,7 +23,7 @@
 	  <% for post in @posts %>
 	    <tr class="<%= cycle('odd-line', 'even-line') %>">
 		   	<td class="author">
-              <%=h post.user.full_name %>
+              <span style="text-decoration: underline;"><%=link_to post.user.full_name, player_path(post.user.player) %></span>
               <div style="margin: 2px 0 0 5px;">
                 <%= link_to user_profile_pic(post.user) , player_path(post.user.player) %>
               </div>

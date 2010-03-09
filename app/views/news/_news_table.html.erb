@@ -11,8 +11,8 @@
 	<% for news in @news %>
 		<tr>
 			<td class="author">
-              <%=link_to news.user.full_name, player_path(news.user.player) %>
-              <div style="margin: 2px 0 0 5px;">
+              <span style="text-decoration: underline;"><%=link_to news.user.full_name, player_path(news.user.player) %></span>
+              <div style="margin: 2px 0 0 5px; text-decoration: none;">
                 <%= link_to user_profile_pic(news.user) , player_path(news.user.player) %>
               </div>
             </td>
