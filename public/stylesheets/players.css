@@ -1,9 +1,17 @@
 div .player_facts {
-  position: absolute;
-  left: 300px;
+  margin-left: 300px;
+  height: 100px;
 }
 
 div .player_pic {
   float: left;
   width: 200px;
+}
+
+div .profile_with_image {
+  height: 400px;
+}
+
+div .profile_without_image {
+  max-height: 100px;
 }

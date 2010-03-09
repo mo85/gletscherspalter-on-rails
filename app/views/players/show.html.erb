@@ -1,7 +1,8 @@
 <h1><%= @player.user.full_name %></h1>
 
 <% if RAILS_ENV == "development" || (current_user && current_user.login == "mark.odermatt")%>
-<div>
+
+<div class="<%= @player.user.user_picture ? "profile_with_image" : "profile_without_image" %>">
 
     <div class="player_pic">
       <%= user_profile_pic @player.user, nil %>
