@@ -1,8 +1,11 @@
 log/*.log
 .idea/*
 db/development.sqlite3
+db/schema.rb
 config/database.yml
 doc/flickr*
 public/stylesheets/all.css
 public/users/*
 config/config.yml
+cache*
+cache/*
