@@ -10,18 +10,18 @@
 	background-repeat: repeat-x;
 }
 
+
 #status_info {
-	padding: 8px 0 4px 15px;
+	margin-bottom: 2px;
+	padding: 15px 0 0px 15px;
 	color: white;
 	font-size: 11px;
-	text-align: left;
+	float: left;
 }
 
 #status_action {
-	padding: 2px 15px 0 4px;
-	position: relative;
-	top: -20px;
-	text-align: right;
+	padding: 15px 15px 0 0px;
+	float: right;
 }
 
 #status_action a {

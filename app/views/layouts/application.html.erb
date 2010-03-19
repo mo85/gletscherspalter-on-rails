@@ -1,36 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<html>
+
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="language" content="de">
-	<meta name="description" content="Homepage des Plauscheishockey Vereins Gletscherspalter des Zürcher Oberlandes in der Schweiz">
-	<meta name="author" content="Mark Odermatt">
-	<meta name="keyword" content="Eishockey, Eishockeymannschaft, Plausch, Plauscheishockey, Plauschmannschaft, Gletscherspalter, Hockey, Hockeymannschaft,EHC Gletscherspalter, Sport, www.gletscherspalter.ch, Gletschis, Zürich Oberland">
-	<meta name="robots" content="index,follow">
-	<meta name="zipcode" content="8623">
-	<meta name="city" content="Wetzikon">
-	<meta name="state" content="Zurich">
-	<meta name="country" content="CH">
-	<meta name="DC.Creator" content="Mark Odermatt">
-	<meta name="DC.Subject" content="EHC Gletscherspalter - Homepage für Mitglieder und Interessierte">
-	<meta name="DC.Publisher" content="Gletscherspalter">
-	<meta name="DC.Date" content="2009-11-27">
-	<meta name="DC.Language" content="de">
-	<meta name="DC.Coverage" content="Zurich">
-	<meta name="DC.Identifier" content="http://gletscherspalter.railsplayground.net">
-	<meta name="DC.Type" content="Text">
-	<meta name="DC.Format" content="text/html">
-	<meta name="DC.Rights" content="Alle Rechte liegen beim Autor">
-	
-	<%= stylesheet_link_tag :all %>
-	
-	<!--[if IE]><%= stylesheet_link_tag "ie_hacks/ie_status_action_hack" %><![endif]-->
-	
-	<%= yield :javascripts %>
-	<%= javascript_include_tag :all %>
-	
-	<title><%= @title || "Glescherspalter.ch" %></title>
+	<%= render :partial => "layouts/head" %>
 </head>
 
 <body onload="DynarchMenu.setup('header_main_menu', { shadows: false, electric: true });">
@@ -90,39 +64,18 @@
 			</div>
 			
 			<div id="status_bar">
-				<div id="status_info">
-					<% if logged_in? %>
-						angemeldet als: <%= current_user.full_name %>
-					<% else %>
-						nicht angemeldet
-					<% end %>
-				</div>
-				<div id="status_action">
-					<% if logged_in? %>
-						<%= link_to "ausloggen", :controller => "admin", :action => "logout" %>
-					<% else %>
-						<%= link_to "einloggen", :controller => "admin", :action => "login" %>
-					<% end %>
-				</div>
+				<%= render :partial => "layouts/status_bar" %>
+			</div>
+			<div class="clear">
+				
 			</div>
 		</div>
 		
 		<div id="container">
 
 			<div id="left_column">
-				<!--[if IE]>
-				<div id="ie_warning">
-					This page is <b>optimized for Firefox or WebKit browsers </b>. 
-					Internet Explorer is only partially supported. Please get one of the 
-					listed browsers to receive the full user experience.
-					
-					<ul>
-						<li><%= link_to "Firefox", "http://www.mozilla-europe.org/de/firefox/", :target => :blank %></li>
-						<li><%= link_to "Chrome", "http://www.google.com/chrome", :target => :blank  %></li>
-						<li><%= link_to "Safari", "http://www.apple.com/safari/download/", :target => :blank  %></li>
-					</ul>
-				</div>
-				<![endif]-->
+				
+				<%= render :partial => "layouts/ie_warning" %>
 				
 				<% if yield :sub_menu %>
 				<div id="sub_menu">
@@ -153,43 +106,7 @@
 				<div class="clear"></div>
 				<div style="padding: 10px; background: inherit;">
 				<div id="footer">
-					<table style="width: 100%;">
-						<colgroup>
-						<col width="25%" /><col width="25%" /><col width="25%" /><col width="25%" />
-						</colgroup>
-						<tbody>
-							<tr>
-								<td>
-									<ul>
-										<li><%= link_to "Home", home_path %></li>
-										<li><%= link_to "News", news_index_path %></li>
-										<li><%= link_to_remote "Team", :update => "content", :url => players_url, :method => :get %></li>
-									</ul>
-								</td>
-								<td>
-									<ul>
-										<li><%= link_to "Adressliste", users_path %></li>
-										<li><%= link_to "Forum", topics_path %></li>
-										<li><%= link_to "Saison", events_path %></li>
-									</ul>
-								</td>
-								<td>
-									<ul>
-										<li><%= link_to "Spielplan", games_path %></li>
-										<li><%= link_to "Statistiken", statistics_season_path(current_season) %></li>
-										<li><%= link_to "Austragungsorte", :controller => "root", :action => "locations" %></li>
-									</ul>
-								</td>
-								<td>
-									<ul>
-										<li><%= link_to "Galleries", photos_path %></li>
-										<li><%= link_to "Kontakt", contacts_path %></li>
-										<li><%= link_to "Gästebuch", guestnotes_path %></li>
-									</ul>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+					<%= render :partial => "layouts/footer" %>
 				</div>
 			</div>
 		</div>
@@ -209,3 +126,4 @@
 	<% end %>
 
 </body>
+</html>

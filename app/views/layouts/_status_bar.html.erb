@@ -1,0 +1,17 @@
+<div id="status_info">
+	<% if logged_in? %>
+		angemeldet als: <%= current_user.full_name %>
+	<% else %>
+		nicht angemeldet
+	<% end %>
+</div>
+
+<div id="expander"></div>
+
+<div id="status_action">
+	<% if logged_in? %>
+		<%= link_to "ausloggen", :controller => "admin", :action => "logout" %>
+	<% else %>
+		<%= link_to "einloggen", :controller => "admin", :action => "login" %>
+	<% end %>
+</div>
