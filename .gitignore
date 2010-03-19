@@ -5,3 +5,4 @@ config/database.yml
 doc/flickr*
 public/stylesheets/all.css
 public/users/*
+config/config.yml
