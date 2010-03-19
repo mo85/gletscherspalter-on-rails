@@ -1,5 +1,6 @@
 #header {
-	background: url(/images/new_style/header_background.png);	
+	height: 175px;
+	background: url(/images/new_style/header_background.png);
 }
 
 #status_bar {
@@ -12,15 +13,16 @@
 
 
 #status_info {
-	margin-bottom: 2px;
-	padding: 15px 0 0px 15px;
+	margin: 8px 0px 2px 0px;
+	padding: 0px 0 0px 15px;
 	color: white;
 	font-size: 11px;
 	float: left;
 }
 
 #status_action {
-	padding: 15px 15px 0 0px;
+	margin: 8px 0px;
+	padding: 0px 15px 0 0px;
 	float: right;
 }
 

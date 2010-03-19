@@ -30,7 +30,7 @@
 	<h2>Nächste Spiele</h2>
 	
 	<% if @games.empty? %>
-		Momentan sind keine Spiel angesetzt.
+		Momentan sind keine Spiele angesetzt.
 	<% else %>
 		
 		<%= render :partial => "games/game_table", :locals => { 
