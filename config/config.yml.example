@@ -8,3 +8,10 @@ mail:
 
 # Google Maps
 maps-api-key: "someVeryLongApiKeyString"
+
+# Flickr Account details
+flickr:
+  api-key: "your api Key"
+  shared-secret: "your shared secret"
+  user-id: "your user id"
+  auth-token: "the generated token"
