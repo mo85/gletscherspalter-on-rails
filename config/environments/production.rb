@@ -24,10 +24,10 @@ config.action_mailer.raise_delivery_errors = false
 config.action_mailer.delivery_method = :smtp
 
 config.action_mailer.smtp_settings = {
-  :address        => 'mail.gletscherspalter.ch',
+  :address        => APP_CONFIG["mail"]["server"],
   :port           => 26,
-  :domain         => 'mail.gletscherspalter.ch',
-  :authentication => :login, 
-  :user_name       => 'no-reply+gletscherspalter.ch',
-  :password       => '-p?!?fYvdivU'
+  :domain         => APP_CONFIG["mail"]["domain"],
+  :authentication => :login,
+  :user_name       => APP_CONFIG["mail"]["user_name"],
+  :password       => APP_CONFIG["mail"]["password"]
 }

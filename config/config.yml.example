@@ -1,0 +1,10 @@
+# Mail settings
+mail:
+  server: 'mail.example.com'
+  domain: 'mail.example.ch'
+  user_name: 'user'
+  password: 'pwd'
+
+
+# Google Maps
+maps-api-key: "someVeryLongApiKeyString"

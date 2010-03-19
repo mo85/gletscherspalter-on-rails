@@ -4,15 +4,15 @@ class PhotosController < ApplicationController
 
   include FlickRaw
   
-  FlickRaw.api_key = "02c75fd7a65f0e72affa799b7105afc9"
-  FlickRaw.shared_secret = "3125e4dc1dd61ad4"
-  ::USER_ID = "44777339@N04"
-  
-  @auth = flickr.auth.checkToken :auth_token => "72157622835493126-87c74181a6135d00"
+  FlickRaw.api_key = APP_CONFIG["flickr"]["api-key"]
+  FlickRaw.shared_secret = APP_CONFIG["flickr"]["shared-secret"]
+  @@user_id = APP_CONFIG["flickr"]["user-id"]
+  @@token = APP_CONFIG["flickr"]["auth-token"]
+  @auth = flickr.auth.checkToken :auth_token => @@token
   
   def index
     unless read_fragment(:action => "index")
-      @photosets = flickr.photosets.getList :user_id => USER_ID
+      @photosets = flickr.photosets.getList :user_id => @@user_id
     end
   end
   
