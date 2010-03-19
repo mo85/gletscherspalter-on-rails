@@ -1,0 +1,12 @@
+<% if @games.empty? %>
+	Zur Zeit sind keine Anlässe registriert.
+<% else %>
+	<%= render :partial => "game_table", :locals => { :games => @games, 
+		:show_actions => true, :show_result => true, :check_box_needed => false 
+		} %>
+	<div style="margin-top: 5px;">
+	<hr/>
+		<%= will_paginate @games %>
+	<hr/>
+	</div>
+<% end %>

@@ -1,3 +1,4 @@
+<% javascript("jquery") %>
 <h1>Spielplan Saison <%=h current_season.to_s %></h1>
 	
 <div style="margin-top: 10px;">
@@ -7,19 +8,8 @@
 		Vereinsanlässe findest du <%= link_to "hier", events_path %>.
 	<% end %>
 	
-	<div style="margin-top: 10px;">
-		<% if @games.empty? %>
-			Zur Zeit sind keine Anlässe registriert.
-		<% else %>
-			<%= render :partial => "game_table", :locals => { :games => @games, 
-				:show_actions => true, :show_result => true, :check_box_needed => false 
-				} %>
-			<div style="margin-top: 5px;">
-			<hr/>
-				<%= will_paginate @games %>
-			<hr/>
-			</div>
-		<% end %>
+	<div id="games" style="margin-top: 10px;">
+		<%= render "games" %>
 	</div>
 </div>
 
