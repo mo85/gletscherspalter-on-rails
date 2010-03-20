@@ -6,6 +6,7 @@ class GuestnotesController < ApplicationController
     @notes = Guestnote.find(:all, :order => "created_at DESC").paginate :page => params[:page], :per_page => 10
     respond_to do |format|
       format.html
+      format.js
     end
   end
   
