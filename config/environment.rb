@@ -19,7 +19,7 @@ Rails::Initializer.run do |config|
     :source => 'http://gems.github.com'
   
   config.gem "icalendar"
-  config.gem "flickraw"
+  #config.gem "flickraw"
   config.gem "googlecharts", :lib => "gchart" 
   config.gem "prawn"
 
