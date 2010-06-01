@@ -14,7 +14,7 @@ class PlayersController < ApplicationController
   
   # GET /players
   def index
-    @players = Player.all.group_by(&:position)
+    @players = User.find_all_by_is_player(true).collect(&:player).group_by(&:position)
     @title = "Gletscherspalter.ch::Spieler"
     
     respond_to do |format|
@@ -73,6 +73,33 @@ class PlayersController < ApplicationController
       flash[:notice] = "Anlässe erfolgreich angepasst."
       format.html { redirect_to player_path(current_user.player) }
     end
+  end
+  
+  def new
+    @user = User.find(params[:user_id])
+    
+    if !@user.player
+      @player = Player.new
+    end
+    
+    respond_to do |format|
+      format.ajax
+    end
+  end
+  
+  def create
+    @player = Player.new(params[:player])
+    
+    if @player.save
+      flash[:notice] = "Spieler wurde erfolgreich erstellt."
+    else
+      flash[:notice] = "Spieler konnte nicht erstellt werden."
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to :back }
+    end
+    
   end
 
   # GET /players/1/edit

@@ -5,17 +5,17 @@
 	<%= error_messages_for :user %>
 
   <h2>Spielerinformationen</h2>
+
+	<div>
+		<%= f.label "Mitglied seit" %>
+		<%= f.select :member_since, ((Time.now.year - 20)..(Time.now.year)), :prompt => "Bitte auswählen" %>
+	</div>
   
 	<div>
-		<%= f.label "Mitglied seit:" %>
-		<%= f.text_field h(:member_since), :size => 10 %>
+		<%= f.label "Nummer" %>
+		<%= f.select :number, 0...100, :prompt => "Bitte auswählen" %>
 	</div>
-
-  <div>
-	<%= f.label "Nummer:" %>
-	<%= f.text_field h(:number), :size => 10 %>
-  </div>
-
+	
   <div>
 	<%= f.label "Position:" %>
 	<%= f.select :position, PLAYER_POSITIONS, :promt => "Select a position" %>

@@ -1,0 +1,40 @@
+<% if @user.player %>
+	
+	<h1>Spieler kann nicht erstellt werden</h1>
+	
+	Für den Benutzer '<%= @user.full_name %>' existiert bereits ein <%= link_to "Spieler Objekt", player_path(@user.player) %>.
+
+<% else %>
+
+	<h1>Spieler Erstellen</h1>
+	
+	<p>
+		Mit diesem Dialog wird für ein Benutzer ein Spieler Objekt angelegt, 
+		sodass der Benutzer das eigene Profil bearbeiten und sich für Events eintragen kann.
+	</p>
+	
+	<% form_for [@player], :html => { :class => :default } do |f| %>
+	<input type="hidden" name="player[user_id]" id="player_user_id" value="<%= params[:user_id]%>">
+	
+  <div>
+	<%= f.label "Position" %>
+	<%= f.select :position, PLAYER_POSITIONS, :promt => "Select a position" %>
+  </div>
+
+	<div>
+		<%= f.label "Nummer" %>
+		<%= f.select :number, 0...100, :prompt => "Bitte auswählen" %>
+	</div>
+	
+	<div>
+		<%= f.label "Mitglied seit" %>
+		<%= f.select :member_since, ((Time.now.year - 20)..(Time.now.year)), :selected => Time.now.year %>
+	</div>
+	
+	<div>
+		<%= f.submit "Spieler erstellen" %>
+	</div>
+	
+	<% end %>
+
+<% end %>

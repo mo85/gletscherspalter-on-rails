@@ -19,6 +19,16 @@
   </div>
 
 	<div>
+		<%= f.label "Aktiv" %>
+		<%= f.check_box :is_player %>
+	</div>
+
+	<div>
+		<%= f.label "Vorstandsmitglied" %>
+		<%= f.check_box :is_chair_member %>
+	</div>
+
+	<div>
 		<%= label_tag :street, "Strasse und Nr." %>
 		<%= text_field_tag "user[street]", h(@user.street), :size => 20 %>
 		<%= text_field_tag "user[number]", h(@user.number), :size => 5 %>
@@ -51,6 +61,9 @@
 <% end %>
 
 <% content_for :sub_menu do %>
+	<% if permitted_to? :manage, :players %>
+	<li class="side_bar"><%= link_to_function "Spieler für Benutzer", "Glacier.Popup.init('" + new_player_path(:user_id => @user.id) + "')" %></li>
+	<% end %>
 	<% if permitted_to? :read, :users %>
 	<li class="side_bar"><%= link_to "Zurück", users_path %></li>
 	<% end %>
