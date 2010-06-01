@@ -4,7 +4,8 @@
 <div style="margin-top: 10px;">
 	<% form_for [@message], :url => {:action => "create"},:html => {:class => :default, :onsubmit => "Glacier.Selector.addUserIds()"} do |f| %>
 	<input id="users" name="users" type="hidden" value="" />
-		<%= f.error_messages %>
+	<%= f.error_messages %>
+
 	
 	<div>
 		<%= label_tag "Empfänger" %>
@@ -20,18 +21,18 @@
 		<div id="usr_choices" class="autocomplete"></div>
 	</div>
 	
-	<div id="selected_users" style="position: relative; left: 215px;">
+	<div id="selected_users">
 		<ul id="usrs_list"></ul>
 	</div>
 	
-	<div style="position: relative;">
+	<div>
 		<%= f.label "Betreff" %>
-		<%= f.text_field :subject %>
+		<%= text_field_tag "subject", @message.subject %>
 	</div>
 	
 	<div>
 		<%= f.label "Nachricht" %>
-		<%= f.text_area :text %>
+		<%= text_area_tag "text", @message.text %>
 	</div>
 
 	<div>

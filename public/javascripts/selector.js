@@ -16,7 +16,7 @@ Glacier.Selector = Class.create({
 		});
 		
 		node.insert({
-			bottom: " <a onclick='Glacier.Selector.removeUser(this); return false;' href='#'><img src='/images/icons/cross.png' alt='delete' border='0' /></a>"
+			bottom: " <a class='remove-icon' onclick='Glacier.Selector.removeUser(this); return false;' href='#'><img src='/images/icons/cross.png' alt='delete' border='0' /></a>"
 		});
 		
 		$(this.name + '_name').value = '';

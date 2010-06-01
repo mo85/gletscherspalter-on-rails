@@ -21,3 +21,17 @@ div.autocomplete ul li {
 #editUserNames {
 	border: 0.1em solid gray; padding: 0.1em; height: 4em;
 }
+
+#usrs_list {
+	list-style: square;
+	margin-left: 220px;
+	width: 200px;
+}
+
+#usrs_list li.selected {
+	list-style: square;
+}
+
+a.remove-icon {
+	float: right;
+}
