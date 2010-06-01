@@ -34,10 +34,12 @@ class MessagesController < ApplicationController
       end
     end
     
+    @recipients = @recipients.select{|u| u.email != nil && u.email != ""}
+    
     respond_to do |format|
       if @message.save
         UserMailer.deliver_mail_news(@recipients, @message)
-        flash[:notice] = 'Nachricht erfolgreich versendet.'
+        flash[:notice] = "Nachricht an #{@recipients.size} gesendet."
         format.html { redirect_to(messages_path) }
       else
         format.html { render :action => "new" }

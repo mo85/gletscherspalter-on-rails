@@ -51,12 +51,14 @@
 							<li><%= link_to "Gästebuch", guestnotes_path %></li>
 						</ul>
 					</li>
-					<% if user_is_admin? %>
+					<% if user_is_admin? || permitted_to?(:manage, :messages) %>
 					<li><%= link_to "Admin" %>
 						<ul>
 							<li><%= link_to "Nachrichten", messages_path %></li>
+							<% if user_is_admin? %>
 		        	<li><%= link_to "Benutzer", users_path %></li>
 		        	<li><%= link_to "Austragungsorte", locations_path %></li>
+							<% end %>
 						</ul>
 					</li>
 					<% end %>

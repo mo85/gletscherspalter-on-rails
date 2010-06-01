@@ -27,6 +27,10 @@ authorization do
       if_attribute :user => is { user }
     end
     
+    has_permission_on :messages, :to => [ :read, :manage] do 
+      if_attribute :is_chair_member => is { true }
+    end
+    
   end
   
   role :admin do

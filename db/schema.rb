@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100309200621) do
+ActiveRecord::Schema.define(:version => 20100601062652) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(:version => 20100309200621) do
     t.string   "city"
     t.integer  "zip"
     t.string   "token"
+    t.boolean  "is_chair_member", :default => false
   end
 
 end
