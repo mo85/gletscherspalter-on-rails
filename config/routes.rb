@@ -41,6 +41,7 @@ ActionController::Routing::Routes.draw do |map|
   map.contacts "root/contact", :controller => "root", :action => "contact"
   map.home "root/index", :controller => "root", :action => "index"
   map.denied "root/denied", :controller => "root", :action => "denied"
+  map.history "root/history", :controller => "root", :action => "history"
 
   map.login "admin/login", :controller => "admin", :action => "login"
 

@@ -23,6 +23,9 @@ class RootController < ApplicationController
     @title = "Gletscherspalter.ch::Orte"
     @rinks = Rink.all :order => "name ASC"
   end
+  
+  def history
+  end
 
   def fb_news
     @last_game = Game.last_game
