@@ -27,12 +27,12 @@
 	
 	<div>
 		<%= f.label "Betreff" %>
-		<%= text_field_tag "subject", @message.subject %>
+		<%= text_field_tag "message[subject]", @message.subject %>
 	</div>
 	
 	<div>
 		<%= f.label "Nachricht" %>
-		<%= text_area_tag "text", @message.text %>
+		<%= text_area_tag "message[text]", @message.text %>
 	</div>
 
 	<div>
