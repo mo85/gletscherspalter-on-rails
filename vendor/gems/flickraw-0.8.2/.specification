@@ -1,7 +1,7 @@
 --- !ruby/object:Gem::Specification 
 name: flickraw
 version: !ruby/object:Gem::Version 
-  version: 0.7.1
+  version: 0.8.2
 platform: ruby
 authors: 
 - Mael Clerambault
@@ -9,10 +9,19 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2009-08-08 00:00:00 +02:00
+date: 2010-05-05 00:00:00 +02:00
 default_executable: 
-dependencies: []
-
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: json
+  type: :runtime
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: 1.1.1
+    version: 
 description: 
 email: maelclerambault@yahoo.fr
 executables: []
@@ -27,11 +36,12 @@ files:
 - LICENSE
 - README.rdoc
 - rakefile
-- examples/flickr_KDE.rb
-- examples/upload.rb
 - examples/auth.rb
+- examples/flickr_KDE.rb
 - examples/interestingness.rb
+- examples/upload.rb
 - test/test.rb
+- test/test_upload.rb
 has_rdoc: true
 homepage: http://hanklords.github.com/flickraw/
 licenses: []
@@ -55,10 +65,10 @@ required_rubygems_version: !ruby/object:Gem::Requirement
   version: 
 requirements: []
 
-rubyforge_project: flickraw
+rubyforge_project: 
 rubygems_version: 1.3.5
 signing_key: 
-specification_version: 2
+specification_version: 3
 summary: Flickr library with a syntax close to the syntax described on http://www.flickr.com/services/api
-test_files: 
-- test/test.rb
+test_files: []
+
