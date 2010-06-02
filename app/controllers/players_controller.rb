@@ -32,7 +32,11 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
     @events = @player.user.events.paginate :page => params[:page], :per_page => 10
     respond_to do |format|
-      format.html
+      if request.xhr?
+        format.js { render :partial => "current_events", :locals => {:events => @events} }
+      else
+        format.html
+      end
     end
   end
   

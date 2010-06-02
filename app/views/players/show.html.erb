@@ -41,15 +41,8 @@
 	<h2>Gebuchte Termine</h2>
 	
 	<div style="margin-top: 10px">
-		<%= render :partial => "events/events_table", :locals => { :events => @events, 
-			:show_result => true, :actions_needed => false, :check_box_needed => false }%>
-		<div style="margin-top: 5px;">
-			<hr/>
-			<%= will_paginate @events %>
-			<hr/>
-		</div>
+		<%= render :partial => "current_events", :locals => {:events => @events} %>
 	</div>
-	
 	
 </div>
 
