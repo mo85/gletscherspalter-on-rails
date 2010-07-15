@@ -11,6 +11,11 @@ namespace :app do
     git.update
     fcgi.restart
   end
+  
+  desc "Remove all file caches"
+  task :remove_caches do
+    run "rm -rf /home/gletsche/railsapp/cache/views/"
+  end
 end
 
 namespace :git do
