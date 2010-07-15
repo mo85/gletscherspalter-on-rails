@@ -5,12 +5,13 @@ set :rails_dir, "/home/gletsche/railsapp"
 
 server "gletscherspalter.railsplayground.net", :anything
 
-desc "update + restart"
-task :deploy do
-  update
-  restart
+namespace :app do
+  desc "Git update & restart"
+  task :deploy do
+    git.update
+    fcgi.restart
+  end
 end
-
 
 namespace :git do
   desc "Git update"
@@ -19,7 +20,7 @@ namespace :git do
   end
 end
 
-namespace :server do
+namespace :fcgi do
   desc "Restart Server"
   task :restart do 
     #run "chmod 755 railsapp/public -R"
