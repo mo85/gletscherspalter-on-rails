@@ -1,5 +1,3 @@
-#Dir['vendor/plugins/*/recipes/*.rb'].each { |plugin| load(plugin) }
-
 set :user, "gletsche"
 set :rails_dir, "/home/gletsche/railsapp"
 
@@ -28,7 +26,6 @@ end
 namespace :fcgi do
   desc "Restart Server"
   task :restart do 
-    #run "chmod 755 railsapp/public -R"
     run "killall -9 dispatch.fcgi"
   end
 end
