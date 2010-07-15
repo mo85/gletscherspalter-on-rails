@@ -1,4 +1,4 @@
-Dir['vendor/plugins/*/recipes/*.rb'].each { |plugin| load(plugin) }
+#Dir['vendor/plugins/*/recipes/*.rb'].each { |plugin| load(plugin) }
 
 set :user, "gletsche"
 set :rails_dir, "/home/gletsche/railsapp"
@@ -11,13 +11,18 @@ task :deploy do
   restart
 end
 
-desc "git pull"
-task :update do
-  run "cd #{rails_dir} && git pull"
+
+namespace :git do
+  desc "Git update"
+  task :update do
+    run "cd #{rails_dir} && git pull"
+  end
 end
 
-desc "kill all dispatch.fcgi"
-task :restart do 
-  run "chmod 755 railsapp/public -R"
-  run "pkill -9 dispatch.fcgi"
+namespace :server do
+  desc "Restart Server"
+  task :restart do 
+    #run "chmod 755 railsapp/public -R"
+    run "killall -9 dispatch.fcgi"
+  end
 end

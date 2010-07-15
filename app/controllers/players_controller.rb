@@ -26,6 +26,14 @@ class PlayersController < ApplicationController
       
     end
   end
+  
+  def team
+    @players = User.find_all_by_is_player(true).collect(&:player).group_by(&:position)
+    
+    respond_to do |format|
+      format.html
+    end
+  end
 
   # GET /players/1
   def show

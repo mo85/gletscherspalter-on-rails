@@ -47,7 +47,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.facebook "root/fb_news", :controller => "root", :action => "fb_news"
   
-  map.resources :players, :member => { :events => :get, :update_events => :post }
+  map.resources :players, :member => { :events => :get, :update_events => :post } #, :collection => { :team => :get }
 
   # The priority is based upon order of creation: first created -> highest priority.
 
