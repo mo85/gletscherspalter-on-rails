@@ -1,5 +1,5 @@
 class Trainingscamp < Event
-  validates_presence_of :location_id
+  validates_presence_of :locality
   
   def name
     "Trainingslager"

@@ -20,15 +20,15 @@ class TrainingscampsController < ApplicationController
   end
   
   def create
-    @trainingscamp = Trainingscamp.new(params[:trainingscamp])
-    @trainingscamp.season_id = current_season.id
+    @event = Trainingscamp.new(params[:trainingscamp])
+    @event.season_id = current_season.id
     
     respond_to do |format|
-      if @trainingscamp.save
+      if @event.save
         flash[:notice] = 'Trainingslager erfolgreich erstellt.'
         format.html { redirect_to(events_path) }
       else
-        format.html { render :action => "new" }
+        format.html { render(:action => "new") }
       end
     end
   end

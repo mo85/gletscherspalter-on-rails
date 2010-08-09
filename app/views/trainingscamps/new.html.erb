@@ -1,6 +1,7 @@
 <h1>Trainingslager Erstellen</h1>
 
 <% form_for @event, :html => { :class => :default } do |f| %>
+	<%= f.error_messages %>
 	
 	<div>
 		<%= f.label "Datum" %>
