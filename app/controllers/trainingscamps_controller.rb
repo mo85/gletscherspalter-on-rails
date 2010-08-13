@@ -42,10 +42,10 @@ class TrainingscampsController < ApplicationController
   end
   
   def update
-    @trainingscamp = Trainingscamp.find(params[:id])
+    @event = Trainingscamp.find(params[:id])
 
     respond_to do |format|
-      if @trainingscamp.update_attributes(params[:trainingscamp])
+      if @event.update_attributes(params[:trainingscamp])
         flash[:notice] = 'Trainingslager erfolgreich angepasst.'
         format.html { redirect_to(events_path) }
       else

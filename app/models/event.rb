@@ -5,6 +5,7 @@ class Event < ActiveRecord::Base
   belongs_to :season
 
   validates_presence_of :date, :season_id
+  validate :end_date_is_after_start_date
   
   def players
     users.collect(&:player)
@@ -12,6 +13,10 @@ class Event < ActiveRecord::Base
   
   def date_formatted
     I18n.l(date, :format => :default)
+  end
+  
+  def end_date_formatted
+    I18n.l(end_date, :format => :default)    
   end
 
   def self.future_non_game_events(options = {})
@@ -75,4 +80,11 @@ class Event < ActiveRecord::Base
   def ical_id
     "gletscherspalter-event##{Digest::SHA1.hexdigest(self.id.to_s)[0...10]}"
   end
+  
+  private
+  
+  def end_date_is_after_start_date
+    errors.add_to_base("Das Ende des Events muss nach dessen Beginn sein!") unless end_date > date
+  end
+  
 end
