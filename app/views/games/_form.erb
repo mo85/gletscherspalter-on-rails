@@ -1,0 +1,37 @@
+<% form_for @game, :url => url, :html => {:class => :default} do |f| %>
+  <%= f.error_messages %>
+
+  <div>
+	<%= f.label "Beginn" %>
+	<%= f.datetime_select :date, :start_year => Time.now.year - 1, :end_year => Time.now.year + 1 %>
+  </div>
+
+  <div>
+	<%= f.label "Ende" %>
+	<%= f.datetime_select :end_date, :start_year => Time.now.year - 1, :end_year => Time.now.year + 1 %>
+  </div>
+
+  <div>
+	<%= f.label "Ort" %>
+	<%= f.collection_select(:location_id, Rink.all, :id, :name, {:promt => "Select a location"}) %>
+  </div>
+
+  <div>
+	<%= f.label "Gegner" %>
+	<%= f.text_field h(:opponent) %>
+  </div>
+
+  <div>
+	<%= f.label nil, "erzielte Tore" %>
+	<%= f.text_field h(:score) %>
+  </div>
+
+	<div>
+	<%= f.label nil, "Gegentore" %>
+	<%= f.text_field h(:opponent_score) %>	
+	</div>
+
+  <div>
+    <%= f.submit label %>
+  </div>
+<% end %>

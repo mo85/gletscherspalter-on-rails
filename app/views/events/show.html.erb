@@ -6,13 +6,10 @@
 			<td class="key">Beginn:</td>
 			<td><%=h @event.date_formatted %></td>
 		</tr>
-		
-		<% if @event.end_date %>
 		<tr>
 			<td class="key">Ende:</td>
 			<td><%=h @event.end_date_formatted %>
 		</tr>
-		<% end %>
 		<tr>
 			<td class="key">Ort:</td>
 			<td><%=h @event.locality %></td>

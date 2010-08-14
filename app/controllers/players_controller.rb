@@ -38,7 +38,8 @@ class PlayersController < ApplicationController
   # GET /players/1
   def show
     @player = Player.find(params[:id])
-    @events = @player.user.events.paginate :page => params[:page], :per_page => 10
+    user = @player.user
+    @events = user.events_of_current_season.paginate :page => params[:page], :per_page => 10
     respond_to do |format|
       if request.xhr?
         format.js { render :partial => "current_events", :locals => {:events => @events} }

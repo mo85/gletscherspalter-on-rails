@@ -38,7 +38,7 @@
 </div>
 
 <div id="my_games" style="margin-top: 20px;">
-	<h2>Gebuchte Termine</h2>
+	<h2>Gebuchte Termine (<%= "#{Season.current}" %>)</h2>
 	
 	<div style="margin-top: 10px">
 		<%= render :partial => "current_events", :locals => {:events => @events} %>

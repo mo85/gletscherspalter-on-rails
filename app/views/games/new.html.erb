@@ -1,37 +1,6 @@
 <h1>Neues Spiel erstellen</h1>
 
-<% form_for [@game], :html => {:class => :default} do |f| %>
-  <%= f.error_messages %>
-
-  <div>
-	<%= f.label "Zeit" %>
-	<%= f.datetime_select :date, :start_year => Time.now.year, :end_year => Time.now.year + 1 %>
-  </div>
-
-  <div>
-	<%= f.label "Ort" %>
-	<%= f.collection_select(:location_id, Rink.all, :id, :name, {:promt => "Select a location"}) %>
-  </div>
-
-  <div>
-	<%= f.label "Gegner" %>
-	<%= f.text_field :opponent %>
-  </div>
-
-  <div>
-	<%= f.label "Tore erzielt" %>
-	<%= f.text_field :score %>
-  </div>
-
-	<div>
-	<%= f.label "Tore kassiert" %>
-	<%= f.text_field :opponent_score %>
-	</div>
-
-  <div>
-    <%= f.submit "Abschicken" %>
-  </div>
-<% end %>
+<%= render(:partial => "form", :locals => { :label => "Speichern", :url => { :action => :create} }) %>
 
 <% content_for :sub_menu do %>
 	<ul>

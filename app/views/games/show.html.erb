@@ -3,8 +3,12 @@
 <div>
 	<table class="facts">
 		<tr>
-			<td class="key">Datum:</td>
+			<td class="key">Beginn:</td>
 			<td><%=h @game.date_formatted %></td>
+		</tr>
+		<tr>
+			<td class="key">Ende:</td>
+			<td><%=h @game.end_date_formatted %></td>
 		</tr>
 		<tr>
 			<td class="key">Ort:</td>

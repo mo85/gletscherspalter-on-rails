@@ -122,8 +122,8 @@ class User < ActiveRecord::Base
     events.each do |event|
       event_url = event_link(host, event)
       cal.event do
-        dtstart       event.date.strftime("%Y%m%dT%H%M%S")
-        dtend         2.hours.since(event.date).strftime("%Y%m%dT%H%M%S")
+        dtstart       event.start_time.strftime("%Y%m%dT%H%M%S")
+        dtend         event.end_time.strftime("%Y%m%dT%H%M%S")
         summary       "#{event.name}"
         location      event.locality
         uid           event.ical_id
@@ -131,6 +131,11 @@ class User < ActiveRecord::Base
       end
     end
     cal.to_ical
+  end
+  
+  def events_of_current_season
+    season = Season.current
+    self.events.find_all_by_season_id(season.id)
   end
   
 private

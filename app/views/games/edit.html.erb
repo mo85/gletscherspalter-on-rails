@@ -1,37 +1,6 @@
 <h1>Spiel Editieren</h1>
 
-<% form_for [@game], :html => {:class => :default} do |f| %>
-  <%= f.error_messages %>
-
-  <div>
-	<%= f.label t('game.date') %>
-	<%= f.datetime_select :date, :start_year => Time.now.year - 1, :end_year => Time.now.year + 1 %>
-  </div>
-
-  <div>
-	<%= f.label "Ort" %>
-	<%= f.collection_select(:location_id, Rink.all, :id, :name, {:promt => "Select a location"}) %>
-  </div>
-
-  <div>
-	<%= f.label "Gegner" %>
-	<%= f.text_field h(:opponent) %>
-  </div>
-
-  <div>
-	<%= f.label nil, "erzielte Tore" %>
-	<%= f.text_field h(:score) %>
-  </div>
-
-	<div>
-	<%= f.label nil, "Gegentore" %>
-	<%= f.text_field h(:opponent_score) %>	
-	</div>
-
-  <div>
-    <%= f.submit "Anpassen" %>
-  </div>
-<% end %>
+<%= render(:partial => "form", :locals => { :label => "Anpassen", :url => { :action => :update} }) %>
 
 <% content_for :sub_menu do %>
 	<li class="side_bar"><%= link_to 'Spiel Anzeigen', @game %></li>

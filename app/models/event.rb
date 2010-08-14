@@ -12,11 +12,11 @@ class Event < ActiveRecord::Base
   end
   
   def date_formatted
-    I18n.l(date, :format => :default)
+    I18n.l(start_time, :format => :default)
   end
   
   def end_date_formatted
-    I18n.l(end_date, :format => :default)    
+    I18n.l(end_time, :format => :default)    
   end
 
   def self.future_non_game_events(options = {})
@@ -79,6 +79,14 @@ class Event < ActiveRecord::Base
   
   def ical_id
     "gletscherspalter-event##{Digest::SHA1.hexdigest(self.id.to_s)[0...10]}"
+  end
+  
+  def start_time
+    date
+  end
+  
+  def end_time
+    event_end = end_date || 2.hours.since(date)
   end
   
   private

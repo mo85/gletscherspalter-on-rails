@@ -6,6 +6,7 @@
   Die Tabellen sind mit einem Klick auf eine Spalte auf- oder absteigend sortierbar.
 </div>
 
+<% if @season.games_played.size > 0 %>
 <div style="margin-top: 10px;">
 
 	<h2>Team Statistiken</h2>
@@ -13,7 +14,7 @@
 	<div style="float: left; width: 50%">
 	<% uri =  Gchart.pie_3d( :size => '360x110', 
 								:bg => 'ffffff',
-							 	:bar_colors => ['be0400', 'ffcf32', '232e99'],
+							 	:bar_colors => ['42ba46','be0400', 'ffcf32' ],
 	             	:labels => [
 									"Siege (#{@game_stats[0]})", 
 									"Niederlagen (#{@game_stats[1]})", 
@@ -27,7 +28,7 @@
 	
 	<div style = "width: 50%; float:right;">
 		<%= image_tag(Gchart.pie_3d( :size => '360x110',
-									:bar_colors => ['be0400', '232e99'],
+									:bar_colors => ['42ba46','be0400'],
 									:labels => [
 										"Tore (#{@goals})", "Gegentore (#{@goals_against})"],
 									:data => [@goals, @goals_against]
@@ -112,8 +113,17 @@
   });
 </script>
 
+<% else %>
+
+	<div style="margin-top: 10px;">
+
+	In dieser Saison wurden noch keine Spiele ausgetragen.
+
+	</div>
 <% end %>
 
 <% content_for :sub_menu do %>
 	<li class="side_bar"><%= link_to "Andere Saisons", seasons_path %></li>
+<% end %>
+
 <% end %>
