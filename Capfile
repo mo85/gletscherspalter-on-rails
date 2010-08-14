@@ -18,7 +18,7 @@ namespace :app do
   
   desc "Run any migrations left"
   task :migrate do
-    run "RAILS_ENV=production rake db:migrate"
+    run "cd #{rails_dir} && RAILS_ENV=production rake db:migrate"
   end
   
 end
