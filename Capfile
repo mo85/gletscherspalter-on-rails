@@ -4,9 +4,10 @@ set :rails_dir, "/home/gletsche/railsapp"
 server "gletscherspalter.railsplayground.net", :anything
 
 namespace :app do
-  desc "Git update & restart"
+  desc "Git update, Rake db:migrate & restart"
   task :deploy do
     git.update
+    app.migrate
     fcgi.restart
   end
   
@@ -14,6 +15,12 @@ namespace :app do
   task :remove_caches do
     run "rm -rf /home/gletsche/railsapp/cache/views/"
   end
+  
+  desc "Run any migrations left"
+  task :migrate do
+    run "RAILS_ENV=production rake db:migrate"
+  end
+  
 end
 
 namespace :git do
