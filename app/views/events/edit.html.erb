@@ -1,41 +1,7 @@
 <% include_tinymce %>
 <h1>Veranstaltung editieren</h1>
 
-<% form_for [@event], :html => {:class => :default} do |f| %>
-  <%= f.error_messages %>
-
-  <div>
-    <%= f.label "Titel" %>
-    <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.label "Zeit" %>
-    <%= f.datetime_select :date %>
-  </div>
-  <div>
-    <%= f.label "Ort" %>
-    <%= f.text_field(:locality) %>
-  </div>
-  <div>
-    <%= f.label "Notiz" %>
-    <%= f.text_area :note %>
-  </div>
-  <div>
-    <%= f.submit "Anpassen" %>
-  </div>
-<% end %>
-
-<script type="text/javascript" charset="utf-8">
-	tinyMCE.init({
-		mode 					: "textareas",
-		theme				 	: "advanced",
-		theme_advanced_buttons1 : "bold, italic, underline, |, justifyleft, justifycenter, justifyright, justifyfull,|, fontselect, fontsizeselect, bullist, numlist, link",
-		theme_advanced_buttons2 : "",
-		theme_advanced_toolbar_location : "top",
-		theme_advanced_toolbar_align : "left",
-		convert_urls	: false,
-	});
-</script>
+<%= render(:partial => "form", :locals => { :label => "Anpassen", :url => {:action => :update} }) %>
 
 <% content_for :sub_menu do %>
 	<% if permitted_to? :read, :events %>

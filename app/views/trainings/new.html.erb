@@ -1,29 +1,7 @@
 <% include_tinymce %>
 <h1>Training Erstellen</h1>
 
-<% form_for @training, :html => { :class => :default } do |f| %>
-	
-	<div>
-		<%= f.label "Datum" %>
-		<%= f.datetime_select :date %>
-	</div>
-	
-	<div>
-		<%= f.label "Ort" %>
-		<%= f.collection_select(:location_id, Rink.all, :id, :name, {:promt => "Select a location"}) %>
-	</div>
-	
-	<div>
-		<%= f.label "Notiz" %>
-		<%= f.text_area :note %>
-	</div>
-	
-	<div>
-		<%= f.submit "Speichern" %>
-	</div>
-<% end %>
-
-<%= render :partial => "scripts/tinymce_init" %>
+<%= render(:partial => "form", :locals => { :label => "Speichern", :url => { :action => :create} }) %>
 
 <% content_for :sub_menu do %>
 	<li class="side_bar"><%= link_to "Zurück", events_path %></li>

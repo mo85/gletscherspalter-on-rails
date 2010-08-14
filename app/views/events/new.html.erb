@@ -1,31 +1,7 @@
 <% include_tinymce %>
 <h1>Neue Veranstaltung erstellen</h1>
 
-<% form_for [@event], :html => { :class => :default } do |f| %>
-  <%= f.error_messages %>
-
-  <div>
-    <%= f.label "Titel" %>
-    <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.label "Zeit" %>
-    <%= f.datetime_select :date %>
-  </div>
-  <div>
-    <%= f.label "Ort" %>
-    <%= f.text_field(:locality) %>
-  </div>
-  <div>
-    <%= f.label "Notiz" %>
-    <%= f.text_area :note %>
-  </div>
-  <div>
-    <%= f.submit "Erstellen" %>
-  </div>
-<% end %>
-
-<%= render :partial => "scripts/tinymce_init" %>
+<%= render(:partial => "form", :locals => { :label => "Speichern", :url => {:action => :create } }) %>
 
 <% content_for :sub_menu do %>
 	<% if permitted_to? :read, :events %>

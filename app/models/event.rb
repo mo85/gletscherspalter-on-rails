@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
   belongs_to :location
   belongs_to :season
 
-  validates_presence_of :date, :season_id
+  validates_presence_of :date, :end_date, :season_id
   validate :end_date_is_after_start_date
   
   def players
@@ -84,7 +84,9 @@ class Event < ActiveRecord::Base
   private
   
   def end_date_is_after_start_date
-    errors.add_to_base("Das Ende des Events muss nach dessen Beginn sein!") unless end_date > date
+    if end_date
+      errors.add_to_base("Das Ende des Events muss nach dessen Beginn sein!") unless end_date > date
+    end
   end
   
 end

@@ -1,4 +1,4 @@
-<% form_for @event, :url => url, :html => { :class => :default } do |f| %>
+<% form_for @training, :url => url, :html => { :class => :default } do |f| %>
 	<%= f.error_messages %>	
 	
 	<div>
@@ -13,7 +13,7 @@
 	
 	<div>
 		<%= f.label "Ort" %>
-		<%= f.text_field :locality %>
+		<%= f.collection_select(:location_id, Rink.all, :id, :name, {:promt => "Select a location"}) %>
 	</div>
 	
 	<div>
