@@ -2,6 +2,7 @@ log/*.log
 .idea/*
 db/development.sqlite3
 db/schema.rb
+db/schema*
 config/database.yml
 doc/flickr*
 public/stylesheets/all.css

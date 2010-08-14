@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
   belongs_to :location
   belongs_to :season
 
-  validates_presence_of :date, :end_date, :season_id
+  validates_presence_of :date, :season_id
   validate :end_date_is_after_start_date
   
   def players

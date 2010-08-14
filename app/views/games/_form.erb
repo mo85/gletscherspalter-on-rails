@@ -2,13 +2,8 @@
   <%= f.error_messages %>
 
   <div>
-	<%= f.label "Beginn" %>
+	<%= f.label "Zeit" %>
 	<%= f.datetime_select :date, :start_year => Time.now.year - 1, :end_year => Time.now.year + 1 %>
-  </div>
-
-  <div>
-	<%= f.label "Ende" %>
-	<%= f.datetime_select :end_date, :start_year => Time.now.year - 1, :end_year => Time.now.year + 1 %>
   </div>
 
   <div>
