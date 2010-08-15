@@ -13,7 +13,13 @@
 
 				<div class="user-comment">
 					<div class="user-comment-heading">
-					<%= link_to "#{c.user}", c.user.player %> 
+					<%= link_to "#{c.user}", c.user.player %>
+					<% if user_is_admin? %>
+					<span class="manipulation-icons">
+						<%= link_to_function image_tag('icons/pencil.png'), "Glacier.Popup.init('#{edit_comment_path(c)}.ajax', { width: 615})" %>
+						<%= link_to(image_tag('icons/delete.png'), c, :confirm => 'Möchten sie diesen Kommentar wirklich löschen?', :method => :delete) %>
+					</span>
+					<% end %>
 					<span class="comment-timestamp">(<%= l(c.created_at, :format => :default) %>)</span>
 					</div>
 					<%=h c.comment %>

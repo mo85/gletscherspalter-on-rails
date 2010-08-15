@@ -17,12 +17,18 @@ span.comment-timestamp {
 	margin-top: 2px;
 }
 
+span.manipulation-icons {
+	margin-left: 10px;
+	margin-right: 3px;
+	float: right;
+}
+
 .user-comment-thumbnail {
 	float: left;
 }
 
 .user-comment {
-	margin-left: 50px;
+	margin-left: 55px;
 }
 
 .default-input {

@@ -15,6 +15,8 @@ ActionController::Routing::Routes.draw do |map|
     :save_added_player => :post,
     :add_comment => :post
     }
+    
+  map.resources :comments, :only => [:edit, :update, :destroy]
 
   map.resources :locations, :except => [:show]
 

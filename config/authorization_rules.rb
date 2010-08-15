@@ -39,7 +39,7 @@ authorization do
     includes :user
     has_permission_on [:players, :users, :scores, :topics, :news, :guestnotes, :photos, :games], :to => [:read, :manage]
     has_permission_on :players, :to => [:subscribe_to_events, :team]
-    has_permission_on [:locations, :events, :messages, :trainings, :trainingscamps], :to => [:read, :manage]
+    has_permission_on [:locations, :events, :messages, :trainings, :trainingscamps, :comments], :to => [:read, :manage]
     has_permission_on :events, :to => [:read, :manage, :add_or_remove_players_from_events]
     has_permission_on :posts, :to => :update_posts
 

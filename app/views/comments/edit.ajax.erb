@@ -1,0 +1,14 @@
+<h1>Kommentar Anpassen</h1>
+
+<% form_for @comment, :html => { :class => :default } do |c| %>
+
+<div>
+	<%= c.label "Kommentar" %>
+	<%= c.text_area :comment %>
+</div>
+
+<div>
+	<%= c.submit "Anpassen" %>
+</div>
+
+<% end %>
