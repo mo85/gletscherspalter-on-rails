@@ -31,7 +31,7 @@ class NewsController < ApplicationController
     respond_to do |format|
       if @news.save
         flash[:notice] = "News Eintrag erstellt."
-        UserMailer.deliver_new_news(current_user, @news.message)
+        UserMailer.deliver_new_news(@news)
         format.html { redirect_to :back }
       else
         format.html { render :action => "new" } 

@@ -1,0 +1,16 @@
+Lieber Sportsfreund
+
+<p>
+<%= "#{@creator}" %> hat einen Kommentar zu einem von dir kommentierten Ereignis geschrieben.
+</p>
+
+<p>
+Der Kommentar lautet: <br />
+
+<%= "#{@message}" %>
+</p>
+
+<p>
+	Die gesamte Diskussion findest du auf der Homepage.<br />
+	<%= url_for :host => "www.gletscherspalter.ch", :controller => @event.controller_name, :action => "show", :id => @event.id %>
+</p>

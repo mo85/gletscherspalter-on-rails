@@ -28,6 +28,7 @@ class EventsController < ApplicationController
     
     unless params[:comment].blank?
       @event.comments.create(:comment => params[:comment][:comment], :user_id => current_user.id)
+      UserMailer.deliver_new_comment(@event)
     end
     
     respond_to do |format|
