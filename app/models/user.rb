@@ -48,7 +48,13 @@ class User < ActiveRecord::Base
   end
   
   def role_symbols
-    self.is_admin ? [:admin] : [:user]
+    roles = [:user]
+    if is_admin
+      roles = [:admin]
+    elsif is_chair_member
+      roles = [:chair_member]
+    end
+    roles
   end
   
   def self.authenticate(name, password)
