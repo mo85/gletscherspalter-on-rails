@@ -6,6 +6,8 @@ class TrainingscampsController < ApplicationController
     @event = Trainingscamp.find(params[:id])
     @players = @event.group_players_by_position
     
+    @comment = Comment.new
+    @comments = @event.comments
     respond_to do |format|
       format.html { render :template => "events/show", :locals => { :event => @event }}
     end

@@ -12,7 +12,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :events, :member => { 
     :remove_player => :delete,
     :add_player => :get,
-    :save_added_player => :post 
+    :save_added_player => :post,
+    :add_comment => :post
     }
 
   map.resources :locations, :except => [:show]
@@ -33,7 +34,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :trainings, :except => :index
   map.resources :trainingscamps, :except => :index
 
-  map.resources :games, :member => { :add_comment => :post } do |games|
+  map.resources :games do |games|
     games.resources :scores, :except => [:show, :index]
   end
   

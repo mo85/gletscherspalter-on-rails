@@ -12,7 +12,7 @@ authorization do
       if_attribute :user => is { user }
     end
     
-    has_permission_on :games, :to => [:add_comment]
+    has_permission_on :events, :to => [:add_comment]
     
     has_permission_on :topics, :to => [:read]
     has_permission_on :topics, :to => :manage do 

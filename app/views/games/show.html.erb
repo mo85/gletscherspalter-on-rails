@@ -37,51 +37,7 @@
 
 </div>
 
-<% if logged_in? %>
-<div style="margin-top:">
-	<h2>Kommentare</h2>
-	
-	<div>
-		<% if @comments.size > 0 %>
-		
-		<% @comments.each do |c| %>
-			<div class="comment">
-				<div class="user-comment-thumbnail">
-					<%= link_to user_profile_pic(c.user) , player_path(c.user.player) %>
-				</div>
-
-				<div class="user-comment">
-					<div class="user-comment-heading">
-					<%= link_to "#{c.user}", c.user.player %> 
-					<span class="comment-timestamp">(<%= l(c.created_at, :format => :default) %>)</span>
-					</div>
-					<%=h c.comment %>
-				</div>
-				
-				
-			</div>
-		<% end %>
-		
-		<% else %>
-			<div style="margin-bottom: 10px;">
-				Zur Zeit gibt es zu diesem Spiel keine Kommentare.
-			</div>
-		<% end %>
-		
-		<div class="comment-input">
-			<% form_for @comment, :url => add_comment_game_path do |f| %>
-			<%= f.text_area :comment %>
-			
-			<div class="comment-submit">
-				<%= f.submit "Kommentieren" %>
-			</div>
-			<% end %>
-		</div>
-		
-	</div>
-	
-</div>
-<% end %>
+<%= render :partial => "comments/comments_for_event" %>
 	
 <div style="margin-top: 20px;">
 	<h2>Besetzung</h2>

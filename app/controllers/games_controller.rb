@@ -24,23 +24,10 @@ class GamesController < ApplicationController
     @scores = @game.scores.sort{|a,b| ((a.goals || 0) + (a.assists || 0)) <=> ((b.goals || 0) + (b.assists || 0))}.reverse
     
     @comment = Comment.new
-    
     @comments = @game.comments
     
     respond_to do |format|
       format.html # show.html.erb
-    end
-  end
-  
-  def add_comment
-    @game = Game.find(params[:id])
-    
-    unless params[:comment].blank?
-      @game.comments.create(:comment => params[:comment][:comment], :user_id => current_user.id)
-    end
-    
-    respond_to do |format|
-      format.html { redirect_to @game }
     end
   end
   
