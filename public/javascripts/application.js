@@ -1,6 +1,29 @@
 var Glacier = {};
 
 Glacier.Utilities = {
+	
+	Forms: {
+		inputWithDefaultValue: function(elem) {
+			var textarea = $(elem);
+			var defaultText = "Schreib etwas...";
+			textarea.setValue(defaultText);
+			var className = "default-input";
+			textarea.toggleClassName(className);
+			textarea.observe('focus', function() {
+				if (textarea.getValue() == defaultText) {
+					textarea.toggleClassName(className);
+					textarea.setValue("");
+				}
+			});
+			
+			textarea.observe('blur', function() {
+				if (textarea.getValue() == "") {
+					textarea.toggleClassName(className);
+					textarea.setValue(defaultText);
+				}
+			});
+		}
+	},
 
 	Error: {
       show: function(message) {

@@ -33,7 +33,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :trainings, :except => :index
   map.resources :trainingscamps, :except => :index
 
-  map.resources :games do |games|
+  map.resources :games, :member => { :add_comment => :post } do |games|
     games.resources :scores, :except => [:show, :index]
   end
   

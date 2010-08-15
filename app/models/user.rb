@@ -84,6 +84,10 @@ class User < ActiveRecord::Base
   def name
     "#{firstname} #{lastname}"
   end
+  
+  def to_s
+    name
+  end
 
   def self.find_by_first_or_lastname(name)
     users = []
