@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100814202257) do
+ActiveRecord::Schema.define(:version => 20100815120750) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -113,6 +113,17 @@ ActiveRecord::Schema.define(:version => 20100814202257) do
   create_table "seasons", :force => true do |t|
     t.integer  "start_year"
     t.integer  "end_year"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subscription_managers", :force => true do |t|
+    t.boolean  "comments",      :default => true
+    t.boolean  "news",          :default => true
+    t.boolean  "forum",         :default => true
+    t.boolean  "new_event",     :default => true
+    t.boolean  "event_changed", :default => true
+    t.integer  "user_id",       :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end

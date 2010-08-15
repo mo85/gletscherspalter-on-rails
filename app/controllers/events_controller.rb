@@ -27,8 +27,16 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     
     unless params[:comment].blank?
-      @event.comments.create(:comment => params[:comment][:comment], :user_id => current_user.id)
-      UserMailer.deliver_new_comment(@event)
+      comment = @event.comments.create(:comment => params[:comment][:comment], :user_id => current_user.id)
+      
+      creator_of_comment = comment.user
+      users = @event.comments.collect(&:user).uniq - [creator_of_comment]
+
+      users = users.select{ |u| u.subscription_manager.comments == true }
+      
+      if users.size > 0
+        UserMailer.deliver_new_comment(comment, @event, users)
+      end
     end
     
     respond_to do |format|

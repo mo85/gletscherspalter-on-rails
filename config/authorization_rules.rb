@@ -24,7 +24,7 @@ authorization do
       if_attribute :user => is { user }
     end
 
-    has_permission_on :users, :to => :read
+    has_permission_on :users, :to => [:read, :edit_subscriptions, :update_subscriptions]
     has_permission_on :user_pics, :to => [:new, :create] do
       if_attribute :user => is { user }
     end

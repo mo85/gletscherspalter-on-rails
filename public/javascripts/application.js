@@ -2,6 +2,15 @@ var Glacier = {};
 
 Glacier.Utilities = {
 	
+	Subscriptions: {
+		toggleSubscription: function(elem, url, property) {
+			new Ajax.Updater(elem, url, {
+				method : "put",
+				parameters: { field: property }
+			})
+		}
+	},
+	
 	Forms: {
 		inputWithDefaultValue: function(elem) {
 			var textarea = $(elem);

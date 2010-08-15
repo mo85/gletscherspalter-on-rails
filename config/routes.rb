@@ -29,7 +29,10 @@ ActionController::Routing::Routes.draw do |map|
     topics.resources :posts, :except => [:show, :index]
   end
 
-  map.resources :users, :except => :show do |users|
+  map.resources :users, :except => :show, :member => { 
+      :edit_subscriptions => :get, 
+      :update_subscriptions => :put
+    } do |users|
     users.resources :user_pictures, :only => [:new, :create]
   end
 

@@ -12,5 +12,7 @@ Der Kommentar lautet: <br />
 
 <p>
 	Die gesamte Diskussion findest du auf der Homepage.<br />
+	<% if @event %>
 	<%= url_for :host => "www.gletscherspalter.ch", :controller => @event.controller_name, :action => "show", :id => @event.id %>
+	<% end %>
 </p>

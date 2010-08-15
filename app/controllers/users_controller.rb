@@ -67,6 +67,36 @@ class UsersController < ApplicationController
       end
     end
   end
+  
+  def edit_subscriptions
+    user = User.find params[:id]
+    @manager = user.subscription_manager
+    
+    respond_to do |format|
+      format.ajax
+    end
+    
+  end
+  
+  def update_subscriptions
+    user = User.find params[:id]
+    @manager = user.subscription_manager
+    @field_name = params[:field]
+    value = @manager.send(@field_name)
+    
+    if value
+      @manager.send("#{@field_name}=", false)
+    else
+      @manager.send("#{@field_name}=", true)
+    end
+    
+    @manager.save
+    
+    respond_to do |format|
+      format.ajax
+    end
+  end
+  
 
   # DELETE /users/1
   def destroy

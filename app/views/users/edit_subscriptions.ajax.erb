@@ -1,0 +1,28 @@
+<h1>Benachrichtigungen Anpassen</h1>
+
+<p>
+	Hier kannst du einstellen, für welche Neuigkeiten du eine Email erhalten willst.
+	Klicke dazu auf das "Kreuz" oder auf den "Haken" um die Benachrichtigung zu aktivieren resp. zu deaktivieren.
+</p>
+
+<p>
+	
+	<table class="default">
+		<thead>
+			<th width="10%">Email</th>
+			<th width="90%">Kategorie</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td id="news_toggle"><%= icon_for_property(@manager, "news", 'news_toggle') %></td>
+				<td>Neuigkeiten der Startseite</td>
+			</tr>
+			
+			<tr>
+				<td id="comments_toggle"><%= icon_for_property(@manager, "comments", 'comments_toggle') %></td>
+				<td>Kommentare bei Events die von mir kommentiert wurden</td>
+			</tr>
+		</tbody>
+	</table>
+	
+</p>
