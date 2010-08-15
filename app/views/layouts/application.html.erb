@@ -21,7 +21,7 @@
 					<% if logged_in? %>
 					<li><%= link_to "Mein Profil", player_path(current_user.player) %>
 						<ul>
-							<li><%= link_to "Termine Verwalten", events_player_path(current_user.player) %>
+							<li><%= link_to "Termine Verwalten", events_player_path(current_user.player) %></li>
 						</ul>
 					</li>
 					<% end %>
