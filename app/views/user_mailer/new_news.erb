@@ -1,0 +1,15 @@
+Liebe Sportsfreunde <br />
+
+<p>
+<%= "#{@creator}" %> hat weitere Neuigkeiten auf gletscherspalter.ch eingetragen.
+</p>
+
+<p>
+	Die Nachricht lautet:<br />
+	<%= "#{@message}" %>
+</p>
+
+<p>
+Weitere Informationen findest du auf unserer Homepage 
+(<%= url_for(:host => "www.gletscherspalter.ch", :controller => "root", :action => "index" ) %>).
+</p>
