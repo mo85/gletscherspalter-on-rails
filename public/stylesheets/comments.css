@@ -23,6 +23,15 @@ span.manipulation-icons {
 	float: right;
 }
 
+.more-comments {
+	padding: 5px; 
+	background: #cfddff;
+	border-bottom: 1px solid white;
+	width: 350px;
+	text-align: right;
+	font-size: 11px;
+}
+
 .user-comment-thumbnail {
 	float: left;
 }
@@ -39,6 +48,7 @@ span.manipulation-icons {
 	padding: 5px;
 	width: 350px;
 	background: #cfddff !important;
+	border-bottom: 1px solid white;
 }
 
 div.comment-submit {
