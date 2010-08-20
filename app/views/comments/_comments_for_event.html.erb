@@ -53,7 +53,7 @@
 		
 	</div>
 	<script type="text/javascript" charset="utf-8">
-		new Glacier.CommentHandler("toggle-comments-link", "new-comment-input");
+		new Glacier.CommentHandler("<%= comments_collapsed(@event) %>","<%= toggle_resource_setting_path(:user_id => current_user.id, :id => @event.id) %>");
 	</script>
 </div>
 <% end %>

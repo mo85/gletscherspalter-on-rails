@@ -43,6 +43,8 @@ ActionController::Routing::Routes.draw do |map|
     games.resources :scores, :except => [:show, :index]
   end
   
+  map.toggle_resource_setting "users/:user_id/resource/:id/toggle_setting", :controller => "resource_settings", :action => "toggle_resource_setting", :method => :post
+  
   map.location_on_map "root/locations/:id", :controller => "root", :action => "locations"
   map.contacts "root/contact", :controller => "root", :action => "contact"
   map.home "root/index", :controller => "root", :action => "index"

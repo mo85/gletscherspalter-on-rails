@@ -29,6 +29,8 @@ authorization do
       if_attribute :user => is { user }
     end
     
+    has_permission_on :resource_settigs, :to => :toggle_ressource_setting
+    
   end
   
   role :chair_member do

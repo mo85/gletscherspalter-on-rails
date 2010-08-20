@@ -20,6 +20,7 @@ class GamesController < ApplicationController
   # GET /games/1
   def show
     @game = Game.find(params[:id])
+    @event = @game
     @players = @game.players.group_by(&:position)
     @scores = @game.scores.sort{|a,b| ((a.goals || 0) + (a.assists || 0)) <=> ((b.goals || 0) + (b.assists || 0))}.reverse
     

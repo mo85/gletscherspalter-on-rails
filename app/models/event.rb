@@ -1,10 +1,14 @@
 class Event < ActiveRecord::Base
   acts_as_commentable
 
-  has_and_belongs_to_many :users
   belongs_to :location
   belongs_to :season
-
+  
+  has_many :resource_settings, :as => :resource
+  
+  has_and_belongs_to_many :users
+  
+  
   validates_presence_of :date, :season_id
   validate :end_date_is_after_start_date
   

@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :messages
   has_many :news
+  has_many :resource_settings
+  
   has_one :user_picture
   has_one :player, :dependent => :destroy
   has_one :subscription_manager, :dependent => :destroy
