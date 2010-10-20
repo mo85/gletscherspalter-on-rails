@@ -45,11 +45,17 @@ class UsersController < ApplicationController
     @user.login = "#{@user.firstname.downcase}.#{@user.lastname.downcase}"
     @user.password = "secret"
     
+    puts @user.valid?
+    
+    puts @user
+    
     respond_to do |format|
       if @user.save
+        puts "Saved user #{@user}"
         flash[:notice] = "Benutzer #{@user.full_name} wurde erstellt."
         format.html { redirect_to(:action => 'index') }
       else
+        puts "Saved user #{@user}"
         format.html {render :action => "new" }
       end
     end
