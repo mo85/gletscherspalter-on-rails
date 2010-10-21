@@ -1,3 +1,4 @@
+# encoding: utf-8 
 class PlayersController < ApplicationController
   filter_access_to :all
   filter_access_to :games, :attribute_check => true

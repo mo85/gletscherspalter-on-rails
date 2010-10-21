@@ -1,6 +1,6 @@
 <h1>Neue Lokation erfassen</h1>
 
-<% form_for [@location], :url => locations_path, :html => {:class => :default} do |f| %>
+<%= form_for [@location], :url => locations_path, :html => {:class => :default} do |f| %>
   <%= f.error_messages %>
 	<%= error_messages_for :address %>
 

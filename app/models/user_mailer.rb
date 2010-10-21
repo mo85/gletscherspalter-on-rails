@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
   def mail_news(user, message)
-    if RAILS_ENV == "production"
+    if Rails.env == "production"
       bcc user.collect{|u| "#{u.name} <#{u.email}>"}
     else
       bcc user.collect{|u| "#{u.name} <mark_odermatt@bluewin.ch>"}
@@ -16,7 +16,7 @@ class UserMailer < ActionMailer::Base
     users = User.all.select{|u| u.email != nil && u.email != ""}
     users = users.select{ |u| u.subscription_manager.news == true }
     
-    if RAILS_ENV == "production"
+    if Rails.env == "production"
       bcc users.collect{|u| "#{u.name} <#{u.email}>"}
     else
       bcc users.collect{|u| "#{u.name} <mark_odermatt@bluewin.ch>"}
@@ -29,7 +29,7 @@ class UserMailer < ActionMailer::Base
   end
   
   def new_comment(comment, event, users)
-    if RAILS_ENV == "production"
+    if Rails.env == "production"
       bcc users.collect{|u| "#{u.name} <#{u.email}>"}
     else
       bcc users.collect{|u| "#{u.name} <mark_odermatt@bluewin.ch>"}

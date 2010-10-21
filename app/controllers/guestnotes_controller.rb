@@ -1,4 +1,4 @@
-
+# encoding: utf-8 
 class GuestnotesController < ApplicationController
   filter_access_to :all
   

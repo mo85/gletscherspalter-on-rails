@@ -13,7 +13,7 @@
 		sodass der Benutzer das eigene Profil bearbeiten und sich für Events eintragen kann.
 	</p>
 	
-	<% form_for [@player], :html => { :class => :default } do |f| %>
+	<%= form_for [@player], :html => { :class => :default } do |f| %>
 	<input type="hidden" name="player[user_id]" id="player_user_id" value="<%= params[:user_id]%>">
 	
   <div>

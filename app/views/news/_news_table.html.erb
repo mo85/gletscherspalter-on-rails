@@ -8,12 +8,12 @@
 		<% end %>
 	</thead>
 
-	<% for news in @news %>
+	<% @news.each do |news| %>
 		<tr>
 			<td class="author">
-              <span style="text-decoration: underline;"><%=link_to news.user.full_name, player_path(news.user.player) %></span>
+              <span style="text-decoration: underline;"><%=link_to "news.user.full_name", "/player_path(news.user.player)" %></span>
               <div style="margin: 2px 0 0 5px; text-decoration: none;">
-                <%= link_to user_profile_pic(news.user) , player_path(news.user.player) %>
+                <%= link_to "user_profile_pic(news.user)" , "/player_path(news.user.player)" %>
               </div>
             </td>
 			<td style="font-size: smaller;"><%=sanitize news.message %></td>

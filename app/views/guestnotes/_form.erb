@@ -1,8 +1,6 @@
 <% bot_protection_needed ||= false %>
-<% form_for @note, :url => url, :html => { :class => :default } do |f| %>
-	<%= f.error_messages %>
-	<%= error_messages_for :result %>
-
+<%= form_for @note, :url => url, :html => { :class => :default } do |f| %>
+	
 	<div>
 		<%= f.label "Name" %>
 		<%= f.text_field :author %>

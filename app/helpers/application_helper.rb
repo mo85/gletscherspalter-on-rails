@@ -1,5 +1,4 @@
-# Methods added to this helper will be available to all templates in the application.
-module ApplicationHelper  
+module ApplicationHelper
   
   def javascript(*args)
     content_for(:javascripts) { javascript_include_tag(*args) }
@@ -22,5 +21,5 @@ module ApplicationHelper
 
     "<img src=\"#{filename}\" alt=\"\" />"
   end
-
+  
 end

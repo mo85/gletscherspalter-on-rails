@@ -1,3 +1,4 @@
+# encoding: utf-8 
 class NewsController < ApplicationController
   filter_access_to :all
   

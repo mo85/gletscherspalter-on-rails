@@ -11,7 +11,7 @@
 	<h2>Saison <%= current_season.to_s %></h2>
 
 
-	<% form_tag 'update_events' do %>
+	<%= form_tag 'update_events' do %>
 
 	<%= render :partial => "events/events_table", :locals => { :events => @events, :check_box_needed => true, :actions_needed => false } %>
 

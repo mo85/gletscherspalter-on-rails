@@ -18,14 +18,12 @@ class UserPicture < ActiveRecord::Base
 
   private
 
-begin
   def crop_thumbnail
     if parent_id.blank?
-      file = "#{RAILS_ROOT}/public#{public_filename(:thumb)}"
+      file = "#{Rails.root}/public#{public_filename(:thumb)}"
       `mogrify -gravity center -crop 50x50+0+0 +repage #{file}`
     end
   end
-end
 
   def set_filename
     if parent_id.blank?

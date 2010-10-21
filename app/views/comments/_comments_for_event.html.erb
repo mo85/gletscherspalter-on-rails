@@ -36,7 +36,7 @@
 		<% end %>
 		
 		<div id="new-comment-input" class="comment-input" style="display: none;">
-			<% form_for @comment, :url => add_comment_event_path do |f| %>
+			<%= form_for @comment, :url => add_comment_event_path do |f| %>
 			<%= f.text_area :comment %>
 			
 			<div class="comment-submit">

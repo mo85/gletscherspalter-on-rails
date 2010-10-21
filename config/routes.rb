@@ -1,88 +1,127 @@
-ActionController::Routing::Routes.draw do |map|
-  #map.resources :roles
+GletscherspalterOnRails::Application.routes.draw do
+  
+  resources :photos, :except => [:edit, :new, :create, :update, :destroy]
+  
+  resources :news
+  
+  resources :guestnotes, :except => [:show]
+  
+  resources :messages, :except => [:show, :edit, :update]
 
-  map.resources :photos, :except => [:edit, :new, :create, :update, :destroy]
-  
-  map.resources :news
-  
-  map.resources :guestnotes, :except => [:show]
-  
-  map.resources :messages, :except => [:show, :edit, :update]
-
-  map.resources :events, :member => { 
-    :remove_player => :delete,
-    :add_player => :get,
-    :save_added_player => :post,
-    :add_comment => :post
-    }
+  resources :events do 
+    member do
+      delete  "remove_player"
+      get     "add_player"
+      post    "save_added_player"
+      post    "add_comment"
+    end
+  end
     
-  map.resources :comments, :only => [:edit, :update, :destroy]
+  resources :comments, :only => [:edit, :update, :destroy]
 
-  map.resources :locations, :except => [:show]
+  resources :locations, :except => [:show]
 
-  map.resources :rinks, :except => [:show]
+  resources :rinks, :except => [:show]
   
-  map.resources :seasons, :only => [:index],
-    :member => { :statistics => :get }
-
-  map.resources :topics do |topics|
-    topics.resources :posts, :except => [:show, :index]
+  resources :seasons do 
+    member do
+       get "statistics"
+    end
   end
 
-  map.resources :users, :except => :show, :member => { 
+  resources :topics do 
+    resources :posts, :except => [:show, :index]
+  end
+
+  resources :users, :except => :show, :member => { 
       :edit_subscriptions => :get, 
       :update_subscriptions => :put
-    } do |users|
-    users.resources :user_pictures, :only => [:new, :create]
+    } do 
+    resources :user_pictures, :only => [:new, :create]
   end
 
-  map.resources :trainings, :except => :index
-  map.resources :trainingscamps, :except => :index
+  resources :trainings, :except => :index
+  resources :trainingscamps, :except => :index
 
-  map.resources :games do |games|
-    games.resources :scores, :except => [:show, :index]
+  resources :games do
+    resources :scores, :except => [:show, :index]
   end
   
-  map.toggle_resource_setting "users/:user_id/resource/:id/toggle_setting", :controller => "resource_settings", :action => "toggle_resource_setting", :method => :post
+  #match "users/:user_id/resource/:id/toggle_setting", "resource_settings#toggle_resource_setting", :as => "toggle_resource_setting"
   
-  map.location_on_map "root/locations/:id", :controller => "root", :action => "locations"
-  map.contacts "root/contact", :controller => "root", :action => "contact"
-  map.home "root/index", :controller => "root", :action => "index"
-  map.denied "root/denied", :controller => "root", :action => "denied"
-  map.history "root/history", :controller => "root", :action => "history"
+  #location_on_map "root/locations/:id", :controller => "root", :action => "locations"
 
-  map.login "admin/login", :controller => "admin", :action => "login"
-
-  map.facebook "root/fb_news", :controller => "root", :action => "fb_news"
+  root :to => "root#index"
   
-  map.resources :players, :member => { :events => :get, :update_events => :post } #, :collection => { :team => :get }
+  match "denied"        => "root#denied"
+  match "history"       => "root#history"
+  match "contacts"      => "root#contact"
+  match "login"         => "admin#login"
 
-  # The priority is based upon order of creation: first created -> highest priority.
+  #facebook "root/fb_news", :controller => "root", :action => "fb_news"
+  
+  resources :players do
+    member do 
+      get "events"
+      post "update_events"
+    end
+  end
+
+
+  # The priority is based upon order of creation:
+  # first created -> highest priority.
+
+  # Sample of regular route:
+  #   match 'products/:id' => 'catalog#view'
+  # Keep in mind you can assign values other than :controller and :action
+
+  # Sample of named route:
+  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
+  # This route can be invoked with purchase_url(:id => product.id)
+
+  # Sample resource route (maps HTTP verbs to controller actions automatically):
+  #   resources :products
 
   # Sample resource route with options:
-  #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
+  #   resources :products do
+  #     member do
+  #       get 'short'
+  #       post 'toggle'
+  #     end
+  #
+  #     collection do
+  #       get 'sold'
+  #     end
+  #   end
 
   # Sample resource route with sub-resources:
-  #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
+
   # Sample resource route with more complex sub-resources
-  #   map.resources :products do |products|
-  #     products.resources :comments
-  #     products.resources :sales, :collection => { :recent => :get }
+  #   resources :products do
+  #     resources :comments
+  #     resources :sales do
+  #       get 'recent', :on => :collection
+  #     end
   #   end
 
   # Sample resource route within a namespace:
-  #   map.namespace :admin do |admin|
-  #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
-  #     admin.resources :products
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
   #   end
 
-  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-   map.root :controller => "root", :action => "index"
+  # You can have the root of your site routed with "root"
+  # just remember to delete public/index.html.
+  # root :to => "welcome#index"
 
   # See how all your routes lay out with "rake routes"
 
-  # Install the default routes as the lowest priority.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  # This is a legacy wild controller route that's not recommended for RESTful applications.
+  # Note: This route will make all actions in every controller accessible via GET requests.
+  match ':controller(/:action(/:id(.:format)))'
 end
