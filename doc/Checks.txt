@@ -3,5 +3,5 @@ TODO für Migration Rails 3
 
 - Error validations for all forms
 - New ActionMailer API
-- Active Record API
 - Profil Bild Bug
+- Authenticity Token Bug beim löschen von Posts, Threads,...
