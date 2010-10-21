@@ -3,7 +3,7 @@
 <div class="<%= @player.user.user_picture ? "profile_with_image" : "profile_without_image" %>">
 
     <div class="player_pic">
-      <%= user_profile_pic @player.user, nil %>
+      <%= sanitize user_profile_pic(@player.user, nil) %>
     </div>
 
     <div class="player_facts">

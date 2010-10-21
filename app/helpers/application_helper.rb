@@ -19,7 +19,7 @@ module ApplicationHelper
       filename = user.user_picture.public_filename(size)
     end
 
-    "<img src=\"#{filename}\" alt=\"\" />"
+    "<img src='#{filename}' />"
   end
   
 end
