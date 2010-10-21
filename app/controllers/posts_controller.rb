@@ -1,3 +1,4 @@
+# encoding: utf-8 
 class PostsController < ApplicationController
   filter_access_to :all
   filter_access_to :edit, :attribute_check => true

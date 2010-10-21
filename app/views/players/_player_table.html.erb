@@ -13,7 +13,7 @@
 
 <% players.each do |player| %>
   <tr>
-        <td><%= link_to user_profile_pic(player.user), player %></td>
+        <td><%= link_to sanitize(user_profile_pic(player.user)), player %></td>
 		<td><%= link_to h(player.user.full_name), player %></td>
 		<td><%=h player.number %></td>
 		<td>

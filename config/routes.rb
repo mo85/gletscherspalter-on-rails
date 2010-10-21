@@ -50,7 +50,7 @@ GletscherspalterOnRails::Application.routes.draw do
   
   #match "users/:user_id/resource/:id/toggle_setting", "resource_settings#toggle_resource_setting", :as => "toggle_resource_setting"
   
-  #location_on_map "root/locations/:id", :controller => "root", :action => "locations"
+  match "map/locations/:id" => "root#locations", :as => :location_on_map
 
   root :to => "root#index"
   
@@ -58,8 +58,6 @@ GletscherspalterOnRails::Application.routes.draw do
   match "history"       => "root#history"
   match "contacts"      => "root#contact"
   match "login"         => "admin#login"
-
-  #facebook "root/fb_news", :controller => "root", :action => "fb_news"
   
   resources :players do
     member do 
@@ -115,12 +113,6 @@ GletscherspalterOnRails::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => "welcome#index"
-
-  # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.

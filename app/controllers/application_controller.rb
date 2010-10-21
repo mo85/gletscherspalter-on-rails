@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  helper :all # include all helpers, all the time
+  helper :all
   before_filter :set_current_user_for_authorization
   before_filter :set_locale
   
