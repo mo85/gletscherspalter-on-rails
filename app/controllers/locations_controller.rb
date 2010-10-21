@@ -1,3 +1,4 @@
+# encoding: utf-8 
 class LocationsController < ApplicationController
   filter_access_to :all
   

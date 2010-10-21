@@ -48,7 +48,7 @@ GletscherspalterOnRails::Application.routes.draw do
     resources :scores, :except => [:show, :index]
   end
   
-  #match "users/:user_id/resource/:id/toggle_setting", "resource_settings#toggle_resource_setting", :as => "toggle_resource_setting"
+  match "users/:user_id/resource/:id/toggle_setting" => "resource_settings#toggle_resource_setting", :as => "toggle_resource_setting"
   
   match "map/locations/:id" => "root#locations", :as => :location_on_map
 

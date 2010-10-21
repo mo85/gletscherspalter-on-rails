@@ -1,9 +1,6 @@
 <h1>Lokation anpassen</h1>
 
 <%= form_for [@location], :html => {:class => :default}  do |f| %>
-  <%= f.error_messages %>
-	<%= error_messages_for :address %>
-
   <div>
     <%= f.label "Name" %>
     <%= f.text_field h(:name) %>
@@ -44,6 +41,6 @@
 
 <% content_for :sub_menu do %>
 	<% if permitted_to? :read, :locations %>
-	<li class="side_bar"><%= link_to 'Zur&uuml;ck', locations_path %></li>
+	<li class="side_bar"><%= link_to 'Zurück', locations_path %></li>
 	<% end %>
 <% end %>

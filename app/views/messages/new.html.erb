@@ -4,8 +4,6 @@
 <div style="margin-top: 10px;">
 	<%= form_for [@message], :url => {:action => "create"},:html => {:class => :default, :onsubmit => "Glacier.Selector.addUserIds()"} do |f| %>
 	<input id="users" name="users" type="hidden" value="" />
-	<%= f.error_messages %>
-
 	
 	<div>
 		<%= label_tag "Empfänger" %>

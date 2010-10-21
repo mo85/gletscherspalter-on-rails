@@ -1,10 +1,6 @@
-Flash funktioniert für:
-- Users
-- Messages
-- Events
-- Rink
-- Location
-- Games
-- Player
-- Add Player to Game
-- Score
+TODO für Migration Rails 3
+-----------------------------
+
+- Error validations for all forms
+- New ActionMailer API
+- Profil Bild Bug

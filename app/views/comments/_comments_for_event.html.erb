@@ -9,7 +9,7 @@
 		
 			<div id="comment-<%= i %>" class="comment" style="display: none;">
 				<div class="user-comment-thumbnail">
-					<%= link_to user_profile_pic(c.user) , player_path(c.user.player) %>
+					<%= link_to sanitize(user_profile_pic(c.user)) , player_path(c.user.player) %>
 				</div>
 
 				<div class="user-comment">
