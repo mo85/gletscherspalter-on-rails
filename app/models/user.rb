@@ -28,9 +28,15 @@ class User < ActiveRecord::Base
   validates_numericality_of :zip, :allow_nil => true
 
   attr_accessor :password_confirmation
+  
+  default_scope order('lastname')
 
   def full_name
    name
+  end
+  
+  def email_with_name
+    "#{name} <#{email}>"
   end
   
   def role_symbols
@@ -83,8 +89,8 @@ class User < ActiveRecord::Base
 
   def self.find_by_first_or_lastname(name)
     users = []
-    users << User.find(:all, :conditions => ["firstname like ?", "#{name}%"])
-    users << User.find(:all, :conditions => ["lastname like ?", "#{name}%"])
+    users << where("firstname like ?", "#{name}%")
+    users << where("lastname like ?", "#{name}%")
     users.flatten
   end
   
@@ -110,7 +116,7 @@ class User < ActiveRecord::Base
   end
   
   def self.number_of_active_players
-    User.find_all_by_is_player(true).size
+    where("is_player = ?", true).size
   end
   
   def events_to_ical(host)

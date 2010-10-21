@@ -20,7 +20,7 @@ class Player < ActiveRecord::Base
   end
   
   def passed_games
-    games.select{ |g| g.date <= Time.zone.now }
+    games.where("date <= ?", Time.zone.now)
   end
   
   def position_as_string
@@ -67,7 +67,7 @@ class Player < ActiveRecord::Base
   end
   
   def games_of_season(season = Season.current)
-    games.select{ |g| g.season == season }
+    games.where("season_id = ?", season.id)
   end
   
   def games_played(season = nil)
@@ -112,7 +112,7 @@ class Player < ActiveRecord::Base
   end
 
   def self.players
-    Player.find(:all, :conditions => ["position != ?", 'G'])
+    where("position != ?", 'G')
   end
 
   def self.players_with_scores(season)

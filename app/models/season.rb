@@ -8,13 +8,16 @@ class Season < ActiveRecord::Base
   validates_numericality_of :start_year
   validates_numericality_of :end_year
   
+  validates_uniqueness_of :start_year
+  validates_uniqueness_of :end_year
+  
   SWITCHING_MONTH = 7 # Switch on July
   
   def self.current(time = Time.zone.now)
     year = time.year
     next_year = year + 1
     
-    @season = Season.find(:first, :conditions => ["start_year = ? AND end_year = ?", year, next_year])
+    @season = where("start_year = ? AND end_year = ?", year, next_year).first
     
     if !@season 
       if time.month > SWITCHING_MONTH
@@ -34,7 +37,7 @@ class Season < ActiveRecord::Base
   end
   
   def games_played
-    @games_played ||= games.select{ |g| g.result != nil }
+    @games_played ||= games.where("result != ?", "")
   end
   
   def wins

@@ -3,7 +3,7 @@ class NewsController < ApplicationController
   filter_access_to :all
   
   def index
-    @news = News.find(:all, :order => "created_at DESC").paginate :page => params[:page], :per_page => 5
+    @news = News.all.paginate :page => params[:page], :per_page => 5
     respond_to do |format|
       format.html
     end
@@ -32,7 +32,7 @@ class NewsController < ApplicationController
     respond_to do |format|
       if @news.save
         flash[:notice] = "News Eintrag erstellt."
-        UserMailer.deliver_new_news(@news)
+        UserMailer.new_news(@news).deliver
         format.html { redirect_to :back }
       else
         format.html { render :action => "new" } 

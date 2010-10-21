@@ -31,6 +31,6 @@
 <p style="margin-top: 10px;">
 		<h3 class="side_bar">Letztes Spiel</h3>
 		<% game = Game.last_game %>
-	<%= link_to "Gletscherspalter vs.<br /> #{game.opponent} #{game.result}", game_path(game)%>
+	<%= link_to sanitize("Gletscherspalter vs.<br /> #{game.opponent} #{game.result}"), game_path(game)%>
 </p>
 <% end %>

@@ -1,3 +1,4 @@
+# encoding: utf-8 
 class EventsController < ApplicationController
   filter_access_to :all
   
@@ -35,7 +36,7 @@ class EventsController < ApplicationController
       users = users.select{ |u| u.subscription_manager.comments == true }
       
       if users.size > 0
-        UserMailer.deliver_new_comment(comment, @event, users)
+        UserMailer.new_comment(comment, @event, users).deliver
       end
     end
     

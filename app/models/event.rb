@@ -27,17 +27,17 @@ class Event < ActiveRecord::Base
   def self.future_non_game_events(options = {})
     result = []
     with_scope :find => options do
-      result << find(:all, :conditions => ["date > ? AND type != ?", Time.zone.now, "Game"])
+      result << where("date > ? AND type != ?", Time.zone.now, "Game")
     end
     result.flatten
   end
   
   def self.find_all_non_game_events
-    find(:all, :conditions => ["type != ?", "Game"])
+    where("type != ?", "Game")
   end
 
   def self.next_non_game_event
-    find(:first, :conditions => ["type != ? AND date > ?", "Game", Time.zone.now ], :order => "date ASC")
+    where("type != ? AND date > ?", "Game", Time.zone.now).order("date ASC").first
   end
   
   def name
@@ -51,13 +51,13 @@ class Event < ActiveRecord::Base
   def self.future_events(tolerance = 0.seconds, options = {})
     result = []
     with_scope :find => options do
-      result << find(:all, :conditions => ["date > ?", Time.zone.now + tolerance], :order => "date ASC")
+      result << where("date > ?", Time.zone.now + tolerance).order("date ASC")
     end
     result.flatten
   end
   
   def self.passed_events
-    find :all, :conditions => ["date < ?", Time.zone.now]
+    where("date < ?", Time.zone.now)
   end
   
   def result
@@ -65,7 +65,7 @@ class Event < ActiveRecord::Base
   end
   
   def self.games
-    find :all, :conditions => ["type = ?", "Game"]
+    where("type = ?", "Game")
   end
   
   def group_players_by_position
