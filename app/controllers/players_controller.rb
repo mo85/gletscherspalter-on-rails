@@ -79,7 +79,7 @@ class PlayersController < ApplicationController
     
     params[:user] ||= {}
     params[:user][:event_ids] ||= []  
-    params[:user][:event_ids] << current_player.user.events.passed_events
+    params[:user][:event_ids] << current_player.user.events.passed_events.collect(&:id)
     params[:user][:event_ids] = params[:user][:event_ids].flatten.compact
     current_player.user.update_attributes(params[:user])
     
