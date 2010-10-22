@@ -2,13 +2,24 @@ require "development_mail_interceptor"
 
 ActionMailer::Base.delivery_method = :smtp
 
+# ActionMailer::Base.smtp_settings = {
+#   :address              => 'smtp.gmail.com',
+#   :port                 => 587,
+#   :domain               => 'www.gletscherspalter.ch',
+#   :user_name            => 'mark.odermatt',
+#   :password             => 'my password',
+#   :authentication       => "plain",
+#   :enable_starttls_auto => true
+# }
+
 ActionMailer::Base.smtp_settings = {
-  :address              => 'mail.gletscherspalter.ch',
-  :port                 => 25,
-  :domain               => 'mail.gletscherspalter.ch',
-  :user_name            => 'no-reply+gletscherspalter.ch',
-  :password             => '-p?!?fYvdivU',
-  :authentication       => :login
+    :address        => APP_CONFIG["mail"]["server"],
+    :port           => 26,
+    :domain         => APP_CONFIG["mail"]["domain"],
+    :user_name       => APP_CONFIG["mail"]["user_name"],
+    :password       => APP_CONFIG["mail"]["password"],
+    :authentication => :login
+    #:enable_starttls_auto => true
 }
 
 if Rails.env.production?

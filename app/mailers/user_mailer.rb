@@ -1,13 +1,9 @@
 class UserMailer < ActionMailer::Base
-  default :from => "no-reply@gletscherspalter.ch",
-          :reply_to => 'admin@gletscherspalter.ch'
+  default :from => "no-reply@gletscherspalter.ch"
   
   def mail_message(user, message)
     @message = message
-    puts
-    puts collect_addresses(user)
-    puts
-    mail(:to => "mark.odermatt@gmail.com", :subject => message.subject)    
+    mail(:to => collect_addresses(user), :subject => message.subject)    
   end
   
   def new_news(news_entry)
@@ -16,7 +12,7 @@ class UserMailer < ActionMailer::Base
     @creator = news_entry.user
     @message = news_entry.message
         
-    mail(:bcc => collect_addresses(users), :subject => "Neuigkeiten auf Gletscherspalter.ch")
+    mail(:to => collect_addresses(users), :subject => "Neuigkeiten auf Gletscherspalter.ch")
   end
   
   def new_comment(comment, event, users)
@@ -24,7 +20,7 @@ class UserMailer < ActionMailer::Base
     @message = comment.comment
     @event = event
     
-    mail(:bcc => collect_addresses(users), :subject => "Neuer Kommentar")
+    mail(:to => collect_addresses(users), :subject => "Neuer Kommentar")
   end
   
   private

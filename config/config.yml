@@ -1,7 +1,7 @@
 # Mail settings
 mail:
   server: 'mail.gletscherspalter.ch'
-  domain: 'mail.gletscherspalter.ch'
+  domain: 'www.gletscherspalter.ch'
   user_name: 'no-reply+gletscherspalter.ch'
   password: '-p?!?fYvdivU'
 
