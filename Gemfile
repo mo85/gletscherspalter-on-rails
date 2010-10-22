@@ -19,7 +19,7 @@ gem "icalendar"
 gem "flickraw"
 gem "googlecharts", :require => "gchart" 
 gem "prawn"
-gem "ruby_core_source"
+#gem "ruby_core_source"
 gem "mini_magick"
 
 gem "hoptoad_notifier"
