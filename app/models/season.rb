@@ -53,11 +53,11 @@ class Season < ActiveRecord::Base
   end
   
   def scored_goals
-    games_played.sum(&:score)
+    games_played.all.sum(&:score)
   end
   
   def goals_against
-    games_played.sum(&:opponent_score)
+    games_played.all.sum(&:opponent_score)
   end
   
 end
