@@ -33,7 +33,7 @@ GletscherspalterOnRails::Application.routes.draw do
     resources :posts, :except => [:show, :index]
   end
 
-  resources :users, :except => :show, do 
+  resources :users do 
     member do
       get "edit_subscriptions"
       put "update_subscriptions"
