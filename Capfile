@@ -8,7 +8,7 @@ namespace :app do
   task :deploy do
     git.update
     app.migrate
-    fcgi.restart
+    passenger.restart
   end
   
   desc "Remove all file caches"
@@ -30,9 +30,9 @@ namespace :git do
   end
 end
 
-namespace :fcgi do
+namespace :passenger do
   desc "Restart Server"
   task :restart do 
-    run "killall -9 dispatch.fcgi"
+    run "touch railsapp/tmp/restart.txt"
   end
 end
