@@ -1,4 +1,6 @@
 <%= form_for @event, :url => url, :html => { :class => :default } do |f| %>
+<%= render "shared/error_messages", :target => @event %>
+
   <div>
     <%= f.label "Titel" %>
     <%= f.text_field :title %>

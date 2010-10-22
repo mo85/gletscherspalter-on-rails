@@ -35,7 +35,8 @@ class NewsController < ApplicationController
         UserMailer.new_news(@news).deliver
         format.html { redirect_to :back }
       else
-        format.html { render :action => "new" } 
+        flash[:notice] = "Neuigkeiten müssen zwingend eine Nachricht enthalten."
+        format.html { redirect_to :action => "index" } 
       end
     end
   end

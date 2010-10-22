@@ -21,40 +21,44 @@ a {
 }
 
 
-.fieldWithErrors {
+div.field_with_errors input{
 	border: 2px solid #ca0000;
-	background-color: red;
 }
 
-#errorExplanation {
+#error_explanation {
   width: 410px;
   border: 2px solid #ca0000;
-  padding: 7px;
-  padding-bottom: 12px;
-  margin: 10px 0px 20px 0px;
+  padding: 0px 0px 12px 0px;
+  margin: 0px 0px 20px 0px;
   background-color: #f0f0f0;
 }
 
-#errorExplanation h2 {
-  text-align: left;
+#error_explanation h2 {
+	text-align: left;
   font-weight: bold;
+	margin: 0px 0px 10px 0px;
   padding: 5px 5px 5px 15px;
   font-size: 12px;
-  margin: -7px;
   background-color: #ca0000;
   color: #fff;
 }
 
-#errorExplanation p {
+#error_explanation p {
   color: #333;
-  margin: 15px 0px 0px 10px;
+  margin: 10px 0px 0px 10px;
   padding: 5px;
 }
 
-#errorExplanation ul li {
-	margin-left: 40px;
+#erro_explanation ul {
+	list-style-type: square;
+	margin-top: 20px;
+}
+
+
+#error_explanation ul li {
+	list-style-type: square;
+	margin-left: 30px;
   font-size: 12px;
- 
 }
 
 #map_canvas {

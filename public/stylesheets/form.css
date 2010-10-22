@@ -16,11 +16,10 @@ form.default div div label {
   width: 150px;
 }
 
-form.default div.fieldWithErrors {
+form.default div div.field_with_errors {
   padding: 0;
-  clear: none;
-  float: left;
   font-weight: bold;
+	float: none !important;
 }
 
 form.default div div {

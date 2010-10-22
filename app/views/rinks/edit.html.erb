@@ -1,8 +1,8 @@
 <h1>Eisfeld Daten anpassen</h1>
 
 <%= form_for [@rink], :html => {:class => :default}  do |f| %>
-  <%= f.error_messages %>
-	<%= error_messages_for :address %>
+	<%= render "shared/error_messages", :target => @rink %>
+	<%= render "shared/error_messages", :target => @rink.address %>
 
   <div>
     <%= f.label "Name" %>
@@ -44,6 +44,6 @@
 
 <% content_for :sub_menu do %>
 	<% if permitted_to? :read, :locations %>
-	<li class="side_bar"><%= link_to 'Zur&uuml;ck', locations_path %></li>
+	<li class="side_bar"><%= link_to 'Zurück', locations_path %></li>
 	<% end %>
 <% end %>

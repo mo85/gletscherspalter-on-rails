@@ -1,6 +1,8 @@
 <h1>Lokation anpassen</h1>
 
 <%= form_for [@location], :html => {:class => :default}  do |f| %>
+	<%= render "shared/error_messages", :target => @location %>
+	
   <div>
     <%= f.label "Name" %>
     <%= f.text_field h(:name) %>

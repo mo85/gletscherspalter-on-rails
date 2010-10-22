@@ -1,11 +1,9 @@
-<h1>Neue Lokation erfassen</h1>
+<%= form_for location, :url => url, :html => {:class => :default} do |f| %>
+	<%= render "shared/error_messages", :target => location %>
 
-<%= form_for [@location], :url => locations_path, :html => {:class => :default} do |f| %>
-	<%= render "shared/error_messages", :target => @location %>
-	
   <div>
     <%= f.label "Name" %>
-    <%= text_field_tag "location[name]", @location.name, :size => 30 %>
+    <%= text_field_tag "location[name]", location.name, :size => 30 %>
   </div>
 
 
@@ -38,12 +36,6 @@
     <%= text_field_tag "location[url]", @location.url, :size => 30 %>
   </div>
   <div>
-    <%= f.submit "Erstellen" %>
+    <%= f.submit label %>
   </div>
-<% end %>
-
-<% content_for :sub_menu do %>
-	<% if permitted_to? :read, :locations %>
-	<li class="side_bar"><%= link_to 'Zurück', locations_path %></li>
-	<% end %>
 <% end %>

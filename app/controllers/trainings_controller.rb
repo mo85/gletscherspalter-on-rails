@@ -1,3 +1,4 @@
+# encoding: utf-8 
 class TrainingsController < ApplicationController
   
   filter_access_to :all

@@ -1,6 +1,7 @@
 <h1>Benutzer Erstellen</h1>
 
 <%= form_for [@user], :html => { :class => :default } do |f| %>
+	<%= render "shared/error_messages", :target => @user %>
 	
   <div>
 	<%= f.label "Vorname" %>
