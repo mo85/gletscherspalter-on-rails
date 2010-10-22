@@ -37,7 +37,7 @@ class Season < ActiveRecord::Base
   end
   
   def games_played
-    @games_played ||= games.where("result != ?", "")
+    @games_played ||= games.where("score = ? AND opponent_score = ?", ["", ""])
   end
   
   def wins
