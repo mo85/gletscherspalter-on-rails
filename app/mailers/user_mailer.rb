@@ -7,7 +7,7 @@ class UserMailer < ActionMailer::Base
     puts
     puts collect_addresses(user)
     puts
-    mail(:to => collect_addresses(user), :subject => message.subject)    
+    mail(:to => "mark.odermatt@gmail.com", :subject => message.subject)    
   end
   
   def new_news(news_entry)
@@ -30,7 +30,13 @@ class UserMailer < ActionMailer::Base
   private
   
   def collect_addresses(recipients)
-    recipients.collect{ |u| u.email_with_name }
+    result = nil
+    if recipients.is_a?(User)
+      result = recipients.email_with_name
+    else
+      result = recipients.collect{ |u| u.email_with_name }
+    end
+    result
   end
 
 end

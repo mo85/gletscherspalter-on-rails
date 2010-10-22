@@ -23,5 +23,6 @@
 
 <%= yield :javascripts %>
 <%= javascript_include_tag :all %>
+<%= csrf_meta_tag %>
 
 <title><%= @title || "Glescherspalter.ch" %></title>
