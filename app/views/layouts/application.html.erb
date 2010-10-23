@@ -37,9 +37,9 @@
 							<% end %>
 						</ul>
 					</li>
-					<li><%= link_to "Saison", games_path %>
+					<li><%= link_to "Saison", season_games_path(:start => current_season.start_year, :end => current_season.end_year) %>
 						<ul>
-							<li><%= link_to "Anlässe", events_path %></li>
+							<li><%= link_to "Anlässe", season_events_path(:start => current_season.start_year, :end => current_season.end_year) %></li>
 							<li><%= link_to "Statistiken", statistics_season_path(:start => current_season.start_year, :end => current_season.end_year) %></li>
 							<li><%= link_to "Austragungsorte", :controller => "root", :action => "locations" %></li>
 						</ul>

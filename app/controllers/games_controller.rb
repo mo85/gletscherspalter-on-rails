@@ -7,12 +7,13 @@ class GamesController < ApplicationController
   # GET /games
   def index
     @title = "Gletscherspatler.ch::Spiele"
-    @games = current_season.games.paginate :page => params[:page], :per_page => 10
+    @season = Season.where("start_year = ? AND end_year = ?", params[:start], params[:end]).first
+    @games = @season.games.paginate :page => params[:page], :per_page => 10
     respond_to do |format|
       format.html
       format.js
       format.pdf do
-        @events = current_season.games
+        @events = @season.games
         render :file => "/players/events.pdf.prawn", :locals => { :events => @events } 
       end
     end

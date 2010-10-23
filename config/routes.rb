@@ -27,6 +27,8 @@ GletscherspalterOnRails::Application.routes.draw do
     member do
       get "statistics"
     end
+    resources :games
+    resources :events
   end
   
   resources :seasons, :only => [:index, :create, :new] 
