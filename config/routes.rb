@@ -23,11 +23,15 @@ GletscherspalterOnRails::Application.routes.draw do
 
   resources :rinks, :except => [:show]
   
-  resources :seasons do 
+  resource :season, :path => "seasons/:start/:end", :except => [:index, :create, :new] do
     member do
-       get "statistics"
+      get "statistics"
     end
   end
+  
+  resources :seasons, :only => [:index, :create, :new] 
+  
+  
 
   resources :topics do 
     resources :posts, :except => [:show, :index]

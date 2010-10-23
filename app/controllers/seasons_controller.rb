@@ -11,8 +11,8 @@ class SeasonsController < ApplicationController
   end
   
   def statistics
-    unless read_fragment(:action => "statistics", :id => params[:id])
-      @season = Season.find(params[:id])
+    #unless read_fragment(:action => "statistics", :id => params[:id])
+      @season = Season.where("start_year = ? AND end_year = ?", params[:start], params[:end]).first
 
       @game_stats = [@season.wins.size, @season.defeats.size, @season.tied_games.size]
 
@@ -33,7 +33,7 @@ class SeasonsController < ApplicationController
       @players = Player.players_with_scores(@season).sort{|p1, p2| p1.points_per_game(@season) <=> p2.points_per_game(@season)}.reverse
       @goalies = Player.goalies.select{|p| p.games_played(@season).size > 0}
 
-    end
+    #end
   end
   
 end

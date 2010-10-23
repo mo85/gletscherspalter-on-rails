@@ -14,7 +14,7 @@
 		
 		<% for season in @seasons %>
 			<tr>
-				<td><%= link_to season.to_s, statistics_season_path(season) %></td>
+				<td><%= link_to season.to_s, statistics_season_path(:start => season.start_year, :end => season.end_year) %></td>
 				<td><%= season.games_played.size %></td>
 				<td><%= season.wins.size %></td>
 				<td><%= season.defeats.size %></td>
