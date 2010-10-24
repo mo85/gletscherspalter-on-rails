@@ -2,7 +2,7 @@
 
 Auf dieser Seite werden alle Anlässe der Gletscherspalter aufgelistet, die keine Spiele sind. 
 Dazu gehören Trainings, Trainingslager oder alle anderen Termine, wie zum Beispiel die jährliche Generalversammlung.
-Den Spielplan mit allen Resultaten findest du <%= link_to "hier", games_path %>.
+Den Spielplan mit allen Resultaten findest du <%= link_to "hier", season_games_path(:start => @season.start_year, :end => @season.end_year) %>.
 
 <div style="margin-top: 15px;">
 	<% if @events.empty? %>
@@ -25,5 +25,5 @@ Den Spielplan mit allen Resultaten findest du <%= link_to "hier", games_path %>.
 		<li class="side_bar"><%= link_to "Trainingslager erstellen", new_trainingscamp_path %></li>
 		<li class="side_bar"><%= link_to "Ereignis erstellen", new_event_path %></li>
 	<% end %>
-	<li class="side_bar"><%= link_to "Ereignisse als PDF", events_path(:format => "pdf") %></li>
+	<li class="side_bar"><%= link_to "Ereignisse als PDF", season_events_path(:start => @season.start_year, :end => @season.end_year, :format => "pdf") %></li>
 <% end %>

@@ -4,7 +4,7 @@
 	
 	<% if current_season.events.next_non_game_event %>
 		Diese Seite zeigt den Spielplan der Gletscherspalter. Alle anderen 
-		Vereinsanlässe findest du <%= link_to "hier", events_path %>.
+		Vereinsanlässe findest du <%= link_to "hier", season_events_path(:start => @season.start_year, :end => @season.end_year) %>.
 	<% end %>
 	
 	<div id="games" style="margin-top: 10px;">
@@ -17,4 +17,5 @@
 	<li class="side_bar"><%= link_to "Spiel erstellen", new_season_game_path(:start => @season.start_year, :end => @season.end_year) %></li>
 	<% end %>
 	<li class="side_bar"><%= link_to "Spielplan als PDF", season_games_path(:start => @season.start_year, :end => @season.end_year, :format => "pdf") %></li>
+	<li class="side_bar"><%= link_to "Archiv", seasons_path %></li>
 <% end %>

@@ -14,7 +14,11 @@
 		
 		<% for season in @seasons %>
 			<tr>
-				<td><%= link_to season.to_s, statistics_season_path(:start => season.start_year, :end => season.end_year) %></td>
+				<% url = season_games_path(:start => season.start_year, :end => season.end_year) %>
+				<% if params[:statistics] == "1" %>
+				<% url = statistics_season_path(:start => season.start_year, :end => season.end_year) %>
+				<% end %>
+				<td><%= link_to "#{season}", url %></td>
 				<td><%= season.games_played.size %></td>
 				<td><%= season.wins.size %></td>
 				<td><%= season.defeats.size %></td>
