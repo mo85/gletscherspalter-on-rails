@@ -36,8 +36,9 @@ class GamesController < ApplicationController
   
   # GET /games/new
   def new
+    @season = Season.where("start_year = ? AND end_year = ?", params[:start], params[:end]).first
     @game = Game.new
-
+    
     respond_to do |format|
       format.html # new.ajax.erb
     end

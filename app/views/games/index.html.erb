@@ -14,7 +14,7 @@
 
 <% content_for :sub_menu do %>
 	<% if permitted_to? :manage, :games %>
-	<li class="side_bar"><%= link_to "Spiel erstellen", new_game_path %></li>
+	<li class="side_bar"><%= link_to "Spiel erstellen", new_season_game_path(:start => @season.start_year, :end => @season.end_year) %></li>
 	<% end %>
-	<li class="side_bar"><%= link_to "Spielplan als PDF", games_path(:format => "pdf") %></li>
+	<li class="side_bar"><%= link_to "Spielplan als PDF", season_games_path(:start => @season.start_year, :end => @season.end_year, :format => "pdf") %></li>
 <% end %>
