@@ -73,7 +73,7 @@
 	<% if !@game.score.blank? && permitted_to?(:manage, :scores) %>
 		<li class="side_bar"><%= link_to_function "Skorer erfassen", "Glacier.Popup.init('" + new_game_score_path(:game_id => @game.id) + ".ajax', {width: 500})" %></li>
 	<% end %>
-	<li class="side_bar"><%= link_to 'Zurück', games_path %></li>
+	<li class="side_bar"><%= link_to 'Zurück', season_games_path(:start => @game.season.start_year, :end => @game.season.end_year) %></li>
 <% end %>
 
 <script type="text/javascript" charset="utf-8">

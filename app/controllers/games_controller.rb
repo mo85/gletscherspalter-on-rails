@@ -38,6 +38,7 @@ class GamesController < ApplicationController
   def new
     @season = Season.where("start_year = ? AND end_year = ?", params[:start], params[:end]).first
     @game = Game.new
+    @game.season = @season
     
     respond_to do |format|
       format.html # new.ajax.erb
@@ -52,7 +53,6 @@ class GamesController < ApplicationController
   # POST /games
   def create
     @game = Game.new(params[:game])
-    @game.season_id = current_season.id
     
     respond_to do |format|
       if @game.save

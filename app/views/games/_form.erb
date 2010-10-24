@@ -1,6 +1,8 @@
 <%= form_for @game, :url => url, :html => {:class => :default} do |f| %>
 	<%= render "shared/error_messages", :target => @game %>
 	
+	<%= f.hidden_field :season_id %>
+	
   <div>
 	<%= f.label "Zeit" %>
 	<%= f.datetime_select :date, :start_year => Time.now.year - 1, :end_year => Time.now.year + 1 %>
