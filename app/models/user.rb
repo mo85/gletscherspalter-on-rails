@@ -156,8 +156,8 @@ private
   end
   
   def add_subscription_manager
-     unless self.subscrition_manager
-       self.subscrition_manager = SubscriptionManager.create
+     unless self.subscription_manager
+       self.subscription_manager = SubscriptionManager.create
      end
   end
   
