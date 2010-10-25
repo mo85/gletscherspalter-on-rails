@@ -12,6 +12,8 @@ class Event < ActiveRecord::Base
   validates_presence_of :date, :season_id
   validate :end_date_is_after_start_date
   
+  default_scope order("date ASC")
+  
   def players
     users.collect(&:player)
   end
