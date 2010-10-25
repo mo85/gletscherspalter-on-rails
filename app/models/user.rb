@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :games, :order => "Date ASC", :join_table => "events_users", :association_foreign_key => "event_id"
   
   before_create :generate_token
-  after_create :add_player
+  after_create :add_player, :add_subscription_manager
   
   ::MINIMUM_PASSWORD_LENGTH = 6
   
@@ -153,6 +153,12 @@ private
     if is_player?
       self.player = Player.create(:position => "FW")
     end
+  end
+  
+  def add_subscription_manager
+     unless self.subscrition_manager
+       self.subscrition_manager = SubscriptionManager.create
+     end
   end
   
   def generate_token
