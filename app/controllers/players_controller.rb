@@ -63,7 +63,7 @@ class PlayersController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        @events = @player.user.events
+        @events = @player.user.events.where("season_id = ?", current_season.id)
         render :file => "players/events.pdf.prawn", :locals => { :events => @events, :player => @player }
       end
       format.ics do
