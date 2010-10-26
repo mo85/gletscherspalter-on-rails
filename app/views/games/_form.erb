@@ -15,17 +15,17 @@
 
   <div>
 	<%= f.label "Gegner" %>
-	<%= f.text_field h(:opponent) %>
+	<%= f.text_field :opponent %>
   </div>
 
   <div>
-	<%= f.label nil, "erzielte Tore" %>
-	<%= f.text_field h(:score) %>
+	<%= f.label "erzielte Tore" %>
+	<%= f.text_field :score %>
   </div>
 
 	<div>
-	<%= f.label nil, "Gegentore" %>
-	<%= f.text_field h(:opponent_score) %>	
+	<%= f.label "Gegentore" %>
+	<%= f.text_field :opponent_score %>	
 	</div>
 
   <div>
