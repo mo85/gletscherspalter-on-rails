@@ -23,7 +23,7 @@ class Game < Event
   end
   
   def self.last_game
-    where("date < ?", Time.now).order("date DESC").last
+    where("score != ? OR score = ?", "", 0).order("date").last
   end
 
   def result
