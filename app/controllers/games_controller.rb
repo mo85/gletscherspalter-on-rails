@@ -14,6 +14,7 @@ class GamesController < ApplicationController
         @games = @season.games.paginate :page => params[:page], :per_page => 10
         
         format.html
+        format.js
         format.pdf do
           @events = @season.games
           render :file => "/players/events.pdf.prawn", :locals => { :events => @events } 
