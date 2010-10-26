@@ -79,7 +79,7 @@ class GamesController < ApplicationController
     respond_to do |format|
       if @game.update_attributes(params[:game])
         flash[:notice] = 'Spiel wurde erfolgreich angepasst.'
-        format.html { redirect_to(games_path) }
+        format.html { redirect_to(season_games_path(:start => @game.season.start_year, :end => @game.season.end_year)) }
       else
         format.html { render :action => "edit" }
       end
@@ -93,7 +93,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       flash[:notice] = "Spiel wurde gelöscht."
-      format.html { redirect_to(games_url) }
+      format.html { redirect_to(season_games_path(:start => @game.season.start_year, :end => @game.season.end_year)) }
     end
   end
 
