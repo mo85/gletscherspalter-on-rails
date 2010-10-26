@@ -13,7 +13,7 @@ class UserPicture < ActiveRecord::Base
 
   validates_as_attachment
 
-  before_create :set_filename
+  #before_create :set_filename
   after_save :crop_thumbnail
 
   private
