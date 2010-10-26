@@ -8,13 +8,20 @@ class GamesController < ApplicationController
   def index
     @title = "Gletscherspatler.ch::Spiele"
     @season = Season.where("start_year = ? AND end_year = ?", params[:start], params[:end]).first
-    @games = @season.games.paginate :page => params[:page], :per_page => 10
+    
     respond_to do |format|
-      format.html
-      format.js
-      format.pdf do
-        @events = @season.games
-        render :file => "/players/events.pdf.prawn", :locals => { :events => @events } 
+      if @season
+        @games = @season.games.paginate :page => params[:page], :per_page => 10
+        
+        format.html
+        format.pdf do
+          @events = @season.games
+          render :file => "/players/events.pdf.prawn", :locals => { :events => @events } 
+        end
+      else
+        format.html {
+          redirect_to :controller => "seasons", :action => "season_not_found"
+        }
       end
     end
   end
@@ -24,7 +31,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @event = @game
     @players = @game.players.group_by(&:position)
-    @scores = @game.scores.sort{|a,b| ((a.goals || 0) + (a.assists || 0)) <=> ((b.goals || 0) + (b.assists || 0))}.reverse
+    @scores = @game.scores.sort{ |a,b| ((a.goals || 0) + (a.assists || 0)) <=> ((b.goals || 0) + (b.assists || 0))}.reverse
     
     @comment = Comment.new
     @comments = @game.comments

@@ -13,6 +13,8 @@ class Season < ActiveRecord::Base
   
   SWITCHING_MONTH = 7 # Switch on July
   
+  default_scope order("start_year DESC")
+  
   def self.current(time = Time.zone.now)
     year = time.year
     next_year = year + 1

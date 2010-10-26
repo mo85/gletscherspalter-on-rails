@@ -5,11 +5,16 @@ class EventsController < ApplicationController
   # GET /events
   def index
     @season = Season.where("start_year = ? AND end_year = ?", params[:start], params[:end]).first
-    @events = @season.events.find_all_non_game_events.paginate :page => params[:page], :per_page => 10
-    
+        
     respond_to do |format|
-      format.html
-      format.pdf
+      if @season
+        @events = @season.events.find_all_non_game_events.paginate :page => params[:page], :per_page => 10
+        
+        format.html
+        format.pdf
+      else
+        format.html { redirect_to :controller => "seasons", :action => "season_not_found" }
+      end
     end
   end
   

@@ -1,0 +1,27 @@
+<table class="default">
+	<thead>
+		<th>Saison</th>
+		<th># Spiele</th>
+		<th>Siege</th>
+		<th>Niederlagen</th>
+		<th>Unentschieden</th>
+		<th>Tore</th>
+		<th>Gegentore</th>
+	</thead>
+	
+	<% for season in target %>
+		<tr>
+			<% url = season_games_path(:start => season.start_year, :end => season.end_year) %>
+			<% if params[:statistics] == "1" %>
+			<% url = statistics_season_path(:start => season.start_year, :end => season.end_year) %>
+			<% end %>
+			<td><%= link_to "#{season}", url %></td>
+			<td><%= season.games_played.size %></td>
+			<td><%= season.wins.size %></td>
+			<td><%= season.defeats.size %></td>
+			<td><%= season.tied_games.size %></td>
+			<td><%= season.scored_goals %></td>
+			<td><%= season.goals_against %></td>
+		</tr>
+	<% end %>
+</table>
