@@ -80,7 +80,7 @@
 <div class="clear"></div>
 
 <script type="text/javascript">
-	var addresses = $$('li.mail .');
+	var addresses = $$('li.mail a');
 	addresses.each(function(a) {
 		var addr = a.href.gsub("mailto:","");
 		a.href = "mailto:" + Base64.decode(addr);
