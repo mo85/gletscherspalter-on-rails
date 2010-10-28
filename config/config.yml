@@ -16,3 +16,6 @@ flickr:
   shared-secret: "3125e4dc1dd61ad4"
   user-id: "44777339@N04"
   auth-token: "72157622835493126-87c74181a6135d00"
+
+team:
+  name: "Gletscherspalter"

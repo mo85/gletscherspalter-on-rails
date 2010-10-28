@@ -15,7 +15,14 @@ class Game < Event
   end
   
   def name
-    "Gletscherspalter vs. #{opponent}"
+    team_name = APP_CONFIG["team"]["name"]
+    result = "#{team_name} vs. #{opponent}"
+    if season_id != 1
+      unless home
+        result = "#{opponent} vs. #{team_name}"
+      end
+    end
+    result
   end
   
   def players
@@ -27,8 +34,11 @@ class Game < Event
   end
 
   def result
-    if !(score.nil?) && !(opponent_score.nil?) 
-      @result ||= "#{score}:#{opponent_score}"
+    if !(score.nil?) && !(opponent_score.nil?)
+      @result = "#{score}:#{opponent_score}"
+      if season_id != 1 && !home
+        @result = "#{opponent_score}:#{score}"
+      end
     else
       nil
     end

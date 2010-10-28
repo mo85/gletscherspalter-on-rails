@@ -21,7 +21,7 @@
    <h3 class="side_bar">Nächstes Spiel</h3>
 
    <%=h next_game.date_formatted %>
-   <%= link_to sanitize("Gletscherspalter vs. <br /> #{next_game.opponent}"), game_path(next_game) %> <br />
+   <%= link_to sanitize(game_for_side_bar(next_game)), game_path(next_game) %> <br />
 	 <%= link_to "(#{next_game.location.name})", location_on_map_path(next_game.location) %>
   
  </p>
@@ -31,6 +31,6 @@
 <p style="margin-top: 10px;">
 		<h3 class="side_bar">Letztes Spiel</h3>
 		<% game = Game.last_game %>
-	<%= link_to sanitize("Gletscherspalter vs.<br /> #{game.opponent} #{game.result}"), game_path(game)%>
+	<%= link_to sanitize("#{game_for_side_bar(game)} #{game.result}"), game_path(game)%>
 </p>
 <% end %>

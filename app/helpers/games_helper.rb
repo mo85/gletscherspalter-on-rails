@@ -11,4 +11,9 @@ module GamesHelper
     result_string << " Goalie"
     result_string
   end
+  
+  def game_for_side_bar(game)
+    game.name.gsub("vs. ", "vs. <br /> ")
+  end
+  
 end
