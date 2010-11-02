@@ -1,6 +1,4 @@
 <%= form_for [@game, @score], :url => url, :html => {:class => :default} do |f| %>
-	<%= f.error_messages %>
-
 	<div>
 		<%= f.label "Spieler" %>
 		<%= f.text_field :player, { :value => @score.player ? @score.player.name : nil, :class => "autocomplete" } %>
