@@ -61,7 +61,7 @@
         <% @players.each do |p| %>
           <tr>
             <td><%= "#{p.name}" %></td>
-            <td><%= "#{p.games_of_season(@season).size}" %></td>
+            <td><%= "#{p.games_played(@season).size}" %></td>
             <td><%= "#{p.wins(@season)}" %></td>
             <td><%= p.defeats(@season) %></td>
             <td><%= p.goals(@season) %></td>
@@ -92,7 +92,7 @@
         <% @goalies.each do |g|  %>
         <tr>
           <td><%= g.name %></td>
-          <td><%= g.games_of_season(@season).size %></td>
+          <td><%= g.games_played(@season).size %></td>
           <td><%= g.wins(@season) %></td>
           <td><%= g.defeats(@season) %></td>
           <td><%= g.goals_against(@season) %></td>
