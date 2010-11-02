@@ -34,14 +34,14 @@ class Game < Event
   end
 
   def result
+    r = nil
     if !(score.blank?) && !(opponent_score.blank?)
-      @result = "#{score}:#{opponent_score}"
+      r = "#{score}:#{opponent_score}"
       if season_id != 1 && !home
-        @result = "#{opponent_score}:#{score}"
+        r = "#{opponent_score}:#{score}"
       end
-    else
-      nil
     end
+    r
   end
 
   def self.next_game
