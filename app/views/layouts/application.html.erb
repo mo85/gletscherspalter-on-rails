@@ -17,6 +17,7 @@
 			<div id="menu_container">
 				<ul id="header_main_menu">
 					<li class="first"><%= link_to "Home" , root_path %></li>
+					<li><%= link_to "Geschichte", history_path %></li>
 					<li><%= link_to "News", news_index_path %></li>
 					<% if logged_in? %>
 					<li><%= link_to "Mein Profil", player_path(current_user.player) %>

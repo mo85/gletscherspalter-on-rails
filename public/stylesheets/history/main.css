@@ -1,0 +1,18 @@
+img {
+	margin-top: 5px;
+	padding: 5px;
+}
+
+img.left {
+	float: left;
+	margin-right: 5px;
+}
+
+img.right {
+	margin-left: 5px;
+	float: right;
+}
+
+p {
+	margin-bottom: 5px;
+}
