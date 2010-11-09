@@ -1,3 +1,7 @@
+<% content_for :javascripts do %>
+	<%= javascript_include_tag "table_sorter" %>
+<% end %>
+
 <% cache do %>
 <h1>Statistiken Saison <%= @season.to_s %></h1>
 

@@ -1,3 +1,7 @@
+<% content_for :javascripts do %>
+<%= javascript_include_tag "lightbox" %>
+<% end %>
+
 <% cache do %>
 <div>
 <h1><%= @photoset.title %></h1>
