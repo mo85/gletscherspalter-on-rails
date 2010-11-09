@@ -36,7 +36,7 @@
 					+ _dynarch_top._dynarch_menu_url;
 	}
 	w._dynarch_menu_shadow = new Image();
-	w._dynarch_menu_shadow.src = "/img/hmenu/shadow.png";
+	w._dynarch_menu_shadow.src = "/images/hmenu/shadow.png";
 	w._dynarch_menu_ediv = "<div unselectable='on'>&nbsp;</div>";
 })();
 function DynarchMenu(el, config) {

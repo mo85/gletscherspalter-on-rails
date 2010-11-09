@@ -18,37 +18,6 @@
 	z-index: 1;
 }
 
-#header_main_menu {
-/*	position: relative;
-	top: -50px;
-	left: 220px;*/
-}
-
-
-/*#menu ul {
-	list-style: none;    
-}
-
-#menu li {
-	float: left;
-  list-style: none;
-  padding: 0.2em;
-	margin-right: 5px;
-}
-
-#menu li a:link, #menu li a:visited, #menu li a:focus, #menu li a:active {
-	display: block;
-	font-weight: bold;
-	color: white;
-	text-decoration: none;
-}
-
-#menu li a:hover {
-	color: white;
-	background-color: #d40610;
-  text-decoration: underline;
-}
-*/
 div.dynarch-horiz-menu { 
 	border: none; 
 	cursor: default;
@@ -120,38 +89,3 @@ div.dynarch-popup-menu tr.item td.label {
 div.dynarch-popup-menu tr.activated td {
 	background: #9c0;
 }
-/*
-div.dynarch-popup-menu tr.separator td div {
-  margin: 2px;
-  height: 1px;
-  line-height: 1px;
-  font-size: 1px;
-  border: none;
-}
-div.dynarch-popup-menu tr.disabled td.label { color: #aca899; }
-div.dynarch-popup-menu tr.disabled td.icon img { -moz-opacity: 0.4; filter: alpha(opacity=40); }
-
-
-div.dynarch-menu-shadow, img.dynarch-menu-shadow, div.div.dynarch-IE6-shadow { z-index: 990; position: absolute; }
-div.dynarch-menu-shadow { background-color: #555; -moz-opacity: 0.6; filter: alpha(opacity=60); }
-
-iframe#dynarch-menu-hider { z-index: 980; }
-
-
-div.dynarch-menu-scroll-up { height: 12px; font-size: 12px; line-height: 12px; overflow: hidden;
-  background: url("img/scroll-up.gif") no-repeat 50% 50%;
-}
-div.dynarch-menu-scroll-down { height: 12px; font-size: 12px; line-height: 12px; overflow: hidden;
-  background: url("img/scroll-down.gif") no-repeat 50% 50%;
-}
-div.dynarch-menu-scroll-up-hover { background-image: url("img/scroll-up-hover.gif"); }
-div.dynarch-menu-scroll-down-hover { background-image: url("img/scroll-down-hover.gif"); }
-div.dynarch-menu-scroll-up-disabled { background-image: url("img/scroll-up-disabled.gif"); }
-div.dynarch-menu-scroll-down-disabled { background-image: url("img/scroll-down-disabled.gif"); }
-
-
-div.dynarch-menu-toolbar table tr td.item {
-  padding: 2px 3px;
-}
-.impossible-class-name-to-preload-shadow-image-in-internet-exploder { background-image: url("/img/shadow.png"); }
-*/
