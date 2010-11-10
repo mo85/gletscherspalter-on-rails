@@ -1,3 +1,4 @@
+<% season = current_season %>
 <table style="width: 100%;">
 	<colgroup>
 	<col width="25%" /><col width="25%" /><col width="25%" /><col width="25%" />
@@ -15,13 +16,13 @@
 				<ul>
 					<li><%= link_to "Adressliste", users_path %></li>
 					<li><%= link_to "Forum", topics_path %></li>
-					<li><%= link_to "Saison", events_path %></li>
+					<li><%= link_to "Saison", season_events_path(:start => season.start_year, :end => season.end_year) %></li>
 				</ul>
 			</td>
 			<td>
 				<ul>
-					<li><%= link_to "Spielplan", games_path %></li>
-					<li><%= link_to "Statistiken", statistics_season_path(:start => current_season.start_year, :end => current_season.end_year) %></li>
+					<li><%= link_to "Spielplan", season_games_path(:start => season.start_year, :end => season.end_year) %></li>
+					<li><%= link_to "Statistiken", statistics_season_path(:start => season.start_year, :end => season.end_year) %></li>
 					<li><%= link_to "Austragungsorte", :controller => "root", :action => "locations" %></li>
 				</ul>
 			</td>
