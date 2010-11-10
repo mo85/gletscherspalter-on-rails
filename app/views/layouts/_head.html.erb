@@ -21,7 +21,11 @@
 
 <%= stylesheet_link_tag :all, :cache => true %>
 
+<% if Rails.env == "production" %>
 <%= javascript_include_tag :defaults, :concat => true, :cache => true %>
+<% else %>
+<%= javascript_include_tag :defaults %>
+<% end %>
 
 <%= javascript_include_tag "hmenu" %>
 <%= javascript_include_tag "pagination" %>
