@@ -25,7 +25,7 @@ authorization do
     end
 
     has_permission_on :users, :to => [:read, :edit_subscriptions, :update_subscriptions]
-    has_permission_on [:user_pics, :avatars], :to => [:new, :create] do
+    has_permission_on :avatars, :to => [:new, :create] do
       if_attribute :user => is { user }
     end
     
