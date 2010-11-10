@@ -26,7 +26,7 @@ module ApplicationHelper
     size ||= :medium
     
     file = "/images/profile_thumb.png"
-    if user && user.avatar.photo.url
+    if user && user.avatar && user.avatar.photo.url
       file = user.avatar.photo.url(size)
     end
     
