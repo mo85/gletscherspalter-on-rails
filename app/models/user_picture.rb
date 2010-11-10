@@ -3,18 +3,22 @@ require 'digest/sha1'
 class UserPicture < ActiveRecord::Base
   belongs_to :user
 
-  has_attachment :content_type => :image,
-                 :storage => :file_system,
-                 :resize_to => '200x400>',
-                 :thumbnails => { :thumb => "50x50>" },
-                 :partition => false,
-                 :path_prefix => "public/users",
-                 :processor => "mini_magick"
+  # has_attachment :content_type => :image,
+  #                :storage => :file_system,
+  #                :resize_to => '200x400>',
+  #                :thumbnails => { :thumb => "50x50>" },
+  #                :partition => false,
+  #                :path_prefix => "public/users",
+  #                :processor => "mini_magick"
+  # 
+  # validates_as_attachment
 
-  validates_as_attachment
+  
 
-  before_create :set_filename
-  after_save :crop_thumbnail
+  #before_create :set_filename
+  #after_save :crop_thumbnail
+
+  has_attached_file :avatar, :styles => { :medium => "200x400>", :thumb => "50x50>" }
 
   private
 

@@ -45,6 +45,7 @@ GletscherspalterOnRails::Application.routes.draw do
       put "update_subscriptions"
     end
     resources :user_pictures, :only => [:new, :create]
+    resources :avatars, :only => [:new, :create]
   end
 
   resources :trainings, :except => :index

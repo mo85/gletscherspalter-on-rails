@@ -1,0 +1,11 @@
+<h1>Profilbild erstellen</h1>
+
+<%= form_for(@avatar, :url => user_avatars_path, :html => { :multipart => true, :class => :default }) do |f|%>
+    
+    <div>
+      <%= f.label :photo, "Datei:" %>
+      <%= f.file_field :photo %>
+    </div>
+
+    <%= submit_tag "Speichern" %>
+<% end %>

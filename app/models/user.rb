@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :resource_settings
   
   has_one :user_picture
+  has_one :avatar
   has_one :player, :dependent => :destroy
   has_one :subscription_manager, :dependent => :destroy
   

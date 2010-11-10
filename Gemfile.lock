@@ -52,6 +52,9 @@ GEM
     mini_magick (2.3)
       subexec (~> 0.0.4)
     mysql2 (0.2.6)
+    paperclip (2.3.5)
+      activerecord
+      activesupport
     polyglot (0.3.1)
     prawn (0.8.4)
       prawn-core (>= 0.8.4, < 0.9)
@@ -99,6 +102,7 @@ DEPENDENCIES
   icalendar
   mini_magick
   mysql2
+  paperclip
   prawn
   rails (= 3.0.0)
   sqlite3-ruby

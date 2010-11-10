@@ -2,8 +2,8 @@
 <%= form_tag("#{user_user_pictures_path(:user_id => @user.id)}", :multipart => true, :class => :default ) do %>
     
     <div>
-      <%= label_tag "Datei:" %>
-      <%= file_field :user_pic, :uploaded_data %>
+      <%= label_tag :avatar, "Datei:" %>
+      <%= file_field :avatar, :photo %>
     </div>
 
     <%= submit_tag "Speichern" %>

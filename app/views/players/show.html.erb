@@ -1,6 +1,6 @@
 <h1><%= @player.user.full_name %></h1>
 
-<div class="<%= @player.user.user_picture ? "profile_with_image" : "profile_without_image" %>">
+<div class="<%= @player.user.avatar ? "profile_with_image" : "profile_without_image" %>">
 
     <div class="player_pic">
       <%= sanitize user_profile_pic(@player.user, nil) %>
@@ -50,7 +50,7 @@
 <% content_for :sub_menu do %>
 	<% if permitted_to? :adjust, @player %>
   <% if Rails.env != "production" %>  
-	<li class="side_bar"><%= link_to_function "Profil Bild ändern", "Glacier.Popup.init('" + new_user_user_picture_path(@player.user) + ".ajax', {width: 550})" %></li>
+	<li class="side_bar"><%= link_to_function "Profil Bild ändern", "Glacier.Popup.init('" + new_user_avatar_path(@player.user) + ".ajax', {width: 550})" %></li>
 	<% end %>
 	<li class="side_bar"><%= link_to 'Spieler Details anpassen', edit_player_path(@player) %></li>
 	<li class="side_bar"><%= link_to 'Termine in Kalender einfügen', events_player_url(:format => "ics", :protocol => "webcal", :token => current_user.token) %></li>

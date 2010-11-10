@@ -31,6 +31,8 @@ gem "hoptoad_notifier"
 
 gem 'acts_as_commentable'
 
+gem "paperclip"
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

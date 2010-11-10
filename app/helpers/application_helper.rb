@@ -12,7 +12,7 @@ module ApplicationHelper
     "#{date.strftime('%d. %B %Y - %H:%M')}"
   end
 
-  def user_profile_pic user, size = :thumb
+  def user_profile_pic_old user, size = :thumb
     filename = "/images/profile_thumb.png"
 
     if user && user.user_picture
@@ -21,5 +21,18 @@ module ApplicationHelper
 
     "<img src='#{filename}' />"
   end
+
+  def user_profile_pic user, size = :thumb
+    size ||= :medium
+    
+    file = "/images/profile_thumb.png"
+    if user && user.avatar.photo.url
+      file = user.avatar.photo.url(size)
+    end
+    
+    image_tag file
+    
+  end
+  
   
 end
