@@ -18,14 +18,10 @@ ActionMailer::Base.smtp_settings = {
     :domain         => APP_CONFIG["mail"]["domain"],
     :user_name       => APP_CONFIG["mail"]["user_name"],
     :password       => APP_CONFIG["mail"]["password"],
-    :authentication => :login
-    #:enable_starttls_auto => true
+    :authentication => :login,
+    :enable_starttls_auto => false
 }
 
-if Rails.env.production?
-  ActionMailer::Base.default_url_options[:host] = "www.gletscherspalter.ch"
-else
-  ActionMailer::Base.default_url_options[:host] = "localhost:3000"
-end
+ActionMailer::Base.default_url_options[:host] = "www.gletscherspalter.ch"
 
 ActionMailer::Base.register_interceptor(DevelopmentMailInterceptor) if Rails.env.development?

@@ -1,3 +1,7 @@
+<% content_for :javascripts do %>
+	<%= javascript_include_tag "comments" %>
+<% end %>
+
 <% if logged_in? %>
 <div style="margin-top:">
 	<h2>Kommentare</h2>
@@ -23,7 +27,7 @@
 					<% end %>
 					<span class="comment-timestamp">(<%= l(c.created_at, :format => :default) %>)</span>
 					</div>
-					<%=h c.comment %>
+					<%=sanitize c.comment %>
 				</div>		
 			</div>
 		

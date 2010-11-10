@@ -39,7 +39,7 @@ class MessagesController < ApplicationController
     
     respond_to do |format|
       if @message.save
-        UserMailer.mail_message(@recipients, @message)
+        UserMailer.mail_message(@recipients, @message).deliver
         flash[:notice] = "Nachricht an #{@recipients.size} Empfänger gesendet."
         format.html { redirect_to(messages_path) }
       else
