@@ -1,11 +1,13 @@
 <table class="default">
 	<thead>
-		<th width="20%">Autor</th>
-		<th width="50%">Nachricht</th>
-		<th width="20%">Erstellt am</th>
-		<% if permitted_to? :manage, :news %>
-		<th width="10%">&nbsp;</th>
-		<% end %>
+		<tr>
+			<th width="20%">Autor</th>
+			<th width="50%">Nachricht</th>
+			<th width="20%">Erstellt am</th>
+			<% if permitted_to? :manage, :news %>
+			<th width="10%">&nbsp;</th>
+			<% end %>
+		</tr>
 	</thead>
 
 	<% @news.each do |news| %>
