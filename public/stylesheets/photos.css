@@ -5,8 +5,7 @@
 }
 
 .photoset_right {
-  position: absolute;
-  left: 385px;
+	margin-left: 385px;
   width: 365px;
   height: 260px;
 }
@@ -18,5 +17,13 @@
 
 img {
     border: 0px;
+}
+
+.photo-description {
+	margin: 5px 0px 10px 0px;
+}
+
+.photos-count {
+	margin: 5px 0px 10px 0px;
 }
 

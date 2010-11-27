@@ -2,19 +2,19 @@
   <h2><%=h photoset.title %></h2>
 
   <% if photoset.description %>
-		<div style="margin-top: 10px;">
-			<%=h photoset.description %>
+		<div class="photo-description">
+			<%=raw photoset.description.gsub('(','<br /> (') %>
 		</div>
   <% end %>
   
 	<div class="photo">
     <%= link_to photoset_image_tag(photoset, :size => :medium, :lightbox => :large), photo_path(photoset.id) %>
-    <div>
-			<%=h photoset.photos %> Fotos
+    <div class="photos-count">
+			<%= photoset.photos %> Fotos
 		</div>
   </div>
 </div>
 
 <% if style_class == 'photoset_right' %>
-<div class="clear"></div>
+<div class="clear" style="height: 10px;"></div>
 <% end %>
