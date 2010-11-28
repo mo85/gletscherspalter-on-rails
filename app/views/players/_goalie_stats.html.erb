@@ -1,6 +1,6 @@
 <table class="default">
 	<tr class="smaller">
-		<th>&nbsp;</th>
+		<th>Saison</th>
 		<th># Spiele</th>
 		<th># Siege</th>
 		<th># Niederlagen</th>
@@ -12,7 +12,7 @@
 	<% @seasons.each do |s| %>
 		<% if @player.games_played(s).size > 0 %>
 			<tr>
-				<td><%= s %></td>
+				<td><%= link_to s, statistics_season_path(:start => s.start_year, :end => s.end_year) %></td>
 				<td><%= @player.games_played(s).size %></td>
 				<td><%= @player.wins(s) %></td>
 				<td><%= @player.defeats(s) %></td>
