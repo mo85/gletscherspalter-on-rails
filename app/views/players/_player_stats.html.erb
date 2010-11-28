@@ -10,27 +10,31 @@
 		<th><abbr title="Points per Game">PPG</abbr></th>
 	</tr>
 	
-	<tr>
-		<td>aktuelle Saison</td>
-		<td><%=h @player.games_played(current_season).size %></td>
-		<td><%=h @player.wins(current_season) %></td>
-		<td><%=h @player.defeats(current_season) %></td>
-		<td><%=h @player.tied_games(current_season) %></td>
-		<td><%=h @player.goals(current_season) %></td>
-		<td><%=h @player.assists(current_season) %></td>
-		<td><%=h @player.points_per_game(current_season) %></td>
-	</tr>
+	<% @seasons.each do |s| %>
+		<% if @player.games_played(s).size > 0 %>
+			<tr>
+				<td><%= s %></td>
+				<td><%= @player.games_played(s).size %></td>
+				<td><%= @player.wins(s) %></td>
+				<td><%= @player.defeats(s) %></td>
+				<td><%= @player.tied_games(s) %></td>
+				<td><%= @player.goals(s) %></td>
+				<td><%= @player.assists(s) %></td>
+				<td><%= @player.points_per_game(s) %></td>
+			</tr>
+		<% end %>
+	<% end %>
 
 <% if Season.count > 1 %>
-	<tr>
+	<tr class="total">
 		<td>Gesamt</td>
-		<td><%=h @player.games_played.size %></td>
-		<td><%=h @player.wins %></td>
-		<td><%=h @player.defeats %></td>
-		<td><%=h @player.tied_games %></td>
-		<td><%=h @player.goals %></td>
-		<td><%=h @player.assists %></td>
-		<td><%=h @player.points_per_game %></td>
+		<td><%= @player.games_played.size %></td>
+		<td><%= @player.wins %></td>
+		<td><%= @player.defeats %></td>
+		<td><%= @player.tied_games %></td>
+		<td><%= @player.goals %></td>
+		<td><%= @player.assists %></td>
+		<td><%= @player.points_per_game %></td>
 	</tr>
 <% end %>
 </table>

@@ -102,6 +102,10 @@ table.stats_table td {
     vertical-align: middle;
 }
 
+tr.total td {
+	border-top: 2px solid black;
+}
+
 .stats_table th.sorttable_sorted, .stats_table th.sorttable_sorted_reverse {
   background: lightgray url('/images/sort-desc.png') no-repeat right center;
   color: black;

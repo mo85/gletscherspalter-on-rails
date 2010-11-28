@@ -9,25 +9,29 @@
 		<th><abbr title="Goal against Average">GAA</abbr></th>
 	</tr>
 	
-	<tr>
-		<td>aktuelle Saison</td>
-		<td><%=h @player.games_played(current_season).size %></td>
-		<td><%=h @player.wins(current_season) %></td>
-		<td><%=h @player.defeats(current_season) %></td>
-		<td><%=h @player.tied_games(current_season) %></td>
-		<td><%=h @player.goals_against(current_season) %></td>
-		<td><%=h @player.goal_against_average(current_season) %></td>
-	</tr>
+	<% @seasons.each do |s| %>
+		<% if @player.games_played(s).size > 0 %>
+			<tr>
+				<td><%= s %></td>
+				<td><%= @player.games_played(s).size %></td>
+				<td><%= @player.wins(s) %></td>
+				<td><%= @player.defeats(s) %></td>
+				<td><%= @player.tied_games(s) %></td>
+				<td><%= @player.goals_against(s) %></td>
+				<td><%= @player.goal_against_average(s) %></td>
+			</tr>
+		<% end %>
+	<% end %>
 	
 <% if Season.count > 1 %>
-	<tr>
+	<tr class="total">
 		<td>Gesamt</td>
-		<td><%=h @player.games_played.size %></td>
-		<td><%=h @player.wins %></td>
-		<td><%=h @player.defeats %></td>
-		<td><%=h @player.tied_games %></td>
-		<td><%=h @player.goals_against %></td>
-		<td><%=h @player.goal_against_average %></td>
+		<td><%= @player.games_played.size %></td>
+		<td><%= @player.wins %></td>
+		<td><%= @player.defeats %></td>
+		<td><%= @player.tied_games %></td>
+		<td><%= @player.goals_against %></td>
+		<td><%= @player.goal_against_average %></td>
 	</tr>
 	<% end %>
 </table>
