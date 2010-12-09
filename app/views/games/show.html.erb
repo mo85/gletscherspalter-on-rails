@@ -45,7 +45,7 @@
 	<% if !@players.empty? %>
 		
 		<div style="margin-top: 5px;">
-			<%= summary_sentence(@game.players) %>
+			<%=raw summary_sentence(@game.players) %>
 		</div>
 		
 		<div style="margin-top: 5px;">
