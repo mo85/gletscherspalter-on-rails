@@ -4,32 +4,32 @@
 	<%= f.hidden_field :season_id %>
 	
 	<div>
-		<%= f.label "Heim" %>
+		<%= f.label :home, "Heim" %>
 		<%= f.check_box :home %>
 	</div>
 	
   <div>
-	<%= f.label "Zeit" %>
+	<%= f.label :date, "Zeit" %>
 	<%= f.datetime_select :date, :start_year => Time.now.year - 1, :end_year => Time.now.year + 1 %>
   </div>
 
   <div>
-	<%= f.label "Ort" %>
+	<%= f.label :location_id, "Ort" %>
 	<%= f.collection_select(:location_id, Rink.all, :id, :name, {:promt => "Select a location"}) %>
   </div>
 
   <div>
-	<%= f.label "Gegner" %>
+	<%= f.label :opponent, "Gegner" %>
 	<%= f.text_field :opponent %>
   </div>
 
   <div>
-	<%= f.label "erzielte Tore" %>
+	<%= f.label :score, "Erzielte Tore" %>
 	<%= f.text_field :score %>
   </div>
 
 	<div>
-	<%= f.label "Gegentore" %>
+	<%= f.label :opponent_score, "Gegentore" %>
 	<%= f.text_field :opponent_score %>	
 	</div>
 
