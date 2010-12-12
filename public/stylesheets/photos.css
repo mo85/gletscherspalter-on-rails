@@ -2,9 +2,11 @@
   float: left;
   width: 365px;
   height: 260px;
+	margin-top: 10px;
 }
 
 .photoset_right {
+	margin-top: 10px;
 	margin-left: 385px;
   width: 365px;
   height: 260px;
