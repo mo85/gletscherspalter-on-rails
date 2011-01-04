@@ -37,22 +37,22 @@ type="text/javascript"></script>
   geocoder.setBaseCountryCode("ch");
 
   function initialize() {
-	if (GBrowserIsCompatible()) {
-		map = new GMap2($("map_canvas"));
-		map.setCenter(new GLatLng(47.383265, 8.528163), 11);
-		map.setUIToDefault();
-	}
+		if (GBrowserIsCompatible()) {
+			map = new GMap2($("map_canvas"));
+			map.setCenter(new GLatLng(47.383265, 8.528163), 11);
+			map.setUIToDefault();
+		}
   }
 
   function addMarkerToAddress(address) {
-	geocoder.getLatLng(address, addMarkerToLatLng);
+		geocoder.getLatLng(address, addMarkerToLatLng);
   }
 
   function addMarkerToLatLng(latlng) {
-	map.clearOverlays();
-	marker = new GMarker(latlng);
-	map.setCenter(marker.getPoint());
-	map.addOverlay(marker);
+		map.clearOverlays();
+		marker = new GMarker(latlng);
+		map.setCenter(marker.getPoint());
+		map.addOverlay(marker);
   }
 
   function addMarkerWithInfoWindowToAddress(name,address,url) {
@@ -74,16 +74,16 @@ type="text/javascript"></script>
 	}
 
   function addMarkerWithInfoWindowToLatLng(latlng) {
-	map.clearOverlays();
-	marker = new GMarker(latlng);
-	map.setCenter(marker.getPoint());
-	GEvent.addListener(marker, "click", openInfoWindow)
-	map.addOverlay(marker);
-	GEvent.trigger(marker, "click");
+		map.clearOverlays();
+		marker = new GMarker(latlng);
+		map.setCenter(marker.getPoint());
+		GEvent.addListener(marker, "click", openInfoWindow)
+		map.addOverlay(marker);
+		GEvent.trigger(marker, "click");
   }
 
   function openInfoWindow() {	
-	marker.openInfoWindowHtml(html);
+		marker.openInfoWindowHtml(html);
   }  
 
   initialize();
