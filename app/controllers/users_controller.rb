@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       @users = User.find_by_first_or_lastname(params[:score][:player])
     else
       @title = "Gletscherspatler.ch::Benutzer"
-      @users = User.all
+      @users = User.all - Sponsor.all
     end
     
     respond_to do |format|

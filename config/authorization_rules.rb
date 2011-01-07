@@ -4,6 +4,11 @@ authorization do
     has_permission_on :root, :to => [:index, :contact, :locations, :fb_news, :denied, :history]
     has_permission_on :seasons, :to => [:index, :statistics, :season_not_found]
     has_permission_on :guestnotes, :to => [:index, :new, :create]
+    has_permission_on :sponsors, :to => [ :read, :new, :create]
+  end
+  
+  role :sponsor do
+    includes :guest
   end
   
   role :user do
@@ -40,7 +45,7 @@ authorization do
   
   role :admin do
     includes :user
-    has_permission_on [:players, :users, :scores, :topics, :news, :guestnotes, :photos, :games], :to => [:read, :manage]
+    has_permission_on [:players, :users, :scores, :topics, :news, :guestnotes, :photos, :games, :sponsors], :to => [:read, :manage]
     has_permission_on :players, :to => [:subscribe_to_events, :team]
     has_permission_on [:locations, :events, :messages, :trainings, :trainingscamps, :comments], :to => [:read, :manage]
     has_permission_on :events, :to => [:read, :manage, :add_or_remove_players_from_events]

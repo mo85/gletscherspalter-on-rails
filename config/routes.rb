@@ -4,6 +4,8 @@ GletscherspalterOnRails::Application.routes.draw do
   
   resources :news
   
+  resources :sponsors
+  
   resources :guestnotes, :except => [:show]
   
   resources :messages, :except => [:show, :edit, :update]

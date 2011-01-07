@@ -1,0 +1,28 @@
+<h1>Gönner Kontakt Formular</h1>
+
+<p>
+	Füllen Sie bitte das untenstehende Formular aus und überweisen Sie den Betrag auf unser Konto. 
+	Die nötigen Informationen dazu finden Sie weiter unten. Sobald die Zahlung bei uns eingegangen ist, 
+	wird Ihr account aktiviert und Sie werden auf der Gönnerliste erscheinen.
+</p>
+
+<h2>Kontoinformationen</h2>
+
+<p>
+	Zürcher Kantonalbank, 8010 Zürich<br />
+	Clearingnummer 700<br />
+	Konto Nr. 011040-00261042<br />
+	IBAN Nr. CH04 0070 0114 0002 6104 2<br />
+</p>
+
+<h2>Kontakt Daten</h2>
+
+<p>
+	
+	<%= render "form", :label => "Registrieren" %>
+	
+</p>
+
+<% content_for :sub_menu do %>
+	<li class="side_bar"><%= link_to "Zurück", sponsors_path %></li>
+<% end %>

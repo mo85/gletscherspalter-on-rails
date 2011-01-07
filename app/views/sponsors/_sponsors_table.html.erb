@@ -1,0 +1,22 @@
+<table class="default">
+	<thead>
+		<th width="45%">Name</th>
+		<th width="45%">Ort</th>
+		<th width="10%">&nbsp;</th>
+	</thead>
+	
+	<tbody>
+		<% sponsors.each do |s| %>
+			<tr>
+				<td><%= s %></td>
+				<td><%= s.location %></td>
+				<td>
+					<% if permitted_to? :manage, :sponsors %>
+						<%= link_to image_tag("icons/pencil.png"), edit_sponsor_path(s) %>
+						<%= link_to image_tag("icons/delete.png"), s, :confirm => "Möchten sie Gönner '#{s}' wirklich löschen?", :method => :delete %>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

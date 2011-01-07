@@ -1,0 +1,42 @@
+<%= form_for(@sponsor, :html => { :class => "default" }) do |f| %>
+
+	<%= render "shared/error_messages", :target => @sponsor %>
+	
+	<div>
+		<%= f.label :firstname, "Vorname" %>
+		<%= f.text_field :firstname %>
+	</div>
+
+	<div>
+		<%= f.label :lastname, "Nachname" %>
+		<%= f.text_field :lastname %>
+	</div>
+	
+	<% if params[:action] == "edit" %>
+	<div>
+		<%= f.label :sponsorship_payed, "Gönnerbeitrag bezahlt" %>
+		<%= f.check_box :sponsorship_payed %>
+	</div>
+	<% end %>
+	
+	<div>
+		<%= f.label :email, "Email" %>
+		<%= f.text_field :email %>
+	</div>
+	
+	<div>
+		<%= label_tag "sponsor[city]", "Ort und PLZ" %>
+		<%= text_field_tag "sponsor[city]", @sponsor.city, :size => 20 %>
+		<%= text_field_tag "sponsor[zip]", @sponsor.zip, :size => 5 %>
+	</div>
+	
+	<div>
+		<%= f.label :sponsorship_note, "Bemerkung" %>
+		<%= f.text_area :sponsorship_note %>
+	</div>
+	
+	<div>
+		<%= f.submit label %>
+	</div>
+
+<% end %>
