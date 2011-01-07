@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   
   # GET /events
   def index
+    @title = "Ereignisse"
     @season = Season.where("start_year = ? AND end_year = ?", params[:start], params[:end]).first
         
     respond_to do |format|
@@ -19,6 +20,7 @@ class EventsController < ApplicationController
   end
   
   def show
+    @title = "Ereignis Details"
     @event = Event.find params[:id]
     @users = @event.users
     @players = @event.group_players_by_position

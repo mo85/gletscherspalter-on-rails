@@ -29,6 +29,7 @@ class GamesController < ApplicationController
 
   # GET /games/1
   def show
+    @title = "Spiel Details"
     @game = Game.find(params[:id])
     @event = @game
     @players = @game.players.group_by(&:position)

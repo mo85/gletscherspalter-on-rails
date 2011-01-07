@@ -7,6 +7,7 @@ class SponsorsController < ApplicationController
 
   # GET /users
   def index
+    @title = "Gönner des EHC Gletscherspalter"
     @confirmed_sponsors = Sponsor.where("sponsorship_payed == ?", true)
     @unconfirmed_sponsors = Sponsor.where("sponsorship_payed == ?", false)
 
@@ -16,6 +17,7 @@ class SponsorsController < ApplicationController
   end
 
   def new
+    @title = "Neuer Gönner"
     @sponsor = Sponsor.new
 
     respond_to do |format|
@@ -25,6 +27,7 @@ class SponsorsController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @title = "Gönner anpassen"
     @sponsor = Sponsor.find(params[:id])
   end
 

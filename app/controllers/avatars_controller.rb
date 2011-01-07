@@ -1,6 +1,7 @@
 class AvatarsController < ApplicationController
   
   def new
+    @title = "Profilbild hochladen"
     @user = User.find(params[:user_id])
     
     @avatar = Avatar.new
