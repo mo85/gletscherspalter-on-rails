@@ -22,6 +22,10 @@ form.default div div.field_with_errors {
 	float: none !important;
 }
 
+form.default div div.field_with_errors label {
+	width: 200px !important;
+}
+
 form.default div div {
   float: left;
   clear: none;

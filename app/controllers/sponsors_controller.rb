@@ -34,8 +34,6 @@ class SponsorsController < ApplicationController
   # POST /users
   def create
     @sponsor = Sponsor.new(params[:sponsor])
-    @sponsor.login = create_login
-    @sponsor.password = "sponsor"
 
     respond_to do |format|
       if @sponsor.save
@@ -52,7 +50,7 @@ class SponsorsController < ApplicationController
     @sponsor = Sponsor.find(params[:id])
     respond_to do |format|
       if @sponsor.update_attributes(params[:sponsor])
-        flash[:notice] = "Gönner #{@sponsor.full_name} erfolgreich angepasst."
+        flash[:notice] = "Gönner #{@sponsor} erfolgreich angepasst."
         format.html { redirect_to(:action=>'index') }
       else
         format.html { render :action => "edit" }

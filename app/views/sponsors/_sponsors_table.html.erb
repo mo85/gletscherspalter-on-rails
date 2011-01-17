@@ -9,7 +9,7 @@
 		<% sponsors.each do |s| %>
 			<tr>
 				<td><%= s %></td>
-				<td><%= s.location %></td>
+				<td><%= s.address %></td>
 				<td>
 					<% if permitted_to? :manage, :sponsors %>
 						<%= link_to image_tag("icons/pencil.png"), edit_sponsor_path(s) %>

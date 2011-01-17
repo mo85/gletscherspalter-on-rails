@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110117174946) do
+ActiveRecord::Schema.define(:version => 20110117175357) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -136,6 +136,18 @@ ActiveRecord::Schema.define(:version => 20110117174946) do
     t.integer  "end_year"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "sponsors", :force => true do |t|
+    t.string  "firstname"
+    t.string  "lastname"
+    t.string  "email"
+    t.string  "street"
+    t.string  "number"
+    t.integer "zip"
+    t.string  "city"
+    t.boolean "sponsorship_payed", :default => false
+    t.text    "sponsorship_note"
   end
 
   create_table "subscription_managers", :force => true do |t|

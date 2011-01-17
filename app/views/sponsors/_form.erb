@@ -12,7 +12,7 @@
 		<%= f.text_field :lastname %>
 	</div>
 	
-	<% if params[:action] == "edit" %>
+	<% if params[:action] == "edit" && permitted_to?(:manage, :sponsors) %>
 	<div>
 		<%= f.label :sponsorship_payed, "Gönnerbeitrag bezahlt" %>
 		<%= f.check_box :sponsorship_payed %>
@@ -22,6 +22,12 @@
 	<div>
 		<%= f.label :email, "Email" %>
 		<%= f.text_field :email %>
+	</div>
+	
+	<div>
+		<%= label_tag "sponsor[Street]", "Strasse und Nummer" %>
+		<%= text_field_tag "sponsor[street]", @sponsor.street, :size => 20 %>
+		<%= text_field_tag "sponsor[number]", @sponsor.number, :size => 5 %>
 	</div>
 	
 	<div>
