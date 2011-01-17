@@ -36,6 +36,8 @@
 		<%= text_field_tag "sponsor[zip]", @sponsor.zip, :size => 5 %>
 	</div>
 	
+	<%= captcha_block %>
+	
 	<div>
 		<%= f.label :sponsorship_note, "Bemerkung" %>
 		<%= f.text_area :sponsorship_note %>

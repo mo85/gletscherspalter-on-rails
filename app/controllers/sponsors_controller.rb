@@ -2,6 +2,7 @@
 require 'digest/sha1'
 
 class SponsorsController < ApplicationController
+  validates_captcha
 
   filter_access_to :all
 
@@ -36,7 +37,7 @@ class SponsorsController < ApplicationController
     @sponsor = Sponsor.new(params[:sponsor])
 
     respond_to do |format|
-      if @sponsor.save
+      if captcha_validated? && @sponsor.save
         flash[:notice] = "Sie haben sich erfolgreich registriert."
         format.html { redirect_to(:action => 'index') }
       else
