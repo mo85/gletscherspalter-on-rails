@@ -132,6 +132,10 @@ div.popup_error_message {
   padding-bottom: 0px;
 }
 
+div#popup_content form div.captcha img {
+	margin-left: 200px;
+}
+
 #popup_content h1 {
   font-size: 16px;
 	padding-bottom: 5px;

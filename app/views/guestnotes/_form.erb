@@ -2,16 +2,11 @@
 <%= form_for @note, :url => url, :html => { :class => :default } do |f| %>
 	
 	<div>
-		<%= f.label "Name" %>
-		<%= f.text_field :author %>
+		<%= f.label :author, "Name" %>
+		<%= f.text_field :author, :size => 36 %>
 	</div>
-
-    <% if bot_protection_needed %>
-	<div>
-		<%= label_tag nil, "Summe von #{@random_no1} und #{@random_no2}" %>
-		<%= text_field_tag :result, nil, :size => 30 %>
-	</div>
-    <% end %>
+		
+	<%= captcha_block %>
 
 	<div>
 		<%= f.label "Nachricht" %>
