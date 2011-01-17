@@ -7,10 +7,6 @@ authorization do
     has_permission_on :sponsors, :to => [ :read, :new, :create]
   end
   
-  role :sponsor do
-    includes :guest
-  end
-  
   role :user do
     includes :guest
     has_permission_on :players, :to => [:adjust, :subscribe_to_events] do
@@ -41,6 +37,7 @@ authorization do
   role :chair_member do
     includes :user
     has_permission_on :messages, :to => [:read, :manage]
+    has_permission_on :sponsors, :to => [:read, :manage]
   end
   
   role :admin do
