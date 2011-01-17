@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110107163635) do
+ActiveRecord::Schema.define(:version => 20110117174946) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -159,14 +159,14 @@ ActiveRecord::Schema.define(:version => 20110107163635) do
   create_table "users", :force => true do |t|
     t.string   "hashed_password"
     t.string   "salt"
-    t.boolean  "is_player",         :default => true
+    t.boolean  "is_player",       :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
     t.string   "login"
     t.string   "firstname"
     t.string   "lastname"
-    t.boolean  "is_admin",          :default => false
+    t.boolean  "is_admin",        :default => false
     t.string   "phone"
     t.string   "mobile"
     t.string   "street"
@@ -174,10 +174,7 @@ ActiveRecord::Schema.define(:version => 20110107163635) do
     t.string   "city"
     t.integer  "zip"
     t.string   "token"
-    t.boolean  "is_chair_member",   :default => false
-    t.string   "type"
-    t.boolean  "sponsorship_payed", :default => false
-    t.text     "sponsorship_note"
+    t.boolean  "is_chair_member", :default => false
   end
 
 end

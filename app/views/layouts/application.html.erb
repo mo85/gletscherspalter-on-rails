@@ -46,7 +46,9 @@
 						</ul>
 					</li>
 					<li><%= link_to "Gallery", :controller => "photos", :action => "index" %></li>
+					<% if logged_in? %>
 					<li><%= link_to "Gönner", :controller => "sponsors", :action => "index" %></li>
+					<% end %>
 					<li><%= link_to "Kontakt", :controller => "root", :action => "contact" %>
 						<ul>
 							<li><%= link_to "Personen", :controller => "root", :action => "contact" %></li>

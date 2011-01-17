@@ -1,4 +1,4 @@
-class Sponsor < User
+class Sponsor < ActiveRecord::Base
   
   validates_presence_of :email, :city, :zip
   
