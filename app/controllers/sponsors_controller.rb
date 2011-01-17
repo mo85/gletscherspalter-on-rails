@@ -9,8 +9,8 @@ class SponsorsController < ApplicationController
   # GET /users
   def index
     @title = "Gönner des EHC Gletscherspalter"
-    @confirmed_sponsors = Sponsor.where("sponsorship_payed == ?", true)
-    @unconfirmed_sponsors = Sponsor.where("sponsorship_payed == ?", false)
+    @confirmed_sponsors = Sponsor.find_all_by_sponsorship_payed(true)
+    @unconfirmed_sponsors = Sponsor.find_all_by_sponsorship_payed(false)
 
     respond_to do |format|
       format.html
