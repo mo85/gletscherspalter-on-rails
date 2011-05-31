@@ -25,10 +25,15 @@ div.field_with_errors input{
 	border: 2px solid #ca0000;
 }
 
+
 #captcha {
 	display: block;
 	margin-left: 200px;
 	width: 200px;
+}
+
+img.captcha_img {
+	margin-left: 200px !important;
 }
 
 #error_explanation {

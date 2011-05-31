@@ -46,9 +46,7 @@
 						</ul>
 					</li>
 					<li><%= link_to "Gallery", :controller => "photos", :action => "index" %></li>
-					<% if logged_in? %>
-					<li><%= link_to "Gönner", :controller => "sponsors", :action => "index" %></li>
-					<% end %>
+					<li><%= link_to "Supporter", :controller => "sponsors", :action => "index" %></li>
 					<li><%= link_to "Kontakt", :controller => "root", :action => "contact" %>
 						<ul>
 							<li><%= link_to "Personen", :controller => "root", :action => "contact" %></li>
@@ -104,7 +102,7 @@
 			<div id="right_column">
 				<div id="content">
 				<% if flash[:notice] %>
-					<div id="notice"><%= flash[:notice] -%></div>
+					<div id="notice"><%= sanitize flash[:notice] -%></div>
 				<% end %>
 				<%= yield %>
 				</div>

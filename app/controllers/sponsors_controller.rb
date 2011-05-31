@@ -35,12 +35,15 @@ class SponsorsController < ApplicationController
   # POST /users
   def create
     @sponsor = Sponsor.new(params[:sponsor])
+    
 
     respond_to do |format|
-      if captcha_validated? && @sponsor.save
+      if captcha_validated? & @sponsor.valid?
+        @sponsor.save
         flash[:notice] = "Sie haben sich erfolgreich registriert."
         format.html { redirect_to(:action => 'index') }
       else
+        flash[:notice] = "Die Angaben sind entweder unvollständig oder die Sicherheitsprüfung ist Fehlgeschlagen. <br /><strong>Bitte vervollständigen Sie die verlangten Informationen</strong>."
         format.html {render :action => "new" }
       end
     end

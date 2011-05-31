@@ -3,19 +3,19 @@
 Mit einem Beitrag ab CHF 30.-- pro Jahr sind Sie offizieller Supporter des EHC Gletscherspalter und werden regelmässig über Aktivitäten und Resultate informiert. Sie werden auch zu speziellen Anlässen eingeladen und haben exklusiven Zutritt zu Kabine und Spielerbank. Damit können Sie in regelmässigem Kontakt mit den Aktivmitgliedern bleiben und am Clubleben teilhaben.
 
 <% if @confirmed_sponsors.any? %>
-	<h2>Aktuelle Gönner</h2>
+	<h2>Aktuelle Supporter</h2>
 
 	<%= render "sponsors_table", :sponsors => @confirmed_sponsors %>
 
 <% end %>
 
 <% if @unconfirmed_sponsors.any? && permitted_to?(:manage, :sponsors) %>
-	<h2>Unbestätigte Gönner</h2>
+	<h2>Unbestätigte Supporter</h2>
 
 	<%= render "sponsors_table", :sponsors => @unconfirmed_sponsors %>
 	
 <% end %>
 
 <% content_for :sub_menu do %>
-	<li class="side_bar"><%= link_to "Gönner werden", new_sponsor_path %></li>
+	<li class="side_bar"><%= link_to "Supporter werden", new_sponsor_path %></li>
 <% end %>
