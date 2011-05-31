@@ -12,6 +12,11 @@
 		<%= f.text_field :lastname %>
 	</div>
 	
+	<div>
+		<%= f.label :gender, "Geschlecht" %>
+		<%= f.select :gender, [["bitte auswählen...", nil],[Sponsor.gender_as_string("m"), "m"], [Sponsor.gender_as_string("f"), "f"]] %>
+	</div>
+	
 	<% if params[:action] == "edit" && permitted_to?(:manage, :sponsors) %>
 	<div>
 		<%= f.label :sponsorship_payed, "Gönnerbeitrag bezahlt" %>

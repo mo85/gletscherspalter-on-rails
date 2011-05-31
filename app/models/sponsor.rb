@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Sponsor < ActiveRecord::Base
   
   validates_presence_of     :firstname, :lastname, :email, :city, :zip, :street, :number
@@ -5,6 +6,10 @@ class Sponsor < ActiveRecord::Base
   
   validates_format_of       :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :allow_blank => false
   
+  validate :gender_types
+  
+  ::Genders = { 'm' => 'Männlich', 'f' => 'Weiblich'}
+
   def to_s
     "#{firstname} #{lastname}"
   end
@@ -13,4 +18,14 @@ class Sponsor < ActiveRecord::Base
     "#{zip} #{city}"
   end
   
+  def self.gender_as_string key
+    Sponsor::Genders[key]
+  end
+  
+  def gender_types
+    if gender != 'm' && gender != 'f' && gender != nil
+      errors.add_to_base("Geschlecht muss angegeben werden")
+    end
+  end
+
 end
