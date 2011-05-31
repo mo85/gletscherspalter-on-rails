@@ -9,9 +9,11 @@ class Sponsor < ActiveRecord::Base
   validate :gender_types
   
   ::Genders = { 'm' => 'Männlich', 'f' => 'Weiblich'}
+  
+  default_scope order("lastname ASC")
 
   def to_s
-    "#{firstname} #{lastname}"
+    "#{lastname} #{firstname}"
   end
   
   def address
