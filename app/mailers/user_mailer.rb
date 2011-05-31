@@ -23,6 +23,13 @@ class UserMailer < ActionMailer::Base
     mail(:to => collect_addresses(users), :subject => "Neuer Kommentar")
   end
   
+  def new_supporter supporter
+    @supporter = supporter
+    users = User.where("is_admin = ? OR is_chair_member = ?", true, true).uniq
+    
+    mail(:to => collect_addresses(users), :subject => "Neuer Supporter auf Gletscherspalter.ch registriert!")
+  end
+  
   private
   
   def collect_addresses(recipients)
