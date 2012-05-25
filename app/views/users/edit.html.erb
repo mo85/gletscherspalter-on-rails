@@ -1,31 +1,36 @@
 <h1>Benutzer Editieren</h1>
 
 <%= form_for [@user], :html => { :class => :default } do |f| %>
-  <%= f.error_messages %>
+  <%= render "shared/error_messages", :target => @user %>
 
   <div>
-	<%= f.label "Benutzername" %>
+	<%= f.label :login, "Benutzername" %>
 	<%= f.text_field h(:login) %>
   </div>
 
   <div>
-	<%= f.label "Vorname" %>
+	<%= f.label :firstname, "Vorname" %>
 	<%= f.text_field h(:firstname) %>
   </div>
 
   <div>
-    <%= f.label "Nachname" %>
+    <%= f.label :lastname, "Nachname" %>
     <%= f.text_field h(:lastname) %>
   </div>
 
 	<div>
-		<%= f.label "Aktiv" %>
+		<%= f.label :is_player, "Aktiv" %>
 		<%= f.check_box :is_player %>
 	</div>
 
 	<div>
-		<%= f.label "Vorstandsmitglied" %>
+		<%= f.label :is_chair_member, "Vorstandsmitglied" %>
 		<%= f.check_box :is_chair_member %>
+	</div>
+	
+	<div>
+		<%= f.label :is_admin, "Administrator" %>
+		<%= f.check_box :is_admin %>
 	</div>
 
 	<div>
@@ -41,17 +46,17 @@
 	</div>
 	
 	<div>
-		<%= f.label "Telefon" %>
+		<%= f.label :phone, "Telefon" %>
 		<%= f.text_field h(:phone) %>
   </div>
 
 	<div>
-		<%= f.label "Mobile" %>
+		<%= f.label :mobile, "Mobile" %>
 		<%= f.text_field h(:mobile) %>
   </div>
 	
   <div>
-		<%= f.label "E-Mail" %>
+		<%= f.label :email, "E-Mail" %>
 		<%= f.text_field h(:email) %>
   </div>
 
