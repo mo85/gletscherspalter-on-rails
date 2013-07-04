@@ -22,7 +22,7 @@ class Season < ActiveRecord::Base
     @season = where("start_year = ? AND end_year = ?", year, next_year).first
     
     if !@season 
-      if time.month > SWITCHING_MONTH
+      if time.month >= SWITCHING_MONTH
         @season = Season.create(:start_year => year, :end_year => next_year)
       else
         @season = Season.find_by_start_year_and_end_year(year - 1, next_year - 1)
