@@ -8,7 +8,8 @@ class AddFieldsOfGamesToEvents < ActiveRecord::Migration
     add_column :events, :season_id, :integer
     
     change_column :events, :location, :integer
-    rename_column :events, :location, :location_id
+    add_column :events, :location_id, :integer
+    remove_column :events, :location
   end
 
   def self.down
@@ -20,6 +21,7 @@ class AddFieldsOfGamesToEvents < ActiveRecord::Migration
     remove_column :events, :season_id
     
     rename_column :events, :location_id, :location
-    change_column :events, :location, :string
+    add_column :events, :location, :string
+    remove_column :events, :location_id
   end
 end
