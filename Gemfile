@@ -4,25 +4,21 @@ ruby '1.9.2'
 
 gem 'rails', '3.0.0'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'mysql2'
-
-#gem 'mysql'
-
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem "declarative_authorization"
 
 gem "will_paginate", "~> 3.0.pre2"
 
+
 gem "icalendar"
-gem "flickraw"
+gem "flickraw", "0.8.4"
+gem "prawn", "0.8.4"
+
 gem "googlecharts", :require => "gchart" 
-gem "prawn"
+
 #gem "ruby_core_source"
-gem "mini_magick"
+#gem "mini_magick"
 
 #gem "hoptoad_notifier"
 
