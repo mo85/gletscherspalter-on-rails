@@ -46,6 +46,7 @@ GEM
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
+    pg (0.17.1)
     polyglot (0.3.1)
     prawn (0.8.4)
       prawn-core (>= 0.8.4, < 0.9)
@@ -88,6 +89,7 @@ DEPENDENCIES
   flickraw (= 0.8.4)
   googlecharts
   icalendar
+  pg
   prawn (= 0.8.4)
   rails (= 3.0.0)
   will_paginate (~> 3.0.pre2)
