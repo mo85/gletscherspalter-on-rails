@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+ruby '1.9.2p0'
+
 gem 'rails', '3.0.0'
 
 # Bundle edge Rails instead:
@@ -22,7 +24,7 @@ gem "prawn"
 #gem "ruby_core_source"
 gem "mini_magick"
 
-gem "hoptoad_notifier"
+#gem "hoptoad_notifier"
 
 #config.gem "mmangino-facebooker", :require => "facebooker",
 #  :source => "http://gems.github.com"
@@ -54,3 +56,6 @@ gem 'acts_as_commentable'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+
+
