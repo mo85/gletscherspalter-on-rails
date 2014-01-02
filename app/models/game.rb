@@ -30,7 +30,7 @@ class Game < Event
   end
   
   def self.last_game
-    where("score >= ? || opponent_score >= ?", 0, 0).order("date").last
+    where("score >= ? OR opponent_score >= ?", 0, 0).order("date").last
   end
 
   def result
