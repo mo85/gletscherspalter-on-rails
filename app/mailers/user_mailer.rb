@@ -3,7 +3,10 @@ class UserMailer < ActionMailer::Base
   
   def mail_message(user, message)
     @message = message
-    mail(:to => collect_addresses(user), :subject => message.subject)    
+    addresses = collect_addresses(user)
+    if (addresses.any?)
+      mail(:to => addresses, :subject => message.subject)
+    end
   end
   
   def new_news(news_entry)
@@ -11,8 +14,11 @@ class UserMailer < ActionMailer::Base
     users = users.select{ |u| u.subscription_manager.news == true }
     @creator = news_entry.user
     @message = news_entry.message
-        
-    mail(:to => collect_addresses(users), :subject => "Neuigkeiten auf Gletscherspalter.ch")
+    
+    addresses = collect_addresses(users)
+    if (addresses.any?)
+      mail(:to => addresses, :subject => "Neuigkeiten auf Gletscherspalter.ch")
+    end
   end
   
   def new_comment(comment, event, users)
@@ -20,14 +26,19 @@ class UserMailer < ActionMailer::Base
     @message = comment.comment
     @event = event
     
-    mail(:to => collect_addresses(users), :subject => "Neuer Kommentar")
+    addresses = collect_addresses(users)
+    if (addresses.any?)
+      mail(:to => addresses, :subject => "Neuer Kommentar")
+    end
   end
   
   def new_supporter supporter
     @supporter = supporter
     users = User.where("is_admin = ? OR is_chair_member = ?", true, true).uniq
-    
-    mail(:to => collect_addresses(users), :subject => "Neuer Supporter auf Gletscherspalter.ch registriert!")
+    addresses = collect_addresses(users)
+    if (addresses.any?)
+      mail(:to => addresses, :subject => "Neuer Supporter auf Gletscherspalter.ch registriert!")
+    end
   end
   
   private
