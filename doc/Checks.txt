@@ -1,5 +1,0 @@
-TODO für Migration Rails 3
------------------------------
-
-- New ActionMailer API
-- Profil Bild Bug
