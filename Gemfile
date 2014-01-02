@@ -19,6 +19,8 @@ gem "prawn", "0.8.4"
 
 gem "googlecharts", :require => "gchart" 
 
+gem 'seed-fu', '~> 2.0.0'
+
 #gem "ruby_core_source"
 #gem "mini_magick"
 
