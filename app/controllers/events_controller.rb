@@ -44,7 +44,10 @@ class EventsController < ApplicationController
       users = users.select{ |u| u.subscription_manager.comments == true }
       
       if users.size > 0
-        UserMailer.new_comment(comment, @event, users).deliver
+        mails = UserMailer.new_comment(comment, @event, users)
+        if mails
+          mails.deliver
+        end
       end
     end
     

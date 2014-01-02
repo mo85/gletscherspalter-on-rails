@@ -40,7 +40,10 @@ class SponsorsController < ApplicationController
     respond_to do |format|
       if captcha_validated? & @sponsor.valid?
         @sponsor.save
-        UserMailer.new_supporter(@sponsor).deliver
+        mails = UserMailer.new_supporter(@sponsor)
+        if mails
+          mails.deliver
+        end
         flash[:notice] = "Sie haben sich erfolgreich registriert."
         format.html { redirect_to(:action => 'index') }
       else
