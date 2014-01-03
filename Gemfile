@@ -33,6 +33,8 @@ gem 'seed-fu', '~> 2.0.0'
 
 gem 'acts_as_commentable'
 
+gem "aws-s3"
+
 #gem "paperclip"
 
 # Use unicorn as the web server
