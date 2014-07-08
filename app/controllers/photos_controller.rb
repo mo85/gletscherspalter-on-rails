@@ -4,11 +4,11 @@ class PhotosController < ApplicationController
 
   include FlickRaw
   
-  FlickRaw.api_key = APP_CONFIG["flickr"]["api-key"]
-  FlickRaw.shared_secret = APP_CONFIG["flickr"]["shared-secret"]
-  @@user_id = APP_CONFIG["flickr"]["user-id"]
-  @@token = APP_CONFIG["flickr"]["auth-token"]
-  @auth = flickr.auth.checkToken :auth_token => @@token
+  #FlickRaw.api_key = APP_CONFIG["flickr"]["api-key"]
+  #FlickRaw.shared_secret = APP_CONFIG["flickr"]["shared-secret"]
+  #@@user_id = APP_CONFIG["flickr"]["user-id"]
+  #@@token = APP_CONFIG["flickr"]["auth-token"]
+  #@auth = flickr.auth.checkToken :auth_token => @@token
   
   def index
     unless read_fragment(:action => "index")
