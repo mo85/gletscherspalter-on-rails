@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 ruby '1.9.2'
 
-gem 'rails', '3.0.0'
+gem 'rails', '3.0.20'
 
 #gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'pg'
